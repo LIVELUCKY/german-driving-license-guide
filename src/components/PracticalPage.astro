@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from './Card.astro';
+import PageHead from './PageHead.astro';
+import Section from './Section.astro';
+import DisclosureList from './DisclosureList.astro';
+import { t } from '../lib/i18n.js';
+import { PRACTICAL } from '../lib/content.js';
+const { lang } = Astro.props;
+const core = PRACTICAL.slice(0, 5);
+const deep = PRACTICAL.slice(5);
+---
+<Base lang={lang} slug="practical">
+  <PageHead
+    kicker={t(lang,'Behind the wheel','Am Steuer','خلف المقود')}
+    title={t(lang,'Practical driving','Praktisches Fahren','القيادة العملية')}
+    lead={t(lang,
+      'What the examiner watches, the maneuvers you must master, and how the test actually runs.',
+      'Worauf der Prüfer achtet, welche Manöver du können musst und wie die Prüfung wirklich abläuft.',
+      'ما يراقبه الفاحص، والمناورات التي يجب إتقانها، وكيف يسير الاختبار فعلياً.')}
+    toc={[
+      { href: '#core', label: t(lang,'Maneuvers','Manöver','المناورات') },
+      { href: '#exam', label: t(lang,'Exam day','Prüfungstag','يوم الاختبار') },
+    ]}
+  />
+  <Section id="core" title={t(lang,'🎯 Master these first','🎯 Das zuerst meistern','🎯 أتقن هذه أولاً')}>
+    <div class="grid cols2">
+      {core.map(c => <Card card={c} lang={lang} />)}
+    </div>
+  </Section>
+  <Section id="exam" title={t(lang,'🧰 Exam day, in depth','🧰 Prüfungstag im Detail','🧰 يوم الاختبار بالتفصيل')}>
+    <DisclosureList items={deep} lang={lang} />
+  </Section>
+</Base>

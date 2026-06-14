@@ -1,0 +1,23 @@
+[
+  {"icon":"🛣️","h":{"e":"Autobahn","d":"Autobahn"},"items":[
+    {"e":"No general limit — <b>130 advisory</b>; min capability 60 km/h.","d":"Kein Limit — <b>Richtgeschwindigkeit 130</b>; min. 60 km/h möglich."},
+    {"e":"No stopping, parking, reversing, U-turns, pedestrians.","d":"Kein Halten, Parken, Rückwärts, Wenden, keine Fußgänger."},
+    {"e":"Keep right; pass left; Rettungsgasse in jams.","d":"Rechtsfahrgebot; links überholen; Rettungsgasse."}]},
+  {"icon":"🚘","h":{"e":"Kraftfahrstraße (expressway)","d":"Kraftfahrstraße"},"items":[
+    {"e":"Motor vehicles ≥60 km/h capability only.","d":"Nur Kfz mit ≥60 km/h."},
+    {"e":"100 out of town; no U-turns; stop only in emergencies.","d":"Außerorts 100; Wenden verboten; Halten nur im Notfall."}]},
+  {"icon":"🌳","h":{"e":"Landstraße (country road)","d":"Landstraße"},"items":[
+    {"e":"<b>100 km/h</b> for cars; overtake only with a clear view.","d":"<b>100 km/h</b> für Pkw; überholen nur bei freier Sicht."},
+    {"e":"Highest accident risk: trees, bends, overtaking.","d":"Größte Unfallgefahr: Bäume, Kurven, Überholen."}]},
+  {"icon":"🏙️","h":{"e":"In town","d":"Innerorts"},"items":[
+    {"e":"<b>50 km/h</b> from the yellow town sign; 30 often signed.","d":"<b>50 km/h</b> ab Ortstafel; oft 30 beschildert."},
+    {"e":"Buses, bikes, pedestrians; dense parking rules.","d":"Busse, Räder, Fußgänger; viele Parkregeln."}]},
+  {"icon":"🔢","h":{"e":"Tempo-30-Zone","d":"Tempo-30-Zone"},"items":[
+    {"e":"Area-wide 30; usually <b>right-before-left</b>.","d":"Flächig 30; meist <b>rechts vor links</b>."}]},
+  {"icon":"🏠","h":{"e":"Living street","d":"Verkehrsberuhigter Bereich"},"items":[
+    {"e":"<b>Walking pace</b>; children may play; park only in marked spots.","d":"<b>Schrittgeschwindigkeit</b>; Spielen erlaubt; Parken nur markiert."}]},
+  {"icon":"🚲","h":{"e":"Bicycle street","d":"Fahrradstraße"},"items":[
+    {"e":"Bikes set the pace, side-by-side allowed; cars max 30 if permitted.","d":"Räder geben Tempo vor, nebeneinander ok; Kfz max 30 falls frei."}]},
+  {"icon":"🚶","h":{"e":"Pedestrian zone","d":"Fußgängerzone"},"items":[
+    {"e":"Vehicles banned unless a plate frees them (delivery windows).","d":"Fahrzeuge verboten, außer Tafel erlaubt (Lieferzeiten)."}]}
+]

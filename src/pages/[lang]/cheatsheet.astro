@@ -1,0 +1,8 @@
+---
+import CheatsheetPage from '../../components/CheatsheetPage.astro';
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ar' } }];
+}
+const { lang } = Astro.params;
+---
+<CheatsheetPage lang={lang} />

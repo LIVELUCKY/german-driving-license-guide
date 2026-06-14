@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from './Card.astro';
+import PageHead from './PageHead.astro';
+import Section from './Section.astro';
+import { t } from '../lib/i18n.js';
+import { CHEATSHEET } from '../lib/content.js';
+const { lang } = Astro.props;
+---
+<Base lang={lang} slug="cheatsheet">
+  <PageHead
+    kicker={t(lang,'Start here','Hier starten','ابدأ هنا')}
+    title={t(lang,'The quick cheatsheet','Der schnelle Spickzettel','الملخص السريع')}
+    lead={t(lang,
+      'The rules and numbers worth memorising before anything else. If you only learn one page, learn this one — then follow the path for the details.',
+      'Die Regeln und Zahlen, die du zuerst können solltest. Wenn du nur eine Seite lernst, dann diese — danach folgt der Pfad mit den Details.',
+      'القواعد والأرقام التي تستحق الحفظ قبل أي شيء آخر. إذا تعلمت صفحة واحدة فقط، فلتكن هذه — ثم اتبع المسار للتفاصيل.')}
+  />
+  <Section>
+    <div class="grid cols3">
+      {CHEATSHEET.map(c => <Card card={c} lang={lang} />)}
+    </div>
+    <p class="note note-mt">🖨️ {t(lang,
+      'Tip: Ctrl/Cmd + P prints this page as a paper cheatsheet.',
+      'Tipp: Strg/Cmd + P druckt diese Seite als Papier-Spickzettel.',
+      'نصيحة: Ctrl/Cmd + P لطباعة هذه الصفحة كورقة مراجعة.')}</p>
+  </Section>
+  <script is:inline define:vars={{ lang }}>
+  (function(){var D=[25,50,75,100];function init(){var s=new Set();function c(){var p=Math.round((scrollY+innerHeight)/document.documentElement.scrollHeight*100);D.forEach(function(d){if(p>=d&&!s.has(d)){s.add(d);if(typeof __fsTrack==='function')__fsTrack('scroll_depth',{depth:d,page:'cheatsheet',lang:lang});}});}window.addEventListener('scroll',c,{passive:true});document.addEventListener('astro:before-preparation',function(){window.removeEventListener('scroll',c);},{once:true});}document.addEventListener('astro:page-load',init);if(document.readyState!=='loading')init();})();
+  </script>
+</Base>

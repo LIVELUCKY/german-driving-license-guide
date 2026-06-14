@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from './Section.astro';
+import SignTile from './SignTile.astro';
+import { Icon } from 'astro-icon/components';
+import { t, urlFor } from '../lib/i18n.js';
+import { makeT } from '../lib/dict.js';
+import { CATS, byCat, catOf } from '../lib/signs.js';
+const { lang, catId } = Astro.props as { lang: string; catId: string };
+const T = makeT(lang);
+const cat = catOf(catId)!;
+const signs = byCat(catId);
+const i = CATS.findIndex(c => c.id === catId);
+const prevCat = i > 0 ? CATS[i - 1] : null;
+const nextCat = i < CATS.length - 1 ? CATS[i + 1] : null;
+const title = t(lang, cat?.en ?? catId, cat?.de ?? catId, cat?.ar ?? catId);
+---
+<Base lang={lang} slug="signs" title={title}>
+  <div class="wrap pagehead">
+    <span class="kicker">
+      <a href={urlFor(lang,'signs')} style="color:inherit">{T('signs.all')}</a>
+      <span aria-hidden="true"> · </span>
+      {signs.length} {T('signs.count')}
+    </span>
+    <h1 class="catpage-h1">
+      <span class="catpage-dot" style={`--cat-color:${cat?.color ?? 'var(--pop)'}`}></span>
+      {title}
+    </h1>
+    <p>{t(lang, cat?.d_en ?? '', cat?.d_de ?? '', cat?.d_ar ?? '')}</p>
+  </div>
+  <Section>
+    <label class="search"><Icon name="lucide:search" size={16} /><input type="search" id="cq" placeholder={T('search.cat.ph')} aria-label={T('search.cat.ph')} /></label>
+    <div class="signgrid" id="grid">
+      {signs.map((s, i) => <SignTile sign={s} lang={lang} eager={i < 6} />)}
+    </div>
+    <div class="pn note-mt">
+      {prevCat
+        ? <a href={urlFor(lang,'signs') + prevCat.id + '/'}><span class="dir">← {T('signs.prevcat')}</span><span class="t">{t(lang, prevCat.en, prevCat.de, prevCat.ar)}</span></a>
+        : <a href={urlFor(lang,'signs')}><span class="dir">←</span><span class="t">{T('signs.all')}</span></a>}
+      {nextCat
+        ? <a class="next" href={urlFor(lang,'signs') + nextCat.id + '/'}><span class="dir">{T('signs.nextcat')} →</span><span class="t">{t(lang, nextCat.en, nextCat.de, nextCat.ar)}</span></a>
+        : <a class="next" href={urlFor(lang,'signs')}><span class="dir">→</span><span class="t">{T('signs.all')}</span></a>}
+    </div>
+  </Section>
+  <script is:inline>
+  function initFilter() {
+    var cq = document.getElementById('cq'), grid = document.getElementById('grid');
+    if (!cq || !grid) return;
+    cq.addEventListener('input', () => {
+      const v = cq.value.trim().toLowerCase();
+      grid.querySelectorAll('.sign').forEach(s => {
+        s.style.display = !v || (s.dataset.kw + ' ' + s.textContent).toLowerCase().includes(v) ? '' : 'none';
+      });
+    });
+  }
+  document.addEventListener('astro:page-load', initFilter);
+  if (document.readyState !== 'loading') initFilter();
+  </script>
+  <script is:inline define:vars={{ lang, catId }}>
+  (function(){
+    function initSignViews(){
+      if(!('IntersectionObserver' in window)) return;
+      var seen=new Set();
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(!e.isIntersecting) return;
+          var el=e.target;
+          var name=(el.getAttribute('aria-label')||'').trim();
+          var img=el.querySelector('img');
+          var id=img?img.getAttribute('alt')||name:name;
+          if(id&&!seen.has(id)){seen.add(id);if(typeof __fsTrack==='function')__fsTrack('sign_viewed',{sign_id:id,category:catId,lang:lang});}
+          io.unobserve(el);
+        });
+      },{threshold:0.5});
+      document.querySelectorAll('.sign').forEach(function(el){io.observe(el);});
+    }
+    document.addEventListener('astro:page-load',initSignViews);
+    if(document.readyState!=='loading') initSignViews();
+  })();
+  </script>
+</Base>

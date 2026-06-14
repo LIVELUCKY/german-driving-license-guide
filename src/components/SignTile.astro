@@ -1,0 +1,25 @@
+---
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { sign, lang, eager = false } = Astro.props as { sign: any; lang: string; eager?: boolean };
+const name = lang === 'de' ? sign.nameDe : sign.nameEn;
+const sub  = lang === 'ar' ? sign.nameDe : lang === 'de' ? sign.nameEn : sign.nameDe;
+const mn   = lang === 'ar' ? (sign.ar ?? sign.en) : lang === 'de' ? sign.de : sign.en;
+const tip  = lang === 'ar' ? (sign.tipAr ?? sign.tipEn) : lang === 'de' ? sign.tipDe : sign.tipEn;
+const kw   = (sign.kw + ' ' + sign.nameDe + ' ' + sign.nameEn + ' ' + (sign.ar ?? '') + ' ' + (sign.stvo ?? '')).toLowerCase();
+---
+<div class="sign" data-kw={kw} tabindex="0" role="button" aria-label={name}>
+  <div class="sign-inner">
+    <div class="sign-front">
+      {sign.img
+        ? <img src={sign.img} alt={sign.nameDe} width="72" height="72" decoding="async" loading={eager ? 'eager' : 'lazy'} />
+        : <Fragment set:html={sign.drawn} />}
+      <div class="nm">{name}</div>
+      <div class="sub">{sub}</div>
+      {sign.stvo && <div class="no">StVO {sign.stvo}</div>}
+    </div>
+    <div class="sign-back" aria-hidden="true">
+      <div class="mn" set:html={mn} />
+      {tip && <div class="tip" set:html={tip} />}
+    </div>
+  </div>
+</div>

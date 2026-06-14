@@ -1,0 +1,58 @@
+---
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+{GA_ID && (
+  <script is:inline define:vars={{ GA_ID }}>
+  // GA4 consent mode — default DENIED until user accepts
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    wait_for_update: 500,
+  });
+  gtag('js', new Date());
+  gtag('config', GA_ID, { send_page_view: false });
+
+  // Track helper — no-ops silently if consent denied
+  window.__fsTrack = function(event, params) {
+    try {
+      if (localStorage.getItem('fs_consent') !== 'granted') return;
+      window.gtag('event', event, params || {});
+    } catch(e) {}
+  };
+
+  // Called by consent banner with 'granted' or 'denied'
+  window.__gaConsent = function(choice) {
+    try { localStorage.setItem('fs_consent', choice); } catch(e) {}
+    if (choice === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      // Lazy-load the gtag script only after consent
+      if (!document.querySelector('script[src*="googletagmanager"]')) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+      }
+      window.__fsTrack('page_view', { page_path: location.pathname });
+    }
+  };
+
+  // Auto-init for returning visitors: load gtag.js + update consent only.
+  // page_view is handled by fsPageInit (astro:page-load) to avoid duplicate.
+  (function() {
+    try {
+      if (localStorage.getItem('fs_consent') === 'granted') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        if (!document.querySelector('script[src*="googletagmanager"]')) {
+          var _s = document.createElement('script');
+          _s.async = true;
+          _s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+          document.head.appendChild(_s);
+        }
+      }
+    } catch(e) {}
+  })();
+  </script>
+)}

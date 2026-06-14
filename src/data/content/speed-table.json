@@ -1,0 +1,21 @@
+{
+  "head":[
+    {"e":"Vehicle","d":"Fahrzeug","a":"المركبة"},
+    {"e":"In town","d":"Innerorts","a":"داخل المدن"},
+    {"e":"Out of town","d":"Außerorts","a":"خارج المدن"},
+    {"e":"Kraftfahrstraße","d":"Kraftfahrstraße","a":"طريق رئيسي"},
+    {"e":"Autobahn","d":"Autobahn","a":"طريق سريع"}
+  ],
+  "rows":[
+    [{"e":"Car / motorbike","d":"Pkw / Motorrad","a":"سيارة / دراجة نارية"},{"e":"50","d":"50","a":"50"},{"e":"100","d":"100","a":"100"},{"e":"100","d":"100","a":"100"},{"e":"<b>none</b> (130*)","d":"<b>frei</b> (130*)","a":"<b>بدون حد</b> (130*)"}],
+    [{"e":"Car + trailer","d":"Pkw + Anhänger","a":"سيارة + مقطورة"},{"e":"50","d":"50","a":"50"},{"e":"80","d":"80","a":"80"},{"e":"80","d":"80","a":"80"},{"e":"80 / 100**","d":"80 / 100**","a":"80 / 100**"}],
+    [{"e":"Truck ≤ 7.5 t","d":"Lkw ≤ 7,5 t","a":"شاحنة ≤ 7.5 ط"},{"e":"50","d":"50","a":"50"},{"e":"80","d":"80","a":"80"},{"e":"80","d":"80","a":"80"},{"e":"80","d":"80","a":"80"}],
+    [{"e":"Truck > 7.5 t / bus","d":"Lkw > 7,5 t / Bus","a":"شاحنة > 7.5 ط / حافلة"},{"e":"50","d":"50","a":"50"},{"e":"60 / 80","d":"60 / 80","a":"60 / 80"},{"e":"60 / 80","d":"60 / 80","a":"60 / 80"},{"e":"80 (100***)","d":"80 (100***)","a":"80 (100***)"}],
+    [{"e":"Moped / S-Pedelec","d":"Moped / S-Pedelec","a":"موبيد / S-Pedelec"},{"e":"45","d":"45","a":"45"},{"e":"45","d":"45","a":"45"},{"e":"—","d":"—","a":"—"},{"e":"—","d":"—","a":"—"}]
+  ],
+  "note":{
+    "e":"*130 = advisory — crashing far above it can mean shared liability. **100 with trailer approval. ***Coaches with approval. Signed limits always override this table.",
+    "d":"*130 = Richtgeschwindigkeit — deutlich schneller = mögliche Mithaftung. **100 mit Zulassung. ***Reisebusse mit Zulassung. Schilder gehen immer vor.",
+    "a":"*130 = سرعة موصى بها — السير بسرعة أعلى بكثير قد يعني مسؤولية مشتركة. **100 مع الموافقة. ***حافلات سياحية مع الموافقة. اللافتات تتقدم دائماً على هذا الجدول."
+  }
+}

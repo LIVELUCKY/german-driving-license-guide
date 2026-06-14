@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+interface Props { lang: string }
+const { lang } = Astro.props;
+
+const mods = import.meta.glob('../content/legal/*.mdx', { eager: true });
+const mod = (mods[`../content/legal/${lang}.mdx`] ?? mods['../content/legal/en.mdx']) as any;
+const Content = mod.default;
+const fm = mod.frontmatter as { title: string; kicker: string; desc: string };
+---
+<Base lang={lang} slug="legal" title={fm.title}>
+  <div class="wrap pagehead">
+    <span class="kicker">{fm.kicker}</span>
+    <h1>{fm.title}</h1>
+    <p>{fm.desc}</p>
+  </div>
+  <section class="blk"><div class="wrap prose">
+    <Content />
+  </div></section>
+</Base>

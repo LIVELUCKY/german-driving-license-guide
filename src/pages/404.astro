@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { urlFor } from '../lib/i18n.js';
+import { makeT } from '../lib/dict.js';
+
+const { lang = 'de' } = Astro.props;
+const T = makeT(lang);
+---
+<Base lang={lang} slug="" title={T('errors.404_title')}>
+  <script is:inline>
+  (function(){
+    function track404(){
+      var p=location.pathname;
+      var l=p.startsWith('/ar/')?'ar':p.startsWith('/en/')?'en':'de';
+      if(typeof __fsTrack==='function')__fsTrack('page_not_found',{path:p,referrer:document.referrer||'direct',lang:l});
+    }
+    document.addEventListener('astro:page-load',track404);
+    if(document.readyState!=='loading') track404();
+  })();
+  </script>
+  <div class="wrap e404">
+    <div class="code" aria-hidden="true">404</div>
+    <h1>{T('errors.404_h1')}</h1>
+    <p>{T('errors.404_desc')}</p>
+    <a class="back" href={urlFor(lang, '')}>{T('errors.404_back')}</a>
+  </div>
+</Base>

@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { t, withBase } from '../lib/i18n.js';
+import SignQuiz from './SignQuiz.tsx';
+const { lang } = Astro.props;
+const base = withBase('');
+---
+<Base lang={lang} slug="quiz">
+  <div class="wrap pagehead">
+    <span class="kicker">{t(lang, 'Test yourself', 'Teste dich', 'اختبر نفسك')}</span>
+    <h1>{t(lang, 'Sign quiz', 'Zeichen-Quiz', 'اختبار الإشارات')}</h1>
+    <p>{t(lang,
+      'Ten random signs. Select the correct meaning or reveal the answer.',
+      'Zehn zufällige Zeichen. Wähle die richtige Bedeutung oder decke die Antwort auf.',
+      'عشر إشارات عشوائية. اختر المعنى الصحيح أو اكشف الإجابة.')}</p>
+  </div>
+  <section class="blk"><div class="wrap">
+    <SignQuiz client:idle lang={lang} baseUrl={base} />
+  </div></section>
+</Base>

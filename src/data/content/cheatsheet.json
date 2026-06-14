@@ -1,0 +1,52 @@
+[
+  {"icon":"🚗","h":{"e":"Speed limits","d":"Tempolimits"},"kv":[
+    {"l":{"e":"In town","d":"Innerorts"},"v":{"e":"50 km/h","d":"50 km/h"}},
+    {"l":{"e":"Out of town","d":"Außerorts"},"v":{"e":"100 km/h","d":"100 km/h"}},
+    {"l":{"e":"Motorway","d":"Autobahn"},"v":{"e":"none*","d":"keins*"}},
+    {"l":{"e":"30-zone / schools","d":"30er-Zone / Schulen"},"v":{"e":"30 km/h","d":"30 km/h"}}],
+    "note":{"e":"*Advisory 130 km/h. Play streets = walking pace. Towing: 80.","d":"*Richtgeschwindigkeit 130. Spielstraße = Schrittgeschwindigkeit. Mit Anhänger: 80."}},
+  {"icon":"🍺","h":{"e":"Alcohol & drugs","d":"Alkohol & Drogen"},"kv":[
+    {"l":{"e":"General limit","d":"Allgemein"},"v":{"e":"0.5 ‰","d":"0,5 ‰"}},
+    {"l":{"e":"Under 21 / Probezeit","d":"Unter 21 / Probezeit"},"v":{"e":"0.0 ‰","d":"0,0 ‰"}},
+    {"l":{"e":"Illegal drugs","d":"Illegale Drogen"},"v":{"e":"zero","d":"null"}}],
+    "items":[{"e":"From <b>0.3‰</b> you can be punished if you drive unsafely or crash.","d":"Ab <b>0,3‰</b> bei Auffälligkeit oder Unfall strafbar."}]},
+  {"icon":"↔️","h":{"e":"Right before left","d":"Rechts vor links"},"items":[
+    {"e":"No signs or lights at the junction? Traffic from your <b>right</b> goes first.","d":"Keine Schilder/Ampel? Verkehr von <b>rechts</b> hat Vorfahrt."},
+    {"e":"Signs, lights and police <b>override</b> this default.","d":"Schilder, Ampel und Polizei <b>heben</b> die Regel auf."},
+    {"e":"Turning left? Yield to oncoming traffic.","d":"Links abbiegen? Gegenverkehr hat Vorrang."}]},
+  {"icon":"📏","h":{"e":"Distance & overtaking","d":"Abstand & Überholen"},"items":[
+    {"e":"Safe gap ≈ <b>half your speedometer</b> in metres (100 km/h → 50 m).","d":"Abstand ≈ <b>halber Tacho</b> in Metern (100 km/h → 50 m)."},
+    {"e":"In town: about a <b>2-second</b> gap.","d":"Innerorts: etwa <b>2 Sekunden</b>."},
+    {"e":"Overtake on the <b>left</b> only.","d":"Nur <b>links</b> überholen."}]},
+  {"icon":"💡","h":{"e":"Lights","d":"Licht"},"items":[
+    {"e":"<b>Dipped beam</b> in tunnels, fog, rain & snow.","d":"<b>Abblendlicht</b> in Tunnel, Nebel, Regen & Schnee."},
+    {"e":"<b>Rear fog light</b> only when visibility &lt; 50 m.","d":"<b>Nebelschlussleuchte</b> nur bei Sicht &lt; 50 m."},
+    {"e":"No <b>full beam</b> with oncoming traffic.","d":"Kein <b>Fernlicht</b> bei Gegenverkehr."}]},
+  {"icon":"🛟","h":{"e":"Belts, phone & kids","d":"Gurt, Handy & Kinder"},"items":[
+    {"e":"<b>Seatbelt</b> mandatory in every seat.","d":"<b>Anschnallpflicht</b> auf allen Sitzen."},
+    {"e":"Phone <b>hands-free only</b>.","d":"Handy nur <b>per Freisprech</b>."},
+    {"e":"Child seat until <b>12 yrs or 150 cm</b>.","d":"Kindersitz bis <b>12 Jahre oder 150 cm</b>."}]},
+  {"icon":"🆘","h":{"e":"Emergencies","d":"Notfälle"},"kv":[
+    {"l":{"e":"Emergency (EU)","d":"Notruf (EU)"},"v":{"e":"112","d":"112"}},
+    {"l":{"e":"Police","d":"Polizei"},"v":{"e":"110","d":"110"}}],
+    "items":[
+      {"e":"Carry <b>triangle, vest, first-aid kit</b>.","d":"<b>Warndreieck, Weste, Verbandkasten</b> mitführen."},
+      {"e":"In a jam, form the <b>Rettungsgasse</b> immediately.","d":"Im Stau sofort <b>Rettungsgasse</b> bilden."}]},
+  {"icon":"🅿️","h":{"e":"Parking & stopping","d":"Parken & Halten"},"items":[
+    {"e":"<b>Halten</b> = brief stop. <b>Parken</b> = leave / &gt;3 min.","d":"<b>Halten</b> = kurz. <b>Parken</b> = verlassen / &gt;3 Min."},
+    {"e":"Park on the <b>right, with traffic flow</b>.","d":"<b>Rechts, in Fahrtrichtung</b> parken."},
+    {"e":"Keep <b>5 m</b> from corners & crossings.","d":"<b>5 m</b> Abstand zu Ecken & Überwegen."}]},
+  {"icon":"🔄","h":{"e":"Roundabout","d":"Kreisverkehr"},"items":[
+    {"e":"Traffic <b>inside</b> has priority.","d":"Verkehr <b>im Kreis</b> hat Vorfahrt."},
+    {"e":"<b>No indicator</b> entering; <b>indicate right</b> leaving.","d":"<b>Kein Blinken</b> rein; <b>rechts blinken</b> raus."}]},
+  {"icon":"🟢","h":{"e":"Environmental badge","d":"Umweltplakette"},"items":[
+    {"e":"Most cities are a <b>green-badge</b> zone (Umweltzone).","d":"Viele Städte sind <b>grüne</b> Umweltzone."},
+    {"e":"No valid badge in the zone = fine.","d":"Ohne Plakette in der Zone = Bußgeld."}]},
+  {"icon":"🚓","h":{"e":"Emergency vehicles","d":"Einsatzfahrzeuge"},"items":[
+    {"e":"<b>Blue light + siren</b>: pull right, make way.","d":"<b>Blaulicht + Horn</b>: rechts ran, Platz machen."},
+    {"e":"Bus leaving a stop with indicator: let it out.","d":"Bus mit Blinker an der Haltestelle: rauslassen."}]},
+  {"icon":"🪪","h":{"e":"Probezeit","d":"Probezeit"},"items":[
+    {"e":"Lasts <b>2 years</b> from the first licence.","d":"<b>2 Jahre</b> ab dem ersten Führerschein."},
+    {"e":"<b>0.0‰</b> alcohol, any age.","d":"<b>0,0‰</b> Alkohol, jedes Alter."},
+    {"e":"Serious offence → extension + course.","d":"Schwerer Verstoß → Verlängerung + Seminar."}]}
+]

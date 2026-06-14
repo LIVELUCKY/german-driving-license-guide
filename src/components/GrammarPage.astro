@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from './PageHead.astro';
+import Section from './Section.astro';
+import { t } from '../lib/i18n.js';
+import { SIGNS } from '../lib/signs.js';
+const { lang } = Astro.props as { lang: string };
+const L = lang === 'de' ? 'd' : lang === 'ar' ? 'a' : 'e';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const img = (id: string): any => SIGNS.find((s: any) => s.id === id);
+
+const SHAPES = [
+ {id:'gefahrstelle', h:{e:'Triangle, point up',d:'Dreieck, Spitze oben',a:'مثلث رأسه لأعلى'}, m:{e:'<b>Warning.</b> Danger ahead — slow down, be ready.',d:'<b>Warnung.</b> Gefahr voraus — Tempo raus.',a:'<b>تحذير.</b> خطر أمامك — أبطئ واستعد.'}},
+ {id:'vorfahrt-gewaehren', h:{e:'Triangle, point down',d:'Dreieck, Spitze unten',a:'مثلث رأسه لأسفل'}, m:{e:'<b>Yield.</b> The only upside-down one — recognisable even snow-covered.',d:'<b>Vorfahrt gewähren.</b> Das einzige umgedrehte — auch verschneit erkennbar.',a:'<b>أعطِ الأولوية.</b> الوحيد المعكوس — يُعرف حتى تحت الثلج.'}},
+ {id:'verbot-fuer-fahrzeuge-aller-art', h:{e:'Red ring',d:'Roter Ring',a:'حلقة حمراء'}, m:{e:'<b>Forbidden/limited.</b> What is drawn inside is banned.',d:'<b>Verboten.</b> Was drin ist, ist verboten.',a:'<b>محظور.</b> ما بداخله ممنوع.'}},
+ {id:'fahrtrichtung-geradeaus', h:{e:'Blue circle',d:'Blauer Kreis',a:'دائرة زرقاء'}, m:{e:'<b>Order.</b> You must do what it shows.',d:'<b>Gebot.</b> Du musst tun, was es zeigt.',a:'<b>إلزامي.</b> يجب فعل ما تشير إليه.'}},
+ {id:'vorfahrtstrasse', h:{e:'Yellow diamond',d:'Gelbe Raute',a:'معين أصفر'}, m:{e:'<b>Priority.</b> Only used for right-of-way along a road.',d:'<b>Vorfahrt.</b> Nur für Vorfahrtstraßen.',a:'<b>أولوية.</b> للطرق ذات الأولوية فقط.'}},
+ {id:'stop', h:{e:'Octagon',d:'Achteck',a:'مثمن'}, m:{e:'<b>Full stop.</b> Unique shape for the strongest order.',d:'<b>Anhalten.</b> Einzigartige Form.',a:'<b>توقف تاماً.</b> شكل فريد لأقوى أمر.'}},
+ {id:'parkplatz', h:{e:'Rectangle',d:'Rechteck',a:'مستطيل'}, m:{e:'<b>Information / special rules</b> (parking, one-way, motorway…).',d:'<b>Hinweis / Sonderregeln</b> (Parken, Einbahn, Autobahn…).',a:'<b>معلومات / قواعد خاصة</b> (ركن، اتجاه واحد، طريق سريع...).'}},
+ {id:'bei-naesse', h:{e:'Small white plate',d:'Kleine weiße Tafel',a:'لوحة بيضاء صغيرة'}, m:{e:'<b>Condition.</b> Narrows the sign above (who, when, where).',d:'<b>Bedingung.</b> Schränkt das Schild darüber ein.',a:'<b>شرط.</b> يضيّق نطاق اللافتة أعلاه.'}},
+];
+const COLORS = [
+ {i:'🔴',h:{e:'Red',d:'Rot',a:'أحمر'},m:{e:'Danger or prohibition. Ring = banned; triangle = warned.',d:'Gefahr oder Verbot. Ring = verboten; Dreieck = gewarnt.',a:'خطر أو حظر. حلقة = ممنوع؛ مثلث = تحذير.'}},
+ {i:'🔵',h:{e:'Blue',d:'Blau',a:'أزرق'},m:{e:'Orders & permissions: circle = must; rectangle = may/info. Also motorways.',d:'Gebote & Hinweise: Kreis = muss; Rechteck = darf/Info. Auch Autobahn.',a:'أوامر وإرشادات: دائرة = إلزامي؛ مستطيل = مسموح/معلومة. أيضاً الطرق السريعة.'}},
+ {i:'🟡',h:{e:'Yellow',d:'Gelb',a:'أصفر'},m:{e:'Priority diamond, town signs, detours, country-road routes.',d:'Vorfahrts-Raute, Ortstafeln, Umleitungen, Landstraßen-Routen.',a:'معين الأولوية ولافتات البلدات والتحويلات وطرق الريف.'}},
+ {i:'⚪',h:{e:'Gray / strikethrough',d:'Grau / durchgestrichen',a:'رمادي / مشطوب'},m:{e:'<b>End of.</b> A gray version or slash always ends the rule.',d:'<b>Ende.</b> Grau oder Schrägstrich beendet die Regel.',a:'<b>نهاية.</b> النسخة الرمادية أو الشطبة تنهي القاعدة.'}},
+ {i:'🟢',h:{e:'Green',d:'Grün',a:'أخضر'},m:{e:'Free flow: green arrow plate, green light, green eco badge.',d:'Freie Fahrt: Grünpfeil, Grünlicht, grüne Plakette.',a:'سير حر: سهم أخضر، ضوء أخضر، شارة بيئية خضراء.'}},
+ {i:'🟠',h:{e:'Orange',d:'Orange',a:'برتقالي'},m:{e:'Temporary: roadworks and diversions override normal signs.',d:'Vorübergehend: Baustelle/Umleitung geht vor.',a:'مؤقت: أعمال البناء والتحويلات تتفوق على اللافتات العادية.'}},
+];
+const PICTO = [
+ {i:'🚗',h:{e:'Vehicle symbols',d:'Fahrzeug-Symbole',a:'رموز المركبات'},items:[
+  {e:'Car = motor cars · truck = goods · motorbike · bicycle · bus · tractor = slow vehicles.',d:'Pkw = Kraftwagen · Lkw · Motorrad · Fahrrad · Bus · Traktor = langsame Fahrzeuge.',a:'سيارة = سيارات · شاحنة = بضائع · دراجة نارية · دراجة · حافلة · جرار.'},
+  {e:'Walking figure = pedestrians; child pair = children; horse = riders.',d:'Gehfigur = Fußgänger; Kinderpaar = Kinder; Pferd = Reiter.',a:'شخص يمشي = مشاة؛ طفلان = أطفال؛ حصان = راكبون.'}]},
+ {i:'🔢',h:{e:'Numbers',d:'Zahlen',a:'أرقام'},items:[
+  {e:'Red ring: a <b>limit</b> (km/h, t, m).',d:'Roter Ring: ein <b>Limit</b> (km/h, t, m).',a:'حلقة حمراء: <b>حد</b> (كم/س، طن، متر).'},
+  {e:'Blue circle: a <b>minimum</b>.',d:'Blauer Kreis: ein <b>Minimum</b>.',a:'دائرة زرقاء: <b>حد أدنى</b>.'},
+  {e:'Plate: distance (“100 m”) or stretch (“auf 3 km”).',d:'Tafel: Entfernung („100 m”) oder Strecke („auf 3 km”).',a:'لوحة: مسافة (“100 م”) أو امتداد (“على 3 كم”).'}]},
+ {i:'➡️',h:{e:'Arrows',d:'Pfeile',a:'أسهم'},items:[
+  {e:'Blue circle arrow = must go that way.',d:'Pfeil im blauen Kreis = dorthin fahren.',a:'سهم في دائرة زرقاء = يجب السير بذلك الاتجاه.'},
+  {e:'Plate arrow = where the sign applies.',d:'Tafel-Pfeil = wo das Schild gilt.',a:'سهم اللوحة = أين تسري اللافتة.'},
+  {e:'Bent arrow plate = the priority road bends.',d:'Abgeknickter Pfeil = Vorfahrtstraße knickt ab.',a:'سهم منحنٍ = طريق الأولوية ينحني.'}]},
+];
+const MODS = [
+ {i:'⬜',h:{e:'Zone frame',d:'Zonen-Rahmen',a:'إطار منطقة'},items:[
+  {e:'A sign in a white <b>ZONE</b> rectangle applies to a whole area until the matching end sign.',d:'Ein Schild im weißen <b>ZONE</b>-Rechteck gilt flächig bis zum Ende-Schild.',a:'لافتة في مستطيل ZONE تسري على المنطقة كلها حتى لافتة النهاية.'},
+  {e:'Common: 30-Zone, parking zone, environmental zone.',d:'Üblich: 30-Zone, Parkraum-Zone, Umweltzone.',a:'شائع: منطقة 30، منطقة ركن، منطقة بيئية.'}]},
+ {i:'🚫',h:{e:'”End of” variants',d:'„Ende”-Varianten',a:'نسخ “نهاية”'},items:[
+  {e:'Gray + slash = that rule ends.',d:'Grau + Schrägstrich = Regel endet.',a:'رمادي + شطبة = تلك القاعدة تنتهي.'},
+  {e:'White round sign with stripes = <b>all</b> local bans end.',d:'Weiß-rund mit Streifen = <b>alle</b> Streckenverbote enden.',a:'لافتة بيضاء بخطوط = جميع الحظورات تنتهي.'},
+  {e:'Town exit sign ends the 50 limit.',d:'Ortsausgang beendet die 50.',a:'لافتة الخروج من البلدة تنهي حد 50.'}]},
+ {i:'📋',h:{e:'Plate logic',d:'Zusatzschild-Logik',a:'منطق اللوحات'},items:[
+  {e:'Plate shows a group → applies <b>only</b> to them.',d:'Tafel zeigt Gruppe → gilt <b>nur</b> für sie.',a:'اللوحة تظهر مجموعة → تسري عليهم فقط.'},
+  {e:'”… frei” → that group is <b>exempt</b>.',d:'„… frei” → Gruppe ist <b>ausgenommen</b>.',a:'”frei” → المجموعة مستثناة.'},
+  {e:'Time/condition → applies only then.',d:'Zeit/Bedingung → gilt nur dann.',a:'وقت/شرط → تسري فقط حينئاذ.'}]},
+];
+const COMBOS = [
+ {a:'hoechstgeschwindigkeit', b:'bei-naesse', r:{
+  e:'<b>Read:</b> red ring (limit) + number + rain plate (condition) → <b>max speed only when wet.</b> Dry road: normal limit.',
+  d:'<b>Lesen:</b> roter Ring (Limit) + Zahl + Nässe-Tafel → <b>Limit nur bei Nässe.</b> Trocken: normales Tempo.',
+  a:'<b>قراءة:</b> حلقة حمراء (حد) + رقم + لوحة مطر → <b>حد السرعة عند البلل فقط.</b> طريق جاف: الحد العادي.'}},
+ {a:'verbot-der-einfahrt', b:'anlieger-frei', r:{
+  e:'<b>Read:</b> no entry + “Anlieger frei” → <b>you may not drive in, residents are exempt.</b>',
+  d:'<b>Lesen:</b> Einfahrt verboten + „Anlieger frei” → <b>Einfahrt verboten, Anlieger ausgenommen.</b>',
+  a:'<b>قراءة:</b> ممنوع الدخول + “Anlieger frei” → <b>ممنوع الدخول، السكان مستثنون.</b>'}},
+ {a:'vorfahrtstrasse', b:'richtungspfeil', r:{
+  e:'<b>Read:</b> priority diamond + route plate → <b>your priority follows the bend.</b> Straight on = leaving the priority road.',
+  d:'<b>Lesen:</b> Raute + Verlaufstafel → <b>Vorfahrt folgt dem Knick.</b> Geradeaus = verlassen.',
+  a:'<b>قراءة:</b> معين الأولوية + لوحة مسار → <b>أولويتك تتبع الانعطاف.</b> مباشرة = مغادرة طريق الأولوية.'}},
+ {a:'absolutes-halteverbot', b:'zeitliche-geltung', r:{
+  e:'<b>Read:</b> no stopping + time plate → <b>ban applies only in those hours.</b>',
+  d:'<b>Lesen:</b> Halteverbot + Zeit-Tafel → <b>gilt nur zu diesen Zeiten.</b>',
+  a:'<b>قراءة:</b> ممنوع التوقف + لوحة وقت → <b>الحظر في تلك الساعات فقط.</b>'}},
+ {a:'tempo-30-zone', b:null, r:{
+  e:'<b>Read:</b> 30 in a ring + ZONE frame → <b>30 on every street in the area</b> until “Zone Ende”. Usually right-before-left inside.',
+  d:'<b>Lesen:</b> 30 im Ring + ZONE → <b>30 überall im Gebiet</b> bis „Zone Ende”. Drinnen meist rechts vor links.',
+  a:'<b>قراءة:</b> 30 في حلقة + إطار ZONE → <b>30 في كل شارع بالمنطقة</b> حتى “Zone Ende”. عادةً اليمين قبل اليسار.'}},
+ {a:'kinder', b:'in-100-m', r:{
+  e:'<b>Read:</b> children warning + distance plate → <b>the danger spot starts in 100 m.</b> Slow down before it.',
+  d:'<b>Lesen:</b> Kinder-Warnung + Entfernung → <b>Gefahrstelle in 100 m.</b> Vorher langsamer.',
+  a:'<b>قراءة:</b> تحذير أطفال + لوحة مسافة → <b>نقطة الخطر بعد 100 م.</b> أبطئ قبلها.'}},
+];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const tile = (s: any) => s?.img ? `<img src="${s.img}" alt="${s.nameDe ?? ''}" width="58" height="58" loading="lazy">` : (s?.drawn ?? '');
+---
+<Base lang={lang} slug="grammar">
+  <PageHead
+    kicker={t(lang,'Decode, don\'t memorise','Verstehen statt auswendig lernen','افهم، لا تحفظ')}
+    title={t(lang,'How German signs work','Wie deutsche Schilder funktionieren','كيف تعمل الإشارات الألمانية')}
+    lead={t(lang,
+      'Every sign is built from a shape, a color, a pictogram, sometimes a number, and optional plates. Learn the parts once — read any sign forever.',
+      'Jedes Schild besteht aus Form, Farbe, Piktogramm, manchmal Zahl und optionalen Tafeln. Lerne die Bausteine einmal — lies jedes Schild für immer.',
+      'كل إشارة مبنية من شكل ولون وصورة وأحياناً رقم ولوحات. تعلم الأجزاء مرة واحدة — اقرأ أي إشارة للأبد.')}
+    toc={[
+      { href: '#shapes', label: '① ' + t(lang,'Shapes','Formen','الأشكال') },
+      { href: '#colors', label: '② ' + t(lang,'Colors','Farben','الألوان') },
+      { href: '#picto',  label: '③ ' + t(lang,'Pictograms','Piktogramme','الصور') },
+      { href: '#mods',   label: '④ ' + t(lang,'Modifiers','Modifikatoren','المعدّلات') },
+      { href: '#combos', label: '⑤ ' + t(lang,'Combinations','Kombinationen','التركيبات') },
+    ]}
+  />
+
+  <Section id="shapes" title={'① ' + t(lang,'Shape = the kind of message','Form = Art der Botschaft','الشكل = نوع الرسالة')}>
+    <div class="signgrid">
+      {SHAPES.map((s: any) => {
+        const sign = img(s.id);
+        return <div class="sign">
+          <Fragment set:html={tile(sign)} />
+          <div class="nm">{s.h[L]}</div>
+          <div class="mn" set:html={s.m[L]} />
+        </div>;
+      })}
+    </div>
+  </Section>
+
+  <Section id=”colors” title={'② ' + t(lang,'Color = the role','Farbe = die Rolle','اللون = الدور')}>
+    <div class=”grid cols3”>
+      {COLORS.map((c: any) => <div class=”card”><h3><span>{c.i}</span>{c.h[L]}</h3><p class=”note” set:html={c.m[L]} /></div>)}
+    </div>
+  </Section>
+
+  <Section id=”picto” title={'③ ' + t(lang,'Pictogram = who it\'s about','Piktogramm = wen es betrifft','الصورة = من يعنيه')}>
+    <p class=”note note-mb”>{t(lang,
+      'Same pictograms everywhere: red ring = banned · blue circle = ordered · triangle = hazard · plate = “only them” or “them exempt”.',
+      'Gleiche Piktogramme überall: roter Ring = verboten · blauer Kreis = geboten · Dreieck = Gefahr · Tafel = „nur sie” oder „sie frei”.',
+      'نفس الصور في كل مكان: حلقة حمراء = محظور · دائرة زرقاء = إلزامي · مثلث = خطر · لوحة = “هم فقط” أو “هم مستثنون”.')}</p>
+    <div class=”grid cols3”>
+      {PICTO.map((c: any) => <div class=”card”><h3><span>{c.i}</span>{c.h[L]}</h3><ul>{c.items.map((it: any) => <li set:html={it[L]} />)}</ul></div>)}
+    </div>
+  </Section>
+
+  <Section id=”mods” title={'④ ' + t(lang,'Modifiers: zones, ends, plates','Modifikatoren: Zonen, Enden, Tafeln','المعدّلات: مناطق، نهايات، لوحات')}>
+    <div class=”grid cols3”>
+      {MODS.map((c: any) => <div class=”card”><h3><span>{c.i}</span>{c.h[L]}</h3><ul>{c.items.map((it: any) => <li set:html={it[L]} />)}</ul></div>)}
+    </div>
+  </Section>
+
+  <Section id=”combos” title={'⑤ ' + t(lang,'Read combinations like sentences','Kombinationen wie Sätze lesen','اقرأ التركيبات كجمل')}>
+    <p class=”note note-mb”>{t(lang,
+      'Shape = verb, pictogram = subject, plate = condition: [must/may not] + [who] + [when/where].',
+      'Form = Verb, Piktogramm = Subjekt, Tafel = Bedingung: [muss/darf nicht] + [wer] + [wann/wo].',
+      'الشكل = الفعل، الصورة = الموضوع، اللوحة = الشرط: [يجب/يُمنع] + [من] + [متى/أين].')}</p>
+    <div class=”grid cols-combo”>
+      {COMBOS.map((c: any) => {
+        const A = img(c.a), B = c.b ? img(c.b) : null;
+        return <div class=”combo”>
+          <div class=”stack”>
+            <Fragment set:html={tile(A)} />
+            {B && <small class=”stack-sep”>+</small>}
+            {B && <Fragment set:html={tile(B)} />}
+          </div>
+          <div class=”read” set:html={c.r[L]} />
+        </div>;
+      })}
+    </div>
+    <div class=”tip note-mt” set:html={t(lang,
+      '<b>The master sentence:</b> “(Shape) tells me to/not to … (pictogram) … but only (plate).” Fill that in and you can read any German sign.',
+      '<b>Der Mustersatz:</b> „(Form) sagt mir, dass … (Piktogramm) … aber nur (Tafel).” Wer das ausfüllt, liest jedes Schild.',
+      '<b>الجملة الأساسية:</b> “(الشكل) يخبرني أن ... (الصورة) ... لكن فقط (اللوحة).” من يملؤها يستطيع قراءة أي إشارة ألمانية.')} />
+  </Section>
+  <script is:inline define:vars={{ lang }}>
+  (function(){var D=[25,50,75,100];function init(){var s=new Set();function c(){var p=Math.round((scrollY+innerHeight)/document.documentElement.scrollHeight*100);D.forEach(function(d){if(p>=d&&!s.has(d)){s.add(d);if(typeof __fsTrack==='function')__fsTrack('scroll_depth',{depth:d,page:'grammar',lang:lang});}});}window.addEventListener('scroll',c,{passive:true});document.addEventListener('astro:before-preparation',function(){window.removeEventListener('scroll',c);},{once:true});}document.addEventListener('astro:page-load',init);if(document.readyState!=='loading')init();})();
+  </script>
+</Base>

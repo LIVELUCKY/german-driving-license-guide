@@ -1,0 +1,8 @@
+---
+import QuizPage from '../../components/QuizPage.astro';
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ar' } }];
+}
+const { lang } = Astro.params;
+---
+<QuizPage lang={lang} />

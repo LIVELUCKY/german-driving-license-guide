@@ -1,0 +1,8 @@
+---
+import GrammarPage from '../../components/GrammarPage.astro';
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ar' } }];
+}
+const { lang } = Astro.params;
+---
+<GrammarPage lang={lang} />

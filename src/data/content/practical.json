@@ -1,0 +1,46 @@
+[
+  {"icon":"🪑","h":{"e":"Cockpit check before moving","d":"Cockpit-Check vor der Fahrt"},"items":[
+    {"e":"<b>Seat:</b> pedals fully reachable, wrists on the wheel.","d":"<b>Sitz:</b> Pedale durchtreten, Handgelenke aufs Lenkrad."},
+    {"e":"<b>Head restraint</b> level with the top of your head.","d":"<b>Kopfstütze</b> auf Kopfhöhe."},
+    {"e":"<b>Mirrors</b> + <b>belt</b>, doors closed, then start.","d":"<b>Spiegel</b> + <b>Gurt</b>, Türen zu, dann starten."}]},
+  {"icon":"👁️","h":{"e":"The golden habit","d":"Die goldene Routine"},"chain":[
+    {"e":"Mirror","d":"Spiegel"},{"e":"Blind spot","d":"Schulterblick"},{"e":"Signal","d":"Blinken"},{"e":"Go","d":"Fahren"}],
+    "note":{"e":"Do the Schulterblick before every pull-away, lane change and turn. Examiners watch for the head movement.","d":"Schulterblick vor jedem Anfahren, Spurwechsel, Abbiegen. Der Prüfer achtet auf die Kopfbewegung."}},
+  {"icon":"↪️","h":{"e":"The 8 steps of every turn","d":"Die 8 Schritte beim Abbiegen"},"items":[
+    {"e":"<b>1</b> Mirrors · <b>2</b> Signal · <b>3</b> Position.","d":"<b>1</b> Spiegel · <b>2</b> Blinken · <b>3</b> Einordnen."},
+    {"e":"<b>4</b> Slow & gear down · <b>5</b> Yield · <b>6</b> <b>Second look</b> (right turn: bikes!).","d":"<b>4</b> Tempo raus · <b>5</b> Vorfahrt beachten · <b>6</b> <b>Zweiter Blick</b> (rechts: Räder!)."},
+    {"e":"<b>7</b> Pedestrians on the target road · <b>8</b> tight right / wide left arc.","d":"<b>7</b> Fußgänger der Zielstraße · <b>8</b> eng rechts / weit links."}]},
+  {"icon":"🅿️","h":{"e":"Parallel parking","d":"Längsparken"},"items":[
+    {"e":"Signal, pull level with the front car, ~50 cm gap.","d":"Blinken, neben das vordere Auto, ~50 cm Abstand."},
+    {"e":"Reverse to bumper level → full lock to kerb.","d":"Rückwärts bis Stoßstangenhöhe → voll einschlagen."},
+    {"e":"At ~45°, rear car's headlight in your mirror → counter-steer.","d":"Bei ~45°, Scheinwerfer im Spiegel → gegenlenken."},
+    {"e":"Straighten, centre. Constant all-round looks.","d":"Gerade stellen, mittig. Ständiger Rundumblick."}]},
+  {"icon":"🔁","h":{"e":"Other test maneuvers","d":"Weitere Prüfmanöver"},"items":[
+    {"e":"<b>Reverse bay parking:</b> walking pace, 360° observation, correcting is fine.","d":"<b>Rückwärts quer einparken:</b> Schritttempo, Rundumblick, Korrigieren ok."},
+    {"e":"<b>3-point turn:</b> kerb to kerb, full locks, look through the rear window.","d":"<b>Wenden in 3 Zügen:</b> Bordstein zu Bordstein, Volleinschlag, Blick durchs Heckfenster."},
+    {"e":"<b>Emergency stop:</b> brake hard to standstill, clutch just before.","d":"<b>Gefahrbremsung:</b> voll bremsen, Kupplung kurz vor Stillstand."},
+    {"e":"<b>Hill start:</b> handbrake, biting point, gas, release.","d":"<b>Berganfahren:</b> Handbremse, Schleifpunkt, Gas, lösen."}]},
+  {"icon":"🔧","h":{"e":"Abfahrkontrolle questions","d":"Abfahrkontrolle"},"items":[
+    {"e":"<b>Lights:</b> name & operate all of them, brake light check.","d":"<b>Licht:</b> alle benennen & bedienen, Bremslicht prüfen."},
+    {"e":"<b>Tyres:</b> tread 1.6 mm, pressure, damage, where values are listed.","d":"<b>Reifen:</b> Profil 1,6 mm, Druck, Schäden, wo Werte stehen."},
+    {"e":"<b>Fluids:</b> oil, coolant, washer, brake fluid under the bonnet.","d":"<b>Flüssigkeiten:</b> Öl, Kühlmittel, Wischwasser, Bremsflüssigkeit."},
+    {"e":"<b>Other:</b> horn, wipers, warning lamps, triangle/vest/first-aid location.","d":"<b>Sonstiges:</b> Hupe, Wischer, Kontrollleuchten, Dreieck/Weste/Verbandkasten."}]},
+  {"icon":"🛣️","h":{"e":"Junctions, roundabout, autobahn","d":"Kreuzung, Kreisel, Autobahn"},"items":[
+    {"e":"Approach junctions ready to stop; cover the brake.","d":"Bremsbereit an Kreuzungen."},
+    {"e":"Keep right; left lane = overtaking only.","d":"Rechts fahren; links nur überholen."},
+    {"e":"Autobahn: match speed, mirror + blind spot, merge smoothly.","d":"Autobahn: Tempo angleichen, Spiegel + Schulterblick, sauber einfädeln."}]},
+  {"icon":"⚠️","h":{"e":"Top fail reasons","d":"Häufigste Durchfallgründe"},"items":[
+    {"e":"Skipped blind-spot checks.","d":"Schulterblick vergessen."},
+    {"e":"Rolling over a STOP line.","d":"STOP überrollt."},
+    {"e":"Right-of-way mistakes.","d":"Vorfahrtsfehler."},
+    {"e":"Too fast in 30-zones; not signalling; tailgating.","d":"Zu schnell in 30er-Zonen; nicht geblinkt; zu dichtes Auffahren."}]},
+  {"icon":"📝","h":{"e":"How the exam runs","d":"So läuft die Prüfung"},"items":[
+    {"e":"~55 min total, ~25 min driving (class B); examiner + instructor on board.","d":"~55 Min, ~25 Min Fahrt (Klasse B); Prüfer + Fahrlehrer dabei."},
+    {"e":"Abfahrkontrolle, 2–3 maneuvers, town + country + usually autobahn.","d":"Abfahrkontrolle, 2–3 Manöver, Stadt + Land + meist Autobahn."},
+    {"e":"Instant fail: endangering, red light, ignored right of way, intervention.","d":"Sofort durch: Gefährdung, Rotlicht, Vorfahrt missachtet, Eingriff."},
+    {"e":"Announcing your actions (\"letting the cyclist pass\") shows awareness.","d":"Ansagen („ich lasse den Radfahrer durch\") zeigt Übersicht."}]},
+  {"icon":"😌","h":{"e":"On the day","d":"Am Prüfungstag"},"items":[
+    {"e":"Drive deliberately; show your checks visibly.","d":"Bewusst fahren; Kontrollen sichtbar zeigen."},
+    {"e":"One small mistake rarely fails you — keep driving safely.","d":"Ein kleiner Fehler heißt selten durchgefallen — sicher weiterfahren."},
+    {"e":"If unsure, take the safe option.","d":"Im Zweifel die sichere Option."}]}
+]

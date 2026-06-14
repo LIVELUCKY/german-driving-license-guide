@@ -1,0 +1,36 @@
+---
+interface LangPair { e: string; d: string; a?: string }
+interface Item {
+  icon?: string;
+  h: LangPair;
+  items?: LangPair[];
+  chain?: LangPair[];
+  note?: LangPair;
+  tip?: LangPair;
+}
+interface Props {
+  items: Item[];
+  lang: string;
+}
+const { items, lang } = Astro.props;
+const pick = (obj: LangPair) => (lang === 'ar' ? obj.a : lang === 'de' ? obj.d : obj.e) ?? obj.e;
+---
+{items.map(c => (
+  <details class="more">
+    <summary>{c.icon} {pick(c.h)}</summary>
+    <div class="inner">
+      {c.items && c.items.length > 0 && (
+        <ul>
+          {c.items.map(it => <li set:html={pick(it)} />)}
+        </ul>
+      )}
+      {c.chain && c.chain.length > 0 && (
+        <ul>
+          {c.chain.map(it => <li set:html={pick(it)} />)}
+        </ul>
+      )}
+      {c.note && <p class="note note-mt" set:html={pick(c.note)} />}
+      {c.tip && <div class="tip" set:html={pick(c.tip)} />}
+    </div>
+  </details>
+))}

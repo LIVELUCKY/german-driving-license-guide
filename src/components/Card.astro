@@ -1,0 +1,29 @@
+---
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { card, lang } = Astro.props as { card: any; lang: string };
+const L = lang === 'de' ? 'd' : lang === 'ar' ? 'a' : 'e';
+const pick = (obj: any) => obj?.[L] ?? obj?.['e'] ?? '';
+---
+<div class="card">
+  <h3><span>{card.icon}</span>{pick(card.h)}</h3>
+  {card.kv && card.kv.map((r: any) => (
+    <div class="kv"><span class="lab">{pick(r.l)}</span><span class="val" set:html={pick(r.v)} /></div>
+  ))}
+  {card.chain && (
+    <div class="rule-chain">
+      {card.chain.map((c: any, i: number) => (
+        <>
+          <span>{pick(c)}</span>
+          {i < card.chain.length - 1 && <span class="arr">›</span>}
+        </>
+      ))}
+    </div>
+  )}
+  {card.items && (
+    <ul style={card.kv ? 'margin-top:8px' : ''}>
+      {card.items.map((it: any) => <li set:html={pick(it)} />)}
+    </ul>
+  )}
+  {card.note && <p class="note" style="margin-top:8px" set:html={pick(card.note)} />}
+  {card.tip && <div class="tip" set:html={pick(card.tip)} />}
+</div>

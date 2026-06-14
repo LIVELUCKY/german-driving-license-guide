@@ -1,0 +1,8 @@
+---
+import PracticalPage from '../../components/PracticalPage.astro';
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ar' } }];
+}
+const { lang } = Astro.params;
+---
+<PracticalPage lang={lang} />

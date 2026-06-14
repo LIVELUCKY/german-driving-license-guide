@@ -1,0 +1,20 @@
+---
+interface TocItem { href: string; label: string }
+interface Props {
+  kicker: string;
+  title: string;
+  lead: string;
+  toc?: TocItem[];
+}
+const { kicker, title, lead, toc } = Astro.props;
+---
+<div class="wrap pagehead">
+  <span class="kicker">{kicker}</span>
+  <h1>{title}</h1>
+  <p>{lead}</p>
+  {toc && toc.length > 0 && (
+    <nav class="toc">
+      {toc.map(item => <a href={item.href}>{item.label}</a>)}
+    </nav>
+  )}
+</div>

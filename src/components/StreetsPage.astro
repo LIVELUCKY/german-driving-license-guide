@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from './Card.astro';
+import PageHead from './PageHead.astro';
+import Section from './Section.astro';
+import { t } from '../lib/i18n.js';
+import { STREETS, SPEED_TABLE, STREETS_EXTRA } from '../lib/content.js';
+const { lang } = Astro.props;
+const L = lang === 'de' ? 'd' : lang === 'ar' ? 'a' : 'e';
+const p = (o: any) => o?.[L] ?? o?.e ?? '';
+---
+<Base lang={lang} slug="streets">
+  <PageHead
+    kicker={t(lang,'Know where you are','Wissen, wo du bist','اعرف أين أنت')}
+    title={t(lang,'Street types & speeds','Straßentypen & Tempo','أنواع الطرق والسرعات')}
+    lead={t(lang,
+      'Rules change with the street type. Identify the type from the sign at its start — and you instantly know speed, users and behaviour.',
+      'Die Regeln ändern sich mit dem Straßentyp. Erkenne den Typ am Schild — und du kennst sofort Tempo, Nutzer und Verhalten.',
+      'القواعد تتغير مع نوع الطريق. حدد النوع من اللافتة في بدايته — وستعرف فوراً السرعة والمستخدمين والسلوك.')}
+    toc={[
+      { href: '#types', label: t(lang,'Road types','Straßentypen','أنواع الطرق') },
+      { href: '#matrix', label: t(lang,'Speed matrix','Tempo-Matrix','مصفوفة السرعات') },
+      { href: '#extra', label: t(lang,'Special cases','Sonderfälle','حالات خاصة') },
+    ]}
+  />
+  <Section id="types" title={t(lang,'🛣️ The road types','🛣️ Die Straßentypen','🛣️ أنواع الطرق')}>
+    <div class="grid cols2">
+      {STREETS.map(c => <Card card={c} lang={lang} />)}
+    </div>
+  </Section>
+  <Section id="matrix" title={t(lang,'🏁 Speed matrix','🏁 Tempo-Matrix','🏁 مصفوفة السرعات')}>
+    <div class="tablewrap">
+      <table class="spd">
+        <thead><tr>{SPEED_TABLE.head.map((h: any) => <th>{p(h)}</th>)}</tr></thead>
+        <tbody>
+          {SPEED_TABLE.rows.map((r: any[]) => (
+            <tr>{r.map(c => <td set:html={p(c)} />)}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="note note-mt" set:html={p(SPEED_TABLE.note)} />
+  </Section>
+  <Section id="extra" title={t(lang,'⚡ Special cases','⚡ Sonderfälle','⚡ حالات خاصة')}>
+    <div class="grid cols3">
+      {STREETS_EXTRA.map(c => <Card card={c} lang={lang} />)}
+    </div>
+  </Section>
+</Base>

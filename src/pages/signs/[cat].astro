@@ -1,0 +1,9 @@
+---
+import P from '../../components/SignCategoryPage.astro';
+import { CATS } from '../../lib/signs.js';
+export function getStaticPaths() {
+  return CATS.map(c => ({ params: { cat: c.id } }));
+}
+const { cat } = Astro.params;
+---
+<P lang="de" catId={cat} />

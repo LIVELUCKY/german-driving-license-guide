@@ -1,0 +1,21 @@
+---
+interface Props {
+  id?: string;
+  title?: string;
+  wrap?: boolean;
+}
+const { id, title, wrap = true } = Astro.props;
+---
+<section class="blk" id={id}>
+  {wrap ? (
+    <div class="wrap">
+      {title && <h2>{title}</h2>}
+      <slot />
+    </div>
+  ) : (
+    <>
+      {title && <h2>{title}</h2>}
+      <slot />
+    </>
+  )}
+</section>

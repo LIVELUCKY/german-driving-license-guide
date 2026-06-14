@@ -1,0 +1,8 @@
+---
+import SignsHubPage from '../../../components/SignsHubPage.astro';
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'ar' } }];
+}
+const { lang } = Astro.params;
+---
+<SignsHubPage lang={lang} />

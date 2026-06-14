@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from './PageHead.astro';
+import Section from './Section.astro';
+import SignTile from './SignTile.astro';
+import { Icon } from 'astro-icon/components';
+import { t, urlFor } from '../lib/i18n.js';
+import { makeT } from '../lib/dict.js';
+import { CATS, SIGNS, byCat } from '../lib/signs.js';
+const { lang } = Astro.props;
+const T = makeT(lang);
+const top = ['vorfahrt-gewaehren','stop','vorfahrtstrasse','hoechstgeschwindigkeit','verbot-der-einfahrt','kreuzung'];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const topSigns = top.map(id => SIGNS.find((s: any) => s.id === id)).filter(Boolean);
+---
+<Base lang={lang} slug="signs">
+  <PageHead kicker={T('signs.kicker')} title={T('signs.h1')} lead={T('signs.lead')} />
+
+  <Section>
+    <label class="search"><Icon name="lucide:search" size={16} /><input id="q" type="search" placeholder={T('search.all.ph')} aria-label={T('search.all.ph')} /></label>
+    <div id="results" class="signgrid" hidden></div>
+    <p id="noresults" class="note" hidden>{T('search.none')}</p>
+
+    <div id="cats" class="cathub">
+      {CATS.map(c => (
+        <a class="cat" href={urlFor(lang, 'signs') + c.id + '/'} style={`--c:${c.color}`}>
+          <span class="sw"></span>
+          <span>
+            <span class="t">{t(lang, c.en, c.de, c.ar)}</span><br/>
+            <span class="d">{t(lang, c.d_en, c.d_de, c.d_ar)}</span>
+          </span>
+          <span class="n">{byCat(c.id).length}</span>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="top6-h">⭐ {T('signs.top6')}</h2>
+    <div class="signgrid">
+      {topSigns.map(s => <SignTile sign={s} lang={lang} />)}
+    </div>
+  </Section>
+
+  <script is:inline define:vars={{ lang }}>
+  let INDEX = null;
+  async function load() {
+    if (INDEX) return INDEX;
+    const r = await fetch('/search-index.json');
+    INDEX = await r.json();
+    return INDEX;
+  }
+  function tile(s) {
+    const name = s.ne, sub = s.nd;
+    const mn = lang === 'ar' ? (s.a || s.e) : lang === 'de' ? s.d : s.e;
+    const img = s.img ? `<img src="${s.img}" alt="${s.nd}" width="72" height="72" loading="lazy">` : s.drawn;
+    const noTag = s.no ? `<div class="no">StVO ${s.no}</div>` : '';
+    return `<a class="sign in" href="${s.url}" style="color:inherit"><div class="sign-inner"><div class="sign-front">${img}<div class="nm">${name}</div><div class="sub">${sub}</div>${noTag}</div><div class="sign-back"><div class="mn">${mn}</div></div></div></a>`;
+  }
+  function initSearch() {
+    var q = document.getElementById('q');
+    var results = document.getElementById('results');
+    var cats = document.getElementById('cats');
+    var none = document.getElementById('noresults');
+    if (!q || !results || !cats || !none) return;
+    var deb;
+    q.addEventListener('input', () => {
+      clearTimeout(deb);
+      deb = setTimeout(async () => {
+        const v = q.value.trim().toLowerCase();
+        if (!v) { results.hidden = true; none.hidden = true; cats.style.display = ''; results.innerHTML = ''; return; }
+        const idx = await load();
+        const hits = idx.filter(s => s.kw.includes(v)).slice(0, 40);
+        cats.style.display = 'none';
+        results.hidden = hits.length === 0; none.hidden = hits.length > 0;
+        results.innerHTML = hits.map(tile).join('');
+      }, 120);
+    });
+  }
+  document.addEventListener('astro:page-load', initSearch);
+  if (document.readyState !== 'loading') initSearch();
+  </script>
+</Base>

@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import { NAV, urlFor, t, withBase } from '../lib/i18n.js';
+import { makeT } from '../lib/dict.js';
+import { SIGNS } from '../lib/signs.js';
+const { lang } = Astro.props as { lang: string };
+const T = makeT(lang);
+// Study path = content pages only (exclude home, legal, quiz gets its own CTA)
+const steps = NAV.filter(n => n.slug !== '' && n.slug !== 'legal' && n.slug !== 'quiz');
+const officialCount = SIGNS.filter(s => s.official).length;
+const mq = T('home.marquee');
+
+---
+<Base lang={lang} slug="" title={T('home.title')}>
+  <section class="hero" transition:name="hero" transition:animate="none">
+    <video class="hero-video" autoplay muted loop playsinline disablepictureinpicture>
+      <source src={withBase('hero.mp4')} type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-left">
+        <h1>
+          <span class="ln">{T('home.h1.1')}</span>
+          <span class="ln"><span class="hl shimmer-text">{T('home.h1.2')}</span></span>
+          <span class="ln">{T('home.h1.3')}</span>
+        </h1>
+        <p class="hero-lead">{T('home.lead')}</p>
+        <a href={urlFor(lang, 'cheatsheet')} class="hero-cta">{t(lang,'Start learning →','Jetzt lernen →','ابدأ التعلم →')}</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><b>{SIGNS.length}</b><span>{T('home.pill.signs')}</span></div>
+        <div class="hstat"><b>{officialCount}</b><span>{T('home.pill.official')}</span></div>
+        <div class="hstat"><b>7</b><span>{T('home.pill.topics')}</span></div>
+        <div class="hstat"><b>3</b><span>{t(lang,'languages','Sprachen','لغات')}</span></div>
+      </div>
+    </div>
+    <p class="hero-credit">AI video · Luma Ray v3.2</p>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">
+    <span>{mq}</span><span>{mq}</span>
+  </div></div>
+
+  <section class="blk"><div class="wrap">
+    <h2>{T('home.path.h')}</h2>
+    <p class="note note-mb">{T('home.path.note')}</p>
+    <div class="path">
+      {steps.map(s => (
+        <a class="step" href={urlFor(lang, s.slug)}>
+          <span class="num"></span>
+          <span>
+            <span class="t">{t(lang, s.en, s.de, s.ar)}</span><br/>
+            <span class="d">{t(lang, s.d_en, s.d_de, s.d_ar)}</span>
+          </span>
+          <span class="go">→</span>
+        </a>
+      ))}
+    </div>
+    <div class="disc">⚠️ {T('home.disc')}</div>
+  </div></section>
+
+  <script is:inline define:vars={{ lang }}>
+  (function(){
+    function initHome(){
+      var cta=document.querySelector('.hero-cta');
+      if(cta&&!cta.dataset.ht){cta.dataset.ht='1';cta.addEventListener('click',function(){if(typeof __fsTrack==='function')__fsTrack('hero_cta_click',{lang:lang,destination:cta.getAttribute('href')});});}
+      document.querySelectorAll('.path .step:not([data-ht])').forEach(function(el){
+        el.dataset.ht='1';
+        el.addEventListener('click',function(){var lbl=(el.querySelector('.t')||{}).textContent||'';if(typeof __fsTrack==='function')__fsTrack('study_path_click',{section:lbl.trim(),lang:lang});});
+      });
+      var qcta=document.querySelector('.quiz-cta');
+      if(qcta&&!qcta.dataset.ht){qcta.dataset.ht='1';qcta.addEventListener('click',function(){if(typeof __fsTrack==='function')__fsTrack('quiz_cta_click',{lang:lang});});}
+    }
+    document.addEventListener('astro:page-load',initHome);
+    if(document.readyState!=='loading') initHome();
+  })();
+  </script>
+
+  <section class="blk blk-flush"><div class="wrap">
+    <a href={urlFor(lang, 'quiz')} class="quiz-cta">
+      <span class="quiz-num">🧪</span>
+      <span>
+        <span class="t">{t(lang, 'Test yourself — Sign quiz', 'Teste dich — Zeichen-Quiz', 'اختبر نفسك — اختبار الإشارات')}</span><br/>
+        <span class="d">{t(lang, 'Ten random signs, instant feedback', 'Zehn Zeichen, sofortiges Feedback', 'عشر إشارات، ردود فعل فورية')}</span>
+      </span>
+      <span class="go">→</span>
+    </a>
+  </div></section>
+</Base>

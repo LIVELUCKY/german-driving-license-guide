@@ -1,0 +1,19 @@
+[
+  {"icon":"🔄","h":{"e":"Roundabout, step by step","d":"Kreisverkehr, Schritt für Schritt"},"items":[
+    {"e":"<b>Approach:</b> no indicator; yield to the circle.","d":"<b>Anfahrt:</b> nicht blinken; Kreis hat Vorfahrt."},
+    {"e":"<b>Inside:</b> no indicating, overtaking or stopping.","d":"<b>Im Kreis:</b> nicht blinken, überholen, halten."},
+    {"e":"<b>Exit:</b> indicate right just before your exit.","d":"<b>Ausfahrt:</b> kurz vorher rechts blinken."}]},
+  {"icon":"🚊","h":{"e":"Special cases","d":"Sonderfälle"},"items":[
+    {"e":"<b>Trams</b> usually have priority — never block tracks.","d":"<b>Bahnen</b> haben meist Vorrang — Gleise frei halten."},
+    {"e":"<b>Blue light + siren:</b> pull right and stop.","d":"<b>Blaulicht + Horn:</b> rechts ran, halten."},
+    {"e":"<b>Bus</b> indicating at a stop: let it out.","d":"<b>Bus</b> mit Blinker: rauslassen."}]},
+  {"icon":"🪢","h":{"e":"Zipper merge","d":"Reißverschluss"},"items":[
+    {"e":"Use the ending lane <b>to its end</b>, then alternate one-by-one.","d":"Endende Spur <b>bis zum Ende</b> nutzen, dann abwechselnd."},
+    {"e":"Early merging and blocking are both wrong.","d":"Zu früh wechseln und Blockieren sind falsch."},
+    {"e":"No <b>right</b> to barge — merge cooperatively.","d":"Kein <b>Anspruch</b> auf die Lücke — kooperativ."}]},
+  {"icon":"↪️","h":{"e":"Bent priority road","d":"Abknickende Vorfahrt"},"items":[
+    {"e":"The plate shows the priority route as a <b>thick line</b>.","d":"Die Tafel zeigt den Verlauf als <b>dicke Linie</b>."},
+    {"e":"Following the bend? Keep priority but <b>indicate</b>.","d":"Dem Knick folgen? Vorfahrt bleibt, aber <b>blinken</b>."},
+    {"e":"Leaving it straight? Yield rules change — mind oncoming priority traffic.","d":"Geradeaus = verlassen — Gegenverkehr auf der Vorfahrt beachten."},
+    {"e":"Thin-line roads: right-before-left among themselves.","d":"Dünne Linien untereinander: rechts vor links."}]}
+]

@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from './Card.astro';
+import PageHead from './PageHead.astro';
+import Section from './Section.astro';
+import { t } from '../lib/i18n.js';
+import { PRIORITY_CARDS } from '../lib/content.js';
+const { lang } = Astro.props;
+---
+<Base lang={lang} slug="priority">
+  <PageHead
+    kicker={t(lang,'Who goes first','Wer zuerst fährt','من يسير أولاً')}
+    title={t(lang,'Right of way, made visual','Vorfahrt, anschaulich','حق المرور بصورة مرئية')}
+    lead={t(lang,
+      'Most theory mistakes happen at junctions. Learn the order of authority, then the classic situations.',
+      'Die meisten Fehler passieren an Kreuzungen. Lerne die Rangfolge, dann die klassischen Situationen.',
+      'أكثر أخطاء النظرية تحدث في التقاطعات. تعلم ترتيب الأولوية، ثم الحالات الكلاسيكية.')}
+  />
+
+  <Section>
+    <div class="card">
+      <h3><span>🏛️</span>{t(lang,'Order of authority — top beats bottom','Rangfolge — oben schlägt unten','ترتيب السلطة — الأعلى يتفوق على الأسفل')}</h3>
+      <div class="rule-chain">
+        <span>👮 {t(lang,'Police','Polizei','الشرطة')}</span><span class="arr">›</span>
+        <span>🚦 {t(lang,'Lights','Ampel','الإشارات الضوئية')}</span><span class="arr">›</span>
+        <span>⛔ {t(lang,'Signs','Schilder','اللافتات')}</span><span class="arr">›</span>
+        <span>〰️ {t(lang,'Markings','Markierungen','العلامات الأرضية')}</span><span class="arr">›</span>
+        <span>↔️ {t(lang,'Right-before-left','Rechts vor links','اليمين قبل اليسار')}</span>
+      </div>
+      <p class="note note-mt">{t(lang,
+        'A police officer overrides a green light; a red light overrides a priority sign; a sign overrides the default.',
+        'Polizist schlägt Grün; Rot schlägt Vorfahrtschild; Schild schlägt die Grundregel.',
+        'الشرطي يتفوق على الضوء الأخضر؛ الضوء الأحمر يتفوق على لافتة الأولوية؛ اللافتة تتفوق على القاعدة الأساسية.')}</p>
+    </div>
+  </Section>
+
+  <Section title={t(lang,'🧭 The three classic situations','🧭 Die drei Klassiker','🧭 الثلاث مواقف الكلاسيكية')}>
+    <div class="grid cols2">
+
+      <div class="card">
+        <h3><span>↔️</span>{t(lang,'1 · Right before left','1 · Rechts vor links','1 · اليمين قبل اليسار')}</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img">
+            <rect x="118" y="0" width="64" height="190" fill="#c7ced6"/>
+            <rect x="0" y="70" width="300" height="64" fill="#c7ced6"/>
+            <line x1="150" y1="0" x2="150" y2="64" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+            <line x1="150" y1="134" x2="150" y2="190" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+            <rect x="138" y="150" width="24" height="34" rx="5" fill="#d92f2f"/><path d="M150 150 l-7 10 14 0z" fill="#fff"/>
+            <rect x="236" y="90" width="34" height="24" rx="5" fill="#1565d8"/><path d="M236 102 l10 -7 0 14z" fill="#fff"/>
+            <text x="150" y="176" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">{t(lang,'YOU','DU','أنت')}</text>
+          </svg>
+        </div>
+        <p class="note">{t(lang,
+          'The blue car (your right) goes first. No signs or lights → give way to the right.',
+          'Das blaue Auto (rechts) fährt zuerst. Keine Schilder/Ampel → rechts hat Vorfahrt.',
+          'السيارة الزرقاء (على يمينك) تمر أولاً. بدون لافتات أو إشارات ← أعطِ الأولوية لليمين.')}</p>
+      </div>
+
+      <div class="card">
+        <h3><span>↩️</span>{t(lang,'2 · Turning left','2 · Links abbiegen','2 · الانعطاف يساراً')}</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img">
+            <rect x="118" y="0" width="64" height="190" fill="#c7ced6"/>
+            <rect x="0" y="70" width="300" height="64" fill="#c7ced6"/>
+            <rect x="150" y="6" width="22" height="32" rx="5" fill="#1565d8"/><path d="M161 38 l-7 -10 14 0z" fill="#fff"/>
+            <rect x="138" y="150" width="22" height="32" rx="5" fill="#d92f2f"/>
+            <path d="M149 150 q0 -40 -40 -45" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/><path d="M69 105 l12 -3 -4 12z" fill="#d92f2f"/>
+            <text x="149" y="174" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">{t(lang,'YOU','DU','أنت')}</text>
+          </svg>
+        </div>
+        <p class="note">{t(lang,
+          'Oncoming traffic first. Turning left, let the blue car (straight) and pedestrians cross before you.',
+          'Gegenverkehr zuerst. Beim Linksabbiegen blaues Auto (geradeaus) und Fußgänger durchlassen.',
+          'المرور القادم أولاً. عند الانعطاف يساراً، دعِ السيارة الزرقاء (المباشرة) والمشاة يمرون قبلك.')}</p>
+      </div>
+
+      {PRIORITY_CARDS.map(c => <Card card={c} lang={lang} />)}
+
+      <div class="card">
+        <h3><span>👮</span>{t(lang,'Police hand signals','Polizei-Zeichen','إشارات الشرطة اليدوية')}</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 120" role="img">
+            <g transform="translate(60,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M-7 26 H-34 M7 26 H34" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">1</text></g>
+            <g transform="translate(150,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M0 21 L0 -6" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">2</text></g>
+            <g transform="translate(240,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M7 26 L34 16" stroke="var(--ink)" stroke-width="6"/><path d="M-7 30 h-20" stroke="var(--ink)" stroke-width="4" opacity=".4"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">3</text></g>
+          </svg>
+        </div>
+        <p class="note">{t(lang,
+          '1 · Arms out: stop if you face chest/back; sides are free. 2 · Arm up: everyone stops (like amber). 3 · Waving: that direction proceeds. Police beat every light and sign.',
+          '1 · Arme seitlich: Halt für Brust/Rücken; seitlich frei. 2 · Arm hoch: alle halten (wie Gelb). 3 · Winken: Richtung darf fahren. Polizei schlägt Ampel und Schild.',
+          '1 · الذراعان للجانبين: قِف إذا كنت أمام الصدر/الظهر؛ الجانبان حرّان. 2 · الذراع لأعلى: الجميع يقف (مثل الأصفر). 3 · التلويح: ذلك الاتجاه يمر. الشرطة تتفوق على كل إشارة ولافتة.')}</p>
+      </div>
+
+    </div>
+  </Section>
+</Base>
