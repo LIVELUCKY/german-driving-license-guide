@@ -1,62 +1,62 @@
 [
-  {"icon":"📐","h":{"e":"Stopping distance formula","d":"Anhalteweg-Formel"},"items":[
-    {"e":"<b>Reaction</b> = (speed ÷ 10) × 3 m.","d":"<b>Reaktionsweg</b> = (Tempo ÷ 10) × 3 m."},
-    {"e":"<b>Braking</b> = (speed ÷ 10)² m.","d":"<b>Bremsweg</b> = (Tempo ÷ 10)² m."},
-    {"e":"<b>Stopping</b> = reaction + braking.","d":"<b>Anhalteweg</b> = Reaktion + Bremsweg."},
-    {"e":"<b>Emergency stop</b> = braking ÷ 2.","d":"<b>Gefahrbremsung</b> = Bremsweg ÷ 2."}],
-    "tip":{"e":"At 50 km/h: 15 + 25 = 40 m (≈20 m emergency).","d":"Bei 50 km/h: 15 + 25 = 40 m (≈20 m Gefahr)."}},
-  {"icon":"🚙","h":{"e":"When overtaking is forbidden","d":"Überholverbote"},"items":[
-    {"e":"Bends, crests, anywhere unclear.","d":"Kurven, Kuppen, unklare Lage."},
-    {"e":"Pedestrian crossings and junctions.","d":"Überwege und Kreuzungen."},
-    {"e":"Solid lines or no-overtaking signs.","d":"Durchgezogene Linie oder Verbotsschild."},
-    {"e":"Always pass <b>left</b>, with clear speed difference.","d":"Immer <b>links</b>, mit genug Tempodifferenz."}]},
-  {"icon":"🧠","h":{"e":"Alcohol, drugs & fitness","d":"Alkohol, Drogen & Fahrtüchtigkeit"},"items":[
-    {"e":"0.5‰ general · 0.0‰ under 21/Probezeit · drugs zero.","d":"0,5‰ allgemein · 0,0‰ U21/Probezeit · Drogen null."},
-    {"e":"Tiredness: break every ~2 h.","d":"Müdigkeit: Pause alle ~2 h."},
-    {"e":"Some medicines impair — read the leaflet.","d":"Medikamente können beeinträchtigen — Beipackzettel."}]},
-  {"icon":"🛣️","h":{"e":"Motorway rules","d":"Autobahnregeln"},"items":[
-    {"e":"Join via acceleration lane at traffic speed.","d":"Über Beschleunigungsstreifen mit Verkehrstempo."},
-    {"e":"No stopping, reversing, U-turns.","d":"Kein Halten, Rückwärtsfahren, Wenden."},
-    {"e":"Hard shoulder = emergencies only.","d":"Standstreifen = nur Notfall."},
-    {"e":"Rettungsgasse: left lane left, others right.","d":"Rettungsgasse: linke Spur links, alle anderen rechts."}]},
-  {"icon":"🌧️","h":{"e":"Bad weather","d":"Schlechtwetter"},"items":[
-    {"e":"<b>Aquaplaning:</b> off the gas, no hard braking/steering.","d":"<b>Aquaplaning:</b> Gas weg, nicht stark bremsen/lenken."},
-    {"e":"<b>Fog &lt;50 m:</b> max 50, dipped + rear fog light.","d":"<b>Nebel &lt;50 m:</b> max 50, Abblend- + Nebelschlusslicht."},
-    {"e":"<b>Ice/snow:</b> gentle inputs, huge distance, winter tyres.","d":"<b>Eis/Schnee:</b> sanft, viel Abstand, Winterreifen."},
-    {"e":"<b>Tunnel:</b> dipped beam, keep distance.","d":"<b>Tunnel:</b> Abblendlicht, Abstand."}]},
-  {"icon":"🚲","h":{"e":"Vulnerable road users","d":"Schwächere Verkehrsteilnehmer"},"items":[
-    {"e":"Passing cyclists: <b>1.5 m</b> in town, <b>2 m</b> outside.","d":"Radfahrer überholen: <b>1,5 m</b> innerorts, <b>2 m</b> außerorts."},
-    {"e":"Kids and elderly near schools and stops.","d":"Kinder und Ältere an Schulen/Haltestellen."},
-    {"e":"Blind-spot check for bikes before turning right.","d":"Schulterblick auf Räder vor dem Rechtsabbiegen."}]},
-  {"icon":"🅿️","h":{"e":"No stopping/parking where…","d":"Halte-/Parkverbote"},"items":[
-    {"e":"Within 5 m of junctions or crossings.","d":"5 m vor Kreuzung oder Überweg."},
-    {"e":"Bus stops (15 m), cycle lanes, left side (two-way).","d":"Haltestellen (15 m), Radwege, links (Zweirichtung)."},
-    {"e":"Narrow spots, blocking sightlines or others.","d":"Engstellen, Sicht oder andere blockieren."}]},
-  {"icon":"💡","h":{"e":"Lighting, complete","d":"Licht, komplett"},"items":[
-    {"e":"<b>DRL</b> is not enough in rain/fog/tunnel — dipped beam on.","d":"<b>Tagfahrlicht</b> reicht bei Regen/Nebel/Tunnel nicht — Abblendlicht."},
-    {"e":"<b>Front fog lights</b> only in clearly poor visibility.","d":"<b>Nebelscheinwerfer</b> nur bei deutlich schlechter Sicht."},
-    {"e":"Night parking on unlit roads: side lights on.","d":"Nachts auf unbeleuchteter Straße: Parklicht."},
-    {"e":"<b>Hazards:</b> jam end, breakdown, towing — not double-parking.","d":"<b>Warnblinker:</b> Stauende, Panne, Abschleppen — nicht Falschparken."}]},
-  {"icon":"📦","h":{"e":"Loads & trailers","d":"Ladung & Anhänger"},"items":[
-    {"e":"Overhang back: <b>1.5 m</b> (3 m short trips); mark beyond 1 m (red flag / light at night).","d":"Überstand hinten: <b>1,5 m</b> (3 m kurz); ab 1 m markieren (rote Fahne / nachts Licht)."},
-    {"e":"Secure every load — loose items become projectiles.","d":"Ladung sichern — lose Teile werden Geschosse."},
-    {"e":"Trailer: coupling, breakaway cable, lights, mirrors.","d":"Anhänger: Kupplung, Abreißseil, Licht, Spiegel."}]},
-  {"icon":"🛞","h":{"e":"Tyres & checks","d":"Reifen & Kontrolle"},"items":[
-    {"e":"Minimum tread <b>1.6 mm</b> (better 3/4 mm summer/winter).","d":"Mindestprofil <b>1,6 mm</b> (besser 3/4 mm Sommer/Winter)."},
-    {"e":"Winter tyres (Alpine symbol) in wintry conditions — situational.","d":"Winterreifen (Alpine-Symbol) bei winterlichen Verhältnissen — situativ."},
-    {"e":"Pressure cold, monthly, before trips.","d":"Druck kalt, monatlich, vor Fahrten."},
-    {"e":"Brake/ABS/airbag lamp on → check before driving.","d":"Brems-/ABS-/Airbag-Leuchte → erst prüfen lassen."}]},
-  {"icon":"🚨","h":{"e":"Accident protocol","d":"Unfall-Protokoll"},"items":[
-    {"e":"<b>Secure:</b> hazards, vest, triangle at <b>100 m</b> (motorway <b>150–200 m</b>), behind the barrier.","d":"<b>Sichern:</b> Warnblinker, Weste, Dreieck bei <b>100 m</b> (Autobahn <b>150–200 m</b>), hinter die Planke."},
-    {"e":"Then 112 + first aid — helping is a legal duty.","d":"Dann 112 + Erste Hilfe — Hilfspflicht."},
-    {"e":"Leaving without identifying = hit-and-run.","d":"Entfernen ohne Angaben = Unfallflucht."},
-    {"e":"Unconscious: recovery position; biker helmet off only for airways.","d":"Bewusstlos: stabile Seitenlage; Helm nur für Atemwege abnehmen."}]},
-  {"icon":"🧘","h":{"e":"Fitness to drive","d":"Fahrtüchtigkeit"},"items":[
-    {"e":"Microsleep kills — stop at first signs; coffee + 20-min nap.","d":"Sekundenschlaf tötet — früh anhalten; Kaffee + 20-Min-Schlaf."},
-    {"e":"Strong emotions impair like alcohol.","d":"Starke Emotionen wirken wie Alkohol."},
-    {"e":"Glasses noted on licence? Mandatory.","d":"Brille im Führerschein? Pflicht."}]},
-  {"icon":"🌍","h":{"e":"Environment","d":"Umwelt"},"items":[
-    {"e":"Engine off while waiting; no warming up at standstill.","d":"Motor aus beim Warten; kein Warmlaufenlassen."},
-    {"e":"No pointless back-and-forth in residential areas.","d":"Unnützes Hin- und Herfahren verboten."},
-    {"e":"Shift early, look ahead, coast to lights.","d":"Früh schalten, vorausschauen, ausrollen."}]}
+  {"icon":"📐","h":{"en":"Stopping distance formula","de":"Anhalteweg-Formel","ar":"معادلة مسافة التوقف"},"items":[
+    {"en":"<b>Reaction</b> = (speed ÷ 10) × 3 m.","de":"<b>Reaktionsweg</b> = (Tempo ÷ 10) × 3 m.","ar":"<b>مسافة التفاعل</b> = (السرعة ÷ 10) × 3 م."},
+    {"en":"<b>Braking</b> = (speed ÷ 10)² m.","de":"<b>Bremsweg</b> = (Tempo ÷ 10)² m.","ar":"<b>مسافة الفرملة</b> = (السرعة ÷ 10)² م."},
+    {"en":"<b>Stopping</b> = reaction + braking.","de":"<b>Anhalteweg</b> = Reaktion + Bremsweg.","ar":"<b>مسافة التوقف</b> = تفاعل + فرملة."},
+    {"en":"<b>Emergency stop</b> = braking ÷ 2.","de":"<b>Gefahrbremsung</b> = Bremsweg ÷ 2.","ar":"<b>التوقف الطارئ</b> = مسافة الفرملة ÷ 2."}],
+    "tip":{"en":"At 50 km/h: 15 + 25 = 40 m (≈20 m emergency).","de":"Bei 50 km/h: 15 + 25 = 40 m (≈20 m Gefahr).","ar":"عند 50 كم/ساعة: 15 + 25 = 40 م (≈20 م طارئ)."}},
+  {"icon":"🚙","h":{"en":"When overtaking is forbidden","de":"Überholverbote","ar":"عندما يُمنع التجاوز"},"items":[
+    {"en":"Bends, crests, anywhere unclear.","de":"Kurven, Kuppen, unklare Lage.","ar":"المنعطفات والقمم وأي مكان غير واضح."},
+    {"en":"Pedestrian crossings and junctions.","de":"Überwege und Kreuzungen.","ar":"ممرات المشاة والتقاطعات."},
+    {"en":"Solid lines or no-overtaking signs.","de":"Durchgezogene Linie oder Verbotsschild.","ar":"الخطوط المتواصلة أو علامات حظر التجاوز."},
+    {"en":"Always pass <b>left</b>, with clear speed difference.","de":"Immer <b>links</b>, mit genug Tempodifferenz.","ar":"التجاوز دائماً من <b>اليسار</b>، مع فارق سرعة كافٍ."}]},
+  {"icon":"🧠","h":{"en":"Alcohol, drugs & fitness","de":"Alkohol, Drogen & Fahrtüchtigkeit","ar":"الكحول والمخدرات والأهلية للقيادة"},"items":[
+    {"en":"0.5‰ general · 0.0‰ under 21/Probezeit · drugs zero.","de":"0,5‰ allgemein · 0,0‰ U21/Probezeit · Drogen null.","ar":"0.5‰ عام · 0.0‰ تحت 21/فترة التجربة · المخدرات صفر."},
+    {"en":"Tiredness: break every ~2 h.","de":"Müdigkeit: Pause alle ~2 h.","ar":"التعب: استراحة كل ~ساعتين."},
+    {"en":"Some medicines impair — read the leaflet.","de":"Medikamente können beeinträchtigen — Beipackzettel.","ar":"بعض الأدوية تضعف القدرة — اقرأ النشرة."}]},
+  {"icon":"🛣️","h":{"en":"Motorway rules","de":"Autobahnregeln","ar":"قواعد الأوتوستراد"},"items":[
+    {"en":"Join via acceleration lane at traffic speed.","de":"Über Beschleunigungsstreifen mit Verkehrstempo.","ar":"الانضمام عبر مسار التسارع بسرعة حركة المرور."},
+    {"en":"No stopping, reversing, U-turns.","de":"Kein Halten, Rückwärtsfahren, Wenden.","ar":"لا توقف، لا رجوع، لا استدارة."},
+    {"en":"Hard shoulder = emergencies only.","de":"Standstreifen = nur Notfall.","ar":"الرصيف الجانبي = حالات الطوارئ فقط."},
+    {"en":"Rettungsgasse: left lane left, others right.","de":"Rettungsgasse: linke Spur links, alle anderen rechts.","ar":"ممر الإنقاذ: المسار الأيسر يسار، الباقون يمين."}]},
+  {"icon":"🌧️","h":{"en":"Bad weather","de":"Schlechtwetter","ar":"الطقس السيئ"},"items":[
+    {"en":"<b>Aquaplaning:</b> off the gas, no hard braking/steering.","de":"<b>Aquaplaning:</b> Gas weg, nicht stark bremsen/lenken.","ar":"<b>الانزلاق المائي:</b> ارفع قدمك عن الغاز، لا فرملة أو توجيه مفاجئ."},
+    {"en":"<b>Fog &lt;50 m:</b> max 50, dipped + rear fog light.","de":"<b>Nebel &lt;50 m:</b> max 50, Abblend- + Nebelschlusslicht.","ar":"<b>ضباب أقل من 50 م:</b> أقصى 50، ضوء خافت + ضوء ضباب خلفي."},
+    {"en":"<b>Ice/snow:</b> gentle inputs, huge distance, winter tyres.","de":"<b>Eis/Schnee:</b> sanft, viel Abstand, Winterreifen.","ar":"<b>الجليد/الثلج:</b> حركات هادئة، مسافة كبيرة، إطارات شتوية."},
+    {"en":"<b>Tunnel:</b> dipped beam, keep distance.","de":"<b>Tunnel:</b> Abblendlicht, Abstand.","ar":"<b>الأنفاق:</b> ضوء خافت، حافظ على المسافة."}]},
+  {"icon":"🚲","h":{"en":"Vulnerable road users","de":"Schwächere Verkehrsteilnehmer","ar":"مستخدمو الطريق الأكثر ضعفاً"},"items":[
+    {"en":"Passing cyclists: <b>1.5 m</b> in town, <b>2 m</b> outside.","de":"Radfahrer überholen: <b>1,5 m</b> innerorts, <b>2 m</b> außerorts.","ar":"عند تجاوز الدراجات: <b>1.5 م</b> داخل المدن، <b>2 م</b> خارجها."},
+    {"en":"Kids and elderly near schools and stops.","de":"Kinder und Ältere an Schulen/Haltestellen.","ar":"الأطفال والمسنون قرب المدارس والمحطات."},
+    {"en":"Blind-spot check for bikes before turning right.","de":"Schulterblick auf Räder vor dem Rechtsabbiegen.","ar":"تحقق من الزاوية العمياء للدراجات قبل الانعطاف يميناً."}]},
+  {"icon":"🅿️","h":{"en":"No stopping/parking where…","de":"Halte-/Parkverbote","ar":"ممنوع التوقف/الركن عند..."},"items":[
+    {"en":"Within 5 m of junctions or crossings.","de":"5 m vor Kreuzung oder Überweg.","ar":"ضمن 5 م من التقاطعات أو الممرات."},
+    {"en":"Bus stops (15 m), cycle lanes, left side (two-way).","de":"Haltestellen (15 m), Radwege, links (Zweirichtung).","ar":"محطات الحافلات (15 م)، مسارات الدراجات، الجانب الأيسر (ذو اتجاهين)."},
+    {"en":"Narrow spots, blocking sightlines or others.","de":"Engstellen, Sicht oder andere blockieren.","ar":"الأماكن الضيقة، حجب خطوط الرؤية أو عرقلة الآخرين."}]},
+  {"icon":"💡","h":{"en":"Lighting, complete","de":"Licht, komplett","ar":"الإضاءة، كاملة"},"items":[
+    {"en":"<b>DRL</b> is not enough in rain/fog/tunnel — dipped beam on.","de":"<b>Tagfahrlicht</b> reicht bei Regen/Nebel/Tunnel nicht — Abblendlicht.","ar":"<b>ضوء النهار</b> لا يكفي في المطر/الضباب/الأنفاق — شغّل الضوء الخافت."},
+    {"en":"<b>Front fog lights</b> only in clearly poor visibility.","de":"<b>Nebelscheinwerfer</b> nur bei deutlich schlechter Sicht.","ar":"<b>أضواء الضباب الأمامية</b> فقط عند رؤية سيئة بوضوح."},
+    {"en":"Night parking on unlit roads: side lights on.","de":"Nachts auf unbeleuchteter Straße: Parklicht.","ar":"الركن ليلاً في طرق غير مضاءة: أضواء جانبية."},
+    {"en":"<b>Hazards:</b> jam end, breakdown, towing — not double-parking.","de":"<b>Warnblinker:</b> Stauende, Panne, Abschleppen — nicht Falschparken.","ar":"<b>الإشارة التحذيرية:</b> نهاية ازدحام، عطل، قطر — ليس ركناً مزدوجاً."}]},
+  {"icon":"📦","h":{"en":"Loads & trailers","de":"Ladung & Anhänger","ar":"الأحمال والمقطورات"},"items":[
+    {"en":"Overhang back: <b>1.5 m</b> (3 m short trips); mark beyond 1 m (red flag / light at night).","de":"Überstand hinten: <b>1,5 m</b> (3 m kurz); ab 1 m markieren (rote Fahne / nachts Licht).","ar":"البروز خلفاً: <b>1.5 م</b> (3 م رحلات قصيرة)؛ علّم ما يتجاوز 1 م (علم أحمر / ضوء ليلاً)."},
+    {"en":"Secure every load — loose items become projectiles.","de":"Ladung sichern — lose Teile werden Geschosse.","ar":"أحكم ربط كل الحمولة — الأجزاء المتحركة تصبح قذائف."},
+    {"en":"Trailer: coupling, breakaway cable, lights, mirrors.","de":"Anhänger: Kupplung, Abreißseil, Licht, Spiegel.","ar":"المقطورة: وصلة الاقتران، كابل الطوارئ، الأضواء، المرايا."}]},
+  {"icon":"🛞","h":{"en":"Tyres & checks","de":"Reifen & Kontrolle","ar":"الإطارات والفحوصات"},"items":[
+    {"en":"Minimum tread <b>1.6 mm</b> (better 3/4 mm summer/winter).","de":"Mindestprofil <b>1,6 mm</b> (besser 3/4 mm Sommer/Winter).","ar":"الحد الأدنى للتشقق <b>1.6 مم</b> (أفضل 3/4 مم صيفي/شتوي)."},
+    {"en":"Winter tyres (Alpine symbol) in wintry conditions — situational.","de":"Winterreifen (Alpine-Symbol) bei winterlichen Verhältnissen — situativ.","ar":"إطارات شتوية (رمز ألبي) في الأحوال الجوية الشتوية — حسب الموقف."},
+    {"en":"Pressure cold, monthly, before trips.","de":"Druck kalt, monatlich, vor Fahrten.","ar":"الضغط بارداً، شهرياً، قبل الرحلات."},
+    {"en":"Brake/ABS/airbag lamp on → check before driving.","de":"Brems-/ABS-/Airbag-Leuchte → erst prüfen lassen.","ar":"مصباح الفرامل/ABS/الوسادة الهوائية مضيء → افحص قبل القيادة."}]},
+  {"icon":"🚨","h":{"en":"Accident protocol","de":"Unfall-Protokoll","ar":"بروتوكول الحوادث"},"items":[
+    {"en":"<b>Secure:</b> hazards, vest, triangle at <b>100 m</b> (motorway <b>150–200 m</b>), behind the barrier.","de":"<b>Sichern:</b> Warnblinker, Weste, Dreieck bei <b>100 m</b> (Autobahn <b>150–200 m</b>), hinter die Planke.","ar":"<b>التأمين:</b> إشارات تحذير، سترة، مثلث على <b>100 م</b> (أوتوستراد <b>150–200 م</b>)، خلف الحاجز."},
+    {"en":"Then 112 + first aid — helping is a legal duty.","de":"Dann 112 + Erste Hilfe — Hilfspflicht.","ar":"ثم 112 + إسعافات أولية — المساعدة واجب قانوني."},
+    {"en":"Leaving without identifying = hit-and-run.","de":"Entfernen ohne Angaben = Unfallflucht.","ar":"المغادرة دون التعريف = هروب من موقع الحادث."},
+    {"en":"Unconscious: recovery position; biker helmet off only for airways.","de":"Bewusstlos: stabile Seitenlage; Helm nur für Atemwege abnehmen.","ar":"فاقد الوعي: وضع الإنعاش؛ خوذة الدراج تُزال فقط لتأمين مجرى الهواء."}]},
+  {"icon":"🧘","h":{"en":"Fitness to drive","de":"Fahrtüchtigkeit","ar":"اللياقة للقيادة"},"items":[
+    {"en":"Microsleep kills — stop at first signs; coffee + 20-min nap.","de":"Sekundenschlaf tötet — früh anhalten; Kaffee + 20-Min-Schlaf.","ar":"النوم الخاطف قاتل — توقف عند أولى العلامات؛ قهوة + قيلولة 20 دقيقة."},
+    {"en":"Strong emotions impair like alcohol.","de":"Starke Emotionen wirken wie Alkohol.","ar":"المشاعر الحادة تضعف القدرة مثل الكحول."},
+    {"en":"Glasses noted on licence? Mandatory.","de":"Brille im Führerschein? Pflicht.","ar":"النظارات مدوّنة في الرخصة؟ إلزامية."}]},
+  {"icon":"🌍","h":{"en":"Environment","de":"Umwelt","ar":"البيئة"},"items":[
+    {"en":"Engine off while waiting; no warming up at standstill.","de":"Motor aus beim Warten; kein Warmlaufenlassen.","ar":"أوقف المحرك أثناء الانتظار؛ لا تُسخّن المحرك وقوفاً."},
+    {"en":"No pointless back-and-forth in residential areas.","de":"Unnützes Hin- und Herfahren verboten.","ar":"الذهاب والإياب بلا هدف في المناطق السكنية ممنوع."},
+    {"en":"Shift early, look ahead, coast to lights.","de":"Früh schalten, vorausschauen, ausrollen.","ar":"غيّر التروس مبكراً، انظر أمامك، اتركها تنزلق نحو الإشارات."}]}
 ]

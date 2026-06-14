@@ -1,23 +1,23 @@
 [
-  {"icon":"🛣️","h":{"e":"Autobahn","d":"Autobahn"},"items":[
-    {"e":"No general limit — <b>130 advisory</b>; min capability 60 km/h.","d":"Kein Limit — <b>Richtgeschwindigkeit 130</b>; min. 60 km/h möglich."},
-    {"e":"No stopping, parking, reversing, U-turns, pedestrians.","d":"Kein Halten, Parken, Rückwärts, Wenden, keine Fußgänger."},
-    {"e":"Keep right; pass left; Rettungsgasse in jams.","d":"Rechtsfahrgebot; links überholen; Rettungsgasse."}]},
-  {"icon":"🚘","h":{"e":"Kraftfahrstraße (expressway)","d":"Kraftfahrstraße"},"items":[
-    {"e":"Motor vehicles ≥60 km/h capability only.","d":"Nur Kfz mit ≥60 km/h."},
-    {"e":"100 out of town; no U-turns; stop only in emergencies.","d":"Außerorts 100; Wenden verboten; Halten nur im Notfall."}]},
-  {"icon":"🌳","h":{"e":"Landstraße (country road)","d":"Landstraße"},"items":[
-    {"e":"<b>100 km/h</b> for cars; overtake only with a clear view.","d":"<b>100 km/h</b> für Pkw; überholen nur bei freier Sicht."},
-    {"e":"Highest accident risk: trees, bends, overtaking.","d":"Größte Unfallgefahr: Bäume, Kurven, Überholen."}]},
-  {"icon":"🏙️","h":{"e":"In town","d":"Innerorts"},"items":[
-    {"e":"<b>50 km/h</b> from the yellow town sign; 30 often signed.","d":"<b>50 km/h</b> ab Ortstafel; oft 30 beschildert."},
-    {"e":"Buses, bikes, pedestrians; dense parking rules.","d":"Busse, Räder, Fußgänger; viele Parkregeln."}]},
-  {"icon":"🔢","h":{"e":"Tempo-30-Zone","d":"Tempo-30-Zone"},"items":[
-    {"e":"Area-wide 30; usually <b>right-before-left</b>.","d":"Flächig 30; meist <b>rechts vor links</b>."}]},
-  {"icon":"🏠","h":{"e":"Living street","d":"Verkehrsberuhigter Bereich"},"items":[
-    {"e":"<b>Walking pace</b>; children may play; park only in marked spots.","d":"<b>Schrittgeschwindigkeit</b>; Spielen erlaubt; Parken nur markiert."}]},
-  {"icon":"🚲","h":{"e":"Bicycle street","d":"Fahrradstraße"},"items":[
-    {"e":"Bikes set the pace, side-by-side allowed; cars max 30 if permitted.","d":"Räder geben Tempo vor, nebeneinander ok; Kfz max 30 falls frei."}]},
-  {"icon":"🚶","h":{"e":"Pedestrian zone","d":"Fußgängerzone"},"items":[
-    {"e":"Vehicles banned unless a plate frees them (delivery windows).","d":"Fahrzeuge verboten, außer Tafel erlaubt (Lieferzeiten)."}]}
+  {"icon":"🛣️","h":{"en":"Autobahn","de":"Autobahn","ar":"الأوتوستراد"},"items":[
+    {"en":"No general limit — <b>130 advisory</b>; min capability 60 km/h.","de":"Kein Limit — <b>Richtgeschwindigkeit 130</b>; min. 60 km/h möglich.","ar":"لا حد عام — <b>130 موصى بها</b>؛ الحد الأدنى القدرة على 60 كم/ساعة."},
+    {"en":"No stopping, parking, reversing, U-turns, pedestrians.","de":"Kein Halten, Parken, Rückwärts, Wenden, keine Fußgänger.","ar":"لا توقف، لا ركن، لا رجوع، لا استدارة، لا مشاة."},
+    {"en":"Keep right; pass left; Rettungsgasse in jams.","de":"Rechtsfahrgebot; links überholen; Rettungsgasse.","ar":"الزم اليمين؛ تجاوز يساراً؛ ممر الإنقاذ في الازدحام."}]},
+  {"icon":"🚘","h":{"en":"Kraftfahrstraße (expressway)","de":"Kraftfahrstraße","ar":"الطريق السريع (Kraftfahrstraße)"},"items":[
+    {"en":"Motor vehicles ≥60 km/h capability only.","de":"Nur Kfz mit ≥60 km/h.","ar":"مركبات ذات محرك قادرة على ≥60 كم/ساعة فقط."},
+    {"en":"100 out of town; no U-turns; stop only in emergencies.","de":"Außerorts 100; Wenden verboten; Halten nur im Notfall.","ar":"100 خارج المدن؛ لا استدارة؛ التوقف في حالات الطوارئ فقط."}]},
+  {"icon":"🌳","h":{"en":"Landstraße (country road)","de":"Landstraße","ar":"الطريق الريفي (Landstraße)"},"items":[
+    {"en":"<b>100 km/h</b> for cars; overtake only with a clear view.","de":"<b>100 km/h</b> für Pkw; überholen nur bei freier Sicht.","ar":"<b>100 كم/ساعة</b> للسيارات؛ تجاوز فقط مع رؤية واضحة."},
+    {"en":"Highest accident risk: trees, bends, overtaking.","de":"Größte Unfallgefahr: Bäume, Kurven, Überholen.","ar":"أعلى خطر حوادث: الأشجار، المنعطفات، التجاوز."}]},
+  {"icon":"🏙️","h":{"en":"In town","de":"Innerorts","ar":"داخل المدن"},"items":[
+    {"en":"<b>50 km/h</b> from the yellow town sign; 30 often signed.","de":"<b>50 km/h</b> ab Ortstafel; oft 30 beschildert.","ar":"<b>50 كم/ساعة</b> من لافتة الدخول للبلدة؛ كثيراً ما تكون 30."},
+    {"en":"Buses, bikes, pedestrians; dense parking rules.","de":"Busse, Räder, Fußgänger; viele Parkregeln.","ar":"حافلات، دراجات، مشاة؛ قواعد ركن كثيفة."}]},
+  {"icon":"🔢","h":{"en":"Tempo-30-Zone","de":"Tempo-30-Zone","ar":"منطقة 30 كم/ساعة"},"items":[
+    {"en":"Area-wide 30; usually <b>right-before-left</b>.","de":"Flächig 30; meist <b>rechts vor links</b>.","ar":"30 في كل المنطقة؛ عادةً <b>اليمين قبل اليسار</b>."}]},
+  {"icon":"🏠","h":{"en":"Living street","de":"Verkehrsberuhigter Bereich","ar":"الشارع المخصص للمعيشة"},"items":[
+    {"en":"<b>Walking pace</b>; children may play; park only in marked spots.","de":"<b>Schrittgeschwindigkeit</b>; Spielen erlaubt; Parken nur markiert.","ar":"<b>سرعة المشي</b>؛ الأطفال يلعبون مسموح؛ ركن فقط في الأماكن المحددة."}]},
+  {"icon":"🚲","h":{"en":"Bicycle street","de":"Fahrradstraße","ar":"شارع الدراجات"},"items":[
+    {"en":"Bikes set the pace, side-by-side allowed; cars max 30 if permitted.","de":"Räder geben Tempo vor, nebeneinander ok; Kfz max 30 falls frei.","ar":"الدراجات تضبط الإيقاع، التنازي مسموح؛ السيارات أقصى 30 إذا مسموح."}]},
+  {"icon":"🚶","h":{"en":"Pedestrian zone","de":"Fußgängerzone","ar":"منطقة المشاة"},"items":[
+    {"en":"Vehicles banned unless a plate frees them (delivery windows).","de":"Fahrzeuge verboten, außer Tafel erlaubt (Lieferzeiten).","ar":"المركبات ممنوعة إلا إذا سمحت لافتة (أوقات التسليم)."}]}
 ]

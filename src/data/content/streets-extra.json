@@ -1,13 +1,13 @@
 [
-  {"icon":"🐌","h":{"e":"Special speeds","d":"Sondertempos"},"items":[
-    {"e":"Living street: walking pace (~4–7).","d":"Verkehrsberuhigt: Schrittgeschwindigkeit (~4–7)."},
-    {"e":"School bus at stop with hazards: walking pace both directions.","d":"Bus mit Warnblinker: Schrittgeschwindigkeit, beide Richtungen."},
-    {"e":"Fog < 50 m: max 50 anywhere.","d":"Nebel < 50 m: überall max 50."}]},
-  {"icon":"🧮","h":{"e":"Rules of thumb","d":"Faustformeln"},"items":[
-    {"e":"Gap = half speedo (m); town ~2 s.","d":"Abstand = halber Tacho (m); innerorts ~2 s."},
-    {"e":"Drive so you can stop within sight.","d":"Auf Sicht fahren."}]},
-  {"icon":"⚠️","h":{"e":"Limits that drop silently","d":"„Unsichtbare\" Limits"},"items":[
-    {"e":"Town sign = instant 50, no extra signal.","d":"Ortstafel = sofort 50."},
-    {"e":"End of a limit in town ≠ free — 50 still caps you.","d":"Ende eines Limits innerorts ≠ frei — 50 bleibt."},
-    {"e":"Trailers/conditions cap below posted limits.","d":"Anhänger/Bedingungen begrenzen darunter."}]}
+  {"icon":"🐌","h":{"en":"Special speeds","de":"Sondertempos","ar":"سرعات خاصة"},"items":[
+    {"en":"Living street: walking pace (~4–7).","de":"Verkehrsberuhigt: Schrittgeschwindigkeit (~4–7).","ar":"الشارع المخصص للمعيشة: سرعة المشي (~4–7)."},
+    {"en":"School bus at stop with hazards: walking pace both directions.","de":"Bus mit Warnblinker: Schrittgeschwindigkeit, beide Richtungen.","ar":"حافلة مدرسية في المحطة مع إشارة التحذير: سرعة المشي في كلا الاتجاهين."},
+    {"en":"Fog < 50 m: max 50 anywhere.","de":"Nebel < 50 m: überall max 50.","ar":"ضباب أقل من 50 م: أقصى 50 في كل مكان."}]},
+  {"icon":"🧮","h":{"en":"Rules of thumb","de":"Faustformeln","ar":"قواعد عامة"},"items":[
+    {"en":"Gap = half speedo (m); town ~2 s.","de":"Abstand = halber Tacho (m); innerorts ~2 s.","ar":"الفجوة = نصف العداد (م)؛ داخل المدن ~ثانيتان."},
+    {"en":"Drive so you can stop within sight.","de":"Auf Sicht fahren.","ar":"سرّ بحيث تستطيع التوقف ضمن نطاق الرؤية."}]},
+  {"icon":"⚠️","h":{"en":"Limits that drop silently","de":"„Unsichtbare\" Limits","ar":"الحدود التي تنخفض بصمت"},"items":[
+    {"en":"Town sign = instant 50, no extra signal.","de":"Ortstafel = sofort 50.","ar":"لافتة البلدة = 50 فوراً، بدون إشارة إضافية."},
+    {"en":"End of a limit in town ≠ free — 50 still caps you.","de":"Ende eines Limits innerorts ≠ frei — 50 bleibt.","ar":"نهاية حد داخل البلدة ≠ حرية — 50 لا تزال سارية."},
+    {"en":"Trailers/conditions cap below posted limits.","de":"Anhänger/Bedingungen begrenzen darunter.","ar":"المقطورات/الأحوال تخفض الحد دون المحدد."}]}
 ]

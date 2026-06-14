@@ -10,8 +10,8 @@
     "tipEn": "Red+amber = get ready, do NOT go yet.",
     "tipDe": "Rot+gelb = bereitmachen, noch NICHT fahren.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"28\" y=\"10\" width=\"24\" height=\"60\" rx=\"6\" fill=\"#222\"/><circle cx=\"40\" cy=\"24\" r=\"7\" fill=\"#e22\"/><circle cx=\"40\" cy=\"40\" r=\"7\" fill=\"#f5b50a\"/><circle cx=\"40\" cy=\"56\" r=\"7\" fill=\"#2ecc71\"/></svg>",
-    "ar": "Sequence: red → red+amber → green → amber → red.",
-    "tipAr": "Red+amber = get ready, do NOT go yet."
+    "ar": "التسلسل: أحمر → أحمر+أصفر → أخضر → أصفر → أحمر.",
+    "tipAr": "أحمر+أصفر = استعد، لكن لا تتحرك بعد."
   },
   {
     "cat": "signal",
@@ -21,11 +21,11 @@
     "stvo": null,
     "en": "Green arrow plate: may turn right on red after a full stop.",
     "de": "Grünpfeil-Schild: bei Rot nach Halt rechts abbiegen erlaubt.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "You must come to a complete stop first — rolling through without stopping is illegal.",
+    "tipDe": "Erst vollständig anhalten — Weiterrollen ohne Halt ist verboten.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"22\" width=\"48\" height=\"36\" rx=\"4\" fill=\"#111\"/><path d=\"M30 40 H46 M46 40 l-2 0 M44 32 l10 8 -10 8z M30 36 v8\" stroke=\"#2ecc71\" stroke-width=\"4\" fill=\"#2ecc71\"/></svg>",
-    "ar": "Green arrow plate: may turn right on red after a full stop.",
-    "tipAr": null
+    "ar": "لوحة السهم الأخضر: يُسمح بالانعطاف يميناً على الأحمر بعد توقف كامل.",
+    "tipAr": "يجب التوقف التام أولاً — المرور دون توقف مخالفة."
   },
   {
     "cat": "signal",
@@ -35,11 +35,11 @@
     "stvo": null,
     "en": "Arms spread = stop for those facing chest/back; arm raised = all stop (like amber).",
     "de": "Arme seitlich = Halt für Brust/Rücken; Arm hoch = alle halten (wie Gelb).",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Police override all signals and signs — obey immediately.",
+    "tipDe": "Polizei geht vor allen Signalen und Schildern — sofort befolgen.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><circle cx=\"40\" cy=\"22\" r=\"7\" fill=\"#111\"/><rect x=\"34\" y=\"30\" width=\"12\" height=\"22\" rx=\"3\" fill=\"#111\"/><path d=\"M34 34 H18 M46 34 L58 24\" stroke=\"#111\" stroke-width=\"5\"/></svg>",
-    "ar": "Arms spread = stop for those facing chest/back; arm raised = all stop (like amber).",
-    "tipAr": null
+    "ar": "ذراعان ممدودتان = توقف من أمام/خلف الشرطي؛ ذراع مرفوعة = جميع المركبات تتوقف (مثل الأصفر).",
+    "tipAr": "الشرطة تتقدم على جميع الإشارات والعلامات — أطع فوراً."
   },
   {
     "cat": "signal",
@@ -49,11 +49,11 @@
     "stvo": null,
     "en": "Must not cross or straddle it.",
     "de": "Darf nicht überfahren werden.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "White on roads, yellow at tram tracks — no crossing in either case.",
+    "tipDe": "Weiß auf Fahrbahn, gelb an Gleisen — in beiden Fällen kein Überfahren.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><line x1=\"40\" y1=\"16\" x2=\"40\" y2=\"64\" stroke=\"#fff\" stroke-width=\"5\"/></svg>",
-    "ar": "Must not cross or straddle it.",
-    "tipAr": null
+    "ar": "يُمنع تجاوزها أو ركوبها.",
+    "tipAr": "أبيض على الطرق، أصفر عند سكة الترام — لا يجوز التجاوز في كلا الحالتين."
   },
   {
     "cat": "signal",
@@ -63,11 +63,11 @@
     "stvo": null,
     "en": "May cross when the road ahead is clear.",
     "de": "Überfahren erlaubt, wenn frei.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Check mirrors and blind spot before crossing — oncoming traffic has priority.",
+    "tipDe": "Spiegel und toten Winkel prüfen — Gegenverkehr hat Vorrang.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><line x1=\"40\" y1=\"16\" x2=\"40\" y2=\"64\" stroke=\"#fff\" stroke-width=\"5\" stroke-dasharray=\"9 8\"/></svg>",
-    "ar": "May cross when the road ahead is clear.",
-    "tipAr": null
+    "ar": "يُسمح بالتجاوز إذا كان الطريق أمامك خالياً.",
+    "tipAr": "تحقق من المرايا والزاوية العمياء قبل التجاوز — للمركبات القادمة الأولوية."
   },
   {
     "cat": "signal",
@@ -77,11 +77,11 @@
     "stvo": null,
     "en": "No stopping or parking on it.",
     "de": "Halten und Parken verboten.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Often at pedestrian crossings and bus stops — even a brief stop is illegal.",
+    "tipDe": "Oft an Zebrastreifen und Haltestellen — sogar kurzes Halten ist verboten.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><path d=\"M30 18 L50 30 L30 42 L50 54 L30 64\" fill=\"none\" stroke=\"#f4d000\" stroke-width=\"4\"/></svg>",
-    "ar": "No stopping or parking on it.",
-    "tipAr": null
+    "ar": "يُمنع التوقف أو ركن السيارة عليها.",
+    "tipAr": "غالباً عند ممرات المشاة ومحطات الحافلات — حتى التوقف القصير مخالفة."
   },
   {
     "cat": "signal",
@@ -89,13 +89,13 @@
     "nameDe": "Haltlinie",
     "nameEn": "Stop line",
     "stvo": null,
-    "en": "Stop <b>before</b> this thick white line (STOP, red light).",
-    "de": "<b>Vor</b> dieser breiten Linie anhalten (STOP, Rot).",
-    "tipEn": null,
-    "tipDe": null,
+    "en": "Stop <b>before</b> this thick white line (STOP sign or red light).",
+    "de": "<b>Vor</b> dieser breiten Linie anhalten (STOP-Schild oder Rot).",
+    "tipEn": "At a red light the front bumper must not cross this line.",
+    "tipDe": "Bei Rot darf die Fahrzeugfront diese Linie nicht überfahren.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><rect x=\"20\" y=\"36\" width=\"40\" height=\"8\" fill=\"#fff\"/></svg>",
-    "ar": "Stop <b>before</b> this thick white line (STOP, red light).",
-    "tipAr": null
+    "ar": "أوقف السيارة <b>قبل</b> هذا الخط الأبيض العريض (علامة STOP أو ضوء أحمر).",
+    "tipAr": "عند الضوء الأحمر يجب ألا تتجاوز مقدمة سيارتك هذا الخط."
   },
   {
     "cat": "signal",
@@ -103,13 +103,13 @@
     "nameDe": "Wartelinie",
     "nameEn": "Yield line (\"shark teeth\")",
     "stvo": null,
-    "en": "White triangles = where to wait when yielding.",
-    "de": "Weiße Dreiecke = hier warten beim Vorfahrt gewähren.",
-    "tipEn": null,
-    "tipDe": null,
+    "en": "White triangles pointing at you = wait here when yielding.",
+    "de": "Weiße Dreiecke zeigen zu dir = hier warten beim Vorfahrt gewähren.",
+    "tipEn": "Teeth point toward you — they're a visual reminder that you must yield.",
+    "tipDe": "Zähne zeigen zu dir — visueller Hinweis, dass du Vorfahrt gewähren musst.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><path d=\"M20 36 l6 8 6 -8z M34 36 l6 8 6 -8z M48 36 l6 8 6 -8z\" fill=\"#fff\"/></svg>",
-    "ar": "White triangles = where to wait when yielding.",
-    "tipAr": null
+    "ar": "مثلثات بيضاء تشير نحوك = انتظر هنا عند التنازل عن الأولوية.",
+    "tipAr": "الأسنان تشير نحوك — تذكير بصري بأنك ملزم بالتنازل عن الأولوية."
   },
   {
     "cat": "signal",
@@ -119,11 +119,11 @@
     "stvo": null,
     "en": "Forbidden surface — never drive, stop or park on it.",
     "de": "Gesperrte Fläche — nie befahren, halten oder parken.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Treat it like a solid obstacle — no cutting corners through it.",
+    "tipDe": "Wie ein festes Hindernis behandeln — nicht durch die Ecken schneiden.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><path d=\"M20 60 L60 20 M20 46 L46 20 M34 60 L60 34\" stroke=\"#fff\" stroke-width=\"4\"/><path d=\"M18 22 v36 l4 0 M62 22 v36\" stroke=\"#fff\" stroke-width=\"3\"/></svg>",
-    "ar": "Forbidden surface — never drive, stop or park on it.",
-    "tipAr": null
+    "ar": "منطقة محظورة — يُمنع السير أو التوقف أو الركن عليها.",
+    "tipAr": "تعامل معها كعائق صلب — لا تقتطع الزوايا من خلالها."
   },
   {
     "cat": "signal",
@@ -133,11 +133,11 @@
     "stvo": null,
     "en": "In that lane you must follow the arrow direction.",
     "de": "In dieser Spur musst du der Pfeilrichtung folgen.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Wrong lane? Don't swerve — continue and find a safe spot to turn around.",
+    "tipDe": "Falsche Spur? Nicht reißen — weiterfahren und sicher wenden.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><path d=\"M30 60 V32 M30 32 l-5 7 m5 -7 l5 7\" stroke=\"#fff\" stroke-width=\"4\" fill=\"none\"/><path d=\"M50 60 V42 q0 -8 8 -8 M58 34 l-7 -3 m7 3 l-3 7\" stroke=\"#fff\" stroke-width=\"4\" fill=\"none\"/></svg>",
-    "ar": "In that lane you must follow the arrow direction.",
-    "tipAr": null
+    "ar": "في ذلك المسار يجب عليك اتباع اتجاه السهم.",
+    "tipAr": "في المسار الخطأ؟ لا تنعطف فجأة — أكمل واعثر على مكان آمن للاستدارة."
   },
   {
     "cat": "signal",
@@ -147,11 +147,11 @@
     "stvo": null,
     "en": "Green is coming — get ready, but <b>do not</b> move yet.",
     "de": "Gleich Grün — bereitmachen, aber <b>noch nicht</b> fahren.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Don't rev the engine — it's a prep signal, not a drag-race start.",
+    "tipDe": "Motor nicht hochdrehen — Vorbereitungssignal, kein Rennstart.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"28\" y=\"10\" width=\"24\" height=\"60\" rx=\"6\" fill=\"#222\"/><circle cx=\"40\" cy=\"24\" r=\"7\" fill=\"#e22\"/><circle cx=\"40\" cy=\"40\" r=\"7\" fill=\"#f5b50a\"/><circle cx=\"40\" cy=\"56\" r=\"7\" fill=\"#333\"/></svg>",
-    "ar": "Green is coming — get ready, but <b>do not</b> move yet.",
-    "tipAr": null
+    "ar": "الأخضر قادم — استعد، لكن <b>لا</b> تتحرك بعد.",
+    "tipAr": "لا ترفع دوارات المحرك — إنها إشارة تحضير، وليست انطلاق سباق."
   },
   {
     "cat": "signal",
@@ -161,11 +161,11 @@
     "stvo": null,
     "en": "Steady amber: stop if you safely can. Flashing: caution, signs apply.",
     "de": "Gelb: anhalten, wenn sicher möglich. Blinken: Vorsicht, Schilder gelten.",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Flashing amber at night means no traffic-light priority — normal right-before-left rules apply.",
+    "tipDe": "Nächtliches Blinken = kein Ampelvorrang — rechts vor links gilt.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"28\" y=\"10\" width=\"24\" height=\"60\" rx=\"6\" fill=\"#222\"/><circle cx=\"40\" cy=\"24\" r=\"7\" fill=\"#333\"/><circle cx=\"40\" cy=\"40\" r=\"7\" fill=\"#f5b50a\"/><circle cx=\"40\" cy=\"56\" r=\"7\" fill=\"#333\"/></svg>",
-    "ar": "Steady amber: stop if you safely can. Flashing: caution, signs apply.",
-    "tipAr": null
+    "ar": "أصفر ثابت: أوقف السيارة إن كان آمناً. وامض: توخَّ الحذر، العلامات سارية.",
+    "tipAr": "الوميض الليلي = لا أولوية للإشارة — تطبق قاعدة اليمين قبل اليسار."
   },
   {
     "cat": "signal",
@@ -175,10 +175,10 @@
     "stvo": null,
     "en": "Red ✕ = lane closed; green ↓ = lane open (motorways, tunnels).",
     "de": "Rotes ✕ = Spur gesperrt; grüner ↓ = frei (Autobahn, Tunnel).",
-    "tipEn": null,
-    "tipDe": null,
+    "tipEn": "Red ✕ overrides any lane marking — change lanes before you pass under it.",
+    "tipDe": "Rotes ✕ schlägt jede Spurmarkierung — vor dem Signal wechseln.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"10\" y=\"22\" width=\"28\" height=\"22\" rx=\"3\" fill=\"#111\"/><path d=\"M17 27 L31 39 M31 27 L17 39\" stroke=\"#e22\" stroke-width=\"4\"/><rect x=\"42\" y=\"22\" width=\"28\" height=\"22\" rx=\"3\" fill=\"#111\"/><path d=\"M56 26 v12 M56 38 l-5 -6 m5 6 l5 -6\" stroke=\"#2ecc71\" stroke-width=\"4\" fill=\"none\"/></svg>",
-    "ar": "Red ✕ = lane closed; green ↓ = lane open (motorways, tunnels).",
-    "tipAr": null
+    "ar": "أحمر ✕ = المسار مغلق؛ أخضر ↓ = مفتوح (طرق سريعة، أنفاق).",
+    "tipAr": "الأحمر ✕ يتقدم على أي علامة مسار — غيّر مسارك قبل أن تصل تحته."
   }
 ]

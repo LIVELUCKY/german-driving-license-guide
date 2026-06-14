@@ -5,79 +5,79 @@ import Section from './Section.astro';
 import { t } from '../lib/i18n.js';
 import { SIGNS } from '../lib/signs.js';
 const { lang } = Astro.props as { lang: string };
-const L = lang === 'de' ? 'd' : lang === 'ar' ? 'a' : 'e';
+const L = lang === 'de' ? 'de' : lang === 'ar' ? 'ar' : 'en';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const img = (id: string): any => SIGNS.find((s: any) => s.id === id);
 
 const SHAPES = [
- {id:'gefahrstelle', h:{e:'Triangle, point up',d:'Dreieck, Spitze oben',a:'مثلث رأسه لأعلى'}, m:{e:'<b>Warning.</b> Danger ahead — slow down, be ready.',d:'<b>Warnung.</b> Gefahr voraus — Tempo raus.',a:'<b>تحذير.</b> خطر أمامك — أبطئ واستعد.'}},
- {id:'vorfahrt-gewaehren', h:{e:'Triangle, point down',d:'Dreieck, Spitze unten',a:'مثلث رأسه لأسفل'}, m:{e:'<b>Yield.</b> The only upside-down one — recognisable even snow-covered.',d:'<b>Vorfahrt gewähren.</b> Das einzige umgedrehte — auch verschneit erkennbar.',a:'<b>أعطِ الأولوية.</b> الوحيد المعكوس — يُعرف حتى تحت الثلج.'}},
- {id:'verbot-fuer-fahrzeuge-aller-art', h:{e:'Red ring',d:'Roter Ring',a:'حلقة حمراء'}, m:{e:'<b>Forbidden/limited.</b> What is drawn inside is banned.',d:'<b>Verboten.</b> Was drin ist, ist verboten.',a:'<b>محظور.</b> ما بداخله ممنوع.'}},
- {id:'fahrtrichtung-geradeaus', h:{e:'Blue circle',d:'Blauer Kreis',a:'دائرة زرقاء'}, m:{e:'<b>Order.</b> You must do what it shows.',d:'<b>Gebot.</b> Du musst tun, was es zeigt.',a:'<b>إلزامي.</b> يجب فعل ما تشير إليه.'}},
- {id:'vorfahrtstrasse', h:{e:'Yellow diamond',d:'Gelbe Raute',a:'معين أصفر'}, m:{e:'<b>Priority.</b> Only used for right-of-way along a road.',d:'<b>Vorfahrt.</b> Nur für Vorfahrtstraßen.',a:'<b>أولوية.</b> للطرق ذات الأولوية فقط.'}},
- {id:'stop', h:{e:'Octagon',d:'Achteck',a:'مثمن'}, m:{e:'<b>Full stop.</b> Unique shape for the strongest order.',d:'<b>Anhalten.</b> Einzigartige Form.',a:'<b>توقف تاماً.</b> شكل فريد لأقوى أمر.'}},
- {id:'parkplatz', h:{e:'Rectangle',d:'Rechteck',a:'مستطيل'}, m:{e:'<b>Information / special rules</b> (parking, one-way, motorway…).',d:'<b>Hinweis / Sonderregeln</b> (Parken, Einbahn, Autobahn…).',a:'<b>معلومات / قواعد خاصة</b> (ركن، اتجاه واحد، طريق سريع...).'}},
- {id:'bei-naesse', h:{e:'Small white plate',d:'Kleine weiße Tafel',a:'لوحة بيضاء صغيرة'}, m:{e:'<b>Condition.</b> Narrows the sign above (who, when, where).',d:'<b>Bedingung.</b> Schränkt das Schild darüber ein.',a:'<b>شرط.</b> يضيّق نطاق اللافتة أعلاه.'}},
+ {id:'gefahrstelle', h:{en:'Triangle, point up',de:'Dreieck, Spitze oben',ar:'مثلث رأسه لأعلى'}, m:{en:'<b>Warning.</b> Danger ahead — slow down, be ready.',de:'<b>Warnung.</b> Gefahr voraus — Tempo raus.',ar:'<b>تحذير.</b> خطر أمامك — أبطئ واستعد.'}},
+ {id:'vorfahrt-gewaehren', h:{en:'Triangle, point down',de:'Dreieck, Spitze unten',ar:'مثلث رأسه لأسفل'}, m:{en:'<b>Yield.</b> The only upside-down one — recognisable even snow-covered.',de:'<b>Vorfahrt gewähren.</b> Das einzige umgedrehte — auch verschneit erkennbar.',ar:'<b>أعطِ الأولوية.</b> الوحيد المعكوس — يُعرف حتى تحت الثلج.'}},
+ {id:'verbot-fuer-fahrzeuge-aller-art', h:{en:'Red ring',de:'Roter Ring',ar:'حلقة حمراء'}, m:{en:'<b>Forbidden/limited.</b> What is drawn inside is banned.',de:'<b>Verboten.</b> Was drin ist, ist verboten.',ar:'<b>محظور.</b> ما بداخله ممنوع.'}},
+ {id:'fahrtrichtung-geradeaus', h:{en:'Blue circle',de:'Blauer Kreis',ar:'دائرة زرقاء'}, m:{en:'<b>Order.</b> You must do what it shows.',de:'<b>Gebot.</b> Du musst tun, was es zeigt.',ar:'<b>إلزامي.</b> يجب فعل ما تشير إليه.'}},
+ {id:'vorfahrtstrasse', h:{en:'Yellow diamond',de:'Gelbe Raute',ar:'معين أصفر'}, m:{en:'<b>Priority.</b> Only used for right-of-way along a road.',de:'<b>Vorfahrt.</b> Nur für Vorfahrtstraßen.',ar:'<b>أولوية.</b> للطرق ذات الأولوية فقط.'}},
+ {id:'stop', h:{en:'Octagon',de:'Achteck',ar:'مثمن'}, m:{en:'<b>Full stop.</b> Unique shape for the strongest order.',de:'<b>Anhalten.</b> Einzigartige Form.',ar:'<b>توقف تاماً.</b> شكل فريد لأقوى أمر.'}},
+ {id:'parkplatz', h:{en:'Rectangle',de:'Rechteck',ar:'مستطيل'}, m:{en:'<b>Information / special rules</b> (parking, one-way, motorway…).',de:'<b>Hinweis / Sonderregeln</b> (Parken, Einbahn, Autobahn…).',ar:'<b>معلومات / قواعد خاصة</b> (ركن، اتجاه واحد، طريق سريع...).'}},
+ {id:'bei-naesse', h:{en:'Small white plate',de:'Kleine weiße Tafel',ar:'لوحة بيضاء صغيرة'}, m:{en:'<b>Condition.</b> Narrows the sign above (who, when, where).',de:'<b>Bedingung.</b> Schränkt das Schild darüber ein.',ar:'<b>شرط.</b> يضيّق نطاق اللافتة أعلاه.'}},
 ];
 const COLORS = [
- {i:'🔴',h:{e:'Red',d:'Rot',a:'أحمر'},m:{e:'Danger or prohibition. Ring = banned; triangle = warned.',d:'Gefahr oder Verbot. Ring = verboten; Dreieck = gewarnt.',a:'خطر أو حظر. حلقة = ممنوع؛ مثلث = تحذير.'}},
- {i:'🔵',h:{e:'Blue',d:'Blau',a:'أزرق'},m:{e:'Orders & permissions: circle = must; rectangle = may/info. Also motorways.',d:'Gebote & Hinweise: Kreis = muss; Rechteck = darf/Info. Auch Autobahn.',a:'أوامر وإرشادات: دائرة = إلزامي؛ مستطيل = مسموح/معلومة. أيضاً الطرق السريعة.'}},
- {i:'🟡',h:{e:'Yellow',d:'Gelb',a:'أصفر'},m:{e:'Priority diamond, town signs, detours, country-road routes.',d:'Vorfahrts-Raute, Ortstafeln, Umleitungen, Landstraßen-Routen.',a:'معين الأولوية ولافتات البلدات والتحويلات وطرق الريف.'}},
- {i:'⚪',h:{e:'Gray / strikethrough',d:'Grau / durchgestrichen',a:'رمادي / مشطوب'},m:{e:'<b>End of.</b> A gray version or slash always ends the rule.',d:'<b>Ende.</b> Grau oder Schrägstrich beendet die Regel.',a:'<b>نهاية.</b> النسخة الرمادية أو الشطبة تنهي القاعدة.'}},
- {i:'🟢',h:{e:'Green',d:'Grün',a:'أخضر'},m:{e:'Free flow: green arrow plate, green light, green eco badge.',d:'Freie Fahrt: Grünpfeil, Grünlicht, grüne Plakette.',a:'سير حر: سهم أخضر، ضوء أخضر، شارة بيئية خضراء.'}},
- {i:'🟠',h:{e:'Orange',d:'Orange',a:'برتقالي'},m:{e:'Temporary: roadworks and diversions override normal signs.',d:'Vorübergehend: Baustelle/Umleitung geht vor.',a:'مؤقت: أعمال البناء والتحويلات تتفوق على اللافتات العادية.'}},
+ {i:'🔴',h:{en:'Red',de:'Rot',ar:'أحمر'},m:{en:'Danger or prohibition. Ring = banned; triangle = warned.',de:'Gefahr oder Verbot. Ring = verboten; Dreieck = gewarnt.',ar:'خطر أو حظر. حلقة = ممنوع؛ مثلث = تحذير.'}},
+ {i:'🔵',h:{en:'Blue',de:'Blau',ar:'أزرق'},m:{en:'Orders & permissions: circle = must; rectangle = may/info. Also motorways.',de:'Gebote & Hinweise: Kreis = muss; Rechteck = darf/Info. Auch Autobahn.',ar:'أوامر وإرشادات: دائرة = إلزامي؛ مستطيل = مسموح/معلومة. أيضاً الطرق السريعة.'}},
+ {i:'🟡',h:{en:'Yellow',de:'Gelb',ar:'أصفر'},m:{en:'Priority diamond, town signs, detours, country-road routes.',de:'Vorfahrts-Raute, Ortstafeln, Umleitungen, Landstraßen-Routen.',ar:'معين الأولوية ولافتات البلدات والتحويلات وطرق الريف.'}},
+ {i:'⚪',h:{en:'Gray / strikethrough',de:'Grau / durchgestrichen',ar:'رمادي / مشطوب'},m:{en:'<b>End of.</b> A gray version or slash always ends the rule.',de:'<b>Ende.</b> Grau oder Schrägstrich beendet die Regel.',ar:'<b>نهاية.</b> النسخة الرمادية أو الشطبة تنهي القاعدة.'}},
+ {i:'🟢',h:{en:'Green',de:'Grün',ar:'أخضر'},m:{en:'Free flow: green arrow plate, green light, green eco badge.',de:'Freie Fahrt: Grünpfeil, Grünlicht, grüne Plakette.',ar:'سير حر: سهم أخضر، ضوء أخضر، شارة بيئية خضراء.'}},
+ {i:'🟠',h:{en:'Orange',de:'Orange',ar:'برتقالي'},m:{en:'Temporary: roadworks and diversions override normal signs.',de:'Vorübergehend: Baustelle/Umleitung geht vor.',ar:'مؤقت: أعمال البناء والتحويلات تتفوق على اللافتات العادية.'}},
 ];
 const PICTO = [
- {i:'🚗',h:{e:'Vehicle symbols',d:'Fahrzeug-Symbole',a:'رموز المركبات'},items:[
-  {e:'Car = motor cars · truck = goods · motorbike · bicycle · bus · tractor = slow vehicles.',d:'Pkw = Kraftwagen · Lkw · Motorrad · Fahrrad · Bus · Traktor = langsame Fahrzeuge.',a:'سيارة = سيارات · شاحنة = بضائع · دراجة نارية · دراجة · حافلة · جرار.'},
-  {e:'Walking figure = pedestrians; child pair = children; horse = riders.',d:'Gehfigur = Fußgänger; Kinderpaar = Kinder; Pferd = Reiter.',a:'شخص يمشي = مشاة؛ طفلان = أطفال؛ حصان = راكبون.'}]},
- {i:'🔢',h:{e:'Numbers',d:'Zahlen',a:'أرقام'},items:[
-  {e:'Red ring: a <b>limit</b> (km/h, t, m).',d:'Roter Ring: ein <b>Limit</b> (km/h, t, m).',a:'حلقة حمراء: <b>حد</b> (كم/س، طن، متر).'},
-  {e:'Blue circle: a <b>minimum</b>.',d:'Blauer Kreis: ein <b>Minimum</b>.',a:'دائرة زرقاء: <b>حد أدنى</b>.'},
-  {e:'Plate: distance (“100 m”) or stretch (“auf 3 km”).',d:'Tafel: Entfernung („100 m”) oder Strecke („auf 3 km”).',a:'لوحة: مسافة (“100 م”) أو امتداد (“على 3 كم”).'}]},
- {i:'➡️',h:{e:'Arrows',d:'Pfeile',a:'أسهم'},items:[
-  {e:'Blue circle arrow = must go that way.',d:'Pfeil im blauen Kreis = dorthin fahren.',a:'سهم في دائرة زرقاء = يجب السير بذلك الاتجاه.'},
-  {e:'Plate arrow = where the sign applies.',d:'Tafel-Pfeil = wo das Schild gilt.',a:'سهم اللوحة = أين تسري اللافتة.'},
-  {e:'Bent arrow plate = the priority road bends.',d:'Abgeknickter Pfeil = Vorfahrtstraße knickt ab.',a:'سهم منحنٍ = طريق الأولوية ينحني.'}]},
+ {i:'🚗',h:{en:'Vehicle symbols',de:'Fahrzeug-Symbole',ar:'رموز المركبات'},items:[
+  {en:'Car = motor cars · truck = goods · motorbike · bicycle · bus · tractor = slow vehicles.',de:'Pkw = Kraftwagen · Lkw · Motorrad · Fahrrad · Bus · Traktor = langsame Fahrzeuge.',ar:'سيارة = سيارات · شاحنة = بضائع · دراجة نارية · دراجة · حافلة · جرار.'},
+  {en:'Walking figure = pedestrians; child pair = children; horse = riders.',de:'Gehfigur = Fußgänger; Kinderpaar = Kinder; Pferd = Reiter.',ar:'شخص يمشي = مشاة؛ طفلان = أطفال؛ حصان = راكبون.'}]},
+ {i:'🔢',h:{en:'Numbers',de:'Zahlen',ar:'أرقام'},items:[
+  {en:'Red ring: a <b>limit</b> (km/h, t, m).',de:'Roter Ring: ein <b>Limit</b> (km/h, t, m).',ar:'حلقة حمراء: <b>حد</b> (كم/س، طن، متر).'},
+  {en:'Blue circle: a <b>minimum</b>.',de:'Blauer Kreis: ein <b>Minimum</b>.',ar:'دائرة زرقاء: <b>حد أدنى</b>.'},
+  {en:'Plate: distance (“100 m”) or stretch (“auf 3 km”).',de:'Tafel: Entfernung („100 m”) oder Strecke („auf 3 km”).',ar:'لوحة: مسافة (“100 م”) أو امتداد (“على 3 كم”).'}]},
+ {i:'➡️',h:{en:'Arrows',de:'Pfeile',ar:'أسهم'},items:[
+  {en:'Blue circle arrow = must go that way.',de:'Pfeil im blauen Kreis = dorthin fahren.',ar:'سهم في دائرة زرقاء = يجب السير بذلك الاتجاه.'},
+  {en:'Plate arrow = where the sign applies.',de:'Tafel-Pfeil = wo das Schild gilt.',ar:'سهم اللوحة = أين تسري اللافتة.'},
+  {en:'Bent arrow plate = the priority road bends.',de:'Abgeknickter Pfeil = Vorfahrtstraße knickt ab.',ar:'سهم منحنٍ = طريق الأولوية ينحني.'}]},
 ];
 const MODS = [
- {i:'⬜',h:{e:'Zone frame',d:'Zonen-Rahmen',a:'إطار منطقة'},items:[
-  {e:'A sign in a white <b>ZONE</b> rectangle applies to a whole area until the matching end sign.',d:'Ein Schild im weißen <b>ZONE</b>-Rechteck gilt flächig bis zum Ende-Schild.',a:'لافتة في مستطيل ZONE تسري على المنطقة كلها حتى لافتة النهاية.'},
-  {e:'Common: 30-Zone, parking zone, environmental zone.',d:'Üblich: 30-Zone, Parkraum-Zone, Umweltzone.',a:'شائع: منطقة 30، منطقة ركن، منطقة بيئية.'}]},
- {i:'🚫',h:{e:'”End of” variants',d:'„Ende”-Varianten',a:'نسخ “نهاية”'},items:[
-  {e:'Gray + slash = that rule ends.',d:'Grau + Schrägstrich = Regel endet.',a:'رمادي + شطبة = تلك القاعدة تنتهي.'},
-  {e:'White round sign with stripes = <b>all</b> local bans end.',d:'Weiß-rund mit Streifen = <b>alle</b> Streckenverbote enden.',a:'لافتة بيضاء بخطوط = جميع الحظورات تنتهي.'},
-  {e:'Town exit sign ends the 50 limit.',d:'Ortsausgang beendet die 50.',a:'لافتة الخروج من البلدة تنهي حد 50.'}]},
- {i:'📋',h:{e:'Plate logic',d:'Zusatzschild-Logik',a:'منطق اللوحات'},items:[
-  {e:'Plate shows a group → applies <b>only</b> to them.',d:'Tafel zeigt Gruppe → gilt <b>nur</b> für sie.',a:'اللوحة تظهر مجموعة → تسري عليهم فقط.'},
-  {e:'”… frei” → that group is <b>exempt</b>.',d:'„… frei” → Gruppe ist <b>ausgenommen</b>.',a:'”frei” → المجموعة مستثناة.'},
-  {e:'Time/condition → applies only then.',d:'Zeit/Bedingung → gilt nur dann.',a:'وقت/شرط → تسري فقط حينئاذ.'}]},
+ {i:'⬜',h:{en:'Zone frame',de:'Zonen-Rahmen',ar:'إطار منطقة'},items:[
+  {en:'A sign in a white <b>ZONE</b> rectangle applies to a whole area until the matching end sign.',de:'Ein Schild im weißen <b>ZONE</b>-Rechteck gilt flächig bis zum Ende-Schild.',ar:'لافتة في مستطيل ZONE تسري على المنطقة كلها حتى لافتة النهاية.'},
+  {en:'Common: 30-Zone, parking zone, environmental zone.',de:'Üblich: 30-Zone, Parkraum-Zone, Umweltzone.',ar:'شائع: منطقة 30، منطقة ركن، منطقة بيئية.'}]},
+ {i:'🚫',h:{en:'”End of” variants',de:'„Ende”-Varianten',ar:'نسخ “نهاية”'},items:[
+  {en:'Gray + slash = that rule ends.',de:'Grau + Schrägstrich = Regel endet.',ar:'رمادي + شطبة = تلك القاعدة تنتهي.'},
+  {en:'White round sign with stripes = <b>all</b> local bans end.',de:'Weiß-rund mit Streifen = <b>alle</b> Streckenverbote enden.',ar:'لافتة بيضاء بخطوط = جميع الحظورات تنتهي.'},
+  {en:'Town exit sign ends the 50 limit.',de:'Ortsausgang beendet die 50.',ar:'لافتة الخروج من البلدة تنهي حد 50.'}]},
+ {i:'📋',h:{en:'Plate logic',de:'Zusatzschild-Logik',ar:'منطق اللوحات'},items:[
+  {en:'Plate shows a group → applies <b>only</b> to them.',de:'Tafel zeigt Gruppe → gilt <b>nur</b> für sie.',ar:'اللوحة تظهر مجموعة → تسري عليهم فقط.'},
+  {en:'”… frei” → that group is <b>exempt</b>.',de:'„… frei” → Gruppe ist <b>ausgenommen</b>.',ar:'”frei” → المجموعة مستثناة.'},
+  {en:'Time/condition → applies only then.',de:'Zeit/Bedingung → gilt nur dann.',ar:'وقت/شرط → تسري فقط حينئاذ.'}]},
 ];
 const COMBOS = [
  {a:'hoechstgeschwindigkeit', b:'bei-naesse', r:{
-  e:'<b>Read:</b> red ring (limit) + number + rain plate (condition) → <b>max speed only when wet.</b> Dry road: normal limit.',
-  d:'<b>Lesen:</b> roter Ring (Limit) + Zahl + Nässe-Tafel → <b>Limit nur bei Nässe.</b> Trocken: normales Tempo.',
-  a:'<b>قراءة:</b> حلقة حمراء (حد) + رقم + لوحة مطر → <b>حد السرعة عند البلل فقط.</b> طريق جاف: الحد العادي.'}},
+  en:'<b>Read:</b> red ring (limit) + number + rain plate (condition) → <b>max speed only when wet.</b> Dry road: normal limit.',
+  de:'<b>Lesen:</b> roter Ring (Limit) + Zahl + Nässe-Tafel → <b>Limit nur bei Nässe.</b> Trocken: normales Tempo.',
+  ar:'<b>قراءة:</b> حلقة حمراء (حد) + رقم + لوحة مطر → <b>حد السرعة عند البلل فقط.</b> طريق جاف: الحد العادي.'}},
  {a:'verbot-der-einfahrt', b:'anlieger-frei', r:{
-  e:'<b>Read:</b> no entry + “Anlieger frei” → <b>you may not drive in, residents are exempt.</b>',
-  d:'<b>Lesen:</b> Einfahrt verboten + „Anlieger frei” → <b>Einfahrt verboten, Anlieger ausgenommen.</b>',
-  a:'<b>قراءة:</b> ممنوع الدخول + “Anlieger frei” → <b>ممنوع الدخول، السكان مستثنون.</b>'}},
+  en:'<b>Read:</b> no entry + “Anlieger frei” → <b>you may not drive in, residents are exempt.</b>',
+  de:'<b>Lesen:</b> Einfahrt verboten + „Anlieger frei” → <b>Einfahrt verboten, Anlieger ausgenommen.</b>',
+  ar:'<b>قراءة:</b> ممنوع الدخول + “Anlieger frei” → <b>ممنوع الدخول، السكان مستثنون.</b>'}},
  {a:'vorfahrtstrasse', b:'richtungspfeil', r:{
-  e:'<b>Read:</b> priority diamond + route plate → <b>your priority follows the bend.</b> Straight on = leaving the priority road.',
-  d:'<b>Lesen:</b> Raute + Verlaufstafel → <b>Vorfahrt folgt dem Knick.</b> Geradeaus = verlassen.',
-  a:'<b>قراءة:</b> معين الأولوية + لوحة مسار → <b>أولويتك تتبع الانعطاف.</b> مباشرة = مغادرة طريق الأولوية.'}},
+  en:'<b>Read:</b> priority diamond + route plate → <b>your priority follows the bend.</b> Straight on = leaving the priority road.',
+  de:'<b>Lesen:</b> Raute + Verlaufstafel → <b>Vorfahrt folgt dem Knick.</b> Geradeaus = verlassen.',
+  ar:'<b>قراءة:</b> معين الأولوية + لوحة مسار → <b>أولويتك تتبع الانعطاف.</b> مباشرة = مغادرة طريق الأولوية.'}},
  {a:'absolutes-halteverbot', b:'zeitliche-geltung', r:{
-  e:'<b>Read:</b> no stopping + time plate → <b>ban applies only in those hours.</b>',
-  d:'<b>Lesen:</b> Halteverbot + Zeit-Tafel → <b>gilt nur zu diesen Zeiten.</b>',
-  a:'<b>قراءة:</b> ممنوع التوقف + لوحة وقت → <b>الحظر في تلك الساعات فقط.</b>'}},
+  en:'<b>Read:</b> no stopping + time plate → <b>ban applies only in those hours.</b>',
+  de:'<b>Lesen:</b> Halteverbot + Zeit-Tafel → <b>gilt nur zu diesen Zeiten.</b>',
+  ar:'<b>قراءة:</b> ممنوع التوقف + لوحة وقت → <b>الحظر في تلك الساعات فقط.</b>'}},
  {a:'tempo-30-zone', b:null, r:{
-  e:'<b>Read:</b> 30 in a ring + ZONE frame → <b>30 on every street in the area</b> until “Zone Ende”. Usually right-before-left inside.',
-  d:'<b>Lesen:</b> 30 im Ring + ZONE → <b>30 überall im Gebiet</b> bis „Zone Ende”. Drinnen meist rechts vor links.',
-  a:'<b>قراءة:</b> 30 في حلقة + إطار ZONE → <b>30 في كل شارع بالمنطقة</b> حتى “Zone Ende”. عادةً اليمين قبل اليسار.'}},
+  en:'<b>Read:</b> 30 in a ring + ZONE frame → <b>30 on every street in the area</b> until “Zone Ende”. Usually right-before-left inside.',
+  de:'<b>Lesen:</b> 30 im Ring + ZONE → <b>30 überall im Gebiet</b> bis „Zone Ende”. Drinnen meist rechts vor links.',
+  ar:'<b>قراءة:</b> 30 في حلقة + إطار ZONE → <b>30 في كل شارع بالمنطقة</b> حتى “Zone Ende”. عادةً اليمين قبل اليسار.'}},
  {a:'kinder', b:'in-100-m', r:{
-  e:'<b>Read:</b> children warning + distance plate → <b>the danger spot starts in 100 m.</b> Slow down before it.',
-  d:'<b>Lesen:</b> Kinder-Warnung + Entfernung → <b>Gefahrstelle in 100 m.</b> Vorher langsamer.',
-  a:'<b>قراءة:</b> تحذير أطفال + لوحة مسافة → <b>نقطة الخطر بعد 100 م.</b> أبطئ قبلها.'}},
+  en:'<b>Read:</b> children warning + distance plate → <b>the danger spot starts in 100 m.</b> Slow down before it.',
+  de:'<b>Lesen:</b> Kinder-Warnung + Entfernung → <b>Gefahrstelle in 100 m.</b> Vorher langsamer.',
+  ar:'<b>قراءة:</b> تحذير أطفال + لوحة مسافة → <b>نقطة الخطر بعد 100 م.</b> أبطئ قبلها.'}},
 ];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const tile = (s: any) => s?.img ? `<img src="${s.img}" alt="${s.nameDe ?? ''}" width="58" height="58" loading="lazy">` : (s?.drawn ?? '');

@@ -6,8 +6,8 @@ import Section from './Section.astro';
 import { t } from '../lib/i18n.js';
 import { STREETS, SPEED_TABLE, STREETS_EXTRA } from '../lib/content.js';
 const { lang } = Astro.props;
-const L = lang === 'de' ? 'd' : lang === 'ar' ? 'a' : 'e';
-const p = (o: any) => o?.[L] ?? o?.e ?? '';
+const L = lang === 'de' ? 'de' : lang === 'ar' ? 'ar' : 'en';
+const p = (o: any) => o?.[L] ?? o?.en ?? '';
 ---
 <Base lang={lang} slug="streets">
   <PageHead

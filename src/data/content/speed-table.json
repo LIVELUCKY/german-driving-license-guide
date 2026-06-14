@@ -1,21 +1,21 @@
 {
   "head":[
-    {"e":"Vehicle","d":"Fahrzeug","a":"المركبة"},
-    {"e":"In town","d":"Innerorts","a":"داخل المدن"},
-    {"e":"Out of town","d":"Außerorts","a":"خارج المدن"},
-    {"e":"Kraftfahrstraße","d":"Kraftfahrstraße","a":"طريق رئيسي"},
-    {"e":"Autobahn","d":"Autobahn","a":"طريق سريع"}
+    {"en":"Vehicle","de":"Fahrzeug","ar":"المركبة"},
+    {"en":"In town","de":"Innerorts","ar":"داخل المدن"},
+    {"en":"Out of town","de":"Außerorts","ar":"خارج المدن"},
+    {"en":"Kraftfahrstraße","de":"Kraftfahrstraße","ar":"طريق رئيسي"},
+    {"en":"Autobahn","de":"Autobahn","ar":"أوتوستراد"}
   ],
   "rows":[
-    [{"e":"Car / motorbike","d":"Pkw / Motorrad","a":"سيارة / دراجة نارية"},{"e":"50","d":"50","a":"50"},{"e":"100","d":"100","a":"100"},{"e":"100","d":"100","a":"100"},{"e":"<b>none</b> (130*)","d":"<b>frei</b> (130*)","a":"<b>بدون حد</b> (130*)"}],
-    [{"e":"Car + trailer","d":"Pkw + Anhänger","a":"سيارة + مقطورة"},{"e":"50","d":"50","a":"50"},{"e":"80","d":"80","a":"80"},{"e":"80","d":"80","a":"80"},{"e":"80 / 100**","d":"80 / 100**","a":"80 / 100**"}],
-    [{"e":"Truck ≤ 7.5 t","d":"Lkw ≤ 7,5 t","a":"شاحنة ≤ 7.5 ط"},{"e":"50","d":"50","a":"50"},{"e":"80","d":"80","a":"80"},{"e":"80","d":"80","a":"80"},{"e":"80","d":"80","a":"80"}],
-    [{"e":"Truck > 7.5 t / bus","d":"Lkw > 7,5 t / Bus","a":"شاحنة > 7.5 ط / حافلة"},{"e":"50","d":"50","a":"50"},{"e":"60 / 80","d":"60 / 80","a":"60 / 80"},{"e":"60 / 80","d":"60 / 80","a":"60 / 80"},{"e":"80 (100***)","d":"80 (100***)","a":"80 (100***)"}],
-    [{"e":"Moped / S-Pedelec","d":"Moped / S-Pedelec","a":"موبيد / S-Pedelec"},{"e":"45","d":"45","a":"45"},{"e":"45","d":"45","a":"45"},{"e":"—","d":"—","a":"—"},{"e":"—","d":"—","a":"—"}]
+    [{"en":"Car / motorbike","de":"Pkw / Motorrad","ar":"سيارة / دراجة نارية"},{"en":"50","de":"50","ar":"50"},{"en":"100","de":"100","ar":"100"},{"en":"100","de":"100","ar":"100"},{"en":"<b>none</b> (130*)","de":"<b>frei</b> (130*)","ar":"<b>بدون حد</b> (130*)"}],
+    [{"en":"Car + trailer","de":"Pkw + Anhänger","ar":"سيارة + مقطورة"},{"en":"50","de":"50","ar":"50"},{"en":"80","de":"80","ar":"80"},{"en":"80","de":"80","ar":"80"},{"en":"80 / 100**","de":"80 / 100**","ar":"80 / 100**"}],
+    [{"en":"Truck ≤ 7.5 t","de":"Lkw ≤ 7,5 t","ar":"شاحنة ≤ 7.5 ط"},{"en":"50","de":"50","ar":"50"},{"en":"80","de":"80","ar":"80"},{"en":"80","de":"80","ar":"80"},{"en":"80","de":"80","ar":"80"}],
+    [{"en":"Truck > 7.5 t / bus","de":"Lkw > 7,5 t / Bus","ar":"شاحنة > 7.5 ط / حافلة"},{"en":"50","de":"50","ar":"50"},{"en":"60 / 80","de":"60 / 80","ar":"60 / 80"},{"en":"60 / 80","de":"60 / 80","ar":"60 / 80"},{"en":"80 (100***)","de":"80 (100***)","ar":"80 (100***)"}],
+    [{"en":"Moped / S-Pedelec","de":"Moped / S-Pedelec","ar":"موبيد / S-Pedelec"},{"en":"45","de":"45","ar":"45"},{"en":"45","de":"45","ar":"45"},{"en":"—","de":"—","ar":"—"},{"en":"—","de":"—","ar":"—"}]
   ],
   "note":{
-    "e":"*130 = advisory — crashing far above it can mean shared liability. **100 with trailer approval. ***Coaches with approval. Signed limits always override this table.",
-    "d":"*130 = Richtgeschwindigkeit — deutlich schneller = mögliche Mithaftung. **100 mit Zulassung. ***Reisebusse mit Zulassung. Schilder gehen immer vor.",
-    "a":"*130 = سرعة موصى بها — السير بسرعة أعلى بكثير قد يعني مسؤولية مشتركة. **100 مع الموافقة. ***حافلات سياحية مع الموافقة. اللافتات تتقدم دائماً على هذا الجدول."
+    "en":"*130 = advisory — crashing far above it can mean shared liability. **100 with trailer approval. ***Coaches with approval. Signed limits always override this table.",
+    "de":"*130 = Richtgeschwindigkeit — deutlich schneller = mögliche Mithaftung. **100 mit Zulassung. ***Reisebusse mit Zulassung. Schilder gehen immer vor.",
+    "ar":"*130 = سرعة موصى بها — السير بسرعة أعلى بكثير قد يعني مسؤولية مشتركة. **100 مع الموافقة. ***حافلات سياحية مع الموافقة. اللافتات تتقدم دائماً على هذا الجدول."
   }
 }
