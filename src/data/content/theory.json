@@ -11,36 +11,42 @@
     {"en":"Solid lines or no-overtaking signs.","de":"Durchgezogene Linie oder Verbotsschild.","ar":"الخطوط المتواصلة أو علامات حظر التجاوز."},
     {"en":"Always pass <b>left</b>, with clear speed difference.","de":"Immer <b>links</b>, mit genug Tempodifferenz.","ar":"التجاوز دائماً من <b>اليسار</b>، مع فارق سرعة كافٍ."}]},
   {"icon":"🧠","h":{"en":"Alcohol, drugs & fitness","de":"Alkohol, Drogen & Fahrtüchtigkeit","ar":"الكحول والمخدرات والأهلية للقيادة"},"items":[
-    {"en":"0.5‰ general · 0.0‰ under 21/Probezeit · drugs zero.","de":"0,5‰ allgemein · 0,0‰ U21/Probezeit · Drogen null.","ar":"0.5‰ عام · 0.0‰ تحت 21/فترة التجربة · المخدرات صفر."},
+    {"en":"0.5‰ general · 0.0‰ under 21/Probezeit · THC 3.5 ng/ml · other drugs zero.","de":"0,5‰ allgemein · 0,0‰ U21/Probezeit · THC 3,5 ng/ml · andere Drogen null.","ar":"0.5‰ عام · 0.0‰ تحت 21/فترة التجربة · THC 3.5 نانوغرام/مل · المخدرات الأخرى صفر."},
     {"en":"Tiredness: break every ~2 h.","de":"Müdigkeit: Pause alle ~2 h.","ar":"التعب: استراحة كل ~ساعتين."},
     {"en":"Some medicines impair — read the leaflet.","de":"Medikamente können beeinträchtigen — Beipackzettel.","ar":"بعض الأدوية تضعف القدرة — اقرأ النشرة."}]},
   {"icon":"🛣️","h":{"en":"Motorway rules","de":"Autobahnregeln","ar":"قواعد الأوتوستراد"},"items":[
     {"en":"Join via acceleration lane at traffic speed.","de":"Über Beschleunigungsstreifen mit Verkehrstempo.","ar":"الانضمام عبر مسار التسارع بسرعة حركة المرور."},
     {"en":"No stopping, reversing, U-turns.","de":"Kein Halten, Rückwärtsfahren, Wenden.","ar":"لا توقف، لا رجوع، لا استدارة."},
     {"en":"Hard shoulder = emergencies only.","de":"Standstreifen = nur Notfall.","ar":"الرصيف الجانبي = حالات الطوارئ فقط."},
-    {"en":"Rettungsgasse: left lane left, others right.","de":"Rettungsgasse: linke Spur links, alle anderen rechts.","ar":"ممر الإنقاذ: المسار الأيسر يسار، الباقون يمين."}]},
+    {"en":"Rettungsgasse: left lane left, others right — also out of town on 2+ lanes each way.","de":"Rettungsgasse: linke Spur links, alle anderen rechts — auch außerorts ab zwei Spuren je Richtung.","ar":"ممر الإنقاذ: المسار الأيسر يسار، الباقون يمين — وأيضاً خارج المدن على مسارين فأكثر لكل اتجاه."}]},
   {"icon":"🌧️","h":{"en":"Bad weather","de":"Schlechtwetter","ar":"الطقس السيئ"},"items":[
     {"en":"<b>Aquaplaning:</b> off the gas, no hard braking/steering.","de":"<b>Aquaplaning:</b> Gas weg, nicht stark bremsen/lenken.","ar":"<b>الانزلاق المائي:</b> ارفع قدمك عن الغاز، لا فرملة أو توجيه مفاجئ."},
-    {"en":"<b>Fog &lt;50 m:</b> max 50, dipped + rear fog light.","de":"<b>Nebel &lt;50 m:</b> max 50, Abblend- + Nebelschlusslicht.","ar":"<b>ضباب أقل من 50 م:</b> أقصى 50، ضوء خافت + ضوء ضباب خلفي."},
+    {"en":"<b>Visibility &lt;50 m</b> (fog, snow or rain): max 50 km/h. Rear fog light only in fog.","de":"<b>Sicht &lt;50 m</b> (Nebel, Schneefall oder Regen): max 50 km/h. Nebelschlussleuchte nur bei Nebel.","ar":"<b>الرؤية أقل من 50 م</b> (ضباب أو ثلج أو مطر): أقصى سرعة 50 كم/ساعة. ضوء الضباب الخلفي عند الضباب فقط."},
     {"en":"<b>Ice/snow:</b> gentle inputs, huge distance, winter tyres.","de":"<b>Eis/Schnee:</b> sanft, viel Abstand, Winterreifen.","ar":"<b>الجليد/الثلج:</b> حركات هادئة، مسافة كبيرة، إطارات شتوية."},
-    {"en":"<b>Tunnel:</b> dipped beam, keep distance.","de":"<b>Tunnel:</b> Abblendlicht, Abstand.","ar":"<b>الأنفاق:</b> ضوء خافت، حافظ على المسافة."}]},
+    {"en":"<b>Tunnel:</b> dipped beam, keep distance.","de":"<b>Tunnel:</b> Abblendlicht, Abstand.","ar":"<b>الأنفاق:</b> ضوء خافت، حافظ على المسافة."},
+    {"en":"<b>Before driving in snow:</b> clear all windows and the number plates, not just a peephole.","de":"<b>Vor der Fahrt bei Schnee:</b> alle Scheiben und die Kennzeichen frei machen, kein Guckloch.","ar":"<b>قبل القيادة في الثلج:</b> نظّف كل النوافذ ولوحات الأرقام، وليس فتحة صغيرة فقط."}]},
   {"icon":"🚲","h":{"en":"Vulnerable road users","de":"Schwächere Verkehrsteilnehmer","ar":"مستخدمو الطريق الأكثر ضعفاً"},"items":[
-    {"en":"Passing cyclists: <b>1.5 m</b> in town, <b>2 m</b> outside.","de":"Radfahrer überholen: <b>1,5 m</b> innerorts, <b>2 m</b> außerorts.","ar":"عند تجاوز الدراجات: <b>1.5 م</b> داخل المدن، <b>2 م</b> خارجها."},
+    {"en":"Passing bikes, e-scooters or people on foot: <b>1.5 m</b> in town, <b>2 m</b> outside.","de":"Rad, E-Scooter oder zu Fuß Gehende überholen: <b>1,5 m</b> innerorts, <b>2 m</b> außerorts.","ar":"عند تجاوز الدراجات أو السكوترات الكهربائية أو المشاة: <b>1.5 م</b> داخل المدن، <b>2 م</b> خارجها."},
     {"en":"Kids and elderly near schools and stops.","de":"Kinder und Ältere an Schulen/Haltestellen.","ar":"الأطفال والمسنون قرب المدارس والمحطات."},
     {"en":"Blind-spot check for bikes before turning right.","de":"Schulterblick auf Räder vor dem Rechtsabbiegen.","ar":"تحقق من الزاوية العمياء للدراجات قبل الانعطاف يميناً."}]},
   {"icon":"🅿️","h":{"en":"No stopping/parking where…","de":"Halte-/Parkverbote","ar":"ممنوع التوقف/الركن عند..."},"items":[
-    {"en":"Within 5 m of junctions or crossings.","de":"5 m vor Kreuzung oder Überweg.","ar":"ضمن 5 م من التقاطعات أو الممرات."},
+    {"en":"Parking: <b>5 m</b> each side of a junction; <b>8 m</b> where a cycle path runs on the right.","de":"Parken: <b>5 m</b> vor und hinter Kreuzungen; <b>8 m</b>, wenn rechts ein Radweg verläuft.","ar":"الركن: <b>5 م</b> على جانبي التقاطع؛ <b>8 م</b> حيث يوجد مسار دراجات على اليمين."},
+    {"en":"Stopping: on a pedestrian crossing and <b>5 m</b> before it.","de":"Halten: auf dem Fußgängerüberweg und <b>5 m</b> davor verboten.","ar":"التوقف: ممنوع على ممر المشاة و<b>5 م</b> قبله."},
     {"en":"Bus stops (15 m), cycle lanes, left side (two-way).","de":"Haltestellen (15 m), Radwege, links (Zweirichtung).","ar":"محطات الحافلات (15 م)، مسارات الدراجات، الجانب الأيسر (ذو اتجاهين)."},
     {"en":"Narrow spots, blocking sightlines or others.","de":"Engstellen, Sicht oder andere blockieren.","ar":"الأماكن الضيقة، حجب خطوط الرؤية أو عرقلة الآخرين."}]},
+  {"icon":"🚦","h":{"en":"Green arrow (Grünpfeil)","de":"Grünpfeil","ar":"السهم الأخضر (Grünpfeil)"},"items":[
+    {"en":"Green arrow <b>sign</b> beside the red light: come to a <b>full stop</b> first, then turn right if clear.","de":"<b>Grünpfeil-Schild</b> neben dem Rotlicht: erst <b>vollständig anhalten</b>, dann rechts abbiegen, wenn frei.","ar":"<b>لوحة</b> السهم الأخضر بجانب الضوء الأحمر: <b>توقف تماماً</b> أولاً، ثم انعطف يميناً إذا كان الطريق خالياً."},
+    {"en":"A <b>lit</b> green arrow signal is different — that one just means go.","de":"Ein <b>leuchtender</b> grüner Pfeil ist etwas anderes — der bedeutet einfach freie Fahrt.","ar":"السهم الأخضر <b>المضاء</b> شيء آخر — هذا يعني ببساطة أن الطريق مفتوح."}]},
   {"icon":"💡","h":{"en":"Lighting, complete","de":"Licht, komplett","ar":"الإضاءة، كاملة"},"items":[
     {"en":"<b>DRL</b> is not enough in rain/fog/tunnel — dipped beam on.","de":"<b>Tagfahrlicht</b> reicht bei Regen/Nebel/Tunnel nicht — Abblendlicht.","ar":"<b>ضوء النهار</b> لا يكفي في المطر/الضباب/الأنفاق — شغّل الضوء الخافت."},
     {"en":"<b>Front fog lights</b> only in clearly poor visibility.","de":"<b>Nebelscheinwerfer</b> nur bei deutlich schlechter Sicht.","ar":"<b>أضواء الضباب الأمامية</b> فقط عند رؤية سيئة بوضوح."},
     {"en":"Night parking on unlit roads: side lights on.","de":"Nachts auf unbeleuchteter Straße: Parklicht.","ar":"الركن ليلاً في طرق غير مضاءة: أضواء جانبية."},
     {"en":"<b>Hazards:</b> jam end, breakdown, towing — not double-parking.","de":"<b>Warnblinker:</b> Stauende, Panne, Abschleppen — nicht Falschparken.","ar":"<b>الإشارة التحذيرية:</b> نهاية ازدحام، عطل، قطر — ليس ركناً مزدوجاً."}]},
   {"icon":"📦","h":{"en":"Loads & trailers","de":"Ladung & Anhänger","ar":"الأحمال والمقطورات"},"items":[
-    {"en":"Overhang back: <b>1.5 m</b> (3 m short trips); mark beyond 1 m (red flag / light at night).","de":"Überstand hinten: <b>1,5 m</b> (3 m kurz); ab 1 m markieren (rote Fahne / nachts Licht).","ar":"البروز خلفاً: <b>1.5 م</b> (3 م رحلات قصيرة)؛ علّم ما يتجاوز 1 م (علم أحمر / ضوء ليلاً)."},
+    {"en":"Overhang back: <b>1.5 m</b> (3 m on trips up to 100 km); mark beyond 1 m (red flag / light at night).","de":"Überstand hinten: <b>1,5 m</b> (3 m bei Fahrten bis 100 km); ab 1 m markieren (rote Fahne / nachts Licht).","ar":"البروز خلفاً: <b>1.5 م</b> (3 م في الرحلات حتى 100 كم)؛ علّم ما يتجاوز 1 م (علم أحمر / ضوء ليلاً)."},
     {"en":"Secure every load — loose items become projectiles.","de":"Ladung sichern — lose Teile werden Geschosse.","ar":"أحكم ربط كل الحمولة — الأجزاء المتحركة تصبح قذائف."},
-    {"en":"Trailer: coupling, breakaway cable, lights, mirrors.","de":"Anhänger: Kupplung, Abreißseil, Licht, Spiegel.","ar":"المقطورة: وصلة الاقتران، كابل الطوارئ، الأضواء، المرايا."}]},
+    {"en":"Trailer: coupling, breakaway cable, lights, mirrors.","de":"Anhänger: Kupplung, Abreißseil, Licht, Spiegel.","ar":"المقطورة: وصلة الاقتران، كابل الطوارئ، الأضواء، المرايا."}],
+    "tip":{"en":"Hook: mark at <b>1</b>, hang to <b>1.5</b>, stretch to <b>3</b> only under 100 km.","de":"Merksatz: ab <b>1</b> markieren, bis <b>1,5</b> überstehen, <b>3</b> nur unter 100 km.","ar":"للحفظ: علّم عند <b>1</b>، ابرز حتى <b>1.5</b>، ومدّد إلى <b>3</b> فقط تحت 100 كم."}},
   {"icon":"🛞","h":{"en":"Tyres & checks","de":"Reifen & Kontrolle","ar":"الإطارات والفحوصات"},"items":[
     {"en":"Minimum tread <b>1.6 mm</b> (better 3/4 mm summer/winter).","de":"Mindestprofil <b>1,6 mm</b> (besser 3/4 mm Sommer/Winter).","ar":"الحد الأدنى للتشقق <b>1.6 مم</b> (أفضل 3/4 مم صيفي/شتوي)."},
     {"en":"Winter tyres (Alpine symbol) in wintry conditions — situational.","de":"Winterreifen (Alpine-Symbol) bei winterlichen Verhältnissen — situativ.","ar":"إطارات شتوية (رمز ألبي) في الأحوال الجوية الشتوية — حسب الموقف."},

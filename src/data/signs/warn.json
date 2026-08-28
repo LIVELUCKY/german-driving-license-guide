@@ -125,10 +125,10 @@
     "stvo": "123",
     "en": "Construction site ahead.",
     "de": "Baustelle voraus.",
-    "tipEn": "Fines are doubled inside active construction zones.",
-    "tipDe": "Bußgelder innerhalb der Baustelle verdoppelt.",
+    "tipEn": "The lanes here are narrower than normal, not just slower. Fold your mirrors into the gap and hold the lane.",
+    "tipDe": "Die Spuren sind hier nicht nur langsamer, sondern schmaler als sonst. Spiegel im Blick behalten und die Spur halten.",
     "ar": "موقع بناء قادم.",
-    "tipAr": "الغرامات تُضاعف داخل مواقع البناء."
+    "tipAr": "المسارات هنا ليست أبطأ فحسب بل أضيق من المعتاد. راقب المرايا وحافظ على مسارك."
   },
   {
     "cat": "warn",
@@ -151,10 +151,10 @@
     "stvo": "120",
     "en": "Carriageway gets narrower (both sides).",
     "de": "Fahrbahn wird enger (beidseitig).",
-    "tipEn": "The vehicle with more room usually goes first.",
-    "tipDe": "Das Fahrzeug mit mehr Platz fährt meistens zuerst.",
-    "ar": "الطريق يضيق — تنبه للمركبات القادمة.",
-    "tipAr": "من له الامتداد الأكبر عادةً له الأولوية في المرور."
+    "tipEn": "The sign gives nobody priority. If you have to pull out to the left, let oncoming traffic through first.",
+    "tipDe": "Das Zeichen regelt keine Vorfahrt. Wer nach links ausscheren muss, lässt den Gegenverkehr zuerst durch.",
+    "ar": "الطريق يضيق من الجانبين.",
+    "tipAr": "الإشارة لا تمنح أحداً أولوية. من يضطر للانحراف يساراً يترك المركبات القادمة تمر أولاً."
   },
   {
     "cat": "warn",
@@ -195,19 +195,6 @@
     "tipDe": "Langsam hinauf = oben am Gefälle gut vorbereitet sein.",
     "tipAr": "تسلّق ببطء = تصل القمة مستعداً للهبوط.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><polygon points=\"40,7 76,69 4,69\" fill=\"#fff\" stroke=\"#d92f2f\" stroke-width=\"5.5\" stroke-linejoin=\"round\"/><path d=\"M24 60 L56 38\" stroke=\"#111\" stroke-width=\"5\"/><text x=\"40\" y=\"32\" font-size=\"13\" font-weight=\"800\" fill=\"#111\" text-anchor=\"middle\">10%</text></svg>"
-  },
-  {
-    "cat": "warn",
-    "kw": "bahnubergang level crossing zug train schranke",
-    "nameDe": "Bahnübergang",
-    "nameEn": "Level crossing",
-    "stvo": "150",
-    "en": "Railway crossing with barriers ahead.",
-    "de": "Beschrankter Bahnübergang.",
-    "tipEn": "A train needs 1 km to stop. It cannot avoid you.",
-    "tipDe": "Ein Zug braucht 1 km zum Bremsen. Er kann nicht ausweichen.",
-    "ar": "معبر سككي بحواجز — توقف إذا أومضت الأضواء.",
-    "tipAr": "احتسب: القطار يحتاج 1 كم للتوقف — لا مجال للمجازفة."
   },
   {
     "cat": "warn",
@@ -253,7 +240,7 @@
     "kw": "steinschlag falling rocks felsen",
     "nameDe": "Steinschlag",
     "nameEn": "Falling rocks",
-    "stvo": "115",
+    "stvo": "101-25",
     "en": "Rocks may be on the road — watch the surface.",
     "de": "Steine können auf der Fahrbahn liegen.",
     "tipEn": "Don't swerve hard — slow, steer carefully around debris.",
@@ -266,7 +253,7 @@
     "kw": "schnee eisglatte ice snow glaette",
     "nameDe": "Schnee- oder Eisglätte",
     "nameEn": "Snow / ice",
-    "stvo": "113",
+    "stvo": "101-51",
     "en": "Icy stretch likely (bridges freeze first).",
     "de": "Glättegefahr (Brücken frieren zuerst).",
     "tipEn": "Ice: stopping distance up to 10× longer. Huge gap.",
@@ -290,16 +277,16 @@
   },
   {
     "cat": "warn",
-    "kw": "bahnubergang ohne schranken unbeschrankt train no barrier",
-    "nameDe": "Bahnübergang ohne Schranken",
-    "nameEn": "Crossing, no barriers",
+    "kw": "bahnubergang ohne schranken unbeschrankt train no barrier schranken barriers gates level crossing bahnuebergang",
+    "nameDe": "Bahnübergang",
+    "nameEn": "Level crossing",
     "stvo": "151",
-    "en": "Unguarded rail crossing — look and listen yourself.",
-    "de": "Unbeschrankt — selbst schauen und hören.",
-    "tipEn": "No signals here. Slow, look both ways, listen.",
-    "tipDe": "Keine Ampel. Langsam, beide Seiten schauen, hören.",
-    "ar": "معبر سككي بلا حواجز — أنت من يراقب ويسمع.",
-    "tipAr": "تباطأ، انظر، استمع — لا إشارة ضوئية تحميك."
+    "en": "Level crossing ahead. It may or may not have barriers.",
+    "de": "Bahnübergang voraus, mit oder ohne Schranken.",
+    "tipEn": "The train always has priority. Where there are no barriers or lights, you do the looking and listening yourself.",
+    "tipDe": "Der Zug hat immer Vorrang. Ohne Schranken oder Lichtzeichen musst du selbst schauen und hören.",
+    "ar": "معبر سكة حديد أمامك، قد يكون بحواجز أو بدونها.",
+    "tipAr": "للقطار الأولوية دائماً. وحيث لا توجد حواجز أو إشارات، عليك أنت أن تنظر وتستمع."
   },
   {
     "cat": "warn",

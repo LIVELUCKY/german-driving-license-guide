@@ -7,10 +7,10 @@
     "stvo": "330.1",
     "en": "Motorway rules: cars only, no stopping, min ~60 km/h capable.",
     "de": "Autobahnregeln: nur Kfz, kein Halten, mind. ~60 km/h.",
-    "tipEn": "No bikes, no pedestrians, no hard shoulder stopping unless emergency.",
-    "tipDe": "Kein Fahrrad, kein Fußgänger, kein Halten außer Notfall.",
+    "tipEn": "Sealed off end to end. Nobody may set foot on it and you can only leave at a signed exit.",
+    "tipDe": "Vollständig abgeriegelt. Niemand darf sie betreten, und verlassen kannst du sie nur an einer ausgeschilderten Ausfahrt.",
     "ar": "أوتوستراد — سيارات فقط، لا توقف، لا أقل من ~60 كم/ساعة.",
-    "tipAr": "لا دراجات، لا مشاة، لا وقوف — ولا حد أقصى للسرعة إلا بإشارة."
+    "tipAr": "مغلق بالكامل من طرف إلى طرف. لا يجوز لأحد أن يطأه، ولا تخرج منه إلا عند مخرج مُعلَّم."
   },
   {
     "cat": "info",
@@ -33,10 +33,10 @@
     "stvo": "331.1",
     "en": "For motor vehicles only; motorway-like rules.",
     "de": "Nur für Kfz; ähnliche Regeln wie Autobahn.",
-    "tipEn": "Similar to motorway: no cyclists, no pedestrians.",
-    "tipDe": "Ähnlich Autobahn: keine Radfahrer, keine Fußgänger.",
+    "tipEn": "Motorway rules but not a sealed road. It can have ordinary junctions, you may leave at any of them, and people on foot may cross there.",
+    "tipDe": "Autobahnregeln, aber keine abgeriegelte Straße. Sie kann normale Kreuzungen haben, an jeder darfst du abfahren, und dort dürfen Fußgänger sie überqueren.",
     "ar": "للمركبات الآلية فقط — قواعد مشابهة للأوتوستراد.",
-    "tipAr": "لا دراجات، لا مشاة — مثل الأوتوستراد تقريباً."
+    "tipAr": "قواعد الأوتوستراد لكنه ليس طريقاً مغلقاً. قد تكون فيه تقاطعات عادية، ويجوز الخروج عند أي منها، وهناك يجوز للمشاة عبوره."
   },
   {
     "cat": "info",
@@ -285,9 +285,9 @@
     "en": "Tunnel ahead — dipped headlights on, no U-turn, no stop.",
     "de": "Tunnel voraus — Abblendlicht an, kein Wenden, kein Halten.",
     "ar": "نفق قادم — أضواء قريبة إلزامية، لا انعطاف، لا توقف.",
-    "tipEn": "Radio to Channel 9 for traffic info inside long tunnels.",
-    "tipDe": "Im Tunnel: UKW-Kanal 9 für Verkehrsinfo einschalten.",
-    "tipAr": "في الأنفاق الطويلة: اضبط الراديو على التردد 9 لمعلومات المرور.",
+    "tipEn": "Dipped headlights on before you enter, and no U-turn and no stopping inside. If traffic halts, leave a gap so the rescue lane stays open.",
+    "tipDe": "Vor der Einfahrt Abblendlicht an, drinnen kein Wenden und kein Halten. Bei Stau Abstand lassen, damit die Rettungsgasse frei bleibt.",
+    "tipAr": "أضئ الأضواء المنخفضة قبل الدخول، وممنوع الاستدارة أو التوقف بالداخل. وعند الازدحام اترك فجوة لتبقى ممرات الطوارئ مفتوحة.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"12\" width=\"56\" height=\"56\" rx=\"5\" fill=\"#1565d8\"/><path d=\"M18 58 V38 Q18 20 40 20 Q62 20 62 38 V58 Z\" fill=\"#fff\"/><rect x=\"26\" y=\"44\" width=\"12\" height=\"14\" rx=\"2\" fill=\"#1565d8\"/><rect x=\"42\" y=\"44\" width=\"12\" height=\"14\" rx=\"2\" fill=\"#1565d8\"/><circle cx=\"27\" cy=\"34\" r=\"3\" fill=\"#f5b50a\"/><circle cx=\"53\" cy=\"34\" r=\"3\" fill=\"#f5b50a\"/></svg>"
   }
 ]

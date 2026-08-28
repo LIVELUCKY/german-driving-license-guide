@@ -79,19 +79,6 @@
   },
   {
     "cat": "supp",
-    "kw": "anfang ende start end pfeil hoch runter",
-    "nameDe": "Anfang / Ende",
-    "nameEn": "Start / end arrows",
-    "stvo": "1004-50",
-    "en": "Arrow up = restriction starts; arrow down = it ends (parking signs).",
-    "de": "Pfeil hoch = Beginn; Pfeil runter = Ende (bei Parkschildern).",
-    "tipEn": "Used with parking signs to mark start/end of restricted zone.",
-    "tipDe": "Bei Parkschildern: Anfang/Ende des eingeschränkten Bereichs.",
-    "ar": "سهم لأعلى = بداية القيد؛ سهم لأسفل = نهايته.",
-    "tipAr": "يستخدم مع إشارات الانتظار لتحديد بداية/نهاية المنطقة."
-  },
-  {
-    "cat": "supp",
     "kw": "rollstuhl behinderte disabled wheelchair",
     "nameDe": "Nur Schwerbehinderte",
     "nameEn": "Disabled only",
@@ -114,7 +101,8 @@
     "tipEn": "Take the ticket before leaving — it starts immediately.",
     "tipDe": "Parkschein sofort lösen — gilt ab Ausgabe.",
     "ar": "الانتظار فقط بتذكرة من الآلة.",
-    "tipAr": "خذ التذكرة قبل المغادرة — انتهت صلاحيتها فور الإصدار."
+    "tipAr": "خذ التذكرة قبل المغادرة — تبدأ صلاحيتها فور الإصدار.",
+    "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"8\" y=\"24\" width=\"64\" height=\"32\" fill=\"#fff\" stroke=\"#17171b\" stroke-width=\"4\"/><rect x=\"30\" y=\"33\" width=\"20\" height=\"15\" rx=\"2\" fill=\"#17171b\"/><rect x=\"34\" y=\"37\" width=\"12\" height=\"2\" fill=\"#fff\"/><rect x=\"34\" y=\"41\" width=\"8\" height=\"2\" fill=\"#fff\"/></svg>"
   },
   {
     "cat": "supp",
@@ -122,11 +110,11 @@
     "nameDe": "Anhänger",
     "nameEn": "Trailers",
     "stvo": "1010-12",
-    "en": "The sign above applies to trailers.",
-    "de": "Das Schild gilt für Anhänger.",
-    "tipEn": "The trailer itself is subject to the sign above.",
-    "tipDe": "Der Anhänger selbst unterliegt dem Schild oben.",
-    "ar": "الإشارة أعلاه تنطبق على المقطورات.",
-    "tipAr": "المقطورة معنية بالإشارة أعلاه — ليس جرارها فقط."
+    "en": "Marks parking spaces where a trailer may stay parked longer than two weeks.",
+    "de": "Kennzeichnet Parkflächen, auf denen Anhänger länger als zwei Wochen parken dürfen.",
+    "tipEn": "A trailer parked without its towing vehicle normally has to move within two weeks. On these spaces it may stay.",
+    "tipDe": "Ein Anhänger ohne Zugfahrzeug muss sonst nach zwei Wochen weg. Auf diesen Flächen darf er stehen bleiben.",
+    "ar": "يحدد مواقف يجوز فيها ترك المقطورة أكثر من أسبوعين.",
+    "tipAr": "المقطورة المتروكة بلا مركبة ساحبة يجب نقلها خلال أسبوعين عادةً. في هذه المواقف يجوز بقاؤها."
   }
 ]

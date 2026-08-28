@@ -72,10 +72,10 @@
     "stvo": "283",
     "en": "You may not stop here at all.",
     "de": "Hier darfst du gar nicht halten.",
-    "tipEn": "Red X on blue = absolutely no stopping, even for seconds.",
-    "tipDe": "Rotes X auf Blau = absolut kein Halten.",
+    "tipEn": "Count the stripes: two means you may not even pause. One stripe is 286, where three minutes is fine.",
+    "tipDe": "Streifen zählen: zwei heißt, du darfst nicht einmal kurz stehen. Ein Streifen ist 286, dort sind drei Minuten in Ordnung.",
     "ar": "لا يجوز التوقف هنا إطلاقاً.",
-    "tipAr": "X أحمر على أزرق = لا توقف ولو لثانية."
+    "tipAr": "عُدّ الشرائط: شريطان يعنيان أنه لا يجوز لك التوقف ولو للحظة. أما شريط واحد فهو الإشارة 286 حيث تُقبل ثلاث دقائق."
   },
   {
     "cat": "prohibit",
@@ -83,25 +83,25 @@
     "nameDe": "Eingeschränktes Halteverbot",
     "nameEn": "No parking",
     "stvo": "286",
-    "en": "No parking; brief stop to load/unload is ok.",
-    "de": "Parken verboten; kurzes Halten zum Be-/Entladen erlaubt.",
+    "en": "No parking. You may hold up to three minutes, and longer only while people get in or out or you load or unload.",
+    "de": "Parken verboten. Halten bis zu drei Minuten erlaubt, länger nur zum Ein- und Aussteigen oder Be- und Entladen.",
     "tipEn": "One stripe = no parking. Two stripes = no stopping at all.",
     "tipDe": "Ein Streifen = kein Parken. Zwei Streifen = kein Halten.",
-    "ar": "لا ركن؛ توقف قصير للتحميل/التفريغ مسموح.",
+    "ar": "ممنوع الركن. يجوز التوقف حتى ثلاث دقائق، وأطول من ذلك فقط لصعود الركاب ونزولهم أو للتحميل والتفريغ.",
     "tipAr": "شريط واحد = لا ركن؛ شريطان = لا توقف على الإطلاق."
   },
   {
     "cat": "prohibit",
-    "kw": "verbot kraftfahrzeuge no motor cars auto",
-    "nameDe": "Verbot für Kraftfahrzeuge",
-    "nameEn": "No motor cars",
+    "kw": "verbot kraftfahrzeuge no motor cars auto kraftwagen mehrspurig multi-track",
+    "nameDe": "Verbot für Kraftwagen",
+    "nameEn": "No cars",
     "stvo": "251",
-    "en": "Cars and motorbikes not allowed.",
-    "de": "Pkw und Krafträder verboten.",
-    "tipEn": "Car inside red circle = that vehicle type is banned.",
-    "tipDe": "Auto im roten Ring = dieses Fahrzeug ist verboten.",
-    "ar": "السيارات والدراجات النارية ممنوعة.",
-    "tipAr": "سيارة في دائرة حمراء = ممنوع."
+    "en": "No cars, vans or lorries. It covers multi-track motor vehicles only.",
+    "de": "Keine Pkw, Transporter oder Lkw. Das Verbot gilt nur für mehrspurige Kraftfahrzeuge.",
+    "tipEn": "A solo motorcycle is single-track, so this sign does not stop it. Zeichen 260 is the one that bans motorcycles too.",
+    "tipDe": "Ein einspuriges Kraftrad ist nicht mehrspurig, dieses Zeichen hält es also nicht auf. Zeichen 260 verbietet auch Krafträder.",
+    "ar": "ممنوع مرور السيارات والشاحنات. المنع يشمل المركبات الآلية متعددة المسارات فقط.",
+    "tipAr": "الدراجة النارية أحادية المسار غير مشمولة بهذه الإشارة. الإشارة 260 هي التي تمنع الدراجات النارية أيضاً."
   },
   {
     "cat": "prohibit",
@@ -109,12 +109,12 @@
     "nameDe": "Verbot für LKW",
     "nameEn": "No trucks",
     "stvo": "253",
-    "en": "Goods vehicles over the limit are banned.",
-    "de": "Lkw über dem Limit verboten.",
-    "tipEn": "Check total vehicle weight, not just the load.",
-    "tipDe": "Gesamtgewicht prüfen, nicht nur die Ladung.",
-    "ar": "الشاحنات التجارية فوق الحد ممنوعة.",
-    "tipAr": "حقق من وزن الشاحنة الإجمالي — ليس الحمولة فقط."
+    "en": "No motor vehicles over 3.5 t permitted total mass, trailers included. Cars and buses are exempt.",
+    "de": "Verbot für Kraftfahrzeuge über 3,5 t zulässiger Gesamtmasse, einschließlich Anhänger. Pkw und Kraftomnibusse sind ausgenommen.",
+    "tipEn": "What counts is the permitted total mass in the vehicle papers, not what you are carrying. Trailers count towards it.",
+    "tipDe": "Entscheidend ist die zulässige Gesamtmasse im Fahrzeugschein, nicht die Ladung. Anhänger zählen mit.",
+    "ar": "ممنوع مرور المركبات الآلية التي يتجاوز وزنها الإجمالي المسموح به 3.5 طن، بما في ذلك مقطوراتها. السيارات والحافلات مستثناة.",
+    "tipAr": "المعيار هو الوزن الإجمالي المسموح به في أوراق المركبة وليس الحمولة. والمقطورات محسوبة ضمنه."
   },
   {
     "cat": "prohibit",

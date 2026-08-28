@@ -1,52 +1,411 @@
 [
-  {"icon":"🚗","h":{"en":"Speed limits","de":"Tempolimits","ar":"حدود السرعة"},"kv":[
-    {"l":{"en":"In town","de":"Innerorts","ar":"داخل المدن"},"v":{"en":"50 km/h","de":"50 km/h","ar":"50 كم/ساعة"}},
-    {"l":{"en":"Out of town","de":"Außerorts","ar":"خارج المدن"},"v":{"en":"100 km/h","de":"100 km/h","ar":"100 كم/ساعة"}},
-    {"l":{"en":"Motorway","de":"Autobahn","ar":"الأوتوستراد"},"v":{"en":"none*","de":"keins*","ar":"لا حد*"}},
-    {"l":{"en":"30-zone / schools","de":"30er-Zone / Schulen","ar":"منطقة 30 / المدارس"},"v":{"en":"30 km/h","de":"30 km/h","ar":"30 كم/ساعة"}}],
-    "note":{"en":"*Advisory 130 km/h. Play streets = walking pace. Towing: 80.","de":"*Richtgeschwindigkeit 130. Spielstraße = Schrittgeschwindigkeit. Mit Anhänger: 80.","ar":"*سرعة موصى بها 130 كم/ساعة. شارع اللعب = سرعة المشي. مع مقطورة: 80."}},
-  {"icon":"🍺","h":{"en":"Alcohol & drugs","de":"Alkohol & Drogen","ar":"الكحول والمخدرات"},"kv":[
-    {"l":{"en":"General limit","de":"Allgemein","ar":"الحد العام"},"v":{"en":"0.5 ‰","de":"0,5 ‰","ar":"0.5 ‰"}},
-    {"l":{"en":"Under 21 / Probezeit","de":"Unter 21 / Probezeit","ar":"تحت 21 / فترة التجربة"},"v":{"en":"0.0 ‰","de":"0,0 ‰","ar":"0.0 ‰"}},
-    {"l":{"en":"Illegal drugs","de":"Illegale Drogen","ar":"المخدرات غير القانونية"},"v":{"en":"zero","de":"null","ar":"صفر"}}],
-    "items":[{"en":"From <b>0.3‰</b> you can be punished if you drive unsafely or crash.","de":"Ab <b>0,3‰</b> bei Auffälligkeit oder Unfall strafbar.","ar":"من <b>0.3‰</b> يمكن معاقبتك إذا قدت بشكل غير آمن أو تسببت في حادث."}]},
-  {"icon":"↔️","h":{"en":"Right before left","de":"Rechts vor links","ar":"اليمين قبل اليسار"},"items":[
-    {"en":"No signs or lights at the junction? Traffic from your <b>right</b> goes first.","de":"Keine Schilder/Ampel? Verkehr von <b>rechts</b> hat Vorfahrt.","ar":"لا علامات أو إشارات عند التقاطع؟ المركبات القادمة من <b>يمينك</b> لها الأولوية."},
-    {"en":"Signs, lights and police <b>override</b> this default.","de":"Schilder, Ampel und Polizei <b>heben</b> die Regel auf.","ar":"العلامات والإشارات والشرطة <b>تلغي</b> هذه القاعدة."},
-    {"en":"Turning left? Yield to oncoming traffic.","de":"Links abbiegen? Gegenverkehr hat Vorrang.","ar":"انعطاف يسار؟ أعطِ الأولوية للمركبات القادمة."}]},
-  {"icon":"📏","h":{"en":"Distance & overtaking","de":"Abstand & Überholen","ar":"المسافة والتجاوز"},"items":[
-    {"en":"Safe gap ≈ <b>half your speedometer</b> in metres (100 km/h → 50 m).","de":"Abstand ≈ <b>halber Tacho</b> in Metern (100 km/h → 50 m).","ar":"المسافة الآمنة ≈ <b>نصف قراءة العداد</b> بالأمتار (100 كم/ساعة → 50 م)."},
-    {"en":"In town: about a <b>2-second</b> gap.","de":"Innerorts: etwa <b>2 Sekunden</b>.","ar":"داخل المدن: نحو <b>ثانيتين</b>."},
-    {"en":"Overtake on the <b>left</b> only.","de":"Nur <b>links</b> überholen.","ar":"تجاوز من <b>اليسار</b> فقط."}]},
-  {"icon":"💡","h":{"en":"Lights","de":"Licht","ar":"الأضواء"},"items":[
-    {"en":"<b>Dipped beam</b> in tunnels, fog, rain & snow.","de":"<b>Abblendlicht</b> in Tunnel, Nebel, Regen & Schnee.","ar":"<b>الضوء الخافت</b> في الأنفاق والضباب والمطر والثلج."},
-    {"en":"<b>Rear fog light</b> only when visibility &lt; 50 m.","de":"<b>Nebelschlussleuchte</b> nur bei Sicht &lt; 50 m.","ar":"<b>ضوء الضباب الخلفي</b> فقط عند الرؤية أقل من 50 م."},
-    {"en":"No <b>full beam</b> with oncoming traffic.","de":"Kein <b>Fernlicht</b> bei Gegenverkehr.","ar":"لا <b>ضوء بعيد</b> مع مركبات قادمة."}]},
-  {"icon":"🛟","h":{"en":"Belts, phone & kids","de":"Gurt, Handy & Kinder","ar":"الأحزمة والهاتف والأطفال"},"items":[
-    {"en":"<b>Seatbelt</b> mandatory in every seat.","de":"<b>Anschnallpflicht</b> auf allen Sitzen.","ar":"<b>حزام الأمان</b> إلزامي في كل مقعد."},
-    {"en":"Phone <b>hands-free only</b>.","de":"Handy nur <b>per Freisprech</b>.","ar":"الهاتف <b>بسماعة فقط</b>."},
-    {"en":"Child seat until <b>12 yrs or 150 cm</b>.","de":"Kindersitz bis <b>12 Jahre oder 150 cm</b>.","ar":"مقعد الطفل حتى <b>12 عاماً أو 150 سم</b>."}]},
-  {"icon":"🆘","h":{"en":"Emergencies","de":"Notfälle","ar":"حالات الطوارئ"},"kv":[
-    {"l":{"en":"Emergency (EU)","de":"Notruf (EU)","ar":"طوارئ (أوروبا)"},"v":{"en":"112","de":"112","ar":"112"}},
-    {"l":{"en":"Police","de":"Polizei","ar":"الشرطة"},"v":{"en":"110","de":"110","ar":"110"}}],
-    "items":[
-      {"en":"Carry <b>triangle, vest, first-aid kit</b>.","de":"<b>Warndreieck, Weste, Verbandkasten</b> mitführen.","ar":"احمل <b>مثلث التحذير والسترة العاكسة وحقيبة الإسعافات الأولية</b>."},
-      {"en":"In a jam, form the <b>Rettungsgasse</b> immediately.","de":"Im Stau sofort <b>Rettungsgasse</b> bilden.","ar":"في الازدحام، أنشئ <b>ممر الإنقاذ</b> فوراً."}]},
-  {"icon":"🅿️","h":{"en":"Parking & stopping","de":"Parken & Halten","ar":"ركن السيارة والتوقف"},"items":[
-    {"en":"<b>Halten</b> = brief stop. <b>Parken</b> = leave / &gt;3 min.","de":"<b>Halten</b> = kurz. <b>Parken</b> = verlassen / &gt;3 Min.","ar":"<b>Halten</b> = توقف قصير. <b>Parken</b> = ترك السيارة / أكثر من 3 دقائق."},
-    {"en":"Park on the <b>right, with traffic flow</b>.","de":"<b>Rechts, in Fahrtrichtung</b> parken.","ar":"اركن على <b>اليمين، مع اتجاه حركة المرور</b>."},
-    {"en":"Keep <b>5 m</b> from corners & crossings.","de":"<b>5 m</b> Abstand zu Ecken & Überwegen.","ar":"حافظ على مسافة <b>5 م</b> من الزوايا والتقاطعات."}]},
-  {"icon":"🔄","h":{"en":"Roundabout","de":"Kreisverkehr","ar":"الدوار"},"items":[
-    {"en":"Traffic <b>inside</b> has priority.","de":"Verkehr <b>im Kreis</b> hat Vorfahrt.","ar":"المركبات <b>داخل</b> الدوار لها الأولوية."},
-    {"en":"<b>No indicator</b> entering; <b>indicate right</b> leaving.","de":"<b>Kein Blinken</b> rein; <b>rechts blinken</b> raus.","ar":"<b>لا إشارة</b> عند الدخول؛ <b>أشر يميناً</b> عند الخروج."}]},
-  {"icon":"🟢","h":{"en":"Environmental badge","de":"Umweltplakette","ar":"الشارة البيئية"},"items":[
-    {"en":"Most cities are a <b>green-badge</b> zone (Umweltzone).","de":"Viele Städte sind <b>grüne</b> Umweltzone.","ar":"معظم المدن تطبق منطقة <b>الشارة الخضراء</b> (Umweltzone)."},
-    {"en":"No valid badge in the zone = fine.","de":"Ohne Plakette in der Zone = Bußgeld.","ar":"بدون شارة صالحة في المنطقة = غرامة."}]},
-  {"icon":"🚓","h":{"en":"Emergency vehicles","de":"Einsatzfahrzeuge","ar":"مركبات الطوارئ"},"items":[
-    {"en":"<b>Blue light + siren</b>: pull right, make way.","de":"<b>Blaulicht + Horn</b>: rechts ran, Platz machen.","ar":"<b>ضوء أزرق + صفارة</b>: انسحب يميناً وأفسح الطريق."},
-    {"en":"Bus leaving a stop with indicator: let it out.","de":"Bus mit Blinker an der Haltestelle: rauslassen.","ar":"حافلة تغادر المحطة بإشارة: دعها تخرج."}]},
-  {"icon":"🪪","h":{"en":"Probezeit","de":"Probezeit","ar":"فترة التجربة"},"items":[
-    {"en":"Lasts <b>2 years</b> from the first licence.","de":"<b>2 Jahre</b> ab dem ersten Führerschein.","ar":"تستمر <b>سنتين</b> من أول رخصة."},
-    {"en":"<b>0.0‰</b> alcohol, any age.","de":"<b>0,0‰</b> Alkohol, jedes Alter.","ar":"<b>0.0‰</b> كحول، لأي عمر."},
-    {"en":"Serious offence → extension + course.","de":"Schwerer Verstoß → Verlängerung + Seminar.","ar":"مخالفة خطيرة → تمديد + دورة."}]}
+  {
+    "icon": "🚗",
+    "h": {
+      "en": "Speed limits",
+      "de": "Tempolimits",
+      "ar": "حدود السرعة"
+    },
+    "kv": [
+      {
+        "l": {
+          "en": "In town",
+          "de": "Innerorts",
+          "ar": "داخل المدن"
+        },
+        "v": {
+          "en": "50 km/h",
+          "de": "50 km/h",
+          "ar": "50 كم/ساعة"
+        }
+      },
+      {
+        "l": {
+          "en": "Out of town",
+          "de": "Außerorts",
+          "ar": "خارج المدن"
+        },
+        "v": {
+          "en": "100 km/h",
+          "de": "100 km/h",
+          "ar": "100 كم/ساعة"
+        }
+      },
+      {
+        "l": {
+          "en": "Motorway",
+          "de": "Autobahn",
+          "ar": "الأوتوستراد"
+        },
+        "v": {
+          "en": "none*",
+          "de": "keins*",
+          "ar": "لا حد*"
+        }
+      },
+      {
+        "l": {
+          "en": "30-zone / schools",
+          "de": "30er-Zone / Schulen",
+          "ar": "منطقة 30 / المدارس"
+        },
+        "v": {
+          "en": "30 km/h",
+          "de": "30 km/h",
+          "ar": "30 كم/ساعة"
+        }
+      }
+    ],
+    "note": {
+      "en": "*Advisory 130 km/h. Play streets = walking pace. Towing: 80.",
+      "de": "*Richtgeschwindigkeit 130. Spielstraße = Schrittgeschwindigkeit. Mit Anhänger: 80.",
+      "ar": "*سرعة موصى بها 130 كم/ساعة. شارع اللعب = سرعة المشي. مع مقطورة: 80."
+    }
+  },
+  {
+    "icon": "🍺",
+    "h": {
+      "en": "Alcohol & drugs",
+      "de": "Alkohol & Drogen",
+      "ar": "الكحول والمخدرات"
+    },
+    "kv": [
+      {
+        "l": {
+          "en": "General limit",
+          "de": "Allgemein",
+          "ar": "الحد العام"
+        },
+        "v": {
+          "en": "0.5 ‰",
+          "de": "0,5 ‰",
+          "ar": "0.5 ‰"
+        }
+      },
+      {
+        "l": {
+          "en": "Under 21 / Probezeit",
+          "de": "Unter 21 / Probezeit",
+          "ar": "تحت 21 / فترة التجربة"
+        },
+        "v": {
+          "en": "0.0 ‰",
+          "de": "0,0 ‰",
+          "ar": "0.0 ‰"
+        }
+      },
+      {
+        "l": {
+          "en": "Cannabis (THC)",
+          "de": "Cannabis (THC)",
+          "ar": "القنب (THC)"
+        },
+        "v": {
+          "en": "3.5 ng/ml",
+          "de": "3,5 ng/ml",
+          "ar": "3.5 نانوغرام/مل"
+        }
+      },
+      {
+        "l": {
+          "en": "Other illegal drugs",
+          "de": "Andere illegale Drogen",
+          "ar": "مخدرات أخرى غير قانونية"
+        },
+        "v": {
+          "en": "zero",
+          "de": "null",
+          "ar": "صفر"
+        }
+      }
+    ],
+    "items": [
+      {
+        "en": "From <b>0.3‰</b> you can be punished if you drive unsafely or crash.",
+        "de": "Ab <b>0,3‰</b> bei Auffälligkeit oder Unfall strafbar.",
+        "ar": "من <b>0.3‰</b> يمكن معاقبتك إذا قدت بشكل غير آمن أو تسببت في حادث."
+      }
+    ],
+    "note": {
+      "en": "Hook: <b>0.0</b> if you're new, <b>0.3</b> if it goes wrong, <b>0.5</b> always.",
+      "de": "Merksatz: <b>0,0</b> wenn du neu bist, <b>0,3</b> wenn etwas passiert, <b>0,5</b> immer.",
+      "ar": "للحفظ: <b>0.0</b> إذا كنت جديداً، <b>0.3</b> إذا حدث شيء، <b>0.5</b> دائماً."
+    }
+  },
+  {
+    "icon": "↔️",
+    "h": {
+      "en": "Right before left",
+      "de": "Rechts vor links",
+      "ar": "اليمين قبل اليسار"
+    },
+    "items": [
+      {
+        "en": "No signs or lights at the junction? Traffic from your <b>right</b> goes first.",
+        "de": "Keine Schilder/Ampel? Verkehr von <b>rechts</b> hat Vorfahrt.",
+        "ar": "لا علامات أو إشارات عند التقاطع؟ المركبات القادمة من <b>يمينك</b> لها الأولوية."
+      },
+      {
+        "en": "Signs, lights and police <b>override</b> this default.",
+        "de": "Schilder, Ampel und Polizei <b>heben</b> die Regel auf.",
+        "ar": "العلامات والإشارات والشرطة <b>تلغي</b> هذه القاعدة."
+      },
+      {
+        "en": "Turning left? Yield to oncoming traffic.",
+        "de": "Links abbiegen? Gegenverkehr hat Vorrang.",
+        "ar": "انعطاف يسار؟ أعطِ الأولوية للمركبات القادمة."
+      },
+      {
+        "en": "Out of a <b>driveway, field track or living street</b>? Yield to everyone.",
+        "de": "Aus <b>Grundstück, Feldweg oder verkehrsberuhigtem Bereich</b>? Allen Vorrang lassen.",
+        "ar": "خارجاً من <b>مدخل عقار أو طريق زراعي أو منطقة مهدّأة المرور</b>؟ أعطِ الأولوية للجميع."
+      }
+    ],
+    "note": {
+      "en": "Hook: <b>Police beats lights, lights beat signs, signs beat right-before-left.</b> And: whoever has a free right-hand side goes first.",
+      "de": "Merksatz: <b>Polizei schlägt Ampel, Ampel schlägt Schild, Schild schlägt rechts vor links.</b> Und: wer rechts frei hat, fährt zuerst.",
+      "ar": "للحفظ: <b>الشرطة تتقدم على الإشارة الضوئية، والإشارة تتقدم على اللافتة، واللافتة تتقدم على قاعدة اليمين قبل اليسار.</b> ومن كان جانبه الأيمن خالياً يمرّ أولاً."
+    }
+  },
+  {
+    "icon": "📏",
+    "h": {
+      "en": "Distance & overtaking",
+      "de": "Abstand & Überholen",
+      "ar": "المسافة والتجاوز"
+    },
+    "items": [
+      {
+        "en": "Safe gap ≈ <b>half your speedometer</b> in metres (100 km/h → 50 m).",
+        "de": "Abstand ≈ <b>halber Tacho</b> in Metern (100 km/h → 50 m).",
+        "ar": "المسافة الآمنة ≈ <b>نصف قراءة العداد</b> بالأمتار (100 كم/ساعة → 50 م)."
+      },
+      {
+        "en": "In town: about a <b>2-second</b> gap.",
+        "de": "Innerorts: etwa <b>2 Sekunden</b>.",
+        "ar": "داخل المدن: نحو <b>ثانيتين</b>."
+      },
+      {
+        "en": "Overtake on the <b>left</b> only.",
+        "de": "Nur <b>links</b> überholen.",
+        "ar": "تجاوز من <b>اليسار</b> فقط."
+      }
+    ]
+  },
+  {
+    "icon": "💡",
+    "h": {
+      "en": "Lights",
+      "de": "Licht",
+      "ar": "الأضواء"
+    },
+    "items": [
+      {
+        "en": "<b>Dipped beam</b> in tunnels, fog, rain & snow.",
+        "de": "<b>Abblendlicht</b> in Tunnel, Nebel, Regen & Schnee.",
+        "ar": "<b>الضوء الخافت</b> في الأنفاق والضباب والمطر والثلج."
+      },
+      {
+        "en": "<b>Rear fog light</b> only in <b>fog</b> under 50 m — not in rain or snow.",
+        "de": "<b>Nebelschlussleuchte</b> nur bei <b>Nebel</b> unter 50 m — nicht bei Regen oder Schnee.",
+        "ar": "<b>ضوء الضباب الخلفي</b> فقط عند <b>الضباب</b> ورؤية أقل من 50 م — لا في المطر أو الثلج."
+      },
+      {
+        "en": "No <b>full beam</b> with oncoming traffic.",
+        "de": "Kein <b>Fernlicht</b> bei Gegenverkehr.",
+        "ar": "لا <b>ضوء بعيد</b> مع مركبات قادمة."
+      }
+    ]
+  },
+  {
+    "icon": "🛟",
+    "h": {
+      "en": "Belts, phone & kids",
+      "de": "Gurt, Handy & Kinder",
+      "ar": "الأحزمة والهاتف والأطفال"
+    },
+    "items": [
+      {
+        "en": "<b>Seatbelt</b> mandatory in every seat.",
+        "de": "<b>Anschnallpflicht</b> auf allen Sitzen.",
+        "ar": "<b>حزام الأمان</b> إلزامي في كل مقعد."
+      },
+      {
+        "en": "Phone <b>hands-free only</b> — picking it up at a red light needs the engine <b>fully off</b>.",
+        "de": "Handy nur <b>per Freisprech</b> — an der Ampel in die Hand nehmen nur bei <b>ganz ausgeschaltetem</b> Motor.",
+        "ar": "الهاتف <b>بسماعة فقط</b> — التقاطه عند الإشارة الحمراء يتطلب إطفاء المحرك <b>تماماً</b>."
+      },
+      {
+        "en": "Child seat until <b>12 yrs or 150 cm</b>.",
+        "de": "Kindersitz bis <b>12 Jahre oder 150 cm</b>.",
+        "ar": "مقعد الطفل حتى <b>12 عاماً أو 150 سم</b>."
+      }
+    ]
+  },
+  {
+    "icon": "🆘",
+    "h": {
+      "en": "Emergencies",
+      "de": "Notfälle",
+      "ar": "حالات الطوارئ"
+    },
+    "kv": [
+      {
+        "l": {
+          "en": "Emergency (EU)",
+          "de": "Notruf (EU)",
+          "ar": "طوارئ (أوروبا)"
+        },
+        "v": {
+          "en": "112",
+          "de": "112",
+          "ar": "112"
+        }
+      },
+      {
+        "l": {
+          "en": "Police",
+          "de": "Polizei",
+          "ar": "الشرطة"
+        },
+        "v": {
+          "en": "110",
+          "de": "110",
+          "ar": "110"
+        }
+      }
+    ],
+    "items": [
+      {
+        "en": "Carry <b>triangle, vest, first-aid kit</b>.",
+        "de": "<b>Warndreieck, Weste, Verbandkasten</b> mitführen.",
+        "ar": "احمل <b>مثلث التحذير والسترة العاكسة وحقيبة الإسعافات الأولية</b>."
+      },
+      {
+        "en": "Always carry your <b>licence</b> and the <b>Zulassungsbescheinigung Teil I</b>.",
+        "de": "Immer <b>Führerschein</b> und <b>Zulassungsbescheinigung Teil I</b> dabeihaben.",
+        "ar": "احمل دائماً <b>رخصة القيادة</b> و<b>Zulassungsbescheinigung Teil I</b>."
+      },
+      {
+        "en": "In a jam, form the <b>Rettungsgasse</b> immediately.",
+        "de": "Im Stau sofort <b>Rettungsgasse</b> bilden.",
+        "ar": "في الازدحام، أنشئ <b>ممر الإنقاذ</b> فوراً."
+      }
+    ]
+  },
+  {
+    "icon": "🅿️",
+    "h": {
+      "en": "Parking & stopping",
+      "de": "Parken & Halten",
+      "ar": "ركن السيارة والتوقف"
+    },
+    "items": [
+      {
+        "en": "<b>Halten</b> = brief stop. <b>Parken</b> = leave / &gt;3 min.",
+        "de": "<b>Halten</b> = kurz. <b>Parken</b> = verlassen / &gt;3 Min.",
+        "ar": "<b>Halten</b> = توقف قصير. <b>Parken</b> = ترك السيارة / أكثر من 3 دقائق."
+      },
+      {
+        "en": "Park on the <b>right, with traffic flow</b>.",
+        "de": "<b>Rechts, in Fahrtrichtung</b> parken.",
+        "ar": "اركن على <b>اليمين، مع اتجاه حركة المرور</b>."
+      },
+      {
+        "en": "No parking <b>5 m</b> each side of a junction — <b>8 m</b> where a cycle path runs on the right.",
+        "de": "Parkverbot <b>5 m</b> vor und hinter Kreuzungen — <b>8 m</b>, wenn rechts ein Radweg verläuft.",
+        "ar": "ممنوع الركن <b>5 م</b> على جانبي التقاطع — <b>8 م</b> حيث يوجد مسار دراجات على اليمين."
+      }
+    ],
+    "note": {
+      "en": "Hook: <b>5</b> at a junction, <b>8</b> if a cycle path, <b>15</b> at a bus stop.",
+      "de": "Merksatz: <b>5</b> an der Kreuzung, <b>8</b> mit Radweg, <b>15</b> an der Haltestelle.",
+      "ar": "للحفظ: <b>5</b> عند التقاطع، <b>8</b> مع مسار دراجات، <b>15</b> عند محطة الحافلات."
+    }
+  },
+  {
+    "icon": "🔄",
+    "h": {
+      "en": "Roundabout",
+      "de": "Kreisverkehr",
+      "ar": "الدوار"
+    },
+    "items": [
+      {
+        "en": "Traffic <b>inside</b> has priority.",
+        "de": "Verkehr <b>im Kreis</b> hat Vorfahrt.",
+        "ar": "المركبات <b>داخل</b> الدوار لها الأولوية."
+      },
+      {
+        "en": "<b>No indicator</b> entering; <b>indicate right</b> leaving.",
+        "de": "<b>Kein Blinken</b> rein; <b>rechts blinken</b> raus.",
+        "ar": "<b>لا إشارة</b> عند الدخول؛ <b>أشر يميناً</b> عند الخروج."
+      }
+    ]
+  },
+  {
+    "icon": "🟢",
+    "h": {
+      "en": "Environmental badge",
+      "de": "Umweltplakette",
+      "ar": "الشارة البيئية"
+    },
+    "items": [
+      {
+        "en": "Most cities are a <b>green-badge</b> zone (Umweltzone).",
+        "de": "Viele Städte sind <b>grüne</b> Umweltzone.",
+        "ar": "معظم المدن تطبق منطقة <b>الشارة الخضراء</b> (Umweltzone)."
+      },
+      {
+        "en": "No valid badge in the zone = fine.",
+        "de": "Ohne Plakette in der Zone = Bußgeld.",
+        "ar": "بدون شارة صالحة في المنطقة = غرامة."
+      }
+    ]
+  },
+  {
+    "icon": "🚓",
+    "h": {
+      "en": "Emergency vehicles",
+      "de": "Einsatzfahrzeuge",
+      "ar": "مركبات الطوارئ"
+    },
+    "items": [
+      {
+        "en": "<b>Blue light + siren</b>: pull right, make way.",
+        "de": "<b>Blaulicht + Horn</b>: rechts ran, Platz machen.",
+        "ar": "<b>ضوء أزرق + صفارة</b>: انسحب يميناً وأفسح الطريق."
+      },
+      {
+        "en": "Bus leaving a stop with indicator: let it out.",
+        "de": "Bus mit Blinker an der Haltestelle: rauslassen.",
+        "ar": "حافلة تغادر المحطة بإشارة: دعها تخرج."
+      }
+    ]
+  },
+  {
+    "icon": "🪪",
+    "h": {
+      "en": "Probezeit",
+      "de": "Probezeit",
+      "ar": "فترة التجربة"
+    },
+    "items": [
+      {
+        "en": "Lasts <b>2 years</b> from the first licence.",
+        "de": "<b>2 Jahre</b> ab dem ersten Führerschein.",
+        "ar": "تستمر <b>سنتين</b> من أول رخصة."
+      },
+      {
+        "en": "<b>0.0‰</b> alcohol and no cannabis, any age.",
+        "de": "<b>0,0‰</b> Alkohol und kein Cannabis, jedes Alter.",
+        "ar": "<b>0.0‰</b> كحول ولا قنب، لأي عمر."
+      },
+      {
+        "en": "Serious offence → extension + course.",
+        "de": "Schwerer Verstoß → Verlängerung + Seminar.",
+        "ar": "مخالفة خطيرة → تمديد + دورة."
+      }
+    ]
+  }
 ]

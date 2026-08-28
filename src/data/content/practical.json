@@ -1,46 +1,552 @@
 [
-  {"icon":"🪑","h":{"en":"Cockpit check before moving","de":"Cockpit-Check vor der Fahrt","ar":"فحص الكابينة قبل التحرك"},"items":[
-    {"en":"<b>Seat:</b> pedals fully reachable, wrists on the wheel.","de":"<b>Sitz:</b> Pedale durchtreten, Handgelenke aufs Lenkrad.","ar":"<b>المقعد:</b> الدواسات في متناول القدم، المعصمان على المقود."},
-    {"en":"<b>Head restraint</b> level with the top of your head.","de":"<b>Kopfstütze</b> auf Kopfhöhe.","ar":"<b>مسند الرأس</b> على مستوى رأسك."},
-    {"en":"<b>Mirrors</b> + <b>belt</b>, doors closed, then start.","de":"<b>Spiegel</b> + <b>Gurt</b>, Türen zu, dann starten.","ar":"<b>المرايا</b> + <b>الحزام</b>، الأبواب مغلقة، ثم ابدأ."}]},
-  {"icon":"👁️","h":{"en":"The golden habit","de":"Die goldene Routine","ar":"العادة الذهبية"},"chain":[
-    {"en":"Mirror","de":"Spiegel","ar":"المرآة"},{"en":"Blind spot","de":"Schulterblick","ar":"الزاوية العمياء"},{"en":"Signal","de":"Blinken","ar":"الإشارة"},{"en":"Go","de":"Fahren","ar":"التحرك"}],
-    "note":{"en":"Do the Schulterblick before every pull-away, lane change and turn. Examiners watch for the head movement.","de":"Schulterblick vor jedem Anfahren, Spurwechsel, Abbiegen. Der Prüfer achtet auf die Kopfbewegung.","ar":"أجرِ فحص الزاوية العمياء قبل كل انطلاق، تغيير مسار، وانعطاف. المراقب يراقب حركة الرأس."}},
-  {"icon":"↪️","h":{"en":"The 8 steps of every turn","de":"Die 8 Schritte beim Abbiegen","ar":"الخطوات الـ8 لكل انعطاف"},"items":[
-    {"en":"<b>1</b> Mirrors · <b>2</b> Signal · <b>3</b> Position.","de":"<b>1</b> Spiegel · <b>2</b> Blinken · <b>3</b> Einordnen.","ar":"<b>1</b> المرايا · <b>2</b> الإشارة · <b>3</b> التموضع."},
-    {"en":"<b>4</b> Slow & gear down · <b>5</b> Yield · <b>6</b> <b>Second look</b> (right turn: bikes!).","de":"<b>4</b> Tempo raus · <b>5</b> Vorfahrt beachten · <b>6</b> <b>Zweiter Blick</b> (rechts: Räder!).","ar":"<b>4</b> أبطئ وانزل تروساً · <b>5</b> أعطِ الأولوية · <b>6</b> <b>نظرة ثانية</b> (يمين: الدراجات!)."},
-    {"en":"<b>7</b> Pedestrians on the target road · <b>8</b> tight right / wide left arc.","de":"<b>7</b> Fußgänger der Zielstraße · <b>8</b> eng rechts / weit links.","ar":"<b>7</b> المشاة في الشارع المستهدف · <b>8</b> قوس ضيق يميناً / واسع يساراً."}]},
-  {"icon":"🅿️","h":{"en":"Parallel parking","de":"Längsparken","ar":"الركن الطولي"},"items":[
-    {"en":"Signal, pull level with the front car, ~50 cm gap.","de":"Blinken, neben das vordere Auto, ~50 cm Abstand.","ar":"أشر، اصطفّ بجانب السيارة الأمامية، فجوة ~50 سم."},
-    {"en":"Reverse to bumper level → full lock to kerb.","de":"Rückwärts bis Stoßstangenhöhe → voll einschlagen.","ar":"اتجه بالعكس حتى مستوى المصدّ → وجّه بالكامل نحو الرصيف."},
-    {"en":"At ~45°, rear car's headlight in your mirror → counter-steer.","de":"Bei ~45°, Scheinwerfer im Spiegel → gegenlenken.","ar":"عند ~45°، ضوء السيارة الخلفية في مرآتك → وجّه عكسياً."},
-    {"en":"Straighten, centre. Constant all-round looks.","de":"Gerade stellen, mittig. Ständiger Rundumblick.","ar":"استقِم، وتمركز. مراقبة مستمرة من جميع الاتجاهات."}]},
-  {"icon":"🔁","h":{"en":"Other test maneuvers","de":"Weitere Prüfmanöver","ar":"مناورات الاختبار الأخرى"},"items":[
-    {"en":"<b>Reverse bay parking:</b> walking pace, 360° observation, correcting is fine.","de":"<b>Rückwärts quer einparken:</b> Schritttempo, Rundumblick, Korrigieren ok.","ar":"<b>الركن العكسي العرضي:</b> سرعة المشي، مراقبة 360°، التصحيح مسموح."},
-    {"en":"<b>3-point turn:</b> kerb to kerb, full locks, look through the rear window.","de":"<b>Wenden in 3 Zügen:</b> Bordstein zu Bordstein, Volleinschlag, Blick durchs Heckfenster.","ar":"<b>الدوران بـ3 حركات:</b> رصيف إلى رصيف، توجيه كامل، انظر من نافذة الخلف."},
-    {"en":"<b>Emergency stop:</b> brake hard to standstill, clutch just before.","de":"<b>Gefahrbremsung:</b> voll bremsen, Kupplung kurz vor Stillstand.","ar":"<b>التوقف الطارئ:</b> اكبح بقوة حتى التوقف، اضغط القابض قبله مباشرة."},
-    {"en":"<b>Hill start:</b> handbrake, biting point, gas, release.","de":"<b>Berganfahren:</b> Handbremse, Schleifpunkt, Gas, lösen.","ar":"<b>الانطلاق في المنحدر:</b> فرامل اليد، نقطة الالتقاء، الغاز، حرر."}]},
-  {"icon":"🔧","h":{"en":"Abfahrkontrolle questions","de":"Abfahrkontrolle","ar":"أسئلة فحص ما قبل القيادة"},"items":[
-    {"en":"<b>Lights:</b> name & operate all of them, brake light check.","de":"<b>Licht:</b> alle benennen & bedienen, Bremslicht prüfen.","ar":"<b>الأضواء:</b> سمّها وشغّلها جميعاً، فحص ضوء الفرامل."},
-    {"en":"<b>Tyres:</b> tread 1.6 mm, pressure, damage, where values are listed.","de":"<b>Reifen:</b> Profil 1,6 mm, Druck, Schäden, wo Werte stehen.","ar":"<b>الإطارات:</b> تشقق 1.6 مم، ضغط، أضرار، أين تجد القيم."},
-    {"en":"<b>Fluids:</b> oil, coolant, washer, brake fluid under the bonnet.","de":"<b>Flüssigkeiten:</b> Öl, Kühlmittel, Wischwasser, Bremsflüssigkeit.","ar":"<b>السوائل:</b> زيت، سائل تبريد، ماء رشاش الزجاج، سائل الفرامل تحت الغطاء."},
-    {"en":"<b>Other:</b> horn, wipers, warning lamps, triangle/vest/first-aid location.","de":"<b>Sonstiges:</b> Hupe, Wischer, Kontrollleuchten, Dreieck/Weste/Verbandkasten.","ar":"<b>أخرى:</b> الزمور، الماسحات، مصابيح التحذير، موقع المثلث/السترة/حقيبة الإسعاف."}]},
-  {"icon":"🛣️","h":{"en":"Junctions, roundabout, autobahn","de":"Kreuzung, Kreisel, Autobahn","ar":"التقاطعات والدوار والأوتوستراد"},"items":[
-    {"en":"Approach junctions ready to stop; cover the brake.","de":"Bremsbereit an Kreuzungen.","ar":"اقترب من التقاطعات مستعداً للتوقف؛ غطِّ الفرامل."},
-    {"en":"Keep right; left lane = overtaking only.","de":"Rechts fahren; links nur überholen.","ar":"الزم اليمين؛ المسار الأيسر = للتجاوز فقط."},
-    {"en":"Autobahn: match speed, mirror + blind spot, merge smoothly.","de":"Autobahn: Tempo angleichen, Spiegel + Schulterblick, sauber einfädeln.","ar":"أوتوستراد: طابق السرعة، مرآة + زاوية عمياء، ادمج بسلاسة."}]},
-  {"icon":"⚠️","h":{"en":"Top fail reasons","de":"Häufigste Durchfallgründe","ar":"أبرز أسباب الرسوب"},"items":[
-    {"en":"Skipped blind-spot checks.","de":"Schulterblick vergessen.","ar":"إغفال فحص الزاوية العمياء."},
-    {"en":"Rolling over a STOP line.","de":"STOP überrollt.","ar":"التجاوز فوق خط التوقف."},
-    {"en":"Right-of-way mistakes.","de":"Vorfahrtsfehler.","ar":"أخطاء في قواعد الأولوية."},
-    {"en":"Too fast in 30-zones; not signalling; tailgating.","de":"Zu schnell in 30er-Zonen; nicht geblinkt; zu dichtes Auffahren.","ar":"سرعة زائدة في مناطق 30؛ عدم الإشارة؛ السير قريباً من المركبة الأمامية."}]},
-  {"icon":"📝","h":{"en":"How the exam runs","de":"So läuft die Prüfung","ar":"كيف يجري الاختبار"},"items":[
-    {"en":"~55 min total, ~25 min driving (class B); examiner + instructor on board.","de":"~55 Min, ~25 Min Fahrt (Klasse B); Prüfer + Fahrlehrer dabei.","ar":"~55 دقيقة إجمالاً، ~25 دقيقة قيادة (فئة B)؛ مراقب + مدرب على متن السيارة."},
-    {"en":"Abfahrkontrolle, 2–3 maneuvers, town + country + usually autobahn.","de":"Abfahrkontrolle, 2–3 Manöver, Stadt + Land + meist Autobahn.","ar":"فحص ما قبل القيادة، 2–3 مناورات، مدينة + طريق + عادةً أوتوستراد."},
-    {"en":"Instant fail: endangering, red light, ignored right of way, intervention.","de":"Sofort durch: Gefährdung, Rotlicht, Vorfahrt missachtet, Eingriff.","ar":"رسوب فوري: التسبب في خطر، ضوء أحمر، تجاهل الأولوية، تدخل المراقب."},
-    {"en":"Announcing your actions (\"letting the cyclist pass\") shows awareness.","de":"Ansagen („ich lasse den Radfahrer durch\") zeigt Übersicht.","ar":"الإعلان عن أفعالك («أترك الدراج يمر») يُظهر الوعي."}]},
-  {"icon":"😌","h":{"en":"On the day","de":"Am Prüfungstag","ar":"في يوم الاختبار"},"items":[
-    {"en":"Drive deliberately; show your checks visibly.","de":"Bewusst fahren; Kontrollen sichtbar zeigen.","ar":"قُد بتأنٍّ؛ أظهر فحوصاتك بوضوح."},
-    {"en":"One small mistake rarely fails you — keep driving safely.","de":"Ein kleiner Fehler heißt selten durchgefallen — sicher weiterfahren.","ar":"خطأ صغير واحد نادراً ما يؤدي للرسوب — واصل القيادة بأمان."},
-    {"en":"If unsure, take the safe option.","de":"Im Zweifel die sichere Option.","ar":"في حال الشك، اختر الخيار الأكثر أماناً."}]}
+  {
+    "icon": "🪑",
+    "h": {
+      "en": "Cockpit check before moving",
+      "de": "Cockpit-Check vor der Fahrt",
+      "ar": "فحص الكابينة قبل التحرك"
+    },
+    "items": [
+      {
+        "en": "<b>Seat:</b> pedals fully reachable, wrists on the wheel.",
+        "de": "<b>Sitz:</b> Pedale durchtreten, Handgelenke aufs Lenkrad.",
+        "ar": "<b>المقعد:</b> الدواسات في متناول القدم، المعصمان على المقود."
+      },
+      {
+        "en": "<b>Head restraint</b> level with the top of your head.",
+        "de": "<b>Kopfstütze</b> auf Kopfhöhe.",
+        "ar": "<b>مسند الرأس</b> على مستوى رأسك."
+      },
+      {
+        "en": "<b>Mirrors</b> + <b>belt</b>, doors closed, then start.",
+        "de": "<b>Spiegel</b> + <b>Gurt</b>, Türen zu, dann starten.",
+        "ar": "<b>المرايا</b> + <b>الحزام</b>، الأبواب مغلقة، ثم ابدأ."
+      }
+    ]
+  },
+  {
+    "icon": "👁️",
+    "h": {
+      "en": "The golden habit",
+      "de": "Die goldene Routine",
+      "ar": "العادة الذهبية"
+    },
+    "chain": [
+      {
+        "en": "Mirror",
+        "de": "Spiegel",
+        "ar": "المرآة"
+      },
+      {
+        "en": "Blind spot",
+        "de": "Schulterblick",
+        "ar": "الزاوية العمياء"
+      },
+      {
+        "en": "Signal",
+        "de": "Blinken",
+        "ar": "الإشارة"
+      },
+      {
+        "en": "Go",
+        "de": "Fahren",
+        "ar": "التحرك"
+      }
+    ],
+    "note": {
+      "en": "Do the Schulterblick before every pull-away, lane change and turn. Skip it and the examiner marks it even when the road was empty — they score the check, not the outcome.",
+      "de": "Schulterblick vor jedem Anfahren, Spurwechsel und Abbiegen. Fehlt er, wird er angestrichen, auch wenn die Straße leer war — bewertet wird die Kontrolle, nicht das Ergebnis.",
+      "ar": "نظرة الكتف قبل كل انطلاق وتغيير مسار وانعطاف. إن أهملتها سجّلها الفاحص حتى لو كان الطريق خالياً — فهو يقيّم الفحص لا النتيجة."
+    }
+  },
+  {
+    "icon": "👀",
+    "h": {
+      "en": "Schulterblick — how, and what goes wrong without it",
+      "de": "Schulterblick — wie, und was ohne ihn passiert",
+      "ar": "نظرة الكتف — كيف، وماذا يحدث بدونها"
+    },
+    "items": [
+      {
+        "en": "<b>How:</b> turn your <b>head</b> about 45° over the shoulder on the side you are moving to. Eyes alone do not count.",
+        "de": "<b>Wie:</b> den <b>Kopf</b> etwa 45° über die Schulter drehen, zu der Seite, auf die du willst. Nur mit den Augen zählt nicht.",
+        "ar": "<b>كيف:</b> أدر <b>رأسك</b> نحو 45° فوق الكتف في الجهة التي ستتحرك نحوها. تحريك العينين وحده لا يكفي."
+      },
+      {
+        "en": "<b>What the mirror misses:</b> a car or bike sitting exactly beside your rear wing is in no mirror at all. That gap is the whole reason the head turn exists.",
+        "de": "<b>Was der Spiegel nicht zeigt:</b> ein Auto oder Rad genau neben dem Heck steht in keinem Spiegel. Genau diese Lücke schließt der Schulterblick.",
+        "ar": "<b>ما لا تُظهره المرآة:</b> سيارة أو دراجة تقف تماماً بجانب مؤخرة سيارتك لا تظهر في أي مرآة. هذه الفجوة هي سبب وجود نظرة الكتف."
+      },
+      {
+        "en": "<b>The classic crash:</b> turning right across a cyclist who is going straight on your right. They have priority. Look right <b>again</b> just before you turn, not only on approach.",
+        "de": "<b>Der Klassiker:</b> rechts abbiegen über einen geradeaus fahrenden Radfahrer. Der hat Vorrang. Kurz vor dem Abbiegen <b>noch einmal</b> rechts schauen, nicht nur bei der Annäherung.",
+        "ar": "<b>الحادث الكلاسيكي:</b> الانعطاف يميناً فوق دراجة تسير مستقيمة على يمينك. لها الأولوية. انظر يميناً <b>مرة أخرى</b> قبل الانعطاف مباشرة، لا عند الاقتراب فقط."
+      },
+      {
+        "en": "<b>When:</b> before moving off, before every lane change, before turning, and before you open the door.",
+        "de": "<b>Wann:</b> vor dem Anfahren, vor jedem Spurwechsel, vor dem Abbiegen und vor dem Türöffnen.",
+        "ar": "<b>متى:</b> قبل الانطلاق، وقبل كل تغيير مسار، وقبل الانعطاف، وقبل فتح الباب."
+      },
+      {
+        "en": "<b>Timing:</b> too early and the road changes before you move; too late and you are already moving. Look, then act, straight after.",
+        "de": "<b>Timing:</b> zu früh, und die Lage ändert sich noch; zu spät, und du fährst schon. Erst schauen, dann direkt handeln.",
+        "ar": "<b>التوقيت:</b> مبكراً جداً فتتغير الحال قبل أن تتحرك؛ ومتأخراً جداً فأنت تتحرك بالفعل. انظر ثم نفّذ مباشرة."
+      },
+      {
+        "en": "<b>Do not overdo it:</b> eyes back to the front before you steer. Staring over your shoulder while the car rolls is its own mistake.",
+        "de": "<b>Nicht übertreiben:</b> Blick nach vorn, bevor du lenkst. Über die Schulter starren, während das Auto rollt, ist selbst ein Fehler.",
+        "ar": "<b>لا تبالغ:</b> أعد نظرك للأمام قبل أن تدير المقود. التحديق فوق كتفك والسيارة تتحرك خطأ بحد ذاته."
+      }
+    ],
+    "tip": {
+      "en": "The examiner cannot read your eyes. If your head does not move, it did not happen.",
+      "de": "Der Prüfer kann deine Augen nicht lesen. Bewegt sich der Kopf nicht, hat es nicht stattgefunden.",
+      "ar": "الفاحص لا يستطيع قراءة عينيك. إن لم يتحرك رأسك فكأنها لم تحدث."
+    }
+  },
+  {
+    "icon": "🦶",
+    "h": {
+      "en": "Clutch control",
+      "de": "Kupplung",
+      "ar": "التحكم بالقابض (الدبرياج)"
+    },
+    "items": [
+      {
+        "en": "<b>Biting point:</b> lift slowly until the engine note drops and the nose dips. Hold it there.",
+        "de": "<b>Schleifpunkt:</b> langsam kommen lassen, bis der Motor tiefer klingt und die Front sich senkt. Halten.",
+        "ar": "<b>نقطة الالتقاء:</b> ارفع القدم ببطء حتى ينخفض صوت المحرك وتهبط مقدمة السيارة قليلاً. ثبّت عندها."
+      },
+      {
+        "en": "<b>Moving off:</b> biting point first, then release the handbrake, then add gas. Feet slow, hands still.",
+        "de": "<b>Anfahren:</b> erst Schleifpunkt, dann Handbremse lösen, dann Gas. Füße langsam, Hände ruhig.",
+        "ar": "<b>الانطلاق:</b> نقطة الالتقاء أولاً، ثم حرر فرامل اليد، ثم أضف الغاز. القدمان ببطء واليدان بثبات."
+      },
+      {
+        "en": "<b>Uphill:</b> same order, more gas, slower foot. The handbrake holds you until the bite takes over.",
+        "de": "<b>Bergauf:</b> gleiche Reihenfolge, mehr Gas, langsamerer Fuß. Die Handbremse hält, bis der Schleifpunkt übernimmt.",
+        "ar": "<b>على المرتفع:</b> الترتيب نفسه، مع غاز أكثر وقدم أبطأ. فرامل اليد تمسك السيارة حتى تتولى نقطة الالتقاء."
+      },
+      {
+        "en": "<b>Creeping in traffic:</b> clutch at the biting point, no gas, cover the brake.",
+        "de": "<b>Kriechen im Stau:</b> Kupplung am Schleifpunkt, kein Gas, Fuß über der Bremse.",
+        "ar": "<b>الزحف في الازدحام:</b> القابض عند نقطة الالتقاء، بدون غاز، والقدم فوق الفرامل."
+      },
+      {
+        "en": "<b>Stalled?</b> Clutch in, handbrake on, restart, breathe. Nobody fails for one stall.",
+        "de": "<b>Abgewürgt?</b> Kuppeln, Handbremse, neu starten, durchatmen. Ein Abwürgen ist kein Durchfaller.",
+        "ar": "<b>توقّف المحرك؟</b> اضغط القابض، شدّ فرامل اليد، أعد التشغيل، وتنفّس. توقف واحد لا يعني الرسوب."
+      }
+    ],
+    "tip": {
+      "en": "Bite, brake off, gas. In that order, every time.",
+      "de": "Schleifpunkt, Bremse los, Gas. Immer in dieser Reihenfolge.",
+      "ar": "التقاط، تحرير الفرامل، غاز. بهذا الترتيب في كل مرة."
+    }
+  },
+  {
+    "icon": "⚙️",
+    "h": {
+      "en": "Gears (manual)",
+      "de": "Schalten (Handschaltung)",
+      "ar": "تبديل التروس (ناقل عادي)"
+    },
+    "items": [
+      {
+        "en": "Rough shift-up points: 1st only to move off, 2nd to ~30, 3rd to ~50, 4th to ~70, 5th above that.",
+        "de": "Faustregel Hochschalten: 1. nur zum Anfahren, 2. bis ~30, 3. bis ~50, 4. bis ~70, 5. darüber.",
+        "ar": "نقاط الترفيع التقريبية: الأولى للانطلاق فقط، الثانية حتى ~30، الثالثة حتى ~50، الرابعة حتى ~70، والخامسة فوق ذلك."
+      },
+      {
+        "en": "Shift up early, around 2000 rpm. Fuel-saving driving is scored.",
+        "de": "Früh hochschalten, etwa bei 2000 U/min. Spritsparendes Fahren wird bewertet.",
+        "ar": "ارفع التروس مبكراً، عند 2000 دورة تقريباً. القيادة الموفرة للوقود تدخل في التقييم."
+      },
+      {
+        "en": "<b>Down before the bend, not in it.</b> Brake straight, pick the gear, then steer.",
+        "de": "<b>Vor der Kurve runterschalten, nicht in ihr.</b> Gerade bremsen, Gang wählen, dann lenken.",
+        "ar": "<b>خفّض قبل المنعطف لا داخله.</b> اكبح في الخط المستقيم، اختر الترس، ثم انعطف."
+      },
+      {
+        "en": "Lift off in gear to slow down. Engine braking saves the brakes and keeps the car settled.",
+        "de": "Im Gang vom Gas gehen. Motorbremse schont die Bremsen und hält das Auto stabil.",
+        "ar": "ارفع قدمك عن الغاز والترس مُعشّق للإبطاء. كبح المحرك يحمي الفرامل ويبقي السيارة مستقرة."
+      },
+      {
+        "en": "Never roll in neutral. You lose engine braking and a gear to escape with.",
+        "de": "Nie im Leerlauf rollen. Weg sind Motorbremse und der Gang, mit dem du reagierst.",
+        "ar": "لا تسر أبداً على الوضع المحايد. تفقد كبح المحرك والترس الذي تتصرف به عند الحاجة."
+      }
+    ],
+    "tip": {
+      "en": "Gear before the corner, brakes before the gear.",
+      "de": "Gang vor der Kurve, Bremse vor dem Gang.",
+      "ar": "الترس قبل المنعطف، والفرامل قبل الترس."
+    }
+  },
+  {
+    "icon": "↪️",
+    "h": {
+      "en": "The 8 steps of every turn",
+      "de": "Die 8 Schritte beim Abbiegen",
+      "ar": "الخطوات الـ8 لكل انعطاف"
+    },
+    "items": [
+      {
+        "en": "<b>1</b> Mirrors · <b>2</b> Signal · <b>3</b> Position.",
+        "de": "<b>1</b> Spiegel · <b>2</b> Blinken · <b>3</b> Einordnen.",
+        "ar": "<b>1</b> المرايا · <b>2</b> الإشارة · <b>3</b> التموضع."
+      },
+      {
+        "en": "<b>4</b> Slow & gear down · <b>5</b> Yield · <b>6</b> <b>Second look</b> (right turn: bikes!).",
+        "de": "<b>4</b> Tempo raus · <b>5</b> Vorfahrt beachten · <b>6</b> <b>Zweiter Blick</b> (rechts: Räder!).",
+        "ar": "<b>4</b> أبطئ وانزل تروساً · <b>5</b> أعطِ الأولوية · <b>6</b> <b>نظرة ثانية</b> (يمين: الدراجات!)."
+      },
+      {
+        "en": "<b>7</b> Pedestrians on the target road · <b>8</b> tight right / wide left arc.",
+        "de": "<b>7</b> Fußgänger der Zielstraße · <b>8</b> eng rechts / weit links.",
+        "ar": "<b>7</b> المشاة في الشارع المستهدف · <b>8</b> قوس ضيق يميناً / واسع يساراً."
+      },
+      {
+        "en": "Slow with the brake, <b>then</b> pick the gear, then look. Arriving in the right gear is half the turn.",
+        "de": "Erst bremsen, <b>dann</b> Gang wählen, dann schauen. Im richtigen Gang ankommen ist die halbe Miete.",
+        "ar": "أبطئ بالفرامل، <b>ثم</b> اختر الترس، ثم انظر. الوصول بالترس الصحيح نصف الانعطاف."
+      }
+    ]
+  },
+  {
+    "icon": "🅿️",
+    "h": {
+      "en": "Parallel parking",
+      "de": "Längsparken",
+      "ar": "الركن الطولي"
+    },
+    "items": [
+      {
+        "en": "You need about one and a half car lengths. Signal, pull level with the front car, ~50 cm apart, rear bumpers in line.",
+        "de": "Etwa eineinhalb Fahrzeuglängen nötig. Blinken, neben das vordere Auto, ~50 cm Abstand, Stoßstangen auf einer Höhe.",
+        "ar": "تحتاج نحو طول سيارة ونصف. أشر، اصطفّ بجانب السيارة الأمامية بمسافة ~50 سم، مع محاذاة المصدّات الخلفية."
+      },
+      {
+        "en": "Reverse straight until your <b>B-pillar</b> is level with that car's rear bumper, then full lock towards the kerb.",
+        "de": "Gerade zurück, bis die <b>B-Säule</b> auf Höhe der hinteren Stoßstange steht, dann voll zum Bordstein einschlagen.",
+        "ar": "ارجع مستقيماً حتى يحاذي <b>العمود الأوسط (B)</b> المصدّ الخلفي لتلك السيارة، ثم وجّه المقود بالكامل نحو الرصيف."
+      },
+      {
+        "en": "At ~45°, when the rear car's headlight fills your left mirror, straighten the wheel and keep reversing.",
+        "de": "Bei ~45°, wenn der Scheinwerfer des hinteren Autos den linken Spiegel füllt, Räder gerade stellen und weiter zurück.",
+        "ar": "عند ~45°، حين يملأ مصباح السيارة الخلفية مرآتك اليسرى، عدّل المقود واستمر بالرجوع."
+      },
+      {
+        "en": "Then full lock the other way to swing the nose in. Straighten, centre, done.",
+        "de": "Dann voll gegenlenken, damit die Front einschwenkt. Gerade stellen, mittig, fertig.",
+        "ar": "ثم وجّه بالكامل في الاتجاه المعاكس لإدخال المقدمة. استقم، تمركز، انتهيت."
+      },
+      {
+        "en": "Reference points vary by car. Fix yours on the first lesson and reuse them.",
+        "de": "Orientierungspunkte sind autoabhängig. Beim ersten Mal festlegen und immer gleich nutzen.",
+        "ar": "نقاط الإسناد تختلف بحسب السيارة. حدّدها في الدرس الأول واستخدمها دائماً."
+      }
+    ]
+  },
+  {
+    "icon": "🚙",
+    "h": {
+      "en": "Bay parking",
+      "de": "Quer einparken",
+      "ar": "الركن العرضي"
+    },
+    "items": [
+      {
+        "en": "<b>Reverse in:</b> drive past ~1 m from the row, stop when your shoulder is level with the far line of your bay.",
+        "de": "<b>Rückwärts:</b> mit ~1 m Abstand vorbeifahren, stoppen, wenn die Schulter auf Höhe der hinteren Linie der Lücke ist.",
+        "ar": "<b>الدخول بالرجوع:</b> مرّ بمحاذاة الصف بمسافة ~1 م، وتوقف حين يحاذي كتفك الخط البعيد للموقف."
+      },
+      {
+        "en": "Full lock, reverse at walking pace, look <b>through the rear window</b>, not only the camera.",
+        "de": "Voll einschlagen, im Schritttempo zurück, <b>durch die Heckscheibe</b> schauen, nicht nur auf die Kamera.",
+        "ar": "وجّه بالكامل، ارجع بسرعة المشي، وانظر <b>من النافذة الخلفية</b> لا من الكاميرا وحدها."
+      },
+      {
+        "en": "Straighten as soon as the bay lines run parallel in both mirrors. Correcting is allowed.",
+        "de": "Gerade stellen, sobald die Linien in beiden Spiegeln parallel laufen. Korrigieren ist erlaubt.",
+        "ar": "عدّل المقود فور أن تصبح خطوط الموقف متوازية في المرآتين. التصحيح مسموح."
+      },
+      {
+        "en": "<b>Forward in</b> is easier to enter and worse to leave. Reverse in wherever you can.",
+        "de": "<b>Vorwärts rein</b> ist leichter, rauskommen schwerer. Wenn möglich rückwärts einparken.",
+        "ar": "<b>الدخول للأمام</b> أسهل، لكن الخروج أصعب. اركن بالرجوع كلما أمكن."
+      },
+      {
+        "en": "<b>Pulling out:</b> creep until you can see, look both ways over your shoulders, and mind the front swinging wide.",
+        "de": "<b>Ausparken:</b> vortasten bis zur Sicht, beidseitiger Schulterblick, auf das Ausschwenken der Front achten.",
+        "ar": "<b>الخروج من الموقف:</b> تقدّم بحذر حتى ترى، انظر إلى الجانبين فوق كتفيك، وانتبه لانحراف المقدمة للخارج."
+      }
+    ],
+    "tip": {
+      "en": "Reverse in, drive out. Always the safer half first.",
+      "de": "Rückwärts rein, vorwärts raus.",
+      "ar": "ادخل بالرجوع واخرج للأمام."
+    }
+  },
+  {
+    "icon": "🔁",
+    "h": {
+      "en": "Reversing & turning around",
+      "de": "Rückwärtsfahren & Wenden",
+      "ar": "الرجوع والدوران"
+    },
+    "items": [
+      {
+        "en": "<b>Straight-line reversing:</b> hand on the passenger seat, body turned, look out the back. Steer tiny.",
+        "de": "<b>Gerade rückwärts:</b> Hand auf den Beifahrersitz, Oberkörper drehen, nach hinten schauen. Nur kleine Lenkbewegungen.",
+        "ar": "<b>الرجوع في خط مستقيم:</b> ضع يدك على مقعد الراكب، أدر جذعك، وانظر إلى الخلف. حرّك المقود قليلاً جداً."
+      },
+      {
+        "en": "<b>Round a corner in reverse:</b> keep the kerb in the same spot in your mirror; that spot is your whole steering input.",
+        "de": "<b>Rückwärts um die Ecke:</b> den Bordstein im Spiegel an derselben Stelle halten; genau danach lenken.",
+        "ar": "<b>الرجوع حول زاوية:</b> أبقِ الرصيف في الموضع نفسه داخل المرآة؛ هذا الموضع هو كل توجيهك."
+      },
+      {
+        "en": "<b>Turning around:</b> kerb to kerb, full lock each way, and check the road again before every direction change.",
+        "de": "<b>Wenden:</b> Bordstein zu Bordstein, jeweils Volleinschlag, vor jedem Richtungswechsel neu schauen.",
+        "ar": "<b>الدوران للخلف:</b> من رصيف إلى رصيف، توجيه كامل في كل اتجاه، وتحقق من الطريق قبل كل تغيير اتجاه."
+      },
+      {
+        "en": "Three moves is the target, not the rule. Extra moves cost less than a kerb strike.",
+        "de": "Drei Züge sind das Ziel, keine Pflicht. Ein Zug mehr ist besser als der Bordstein.",
+        "ar": "ثلاث حركات هي الهدف لا القاعدة. حركة إضافية أهون من اصطدام بالرصيف."
+      },
+      {
+        "en": "<b>Hill start:</b> handbrake on, find the biting point, release the handbrake, then gas.",
+        "de": "<b>Anfahren am Berg:</b> Handbremse, Schleifpunkt suchen, Handbremse lösen, dann Gas.",
+        "ar": "<b>الانطلاق على مرتفع:</b> فرامل اليد، ابحث عن نقطة الالتقاء، حرر فرامل اليد، ثم الغاز."
+      }
+    ]
+  },
+  {
+    "icon": "🛑",
+    "h": {
+      "en": "Emergency braking & skids",
+      "de": "Gefahrbremsung & Schleudern",
+      "ar": "الكبح الطارئ والانزلاق"
+    },
+    "items": [
+      {
+        "en": "<b>ABS:</b> stamp and <b>keep</b> the pressure on. The pedal pulsing and the noise are it working.",
+        "de": "<b>ABS:</b> voll durchtreten und Druck <b>halten</b>. Pulsieren und Geräusch sind normal.",
+        "ar": "<b>ABS:</b> اضغط بقوة و<b>حافظ</b> على الضغط. نبض الدواسة والصوت دليل عمله لا عطله."
+      },
+      {
+        "en": "With ABS you can still steer while braking. Look where you want to go, not at the obstacle.",
+        "de": "Mit ABS kannst du beim Bremsen lenken. Dahin schauen, wo du hinwillst, nicht auf das Hindernis.",
+        "ar": "مع ABS يمكنك التوجيه أثناء الكبح. انظر إلى حيث تريد الذهاب لا إلى العائق."
+      },
+      {
+        "en": "<b>Skidding:</b> off the gas, steer gently where you want to go, no yanking the wheel.",
+        "de": "<b>Schleudern:</b> vom Gas, sanft dorthin lenken, wo du hinwillst, nicht reißen.",
+        "ar": "<b>الانزلاق:</b> ارفع قدمك عن الغاز، ووجّه برفق نحو حيث تريد، دون شدّ عنيف للمقود."
+      }
+    ],
+    "tip": {
+      "en": "Eyes go where you want the car to go. The car follows your eyes.",
+      "de": "Der Blick geht dahin, wo das Auto hin soll. Das Auto folgt dem Blick.",
+      "ar": "عيناك تتجهان حيث تريد للسيارة أن تذهب، والسيارة تتبع نظرك."
+    }
+  },
+  {
+    "icon": "🛣️",
+    "h": {
+      "en": "Motorway joining & leaving",
+      "de": "Auffahren & Abfahren",
+      "ar": "الاندماج والخروج من الأوتوستراد"
+    },
+    "items": [
+      {
+        "en": "<b>Joining:</b> use the <b>whole</b> acceleration lane to match speed. Never stop in it.",
+        "de": "<b>Auffahren:</b> den Beschleunigungsstreifen <b>ganz</b> ausnutzen, Tempo angleichen. Dort niemals anhalten.",
+        "ar": "<b>الاندماج:</b> استخدم <b>كامل</b> مسار التسارع لمطابقة السرعة. لا تتوقف فيه أبداً."
+      },
+      {
+        "en": "Mirror, blind spot over the left shoulder, one smooth move in. No sawing at the wheel.",
+        "de": "Spiegel, Schulterblick links, in einem Zug einfädeln. Kein Herumreißen.",
+        "ar": "مرآة، ثم فحص الزاوية العمياء فوق الكتف الأيسر، ثم اندماج واحد سلس. بدون تحريك المقود ذهاباً وإياباً."
+      },
+      {
+        "en": "<b>Leaving:</b> signal, move into the exit lane, and <b>brake there</b>, not on the main carriageway.",
+        "de": "<b>Abfahren:</b> blinken, auf den Ausfädelungsstreifen wechseln, <b>dort bremsen</b>, nicht auf der Fahrbahn.",
+        "ar": "<b>الخروج:</b> أشر، انتقل إلى مسار الخروج، و<b>اكبح هناك</b> لا على المسار الرئيسي."
+      },
+      {
+        "en": "The ramp speed sign is for the tightest part of the bend. Be at that speed before you reach it.",
+        "de": "Das Tempo-Schild in der Ausfahrt gilt für den engsten Teil. Vorher schon so langsam sein.",
+        "ar": "لافتة السرعة في المنعطف تخص أضيق جزء منه. كن عند تلك السرعة قبل الوصول إليه."
+      },
+      {
+        "en": "Keep right; the left lane is for overtaking only.",
+        "de": "Rechts fahren; die linke Spur ist nur zum Überholen.",
+        "ar": "التزم اليمين؛ المسار الأيسر للتجاوز فقط."
+      }
+    ],
+    "tip": {
+      "en": "Speed up to join, slow down after you leave.",
+      "de": "Zum Auffahren beschleunigen, erst nach dem Ausfahren bremsen.",
+      "ar": "تسارع للدخول، وأبطئ بعد الخروج."
+    }
+  },
+  {
+    "icon": "🔧",
+    "h": {
+      "en": "Abfahrtkontrolle (classes C, C1, D, D1, T)",
+      "de": "Abfahrtkontrolle (Klassen C, C1, D, D1, T)",
+      "ar": "Abfahrtkontrolle (الفئات C وC1 وD وD1 وT)"
+    },
+    "items": [
+      {
+        "en": "<b>Not tested in the class B exam</b> — useful to know anyway.",
+        "de": "<b>Nicht Teil der Prüfung Klasse B</b> — trotzdem gut zu wissen.",
+        "ar": "<b>ليست جزءاً من اختبار الفئة B</b> — لكن معرفتها مفيدة."
+      },
+      {
+        "en": "<b>Lights:</b> name & operate all of them, brake light check.",
+        "de": "<b>Licht:</b> alle benennen & bedienen, Bremslicht prüfen.",
+        "ar": "<b>الأضواء:</b> سمّها وشغّلها جميعاً، فحص ضوء الفرامل."
+      },
+      {
+        "en": "<b>Tyres:</b> tread 1.6 mm, pressure, damage, where values are listed.",
+        "de": "<b>Reifen:</b> Profil 1,6 mm, Druck, Schäden, wo Werte stehen.",
+        "ar": "<b>الإطارات:</b> تشقق 1.6 مم، ضغط، أضرار، أين تجد القيم."
+      },
+      {
+        "en": "<b>Fluids:</b> oil, coolant, washer, brake fluid under the bonnet.",
+        "de": "<b>Flüssigkeiten:</b> Öl, Kühlmittel, Wischwasser, Bremsflüssigkeit.",
+        "ar": "<b>السوائل:</b> زيت، سائل تبريد، ماء رشاش الزجاج، سائل الفرامل تحت الغطاء."
+      },
+      {
+        "en": "<b>Other:</b> horn, wipers, warning lamps, triangle/vest/first-aid location.",
+        "de": "<b>Sonstiges:</b> Hupe, Wischer, Kontrollleuchten, Dreieck/Weste/Verbandkasten.",
+        "ar": "<b>أخرى:</b> الزمور، الماسحات، مصابيح التحذير، موقع المثلث/السترة/حقيبة الإسعاف."
+      }
+    ]
+  },
+  {
+    "icon": "⚠️",
+    "h": {
+      "en": "Top fail reasons",
+      "de": "Häufigste Durchfallgründe",
+      "ar": "أبرز أسباب الرسوب"
+    },
+    "items": [
+      {
+        "en": "<b>Skipped blind-spot check</b> — the most common fail of all. The examiner scores the head movement, not your intention.",
+        "de": "<b>Schulterblick vergessen</b> — der häufigste Durchfaller. Bewertet wird die Kopfbewegung, nicht die Absicht.",
+        "ar": "<b>إهمال نظرة الكتف</b> — أكثر أسباب الرسوب شيوعاً. الفاحص يقيّم حركة الرأس لا نيتك."
+      },
+      {
+        "en": "<b>Rolling over a STOP line</b> — at Zeichen 206 the wheels must fully stop. Creeping through counts as not stopping.",
+        "de": "<b>Über die Stopplinie rollen</b> — bei Zeichen 206 müssen die Räder wirklich stehen. Durchrollen gilt als nicht angehalten.",
+        "ar": "<b>التدحرج فوق خط التوقف</b> — عند الإشارة 206 يجب أن تتوقف العجلات تماماً. الزحف البطيء يُحتسب عدم توقف."
+      },
+      {
+        "en": "<b>Right-of-way mistakes</b> — if another driver has to brake for you, that is the level of fault that ends the test.",
+        "de": "<b>Vorfahrtsfehler</b> — wenn ein anderer wegen dir bremsen muss, ist das die Fehlerschwere, die die Prüfung beendet.",
+        "ar": "<b>أخطاء الأولوية</b> — إذا اضطر سائق آخر للكبح بسببك، فهذه درجة الخطأ التي تنهي الاختبار."
+      },
+      {
+        "en": "<b>Instructor has to intervene</b> — one touch of the pedals or wheel by the instructor ends the drive immediately.",
+        "de": "<b>Eingriff des Fahrlehrers</b> — ein Griff ins Lenkrad oder Pedal beendet die Fahrt sofort.",
+        "ar": "<b>تدخل المدرب</b> — لمسة واحدة على المقود أو الدواسات تنهي الاختبار فوراً."
+      },
+      {
+        "en": "<b>Too fast in a 30-zone, no indicator, tailgating</b> — each is small alone, but they add up into a fail.",
+        "de": "<b>Zu schnell in der 30er-Zone, nicht blinken, drängeln</b> — einzeln klein, zusammen ein Durchfaller.",
+        "ar": "<b>السرعة الزائدة في منطقة 30، وعدم الإشارة، والالتصاق بالمركبة الأمامية</b> — كل منها صغير وحده، لكنها تتراكم حتى الرسوب."
+      }
+    ]
+  },
+  {
+    "icon": "📝",
+    "h": {
+      "en": "How the exam runs",
+      "de": "So läuft die Prüfung",
+      "ar": "كيف يجري الاختبار"
+    },
+    "items": [
+      {
+        "en": "At least 55 min total, of which at least 30 min pure driving (class B); examiner + instructor on board.",
+        "de": "Mind. 55 Min gesamt, davon mind. 30 Min reine Fahrzeit (Klasse B); Prüfer + Fahrlehrer dabei.",
+        "ar": "55 دقيقة على الأقل إجمالاً، منها 30 دقيقة قيادة فعلية على الأقل (فئة B)؛ مراقب + مدرب على متن السيارة."
+      },
+      {
+        "en": "Three set maneuvers, then town + country; about half the driving time is out of town, usually including autobahn.",
+        "de": "Drei Grundfahraufgaben, dann Stadt + Land; etwa die Hälfte der Fahrzeit außerorts, meist mit Autobahn.",
+        "ar": "ثلاث مناورات أساسية، ثم مدينة + طريق ريفي؛ نحو نصف زمن القيادة خارج المدن، وعادةً يشمل الأوتوستراد."
+      },
+      {
+        "en": "Instant fail: endangering, red light, ignored right of way, intervention.",
+        "de": "Sofort durch: Gefährdung, Rotlicht, Vorfahrt missachtet, Eingriff.",
+        "ar": "رسوب فوري: التسبب في خطر، ضوء أحمر، تجاهل الأولوية، تدخل المراقب."
+      },
+      {
+        "en": "Announcing your actions (\"letting the cyclist pass\") shows awareness.",
+        "de": "Ansagen („ich lasse den Radfahrer durch\") zeigt Übersicht.",
+        "ar": "الإعلان عن أفعالك («أترك الدراج يمر») يُظهر الوعي."
+      },
+      {
+        "en": "Before the test (class B): 5 country, 4 autobahn and 3 night lessons of 45 min each.",
+        "de": "Vor der Prüfung (Klasse B): 5 Überland-, 4 Autobahn- und 3 Nachtfahrten zu je 45 Minuten.",
+        "ar": "قبل الاختبار (فئة B): 5 دروس على الطرق الريفية، و4 على الأوتوستراد، و3 ليلية، مدة كل منها 45 دقيقة."
+      }
+    ]
+  },
+  {
+    "icon": "🅰️",
+    "h": {
+      "en": "Automatic or manual?",
+      "de": "Automatik oder Schaltgetriebe?",
+      "ar": "أوتوماتيك أم عادي (مانوال)؟"
+    },
+    "items": [
+      {
+        "en": "Take the test in an automatic and your licence is <b>limited to automatics</b>.",
+        "de": "Prüfung im Automatikwagen = Fahrerlaubnis <b>nur für Automatik</b>.",
+        "ar": "إذا أدّيت الاختبار بسيارة أوتوماتيك فرخصتك <b>تقتصر على الأوتوماتيك</b>."
+      },
+      {
+        "en": "<b>B197</b> lifts that: 10 manual lessons of 45 min plus a 15 min assessed drive in and out of town, then you may test in an automatic and still drive manuals.",
+        "de": "<b>B197</b> hebt das auf: 10 Schaltstunden à 45 Min plus 15-minütige Testfahrt innerorts und außerorts, dann Prüfung im Automatik und trotzdem Schaltberechtigung.",
+        "ar": "<b>B197</b> يلغي هذا القيد: 10 دروس على ناقل عادي مدة كل منها 45 دقيقة، إضافةً إلى قيادة تقييمية 15 دقيقة داخل المدينة وخارجها، ثم يمكنك أداء الاختبار بأوتوماتيك مع الاحتفاظ بحق قيادة العادي."
+      },
+      {
+        "en": "The 197 code must be entered within a year of finishing that training.",
+        "de": "Die Schlüsselzahl 197 muss binnen eines Jahres nach Ausbildungsende eingetragen werden.",
+        "ar": "يجب تسجيل الرمز 197 خلال سنة واحدة من انتهاء ذلك التدريب."
+      }
+    ]
+  },
+  {
+    "icon": "😌",
+    "h": {
+      "en": "On the day",
+      "de": "Am Prüfungstag",
+      "ar": "في يوم الاختبار"
+    },
+    "items": [
+      {
+        "en": "Drive deliberately; show your checks visibly.",
+        "de": "Bewusst fahren; Kontrollen sichtbar zeigen.",
+        "ar": "قُد بتأنٍّ؛ أظهر فحوصاتك بوضوح."
+      },
+      {
+        "en": "One small mistake rarely fails you — keep driving safely.",
+        "de": "Ein kleiner Fehler heißt selten durchgefallen — sicher weiterfahren.",
+        "ar": "خطأ صغير واحد نادراً ما يؤدي للرسوب — واصل القيادة بأمان."
+      },
+      {
+        "en": "If unsure, take the safe option.",
+        "de": "Im Zweifel die sichere Option.",
+        "ar": "في حال الشك، اختر الخيار الأكثر أماناً."
+      }
+    ]
+  }
 ]

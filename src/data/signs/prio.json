@@ -20,10 +20,10 @@
     "stvo": "206",
     "en": "You <b>must</b> fully stop at the line, then give way.",
     "de": "An der Linie <b>vollständig</b> anhalten, dann Vorfahrt gewähren.",
-    "tipEn": "Octagon: assume the crossing road is always busy.",
-    "tipDe": "Achteck: immer so tun, als ob Verkehr kommt.",
+    "tipEn": "At 205 you may keep rolling if the road is clear. At 206 the wheels must actually stop, even at three in the morning with nothing coming.",
+    "tipDe": "Bei 205 darfst du weiterrollen, wenn frei ist. Bei 206 müssen die Räder wirklich stehen, auch nachts um drei ohne Verkehr.",
     "ar": "يجب التوقف <b>الكامل</b> عند الخط ثم أعطِ الأولوية.",
-    "tipAr": "مثمن أحمر: احسب أن طريقك دائماً منشغل."
+    "tipAr": "عند الإشارة 205 يجوز المتابعة إن كان الطريق خالياً. أما عند 206 فيجب أن تتوقف العجلات فعلاً، حتى في الثالثة فجراً بلا مركبات."
   },
   {
     "cat": "prio",
@@ -33,10 +33,10 @@
     "stvo": "306",
     "en": "You have priority along this road.",
     "de": "Du hast Vorfahrt entlang dieser Straße.",
-    "tipEn": "Yellow diamond = priority until you see it crossed out.",
-    "tipDe": "Gelbe Raute = Vorfahrt, bis sie durchgestrichen erscheint.",
+    "tipEn": "The diamond runs with the road and holds at every junction until 307 cancels it. Zeichen 301 is the triangle version and dies at the very next junction.",
+    "tipDe": "Die Raute begleitet die Straße und gilt an jeder Kreuzung, bis 307 sie aufhebt. Zeichen 301 ist die Dreiecksversion und endet schon an der nächsten Kreuzung.",
     "ar": "لك الأولوية على هذا الطريق.",
-    "tipAr": "معين أصفر = أنت على طريق الأولوية حتى تراه مشطوباً."
+    "tipAr": "المعيّن يرافق الطريق ويسري في كل تقاطع حتى تلغيه الإشارة 307. أما الإشارة 301 فهي النسخة المثلثة وتنتهي عند التقاطع التالي مباشرة."
   },
   {
     "cat": "prio",
