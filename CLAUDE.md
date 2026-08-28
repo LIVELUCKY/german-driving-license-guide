@@ -11,7 +11,9 @@
 
 ## i18n Architecture
 
-Three supported locales: **en** (default, at `/`), **de** (at `/de/`), **ar** (at `/ar/`, RTL)
+Three supported locales: **de** (default, at `/`), **en** (at `/en/`), **ar** (at `/ar/`, RTL)
+
+`DEFAULT_LANG` in `src/lib/i18n.js` and `i18n.defaultLocale` in `astro.config.mjs` are both `de`, with `prefixDefaultLocale: false`.
 
 ### String Categories and Where They Live
 
@@ -26,9 +28,10 @@ Three supported locales: **en** (default, at `/`), **de** (at `/de/`), **ar** (a
 
 3. **Long prose content** (legal, disclaimers) → `src/content/{collection}/{lang}.mdx`
    - Astro Content Collections
-   - Fetch with `getEntry('collection', lang)`
+   - Legal pages are loaded with `import.meta.glob`, not the collections API
 
-4. **Signs data** → `src/data/signs.json`
+4. **Signs data** → `src/data/signs/{warn,prio,prohibit,mandate,info,supp,signal}.json`
+   - `src/lib/signs.js` concatenates them into `SIGNS`
    - Each sign has: `en`, `de`, `ar` (descriptions) + `tipEn`, `tipDe`, `tipAr` (tips)
 
 5. **Sign categories (CATS)** → `src/lib/signs.js`
@@ -45,10 +48,10 @@ Three supported locales: **en** (default, at `/`), **de** (at `/de/`), **ar** (a
 
 ## Routing
 
-- `src/pages/slug.astro` → English at `/slug/`
-- `src/pages/[lang]/slug.astro` → de/ar at `/de/slug/` and `/ar/slug/`
+- `src/pages/slug.astro` → German at `/slug/`
+- `src/pages/[lang]/slug.astro` → en/ar at `/en/slug/` and `/ar/slug/`
 
-Dynamic pages use `getStaticPaths()` returning `[{params:{lang:'de'}}, {params:{lang:'ar'}}]`.
+Dynamic pages use `getStaticPaths()` returning `[{params:{lang:'en'}}, {params:{lang:'ar'}}]`.
 
 Nested routes: `src/pages/[lang]/signs/[cat].astro` uses `flatMap` over locales × CATS.
 
@@ -64,9 +67,9 @@ RTL overrides in `src/styles/global.css` under `[dir="rtl"]` selectors.
 
 ### Adding a New Page
 
-1. Create `src/pages/new-page.astro` (English)
+1. Create `src/pages/new-page.astro` (German, the default locale)
 2. Create `src/components/NewPage.astro` (accepts `lang` prop)
-3. Create `src/pages/[lang]/new-page.astro` (de+ar dynamic route)
+3. Create `src/pages/[lang]/new-page.astro` (en+ar dynamic route)
 4. Add entry to NAV in `src/lib/i18n.js` with all 6 label fields
 5. Add i18n keys to all 3 JSON files if using `T()`
 
@@ -87,8 +90,9 @@ RTL overrides in `src/styles/global.css` under `[dir="rtl"]` selectors.
 | `src/lib/dict.js` | `makeT()`, DICT (loads all JSON files) |
 | `src/lib/signs.js` | CATS, SIGNS, `byCat()`, `catOf()` |
 | `src/lib/content.js` | Structured content for theory/practical/etc. |
-| `src/data/signs.json` | 109 signs with multilingual fields |
-| `src/content/legal/{en,de,ar}.mdx` | Legal page content (Astro collection) |
+| `src/data/signs/*.json` | 109 signs, split by category, with multilingual fields |
+| `src/data/official.json` | The 88 sign ids that have an SVG in `public/signs/`; the rest fall back to an inline `drawn` SVG |
+| `src/content/legal/{en,de,ar}.mdx` | Legal page content (loaded via `import.meta.glob`) |
 | `src/content/tips/*.mdx` | Individual sign tip pages |
 | `src/i18n/{en,de,ar}.json` | UI string dictionaries |
 | `src/styles/global.css` | RTL overrides |

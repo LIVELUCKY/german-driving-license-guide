@@ -19,3 +19,6 @@ Thumbs.db
 # editor directories
 .vscode/
 .idea/
+
+# local agent settings (shared .claude/settings.json stays tracked)
+.claude/settings.local.json

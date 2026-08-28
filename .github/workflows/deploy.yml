@@ -37,7 +37,6 @@ jobs:
 
       - name: Type-check
         run: npm run check
-        continue-on-error: true
 
       - name: Build with Astro
         run: npm run build

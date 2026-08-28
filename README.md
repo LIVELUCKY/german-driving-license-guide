@@ -8,7 +8,6 @@ A trilingual study site for the German driving licence (Führerschein) — **Ger
 
 - **109 road signs** with official StVO artwork and descriptions in all three languages
 - **Theory & practical rules** — right-of-way, priority chains, road markings, streets
-- **Interactive sign quiz** — tracks seen/wrong signs in localStorage, supports redo-wrong mode
 - **German grammar** for driving vocabulary (articles, cases)
 - **Full RTL support** for Arabic
 - Static HTML — no server, no database, sub-second page loads
@@ -34,7 +33,7 @@ src/
   lib/            # i18n helpers, sign utils, content data
   i18n/           # UI string dictionaries (en.json, de.json, ar.json)
   content/        # Long-form MDX (legal pages)
-public/signs/     # Official StVO SVG artwork (89 files, public domain)
+public/signs/     # Official StVO SVG artwork (88 files, public domain)
 ```
 
 ## Develop

@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
@@ -19,8 +18,7 @@ export default defineConfig({
   trailingSlash: 'always',
 
   integrations: [
-    react(),
-    icon({ iconDir: 'src/icons', include: { lucide: ['moon','sun','menu','x','arrow-left','arrow-right','search','check','rotate-cw'] } }),
+    icon({ include: { lucide: ['chevron-down','moon','sun','menu','x','arrow-left','arrow-right','search','check','rotate-cw'] } }),
 
     mdx({
       // Auto-add id slugs to headings and handle external links in MDX content
