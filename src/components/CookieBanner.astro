@@ -76,6 +76,19 @@ const { lang } = Astro.props;
     document.getElementById('cookieAccept').addEventListener('click', function() { hide('granted'); });
     document.getElementById('cookieDecline').addEventListener('click', function() { hide('denied'); });
     // Backdrop click does NOT dismiss — user must choose
+
+    // aria-modal tells assistive tech the page is inert, so Tab must not walk out of
+    // the banner into content that is dimmed and unclickable. Escape declines, which
+    // is the correct GDPR default.
+    banner.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { hide('denied'); return; }
+      if (e.key !== 'Tab') return;
+      var f = banner.querySelectorAll('button, a[href]');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 
   document.addEventListener('astro:page-load', initBanner);

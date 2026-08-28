@@ -5,7 +5,7 @@ import { SEO } from 'astro-seo';
 import { Icon } from 'astro-icon/components';
 import { Image, getImage } from 'astro:assets';
 import logoSrc from '../assets/logo.jpg';
-import { NAV, urlFor, prevNext, t, withBase, LOCALES, DEFAULT_LANG, isRTL } from '../lib/i18n.js';
+import { NAV, urlFor, prevNext, t, withBase, LOCALES, DEFAULT_LANG, isRTL, navTree, groupOf } from '../lib/i18n.js';
 import { makeT } from '../lib/dict.js';
 import Analytics from '../components/Analytics.astro';
 import CookieBanner from '../components/CookieBanner.astro';
@@ -16,6 +16,8 @@ const cur = NAV.find(n => n.slug === slug);
 const pageTitle = title ?? (cur ? t(lang, cur.en, cur.de, cur.ar) : 'Führerschein');
 const fullTitle = slug === '' ? pageTitle : `${pageTitle} · Führerschein Guide`;
 const navItems = NAV.filter(n => n.slug !== '');
+const tree = navTree(navItems);
+const curGroup = groupOf(slug);
 const dir = isRTL(lang) ? 'rtl' : 'ltr';
 const metaDesc = description ?? t(lang,
   'Bilingual study guide for the German driving licence: signs, theory, practical.',
@@ -67,10 +69,10 @@ const ogImageUrl = abs(ogImage.src);
 <ClientRouter />
 <script is:inline>
 // Apply theme immediately to avoid flash on hard load
-(function(){try{document.documentElement.dataset.theme=localStorage.getItem('fs_theme')||'light';}catch(e){document.documentElement.dataset.theme='light';}})();
+(function(){try{document.documentElement.dataset.theme=localStorage.getItem('fs_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch(e){document.documentElement.dataset.theme='light';}})();
 // Carry theme into every View Transition swap — Astro resets <html> attrs from new doc otherwise
 document.addEventListener('astro:before-swap',function(e){
-  try{e.newDocument.documentElement.dataset.theme=localStorage.getItem('fs_theme')||'light';}catch(e){}
+  try{e.newDocument.documentElement.dataset.theme=localStorage.getItem('fs_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch(e){}
 });
 </script>
 <Analytics />
@@ -83,9 +85,24 @@ document.addEventListener('astro:before-swap',function(e){
     <span>Führerschein<small>{T('brand.tag')}</small></span>
   </a>
   <nav class="dnav" aria-label={T('nav.menu')}>
-    {navItems.map(n => (
-      <a class={slug === n.slug ? 'on' : ''} href={urlFor(lang, n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>
-        {t(lang, n.en, n.de, n.ar)}
+    {tree.map(x => x.group ? (
+      <details class="navgroup">
+        <summary class={curGroup === x.group ? 'on' : ''}>
+          {t(lang, x.group.en, x.group.de, x.group.ar)}
+          <Icon name="lucide:chevron-down" size={13} aria-hidden="true" />
+        </summary>
+        <div class="navpanel">
+          {x.items.map(n => (
+            <a class={slug === n.slug ? 'on' : ''} href={urlFor(lang, n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>
+              <span class="np-t">{t(lang, n.en, n.de, n.ar)}</span>
+              <span class="np-d">{t(lang, n.d_en, n.d_de, n.d_ar)}</span>
+            </a>
+          ))}
+        </div>
+      </details>
+    ) : (
+      <a class={slug === x.item.slug ? 'on' : ''} href={urlFor(lang, x.item.slug)} aria-current={slug === x.item.slug ? 'page' : undefined}>
+        {t(lang, x.item.en, x.item.de, x.item.ar)}
       </a>
     ))}
   </nav>
@@ -111,10 +128,18 @@ document.addEventListener('astro:before-swap',function(e){
 </div></header>
 
 <nav class="mnav" id="mnav" aria-label={T('nav.menu')}>
-  {navItems.map((n, i) => (
-    <a href={urlFor(lang, n.slug)}>
-      <span class="no">{String(i + 1).padStart(2, '0')}</span>
-      {t(lang, n.en, n.de, n.ar)}
+  {tree.map(x => x.group ? (
+    <div class="mgroup">
+      <h2 class="mgroup-h">{t(lang, x.group.en, x.group.de, x.group.ar)}</h2>
+      {x.items.map(n => (
+        <a href={urlFor(lang, n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>
+          {t(lang, n.en, n.de, n.ar)}
+        </a>
+      ))}
+    </div>
+  ) : (
+    <a href={urlFor(lang, x.item.slug)} aria-current={slug === x.item.slug ? 'page' : undefined}>
+      {t(lang, x.item.en, x.item.de, x.item.ar)}
     </a>
   ))}
 </nav>
@@ -123,6 +148,7 @@ document.addEventListener('astro:before-swap',function(e){
   <div class="wrap crumbs">
     <a href={urlFor(lang, '')}>{T('crumb.home')}</a>
     <span>/</span>
+    {curGroup && <><span class="cr-g">{t(lang, curGroup.en, curGroup.de, curGroup.ar)}</span><span>/</span></>}
     <span>{pageTitle}</span>
   </div>
 )}

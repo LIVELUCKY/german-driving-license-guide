@@ -5,8 +5,8 @@ import { makeT } from '../lib/dict.js';
 import { SIGNS } from '../lib/signs.js';
 const { lang } = Astro.props as { lang: string };
 const T = makeT(lang);
-// Study path = content pages only (exclude home, legal, quiz gets its own CTA)
-const steps = NAV.filter(n => n.slug !== '' && n.slug !== 'legal' && n.slug !== 'quiz');
+// Study path = content pages only (exclude home and legal)
+const steps = NAV.filter(n => n.slug !== '' && n.slug !== 'legal');
 const officialCount = SIGNS.filter(s => s.official).length;
 const mq = T('home.marquee');
 
@@ -68,22 +68,9 @@ const mq = T('home.marquee');
         el.dataset.ht='1';
         el.addEventListener('click',function(){var lbl=(el.querySelector('.t')||{}).textContent||'';if(typeof __fsTrack==='function')__fsTrack('study_path_click',{section:lbl.trim(),lang:lang});});
       });
-      var qcta=document.querySelector('.quiz-cta');
-      if(qcta&&!qcta.dataset.ht){qcta.dataset.ht='1';qcta.addEventListener('click',function(){if(typeof __fsTrack==='function')__fsTrack('quiz_cta_click',{lang:lang});});}
     }
     document.addEventListener('astro:page-load',initHome);
     if(document.readyState!=='loading') initHome();
   })();
   </script>
-
-  <section class="blk blk-flush"><div class="wrap">
-    <a href={urlFor(lang, 'quiz')} class="quiz-cta">
-      <span class="quiz-num">🧪</span>
-      <span>
-        <span class="t">{t(lang, 'Test yourself — Sign quiz', 'Teste dich — Zeichen-Quiz', 'اختبر نفسك — اختبار الإشارات')}</span><br/>
-        <span class="d">{t(lang, 'Ten random signs, instant feedback', 'Zehn Zeichen, sofortiges Feedback', 'عشر إشارات، ردود فعل فورية')}</span>
-      </span>
-      <span class="go">→</span>
-    </a>
-  </div></section>
 </Base>

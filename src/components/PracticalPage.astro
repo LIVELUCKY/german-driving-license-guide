@@ -7,8 +7,8 @@ import DisclosureList from './DisclosureList.astro';
 import { t } from '../lib/i18n.js';
 import { PRACTICAL } from '../lib/content.js';
 const { lang } = Astro.props;
-const core = PRACTICAL.slice(0, 5);
-const deep = PRACTICAL.slice(5);
+const core = PRACTICAL.slice(0, 11);
+const deep = PRACTICAL.slice(11);
 ---
 <Base lang={lang} slug="practical">
   <PageHead
@@ -19,7 +19,7 @@ const deep = PRACTICAL.slice(5);
       'Worauf der Prüfer achtet, welche Manöver du können musst und wie die Prüfung wirklich abläuft.',
       'ما يراقبه الفاحص، والمناورات التي يجب إتقانها، وكيف يسير الاختبار فعلياً.')}
     toc={[
-      { href: '#core', label: t(lang,'Maneuvers','Manöver','المناورات') },
+      { href: '#core', label: t(lang,'Car control & maneuvers','Fahrzeugbeherrschung & Manöver','التحكم بالسيارة والمناورات') },
       { href: '#exam', label: t(lang,'Exam day','Prüfungstag','يوم الاختبار') },
     ]}
   />

@@ -7,7 +7,7 @@ const mn   = lang === 'ar' ? (sign.ar ?? sign.en) : lang === 'de' ? sign.de : si
 const tip  = lang === 'ar' ? (sign.tipAr ?? sign.tipEn) : lang === 'de' ? sign.tipDe : sign.tipEn;
 const kw   = (sign.kw + ' ' + sign.nameDe + ' ' + sign.nameEn + ' ' + (sign.ar ?? '') + ' ' + (sign.stvo ?? '')).toLowerCase();
 ---
-<div class="sign" data-kw={kw} tabindex="0" role="button" aria-label={name}>
+<div class="sign" data-kw={kw} tabindex="0" role="group" aria-label={name}>
   <div class="sign-inner">
     <div class="sign-front">
       {sign.img
@@ -17,7 +17,7 @@ const kw   = (sign.kw + ' ' + sign.nameDe + ' ' + sign.nameEn + ' ' + (sign.ar ?
       <div class="sub">{sub}</div>
       {sign.stvo && <div class="no">StVO {sign.stvo}</div>}
     </div>
-    <div class="sign-back" aria-hidden="true">
+    <div class="sign-back">
       <div class="mn" set:html={mn} />
       {tip && <div class="tip" set:html={tip} />}
     </div>

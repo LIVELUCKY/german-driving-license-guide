@@ -4,7 +4,7 @@ import PageHead from './PageHead.astro';
 import Section from './Section.astro';
 import SignTile from './SignTile.astro';
 import { Icon } from 'astro-icon/components';
-import { t, urlFor } from '../lib/i18n.js';
+import { t, urlFor, withBase } from '../lib/i18n.js';
 import { makeT } from '../lib/dict.js';
 import { CATS, SIGNS, byCat } from '../lib/signs.js';
 const { lang } = Astro.props;
@@ -40,11 +40,11 @@ const topSigns = top.map(id => SIGNS.find((s: any) => s.id === id)).filter(Boole
     </div>
   </Section>
 
-  <script is:inline define:vars={{ lang }}>
+  <script is:inline define:vars={{ lang, indexUrl: withBase('search-index.json') }}>
   let INDEX = null;
   async function load() {
     if (INDEX) return INDEX;
-    const r = await fetch('/search-index.json');
+    const r = await fetch(indexUrl);
     INDEX = await r.json();
     return INDEX;
   }

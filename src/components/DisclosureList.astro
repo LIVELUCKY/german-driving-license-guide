@@ -1,5 +1,5 @@
 ---
-interface LangPair { e: string; d: string; a?: string }
+interface LangPair { en: string; de: string; ar?: string }
 interface Item {
   icon?: string;
   h: LangPair;
@@ -13,7 +13,7 @@ interface Props {
   lang: string;
 }
 const { items, lang } = Astro.props;
-const pick = (obj: LangPair) => (lang === 'ar' ? obj.a : lang === 'de' ? obj.d : obj.e) ?? obj.e;
+const pick = (obj: LangPair) => (lang === 'ar' ? obj.ar : lang === 'de' ? obj.de : obj.en) ?? obj.en;
 ---
 {items.map(c => (
   <details class="more">

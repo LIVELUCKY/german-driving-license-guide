@@ -112,47 +112,47 @@ const tile = (s: any) => s?.img ? `<img src="${s.img}" alt="${s.nameDe ?? ''}" w
     </div>
   </Section>
 
-  <Section id=”colors” title={'② ' + t(lang,'Color = the role','Farbe = die Rolle','اللون = الدور')}>
-    <div class=”grid cols3”>
-      {COLORS.map((c: any) => <div class=”card”><h3><span>{c.i}</span>{c.h[L]}</h3><p class=”note” set:html={c.m[L]} /></div>)}
+  <Section id="colors" title={'② ' + t(lang,'Color = the role','Farbe = die Rolle','اللون = الدور')}>
+    <div class="grid cols3">
+      {COLORS.map((c: any) => <div class="card"><h3><span>{c.i}</span>{c.h[L]}</h3><p class="note" set:html={c.m[L]} /></div>)}
     </div>
   </Section>
 
-  <Section id=”picto” title={'③ ' + t(lang,'Pictogram = who it\'s about','Piktogramm = wen es betrifft','الصورة = من يعنيه')}>
-    <p class=”note note-mb”>{t(lang,
+  <Section id="picto" title={'③ ' + t(lang,'Pictogram = who it\'s about','Piktogramm = wen es betrifft','الصورة = من يعنيه')}>
+    <p class="note note-mb">{t(lang,
       'Same pictograms everywhere: red ring = banned · blue circle = ordered · triangle = hazard · plate = “only them” or “them exempt”.',
       'Gleiche Piktogramme überall: roter Ring = verboten · blauer Kreis = geboten · Dreieck = Gefahr · Tafel = „nur sie” oder „sie frei”.',
       'نفس الصور في كل مكان: حلقة حمراء = محظور · دائرة زرقاء = إلزامي · مثلث = خطر · لوحة = “هم فقط” أو “هم مستثنون”.')}</p>
-    <div class=”grid cols3”>
-      {PICTO.map((c: any) => <div class=”card”><h3><span>{c.i}</span>{c.h[L]}</h3><ul>{c.items.map((it: any) => <li set:html={it[L]} />)}</ul></div>)}
+    <div class="grid cols3">
+      {PICTO.map((c: any) => <div class="card"><h3><span>{c.i}</span>{c.h[L]}</h3><ul>{c.items.map((it: any) => <li set:html={it[L]} />)}</ul></div>)}
     </div>
   </Section>
 
-  <Section id=”mods” title={'④ ' + t(lang,'Modifiers: zones, ends, plates','Modifikatoren: Zonen, Enden, Tafeln','المعدّلات: مناطق، نهايات، لوحات')}>
-    <div class=”grid cols3”>
-      {MODS.map((c: any) => <div class=”card”><h3><span>{c.i}</span>{c.h[L]}</h3><ul>{c.items.map((it: any) => <li set:html={it[L]} />)}</ul></div>)}
+  <Section id="mods" title={'④ ' + t(lang,'Modifiers: zones, ends, plates','Modifikatoren: Zonen, Enden, Tafeln','المعدّلات: مناطق، نهايات، لوحات')}>
+    <div class="grid cols3">
+      {MODS.map((c: any) => <div class="card"><h3><span>{c.i}</span>{c.h[L]}</h3><ul>{c.items.map((it: any) => <li set:html={it[L]} />)}</ul></div>)}
     </div>
   </Section>
 
-  <Section id=”combos” title={'⑤ ' + t(lang,'Read combinations like sentences','Kombinationen wie Sätze lesen','اقرأ التركيبات كجمل')}>
-    <p class=”note note-mb”>{t(lang,
+  <Section id="combos" title={'⑤ ' + t(lang,'Read combinations like sentences','Kombinationen wie Sätze lesen','اقرأ التركيبات كجمل')}>
+    <p class="note note-mb">{t(lang,
       'Shape = verb, pictogram = subject, plate = condition: [must/may not] + [who] + [when/where].',
       'Form = Verb, Piktogramm = Subjekt, Tafel = Bedingung: [muss/darf nicht] + [wer] + [wann/wo].',
       'الشكل = الفعل، الصورة = الموضوع، اللوحة = الشرط: [يجب/يُمنع] + [من] + [متى/أين].')}</p>
-    <div class=”grid cols-combo”>
+    <div class="grid cols-combo">
       {COMBOS.map((c: any) => {
         const A = img(c.a), B = c.b ? img(c.b) : null;
-        return <div class=”combo”>
-          <div class=”stack”>
+        return <div class="combo">
+          <div class="stack">
             <Fragment set:html={tile(A)} />
-            {B && <small class=”stack-sep”>+</small>}
+            {B && <small class="stack-sep">+</small>}
             {B && <Fragment set:html={tile(B)} />}
           </div>
-          <div class=”read” set:html={c.r[L]} />
+          <div class="read" set:html={c.r[L]} />
         </div>;
       })}
     </div>
-    <div class=”tip note-mt” set:html={t(lang,
+    <div class="tip note-mt" set:html={t(lang,
       '<b>The master sentence:</b> “(Shape) tells me to/not to … (pictogram) … but only (plate).” Fill that in and you can read any German sign.',
       '<b>Der Mustersatz:</b> „(Form) sagt mir, dass … (Piktogramm) … aber nur (Tafel).” Wer das ausfüllt, liest jedes Schild.',
       '<b>الجملة الأساسية:</b> “(الشكل) يخبرني أن ... (الصورة) ... لكن فقط (اللوحة).” من يملؤها يستطيع قراءة أي إشارة ألمانية.')} />
