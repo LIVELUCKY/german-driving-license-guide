@@ -1,0 +1,517 @@
+[
+ {
+  "h": "Rechnen",
+  "rows": [
+   {
+    "q": "Reaktionsweg bei 100 km/h (1 s)",
+    "a": "30 m",
+    "n": "2.2.03-008"
+   },
+   {
+    "q": "Bremsweg bei 100 km/h",
+    "a": "100 m",
+    "n": "2.2.03-007"
+   },
+   {
+    "q": "Anhalteweg bei 100 km/h",
+    "a": "130 m",
+    "n": "2.2.03-006"
+   },
+   {
+    "q": "Reaktionsweg bei 50 km/h",
+    "a": "15 m",
+    "n": "2.2.03-011"
+   },
+   {
+    "q": "Bremsweg bei 50 km/h",
+    "a": "25 m",
+    "n": "2.2.03-010"
+   },
+   {
+    "q": "Anhalteweg bei 50 km/h",
+    "a": "40 m",
+    "n": "2.2.03-009"
+   },
+   {
+    "q": "Gefahrbremsung: 40 km/h = 8 m. Bei 50 km/h?",
+    "a": "12,5 m",
+    "n": "2.2.03-016"
+   },
+   {
+    "q": "Bremsweg bei 30 km/h = 9 m. Bei 60 km/h?",
+    "a": "36 m",
+    "n": "1.2.03-106"
+   },
+   {
+    "q": "Tempo verdoppelt: Bremsweg",
+    "a": "4-mal so lang",
+    "n": "1.2.03-102"
+   },
+   {
+    "q": "Tempo verdoppelt: Reaktionsweg",
+    "a": "2-mal so lang",
+    "n": "2.1.07-208"
+   },
+   {
+    "q": "Schmale Straße, 50 m Sicht: längster Anhalteweg",
+    "a": "25 m (halbe Sicht)",
+    "n": "2.2.03-012"
+   },
+   {
+    "q": "Gut ausgebaute Straße: anhalten innerhalb …",
+    "a": "der Sichtweite",
+    "n": "1.2.03-107"
+   },
+   {
+    "q": "Nachts mit Abblendlicht: anhalten innerhalb …",
+    "a": "der Leuchtweite",
+    "n": "2.2.03-024"
+   },
+   {
+    "q": "Kind läuft 20 m vor dir auf die Straße. Ab welchem Tempo kracht es trotz Gefahrbremsung?",
+    "a": "50 km/h (27,5 m &gt; 20 m)",
+    "n": "2.1.02-002"
+   },
+   {
+    "q": "40 km/h, Ampel wird 10 m vorher gelb",
+    "a": "weiterfahren",
+    "n": "2.2.37-002"
+   },
+   {
+    "q": "40 km/h, Ampel wird 40 m vorher gelb",
+    "a": "anhalten (Anhalteweg 28 m)",
+    "n": "2.2.37-003"
+   },
+   {
+    "q": "Kurve mit 60 statt 30 km/h: Fliehkraft",
+    "a": "4-mal so groß",
+    "n": "2.7.01-046"
+   }
+  ]
+ },
+ {
+  "h": "Abstand und Überholen",
+  "rows": [
+   {
+    "q": "Abstand bei 80 km/h",
+    "a": "2 Sekunden (ca. 40 m)",
+    "n": "2.2.04-001"
+   },
+   {
+    "q": "Abstand bei 100 km/h",
+    "a": "50 m",
+    "n": "2.2.04-004"
+   },
+   {
+    "q": "Kolonne in der Stadt, 50 km/h",
+    "a": "15 m (3 Pkw-Längen)",
+    "n": "2.2.04-002"
+   },
+   {
+    "q": "Seitenabstand Rad / E-Scooter innerorts",
+    "a": "1,5 m",
+    "n": "1.2.05-004"
+   },
+   {
+    "q": "Seitenabstand Rad / Fußgänger außerorts",
+    "a": "2 m",
+    "n": "1.2.05-003"
+   },
+   {
+    "q": "Mit 100 einen Lkw mit 70 überholen: Abstand zur Kuppe",
+    "a": "800 m",
+    "n": "2.2.05-005"
+   },
+   {
+    "q": "Zug länger als … außerorts: Lücke für Überholer lassen",
+    "a": "mehr als 7 m",
+    "n": "2.2.04-101"
+   },
+   {
+    "q": "Stau im Tunnel, Stillstand: Abstand",
+    "a": "ca. 5 m + Warnblinker",
+    "n": "1.1.07-121"
+   },
+   {
+    "q": "Einfädeln vor einen Lkw, wenn du schneller bist um mind.",
+    "a": "20 km/h",
+    "n": "2.1.08-021"
+   }
+  ]
+ },
+ {
+  "h": "Tempo",
+  "rows": [
+   {
+    "q": "Innerorts",
+    "a": "50 km/h",
+    "n": "1.2.03-101"
+   },
+   {
+    "q": "Pkw außerorts",
+    "a": "100 km/h",
+    "n": "2.2.03-104"
+   },
+   {
+    "q": "Pkw mit Anhänger außerorts",
+    "a": "80 km/h",
+    "n": "2.2.03-018"
+   },
+   {
+    "q": "100er-Anhänger auf Bundesstraße (keine Kraftfahrstraße)",
+    "a": "80 km/h",
+    "n": "2.2.03-110"
+   },
+   {
+    "q": "Mit Schneeketten",
+    "a": "50 km/h",
+    "n": "2.2.03-101"
+   },
+   {
+    "q": "Nebel, Sicht 50 m",
+    "a": "50 km/h",
+    "n": "2.2.03-005"
+   },
+   {
+    "q": "Autobahn: Fahrzeug muss bauartbedingt schneller als",
+    "a": "60 km/h",
+    "n": "1.2.02-111"
+   },
+   {
+    "q": "Kraftfahrstraße: bauartbedingt mindestens",
+    "a": "61 km/h",
+    "n": "1.4.42-116"
+   },
+   {
+    "q": "Fahrradzone",
+    "a": "30 km/h",
+    "n": "1.4.41-171"
+   },
+   {
+    "q": "Winterreifen-Aufkleber „max. 190“",
+    "a": "nicht schneller",
+    "n": "2.7.05-105"
+   },
+   {
+    "q": "Richtgeschwindigkeit 130 gilt auch auf",
+    "a": "Kraftfahrstraßen mit getrennten Fahrbahnen oder 2 Spuren je Richtung",
+    "n": "2.2.03-305"
+   },
+   {
+    "q": "Freie Fahrstreifenwahl innerorts für Kfz bis",
+    "a": "3,5 t",
+    "n": "2.2.07-002"
+   },
+   {
+    "q": "Außerorts 3 Spuren je Richtung: durchgehend befahren darfst du die",
+    "a": "mittlere",
+    "n": "2.2.02-006"
+   },
+   {
+    "q": "Mit Notrad höchstens",
+    "a": "80 km/h",
+    "n": "2.7.01-112"
+   },
+   {
+    "q": "Bahnübergang mit Schild 10 km/h",
+    "a": "heranfahren und queren max. 10",
+    "n": "1.2.19-113"
+   }
+  ]
+ },
+ {
+  "h": "Halten und Parken",
+  "rows": [
+   {
+    "q": "Vor/hinter Kreuzung parken verboten",
+    "a": "5 m",
+    "n": "1.2.12-131"
+   },
+   {
+    "q": "… mit baulichem Radweg (davor)",
+    "a": "8 m",
+    "n": "1.2.12-133"
+   },
+   {
+    "q": "Vor Fußgängerüberweg nicht halten",
+    "a": "5 m",
+    "n": "1.2.12-108"
+   },
+   {
+    "q": "Andreaskreuz innerorts / außerorts",
+    "a": "5 m / 50 m",
+    "n": "1.2.12-111"
+   },
+   {
+    "q": "Vor/hinter Haltestellenschild",
+    "a": "je 15 m",
+    "n": "1.2.12-112"
+   },
+   {
+    "q": "Halten an der Haltestelle höchstens",
+    "a": "3 Min",
+    "n": "1.2.12-113"
+   },
+   {
+    "q": "Restfahrbahn zur durchgezogenen Linie beim Parken",
+    "a": "3 m",
+    "n": "2.2.12-204"
+   },
+   {
+    "q": "Ankunft 10:40, Parkscheibe stellen auf",
+    "a": "11:00",
+    "n": "2.2.13-003"
+   },
+   {
+    "q": "Parken auf dem Gehweg (Zeichen 315) nur bis",
+    "a": "2,8 t",
+    "n": "1.4.42-112"
+   },
+   {
+    "q": "Anhänger ohne Zugfahrzeug auf der Straße höchstens",
+    "a": "2 Wochen",
+    "n": "2.2.12-106"
+   },
+   {
+    "q": "Anhänger über 2 t regelmäßig nachts/sonntags innerorts parken",
+    "a": "nur Gewerbegebiet oder markierte Parkplätze",
+    "n": "2.2.12-105"
+   }
+  ]
+ },
+ {
+  "h": "Ladung, Anhänger, Fahrzeug",
+  "rows": [
+   {
+    "q": "Überstand hinten ohne Kennzeichnung",
+    "a": "bis 1 m",
+    "n": "1.2.22-101"
+   },
+   {
+    "q": "Überstand hinten, Fahrt über 100 km",
+    "a": "max. 1,5 m",
+    "n": "2.2.22-129"
+   },
+   {
+    "q": "Nach vorn erlaubt 50 cm ab Höhe",
+    "a": "2,50 m",
+    "n": "1.2.22-108"
+   },
+   {
+    "q": "Rote Leuchte an Ladung höchstens",
+    "a": "1,50 m hoch",
+    "n": "2.2.22-109"
+   },
+   {
+    "q": "Seitlicher Überstand kennzeichnen ab",
+    "a": "40 cm",
+    "n": "2.2.22-108"
+   },
+   {
+    "q": "Anhänger hinter einem Pkw",
+    "a": "1",
+    "n": "2.6.03-116"
+   },
+   {
+    "q": "Pkw + Anhänger höchstens",
+    "a": "18 m lang",
+    "n": "2.6.06-103"
+   },
+   {
+    "q": "Mindestprofil",
+    "a": "1,6 mm",
+    "n": "2.7.05-108"
+   },
+   {
+    "q": "Pkw 3 Jahre, neue HU. Nächste HU nach",
+    "a": "24 Monaten",
+    "n": "2.6.01-108"
+   },
+   {
+    "q": "Pkw 2.400 kg zul. Gesamtmasse, Klasse B: größter Anhänger",
+    "a": "1.100 kg (Antwort: 1.000 kg)",
+    "n": "2.6.02-104"
+   },
+   {
+    "q": "Stützlast mindestens 4 %: Anhänger 600 kg",
+    "a": "24 kg",
+    "n": "2.6.03-406"
+   },
+   {
+    "q": "Ladung über 1 m nachts: hinten",
+    "a": "rote Leuchte + roter Rückstrahler",
+    "n": "1.2.22-102"
+   },
+   {
+    "q": "Überladung schon ab",
+    "a": "20 % gefährlich",
+    "n": "1.2.22-104"
+   },
+   {
+    "q": "DOT-Nummer „1217“ am Reifen",
+    "a": "Woche 12 / 2017",
+    "n": "2.7.05-001"
+   },
+   {
+    "q": "Winterreifen-Luftdruck",
+    "a": "ca. 0,2 bar höher",
+    "n": "2.7.10-102"
+   },
+   {
+    "q": "Sonntagsfahrverbot (0–22 Uhr) gilt für",
+    "a": "Lkw über 7,5 t und Lkw mit Anhänger",
+    "n": "2.2.30-101"
+   }
+  ]
+ },
+ {
+  "h": "Schilder mit Zahlen",
+  "rows": [
+   {
+    "q": "Blaues Schild 60 (Mindestgeschwindigkeit, Zeichen 275)",
+    "a": "mind. 60; wer das nicht kann, darf da nicht fahren",
+    "n": "1.4.41-128"
+   },
+   {
+    "q": "60 mit Zusatz „bei Nässe“, Straße trocken",
+    "a": "schneller erlaubt",
+    "n": "1.4.41-127"
+   },
+   {
+    "q": "Gewicht im roten Ring (z. B. 7,5 t)",
+    "a": "tatsächliche Masse",
+    "n": "2.4.41-102"
+   },
+   {
+    "q": "Lkw-Symbol mit Zusatz 7,5 t",
+    "a": "zulässige Gesamtmasse",
+    "n": "2.4.41-103"
+   },
+   {
+    "q": "Achslast-Schild 2 t",
+    "a": "tatsächliche Achslast",
+    "n": "2.4.41-104"
+   },
+   {
+    "q": "Breiten-Schild 2 m",
+    "a": "Breite inklusive Ladung",
+    "n": "2.4.41-105"
+   },
+   {
+    "q": "Baustelle, linke Spur max. 2 m",
+    "a": "echte Breite inkl. Spiegel zählt",
+    "n": "2.6.06-213"
+   },
+   {
+    "q": "Höhen-Schild 3,8 m: verboten ist",
+    "a": "Fahrzeug 4 m hoch",
+    "n": "2.4.41-106"
+   },
+   {
+    "q": "Längen-Schild 10 m: verboten sind",
+    "a": "Pkw + Wohnanhänger 11 m, Traktor + Anhänger 12 m",
+    "n": "2.4.41-107"
+   },
+   {
+    "q": "Zusatz „800 m“ unter Gefälle",
+    "a": "Gefälle ist 800 m lang",
+    "n": "1.4.40-106"
+   },
+   {
+    "q": "Zusatz „3 km“ unter Überholverbot",
+    "a": "gilt auf 3 km",
+    "n": "1.4.41-130"
+   },
+   {
+    "q": "Zusatz „200 m“ unter Überholverbot",
+    "a": "beginnt in 200 m",
+    "n": "1.4.41-131"
+   },
+   {
+    "q": "Zusatz „22–6 h“",
+    "a": "gilt nur nachts 22 bis 6 Uhr",
+    "n": "1.4.41-172"
+   }
+  ]
+ },
+ {
+  "h": "Mensch und Umwelt",
+  "rows": [
+   {
+    "q": "Kindersitz bis",
+    "a": "unter 12 J. und unter 150 cm",
+    "n": "2.2.21-122"
+   },
+   {
+    "q": "Schwere Verletzungen ohne Gurt schon ab",
+    "a": "30 km/h",
+    "n": "2.2.21-111"
+   },
+   {
+    "q": "Abbau von 1,0 ‰ dauert",
+    "a": "ca. 10 Stunden",
+    "n": "1.1.09-006"
+   },
+   {
+    "q": "Cannabis im Urin nachweisbar",
+    "a": "noch nach Wochen",
+    "n": "1.1.09-027"
+   },
+   {
+    "q": "2-Punkte-Verstoß getilgt frühestens nach",
+    "a": "5 Jahren",
+    "n": "1.8.01-003"
+   },
+   {
+    "q": "Probezeit",
+    "a": "2 Jahre (verlängert 4)",
+    "n": "2.8.01-001"
+   },
+   {
+    "q": "Ein Tropfen Öl verdirbt Trinkwasser",
+    "a": "bis 600 Liter",
+    "n": "1.5.01-006"
+   },
+   {
+    "q": "Europaweiter Notruf",
+    "a": "112",
+    "n": "1.2.34-011"
+   },
+   {
+    "q": "Panne hinter Kurve: Warndreieck etwa",
+    "a": "100 m dahinter",
+    "n": "2.2.15-115"
+   },
+   {
+    "q": "Ohne Gurt kann man sich nicht mehr abstützen ab",
+    "a": "ca. 20 km/h",
+    "n": "2.2.21-108"
+   },
+   {
+    "q": "THC-Abbau: wie lange?",
+    "a": "nicht abschätzbar (Falle: nicht 0,1 ‰/h)",
+    "n": "1.1.09-015"
+   },
+   {
+    "q": "Drogenabhängige wieder fahrgeeignet nach",
+    "a": "mind. 1 Jahr drogenfrei",
+    "n": "1.1.09-014"
+   },
+   {
+    "q": "160 statt 130 km/h: Mehrverbrauch",
+    "a": "bis zu 35 %",
+    "n": "2.5.01-113"
+   },
+   {
+    "q": "Leise durch den Ort im",
+    "a": "4. oder 5. Gang",
+    "n": "2.5.01-111"
+   },
+   {
+    "q": "Höchstes Unfallrisiko im Alter",
+    "a": "18–24",
+    "n": "2.1.11-119"
+   }
+  ]
+ }
+]
