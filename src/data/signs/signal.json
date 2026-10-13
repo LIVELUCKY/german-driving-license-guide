@@ -41,7 +41,7 @@
     "nameDe": "Leitlinie",
     "stvo": "340",
     "de": "Überfahren erlaubt, wenn frei.",
-    "tipDe": "Spiegel und toten Winkel prüfen — Gegenverkehr hat Vorrang.",
+    "tipDe": "Vor dem Überfahren Spiegel und Schulterblick. Nur wenn niemand gefährdet wird.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><line x1=\"40\" y1=\"16\" x2=\"40\" y2=\"64\" stroke=\"#fff\" stroke-width=\"5\" stroke-dasharray=\"9 8\"/></svg>"
   },
   {
@@ -49,8 +49,8 @@
     "kw": "zickzack zigzag no stopping markierung",
     "nameDe": "Zickzacklinie",
     "stvo": "299",
-    "de": "Halten und Parken verboten.",
-    "tipDe": "Oft an Zebrastreifen und Haltestellen — sogar kurzes Halten ist verboten.",
+    "de": "Grenzmarkierung: zeigt, verlängert oder verkürzt ein Halt- oder Parkverbot.",
+    "tipDe": "Oft an Bushaltestellen und Einfahrten. Im markierten Bereich nicht halten oder parken.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><path d=\"M30 18 L50 30 L30 42 L50 54 L30 64\" fill=\"none\" stroke=\"#f4d000\" stroke-width=\"4\"/></svg>"
   },
   {
@@ -104,7 +104,7 @@
     "nameDe": "Gelb / gelbes Blinken",
     "stvo": null,
     "de": "Gelb: anhalten, wenn sicher möglich. Blinken: Vorsicht, Schilder gelten.",
-    "tipDe": "Nächtliches Blinken = kein Ampelvorrang — rechts vor links gilt.",
+    "tipDe": "Ampel aus oder blinkt gelb: Dann gelten die Schilder. Nur ohne Schild gilt rechts vor links.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"28\" y=\"10\" width=\"24\" height=\"60\" rx=\"6\" fill=\"#222\"/><circle cx=\"40\" cy=\"24\" r=\"7\" fill=\"#333\"/><circle cx=\"40\" cy=\"40\" r=\"7\" fill=\"#f5b50a\"/><circle cx=\"40\" cy=\"56\" r=\"7\" fill=\"#333\"/></svg>"
   },
   {

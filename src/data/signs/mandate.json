@@ -36,8 +36,8 @@
     "kw": "kreisverkehr roundabout kreis circle",
     "nameDe": "Kreisverkehr",
     "stvo": "215",
-    "de": "Im Kreis fahren; Verkehr im Kreis hat Vorfahrt.",
-    "tipDe": "Verkehr im Kreis hat Vorfahrt, dann einfahren."
+    "de": "Im Kreis rechts herum fahren, Mittelinsel nicht überfahren, auf der Kreisfahrbahn nicht halten. Vorfahrt hat der Kreis nur, wenn Zeichen 205 darüber steht.",
+    "tipDe": "Steht 205 darüber, hat der Kreis Vorfahrt und Blinken beim Einfahren ist verboten. Ohne 205 gilt rechts vor links."
   },
   {
     "cat": "mandate",
@@ -52,8 +52,8 @@
     "kw": "gehweg footpath fussweg pedestrian",
     "nameDe": "Gehweg",
     "stvo": "239",
-    "de": "Fußgänger müssen diesen Weg benutzen.",
-    "tipDe": "Blaue Gehwege sind für Fußgänger Pflicht."
+    "de": "Nur für Fußgänger. Andere dürfen ihn nicht benutzen, außer ein Zusatzzeichen erlaubt es.",
+    "tipDe": "Mit Zusatzzeichen „Radverkehr frei“ dürfen Räder mit Schrittgeschwindigkeit fahren."
   },
   {
     "cat": "mandate",

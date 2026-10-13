@@ -9,8 +9,8 @@ const img = (id: string) => (SIGNS.find((s: any) => s.id === id) as any)?.img;
 // Sign pairs people mix up in the exam: [left id, left text, right id, right text].
 const PAIRS = [
   ['vorfahrt-gewaehren', '<b>Vorfahrt gewähren</b> (205): nur anhalten, wenn jemand kommt', 'stop', '<b>Stopp</b> (206): <b>immer</b> anhalten, Räder stehen, an der Haltlinie'],
-  ['vorfahrt', '<b>Vorfahrt</b> (301): nur an der <b>nächsten</b> Kreuzung', 'vorfahrtstrasse', '<b>Vorfahrtstraße</b> (306): bis zum Ende-Schild'],
-  ['eingeschraenktes-halteverbot', '<b>Eingeschränktes Halteverbot</b> (286): bis 3 Min halten, Ein-/Aussteigen, Be-/Entladen ok', 'absolutes-halteverbot', '<b>Absolutes Halteverbot</b> (283): gar nicht halten'],
+  ['vorfahrt', '<b>Vorfahrt</b> (301): nur an der <b>nächsten</b> Kreuzung', 'vorfahrtstrasse', '<b>Vorfahrtstraße</b> (306): bis zum nächsten Zeichen 205, 206 oder 307'],
+  ['eingeschraenktes-halteverbot', '<b>Eingeschränktes Haltverbot</b> (286): bis 3 Min halten, Ein-/Aussteigen, Be-/Entladen ok', 'absolutes-halteverbot', '<b>Absolutes Haltverbot</b> (283): gar nicht halten'],
   ['ueberholverbot', '<b>Überholverbot</b> (276): keine <b>mehrspurigen</b> Kfz. Motorrad, Rad, Mofa darfst du überholen', 'ueberholverbot-fuer-lkw', '<b>Überholverbot Lkw</b> (277): gilt für Kfz über 3,5 t, nicht für Pkw und Bus'],
   ['tempo-30-zone', '<b>Tempo-30-Zone</b> (274.1): 30, meist rechts vor links', 'verkehrsberuhigter-bereich', '<b>Verkehrsberuhigter Bereich</b> (325.1): Schritttempo, Kinder spielen überall, Parken nur auf markierten Flächen'],
 ] as const;
@@ -26,15 +26,15 @@ const pct = (m: number) => (m / maxStop) * 100;
 const RULER = [
   { m: 1.5, t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'innerorts (§ 5 Abs. 4)' },
   { m: 2,   t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'außerorts' },
-  { m: 3,   t: 'Restfahrbahn bis zur durchgezogenen Linie, sonst Parkverbot', s: '§ 12 Abs. 3' },
+  { m: 3,   t: 'Restfahrbahn bis zur durchgezogenen Linie, sonst Parkverbot', s: 'Zeichen 295' },
   { m: 5,   t: 'Parkverbot vor und hinter Kreuzung/Einmündung', s: '§ 12 Abs. 3' },
-  { m: 5,   t: 'Halteverbot vor dem Zebrastreifen (und darauf)', s: '§ 12 Abs. 1' },
-  { m: 5,   t: 'Parkverbot vor Andreaskreuz innerorts', s: 'Zeichen 201' },
+  { m: 5,   t: 'Haltverbot vor dem Zebrastreifen (und darauf)', s: 'Zeichen 293' },
+  { m: 5,   t: 'Parkverbot vor und hinter Andreaskreuz innerorts', s: 'Zeichen 201' },
   { m: 5,   t: 'Abschleppseil: maximaler Abstand', s: '§ 43 StVZO' },
-  { m: 8,   t: 'Parkverbot vor Kreuzung, wenn rechts ein Radweg ist', s: 'nur davor' },
-  { m: 10,  t: 'Halteverbot vor Ampel, Andreaskreuz, Vorfahrt gewähren, Stopp', s: 'nur wenn du sie verdeckst' },
+  { m: 8,   t: 'Parkverbot vor Kreuzung, wenn rechts ein baulicher Radweg ist', s: 'nur davor' },
+  { m: 10,  t: 'Haltverbot vor Ampel, Andreaskreuz, Vorfahrt gewähren, Stopp', s: 'nur wenn du sie verdeckst' },
   { m: 15,  t: 'Parkverbot vor und hinter Haltestellenschild', s: 'Zeichen 224' },
-  { m: 50,  t: 'Parkverbot vor Andreaskreuz außerorts', s: 'Zeichen 201' },
+  { m: 50,  t: 'Parkverbot vor und hinter Andreaskreuz außerorts', s: 'Zeichen 201' },
   { m: 50,  t: 'Abstand Lkw > 3,5 t / Bus auf Autobahn ab 50 km/h', s: '§ 4 Abs. 3' },
   { m: 50,  t: 'Leitpfosten stehen alle …', s: 'zum Schätzen von Abstand und Sicht' },
 ];
@@ -121,7 +121,7 @@ const RULER = [
       <div><span>Reaktionsweg bei 50 km/h<small>2.2.03-011</small></span><b>15 m</b></div>
       <div><span>Bremsweg bei 50 km/h<small>2.2.03-010</small></span><b>25 m</b></div>
       <div><span>Anhalteweg bei 50 km/h<small>2.2.03-009</small></span><b>40 m</b></div>
-      <div><span>Gefahrbremsung bei 50 km/h<small>2.2.03-016</small></span><b>12,5 m</b></div>
+      <div><span>Gefahrbremsung: 40 km/h = 8 m. Bei 50 km/h?<small>2.2.03-016</small></span><b>12,5 m</b></div>
       <div><span>Bremsweg bei 30 km/h = 9 m. Bei 60 km/h?<small>1.2.03-106</small></span><b>36 m</b></div>
       <div><span>Tempo verdoppelt: Bremsweg<small>1.2.03-102</small></span><b>4-mal so lang</b></div>
       <div><span>Tempo verdoppelt: Reaktionsweg<small>2.1.07-208</small></span><b>2-mal so lang</b></div>
@@ -131,7 +131,7 @@ const RULER = [
     </div>
     <h3 class="sub-h">Abstand und Überholen</h3>
     <div class="qa">
-      <div><span>Abstand bei 80 km/h<small>2.2.04-001</small></span><b>40 m</b></div>
+      <div><span>Abstand bei 80 km/h<small>2.2.04-001</small></span><b>2 Sekunden (ca. 40 m)</b></div>
       <div><span>Abstand bei 100 km/h<small>2.2.04-004</small></span><b>50 m</b></div>
       <div><span>Kolonne in der Stadt, 50 km/h<small>2.2.04-002</small></span><b>15 m (3 Pkw-Längen)</b></div>
       <div><span>Seitenabstand Rad / E-Scooter innerorts<small>1.2.05-004</small></span><b>1,5 m</b></div>
@@ -195,9 +195,9 @@ const RULER = [
         <thead><tr><th>Fahrzeug</th><th>Innerorts</th><th>Außerorts</th><th>Kraftfahrstraße</th><th>Autobahn</th></tr></thead>
         <tbody>
           <tr><td>Pkw, Motorrad</td><td><b class="p50">50</b></td><td><b class="p100">100</b></td><td><b class="p100">100</b> · frei bei getrennten Fahrbahnen*</td><td><b class="pfree">frei</b> · 130 empfohlen</td></tr>
-          <tr><td>Pkw mit Anhänger</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · 100 mit Plakette</td><td><b class="p80">80</b> · 100 mit Tempo-100-Plakette</td></tr>
+          <tr><td>Pkw mit Anhänger</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · 100 mit Plakette bei getrennten Fahrbahnen</td><td><b class="p80">80</b> · 100 mit Tempo-100-Plakette</td></tr>
           <tr><td>Kfz 3,5–7,5 t (außer Pkw)</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td></tr>
-          <tr><td>Lkw über 7,5 t</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td><td><b class="p80">80</b></td></tr>
+          <tr><td>Lkw über 7,5 t</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b> · 80 bei getrennten Fahrbahnen</td><td><b class="p80">80</b></td></tr>
           <tr><td>Bus</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · Reisebus mit Zulassung 100</td></tr>
           <tr><td>Bus mit stehenden Fahrgästen</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td></tr>
           <tr><td>Moped, S-Pedelec</td><td><b class="p50">45</b></td><td><b class="p50">45</b></td><td>verboten</td><td>verboten</td></tr>
@@ -205,7 +205,7 @@ const RULER = [
       </table>
     </div>
     <p class="note note-mt">* Kraftfahrstraße mit baulich getrennten Fahrbahnen oder 2 Fahrstreifen je Richtung: für Pkw kein allgemeines Limit. S-Pedelec = Kraftfahrzeug: Führerschein, Versicherungskennzeichen, Helm, keine Radwege. Schilder gehen immer vor.</p>
-    <div class="tip note-mt"><b>Merksatz:</b> außerorts gilt „Anhänger oder Lkw = 80, richtig schwer über 7,5 t = 60“. 130 auf der Autobahn ist nur <b>Richtgeschwindigkeit</b>.</div>
+    <div class="tip note-mt"><b>Merksatz:</b> außerorts gilt „Anhänger, Bus oder über 3,5 t = 80, über 7,5 t = 60“. Lkw bis 3,5 t ohne Anhänger: 100. 130 auf der Autobahn ist nur <b>Richtgeschwindigkeit</b>.</div>
 
     <div class="chips note-mt">
       <div><b class="p50">50</b> bei <b>Sicht unter 50 m</b> (Nebel, Schnee, Regen), überall</div>
@@ -213,7 +213,7 @@ const RULER = [
       <div><b class="p50">50</b> ab der <b>Ortstafel</b> sofort. Ende eines Limits innerorts = wieder 50, nicht frei</div>
       <div><b class="p30">30</b> in der <b>Tempo-30-Zone</b> (flächig, meist rechts vor links)</div>
       <div><b class="p30">30</b> in Fahrradstraße und Fahrradzone, für alle Fahrzeuge</div>
-      <div><b class="pwalk">7</b> Schrittgeschwindigkeit (ca. 4–7 km/h): verkehrsberuhigter Bereich, Bus mit Warnblinker an Haltestelle</div>
+      <div><b class="pwalk">Schritt</b> Schrittgeschwindigkeit (ca. 4–7 km/h, keine feste Zahl im Gesetz): verkehrsberuhigter Bereich, Bus mit Warnblinker an Haltestelle</div>
       <div><b class="pmin">&gt;60</b> Autobahn und Kraftfahrstraße nur für Kfz, die bauartbedingt <b>schneller als 60</b> fahren</div>
     </div>
   </Section>
@@ -246,15 +246,15 @@ const RULER = [
             <text x="228" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">80 m</text>
           </svg>
         </div>
-        <p class="note"><b>Merksatz:</b> jeder Streifen = 80 m. Ab der ersten Bake (Zeichen 156) <b>nicht überholen</b>. Andreaskreuz = Bahn hat <b>immer</b> Vorrang.</p>
+        <p class="note"><b>Merksatz:</b> jeder Streifen = 80 m. Ab der ersten Bake (Zeichen 156) <b>keine Kraftfahrzeuge überholen</b>. Andreaskreuz = Bahn hat <b>immer</b> Vorrang.</p>
       </div>
       <div class="card">
         <h3><span>⚠️</span>Wo Schilder stehen</h3>
         <div class="kv"><span class="lab">Gefahrzeichen außerorts</span><span class="val">150–250 m vor der Gefahr</span></div>
-        <div class="kv"><span class="lab">Gefahrzeichen innerorts</span><span class="val">kurz davor</span></div>
+        <div class="kv"><span class="lab">Gefahrzeichen innerorts</span><span class="val">meist kürzer davor</span></div>
         <div class="kv"><span class="lab">Autobahn-Ausfahrt</span><span class="val">Baken 300 / 200 / 100 m</span></div>
         <div class="kv"><span class="lab">Leitpfosten</span><span class="val">alle 50 m</span></div>
-        <div class="tip">Andere Entfernung? Dann steht sie auf einer Zusatztafel („in 400 m“).</div>
+        <div class="tip">Deutlich kürzer? Dann steht die Entfernung auf einer Zusatztafel („in 50 m“).</div>
       </div>
     </div>
   </Section>
@@ -270,7 +270,7 @@ const RULER = [
       </div>
       <div class="sc-ticks">
         <span><b>0,0</b>Probezeit &amp; unter 21: Grenze</span>
-        <span><b>0,3</b>mit Ausfallerscheinung oder Unfall: Straftat</span>
+        <span><b>0,3</b>mit Ausfallerscheinung (z. B. Unfall wegen Alkohol): Straftat</span>
         <span><b>0,5</b>immer: Ordnungswidrigkeit, Fahrverbot</span>
         <span><b>1,1</b>absolut fahruntüchtig: Straftat</span>
         <span><b>1,6</b>MPU (auch auf dem Fahrrad)</span>
@@ -347,12 +347,12 @@ const RULER = [
       <div class="card">
         <h3><span>❄️</span>Winter</h3>
         <div class="kv"><span class="lab">Winterreifen</span><span class="val">Alpine-Symbol (Berg + Schneeflocke)</span></div>
-        <div class="kv"><span class="lab">Pflicht</span><span class="val">bei Glätte, Schnee, Eis (situativ)</span></div>
+        <div class="kv"><span class="lab">Pflicht</span><span class="val">bei Glatteis, Schneeglätte, Schneematsch, Eis- oder Reifglätte (situativ)</span></div>
         <div class="tip">Alle Scheiben frei machen, kein Guckloch. Brücken und Waldstücke frieren zuerst.</div>
       </div>
       <div class="card">
         <h3><span>🚨</span>Warnblinker</h3>
-        <div class="tip">Stauende auf Autobahn, Panne, Abschleppen, Schulbus mit Kindern an der Haltestelle. <b>Nicht</b> zum Falschparken.</div>
+        <div class="tip">Stauende, Panne, Abschleppen, sehr langsames Fahren auf der Autobahn. Linienbus oder Schulbus blinkt an der Haltestelle: nur Schrittgeschwindigkeit vorbei. <b>Nicht</b> zum Falschparken.</div>
       </div>
       <div class="card">
         <h3><span>🚑</span>Rettungsgasse</h3>
@@ -401,10 +401,10 @@ const RULER = [
         <h3><span>📦</span>Ladung</h3>
         <div class="kv"><span class="lab">nach hinten raus</span><span class="val">max. 1,5 m</span></div>
         <div class="kv"><span class="lab">bei Fahrt bis 100 km</span><span class="val">max. 3 m</span></div>
-        <div class="kv"><span class="lab">kennzeichnen ab</span><span class="val">mehr als 1 m</span></div>
-        <div class="kv"><span class="lab">wie</span><span class="val">rote Fahne 30 × 30 cm, nachts rote Leuchte (max. 1,5 m hoch)</span></div>
+        <div class="kv"><span class="lab">kennzeichnen ab</span><span class="val">mehr als 1 m über die Rückstrahler</span></div>
+        <div class="kv"><span class="lab">wie</span><span class="val">rote Fahne oder Schild mind. 30 × 30 cm, max. 1,5 m hoch; bei Dunkelheit zusätzlich rote Leuchte</span></div>
         <div class="kv"><span class="lab">nach vorn</span><span class="val">nichts, ab 2,5 m Höhe bis 50 cm</span></div>
-        <div class="kv"><span class="lab">seitlich kennzeichnen</span><span class="val">ab 40 cm über die Leuchten</span></div>
+        <div class="kv"><span class="lab">seitlich kennzeichnen</span><span class="val">mehr als 40 cm über die Leuchten (bei Dunkelheit Leuchten)</span></div>
         <div class="tip"><b>Merksatz:</b> ab <b>1</b> markieren, bis <b>1,5</b> raus, <b>3</b> nur unter 100 km.</div>
       </div>
       <div class="card">
@@ -435,7 +435,7 @@ const RULER = [
       </div>
       <div class="card">
         <h3><span>🌱</span>Umweltbewusst fahren</h3>
-        <div class="tip">Früh hochschalten (ca. 2.000 U/min), vorausschauend rollen lassen, Motor aus bei längerem Warten, Dachbox abbauen, Reifendruck prüfen. Unnützes Hin- und Herfahren ist <b>verboten</b>.</div>
+        <div class="tip">Früh hochschalten (ca. 2.000 U/min), vorausschauend rollen lassen, Motor aus bei längerem Warten, Dachbox abbauen, Reifendruck prüfen. Unnützes Hin- und Herfahren ist <b>innerorts verboten</b>, wenn es andere stört.</div>
       </div>
     </div>
   </Section>
@@ -446,9 +446,8 @@ const RULER = [
     <div class="ladder">
       <div><span>1</span>👮 Polizei</div>
       <div><span>2</span>🚦 Ampel</div>
-      <div><span>3</span>⛔ Verkehrszeichen</div>
-      <div><span>4</span>〰️ Markierungen</div>
-      <div><span>5</span>↔️ Rechts vor links</div>
+      <div><span>3</span>⛔ Schilder und Markierungen</div>
+      <div><span>4</span>↔️ Rechts vor links</div>
     </div>
     <div class="tip note-mt"><b>Merksatz:</b> Polizei schlägt Ampel, Ampel schlägt Schild, Schild schlägt rechts vor links. Ampel aus oder gelb blinkend? Dann gelten die Schilder.</div>
   </Section>
@@ -480,11 +479,11 @@ const RULER = [
             <rect x="124" y="6" width="22" height="32" rx="5" fill="#1565d8"/>
             <text x="135" y="27" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">1</text>
             <rect x="154" y="150" width="22" height="32" rx="5" fill="#d92f2f"/>
-            <path d="M165 150 q0 -45 -50 -50" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
+            <path d="M165 150 q0 -32 -50 -32" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
             <text x="165" y="172" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
           </svg>
         </div>
-        <p class="note">Wer links abbiegt, lässt den <b>Gegenverkehr</b> und Fußgänger der Zielstraße zuerst. Kommen sich zwei Linksabbieger entgegen: <b>voreinander</b> abbiegen, außer die Kreuzung ist anders markiert.</p>
+        <p class="note">Wer links abbiegt, lässt den <b>Gegenverkehr</b> und Fußgänger der Zielstraße zuerst. Kommen sich zwei Linksabbieger entgegen: <b>voreinander</b> abbiegen, außer Verkehr oder Bauart der Kreuzung verlangen, erst aneinander vorbeizufahren.</p>
       </div>
 
       <div class="card">
@@ -495,11 +494,11 @@ const RULER = [
             <circle cx="150" cy="95" r="32" fill="#7fb77e"/>
             <rect x="130" y="160" width="40" height="30" fill="#c7ced6"/>
             <rect x="215" y="75" width="85" height="40" fill="#c7ced6"/>
-            <rect x="140" y="160" width="20" height="28" rx="4" fill="#d92f2f"/>
+            <rect x="150" y="160" width="20" height="28" rx="4" fill="#d92f2f"/>
             <text x="150" y="152" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">rein: kein Blinker</text>
             <circle cx="218" cy="103" r="5" fill="#f5a400"/>
             <text x="258" y="70" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">raus: rechts ▸</text>
-            <path d="M150 145 A50 50 0 0 1 200 95" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
+            <path d="M160 145 A50 50 0 0 0 200 95" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
           </svg>
         </div>
         <p class="note">Mit Zeichen 215 + 205: <b>der Kreis hat Vorfahrt</b>. Beim Einfahren blinken ist <b>verboten</b>, beim Ausfahren <b>Pflicht</b>. Im Kreis nicht halten.</p>
@@ -532,7 +531,7 @@ const RULER = [
             <text x="250" y="110" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">erst am Ende</text>
           </svg>
         </div>
-        <p class="note">Endende Spur <b>bis zum Ende</b> nutzen, dann abwechselnd je ein Fahrzeug (§ 7 Abs. 4). Zu frühes Wechseln ist falsch.</p>
+        <p class="note">Endende Spur <b>bis zum Ende</b> nutzen, dann abwechselnd je ein Fahrzeug (§ 7 Abs. 4). Nicht zu früh wechseln.</p>
       </div>
 
       <div class="card">
@@ -544,14 +543,14 @@ const RULER = [
             <g transform="translate(240,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M7 26 L34 16" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">3</text></g>
           </svg>
         </div>
-        <p class="note"><b>1</b> Brust oder Rücken zu dir: <b>Halt</b> (wie Rot). Seitlich: frei (wie Grün). <b>2</b> Arm hoch: alle halten, <b>wie Gelb</b>. <b>3</b> Winken: diese Richtung fahren.</p>
+        <p class="note"><b>1</b> Brust oder Rücken zu dir: <b>Halt</b> (wie Rot). Seitlich: frei (wie Grün). <b>2</b> Arm hoch: vor der Kreuzung warten, wer schon drin ist, räumt die Kreuzung (<b>wie Gelb</b>). <b>3</b> Winken: diese Richtung fahren.</p>
       </div>
     </div>
   </Section>
 
   <Section title="Vorfahrt: immer warten">
     <div class="chips">
-      <div>🏠 Aus <b>Grundstück</b>, Parkplatz, Feldweg oder verkehrsberuhigtem Bereich raus: <b>alle</b> haben Vorrang (§ 10)</div>
+      <div>🏠 Aus <b>Grundstück</b>, Parkplatz, Fußgängerzone, verkehrsberuhigtem Bereich oder über abgesenkten Bordstein raus: <b>alle</b> haben Vorrang (§ 10). Aus Feld- oder Waldweg: keine Vorfahrt (§ 8)</div>
       <div>🚨 <b>Blaulicht + Martinshorn</b>: sofort freie Bahn schaffen</div>
       <div>🚌 Linienbus will von gekennzeichneter <b>Haltestelle</b> abfahren: abfahren lassen, notfalls warten</div>
       <div>🚊 <b>Straßenbahn</b>: normale Vorfahrtregeln, aber beim Abbiegen und neben dir in gleicher Richtung hat sie Vorrang</div>
@@ -562,7 +561,7 @@ const RULER = [
 
   <Section title="Grünpfeil">
     <div class="vs">
-      <div><b>Grünpfeil-Schild</b> (Blech, Zeichen 720) neben Rot<br/><span class="big">STOPP</span>erst ganz anhalten, dann rechts abbiegen, wenn frei</div>
+      <div><b>Grünpfeil-Schild</b> (Blech, § 37) neben Rot<br/><span class="big">STOPP</span>erst ganz anhalten, dann rechts abbiegen, wenn frei</div>
       <div><b>Leuchtender</b> grüner Pfeil in der Ampel<br/><span class="big go">FAHREN</span>normale freie Fahrt in Pfeilrichtung</div>
     </div>
   </Section>
@@ -586,7 +585,7 @@ const RULER = [
       <div>🦓 Am Zebrastreifen <b>nicht überholen</b> (§ 26)</div>
       <div>📯 Hupe und Lichthupe: bei Gefahr, außerorts auch zum <b>Ankündigen des Überholens</b></div>
       <div>🅿️ Links parken nur in der <b>Einbahnstraße</b> oder wenn rechts Schienen liegen</div>
-      <div>🅿️ Auf dem Gehweg parken nur mit Zeichen 315</div>
+      <div>🅿️ Auf dem Gehweg parken nur mit Zeichen 315 oder markierter Parkfläche</div>
       <div>🕐 Parkscheibe auf die <b>nächste halbe Stunde</b> vorstellen (10:05 → 10:30)</div>
       <div>🚒 Vor Feuerwehrzufahrten nicht halten. In zweiter Reihe nicht halten</div>
       <div>🚲 Bei „Verbot für Fahrzeuge aller Art“ (250) darf man Rad <b>schieben</b></div>
@@ -610,7 +609,7 @@ const RULER = [
     <div class="chips note-mt">
       <div>👀 Vor dem Losfahren: Sitz, Kopfstütze, Spiegel, Gurt. Der Prüfer schaut zu.</div>
       <div>🗺️ Stadt, Landstraße und meist Autobahn oder Kraftfahrstraße</div>
-      <div>🅰️ Prüfung im Automatik = nur Automatik. Ausnahme <b>B197</b>: 10 Schaltstunden à 45 Min + 15 Min Testfahrt in der Fahrschule, Eintrag binnen 1 Jahr</div>
+      <div>🅰️ Prüfung im Automatik = nur Automatik. Ausnahme <b>B197</b>: mindestens 10 Schaltstunden à 45 Min + 15 Min Testfahrt in der Fahrschule, Eintrag binnen 1 Jahr</div>
       <div>🔧 <b>Abfahrtkontrolle</b> (Licht, Reifen, Flüssigkeiten) gehört nur zu C, C1, D, D1, T, nicht zu Klasse B</div>
     </div>
   </Section>
@@ -646,7 +645,7 @@ const RULER = [
           <div>Anfahren vom Fahrbahnrand: <b>links</b></div>
           <div>Spurwechsel und Einfädeln: zur <b>Zielseite</b></div>
           <div>Rechts abbiegen: <b>rechts</b> (Radweg!), kurz vor dem Abbiegen noch einmal</div>
-          <div>Links abbiegen: <b>links</b></div>
+          <div>Links abbiegen: <b>links</b>, kurz vor dem Abbiegen noch einmal</div>
           <div>Tür öffnen: Spiegel + Schulterblick (oder <b>holländischer Griff</b>: Tür mit der rechten Hand öffnen)</div>
         </div>
         <div class="tip">Kopf ca. <b>45°</b> drehen. Der Prüfer sieht nur deinen Kopf. Bewegt er sich nicht, hat der Blick nicht stattgefunden.</div>
@@ -680,7 +679,7 @@ const RULER = [
           <div>Bei ca. <b>45°</b> (Scheinwerfer des hinteren Autos im linken Spiegel) Räder gerade, weiter zurück.</div>
           <div>Vorderes Eck frei? <b>Voll links</b> einschlagen, einschwenken, gerade stellen.</div>
         </div>
-        <div class="tip">Lücke mind. ca. 1,5 Fahrzeuglängen. Nicht den Bordstein berühren, max. ca. <b>30 cm</b> Abstand. Korrigieren ist erlaubt.</div>
+        <div class="tip">Lücke in der Prüfung etwa <b>8 m</b> (knapp 2 Autolängen). Bordstein nicht berühren, höchstens <b>30 cm</b> Abstand. Höchstens <b>zwei</b> Korrekturzüge.</div>
       </div>
 
       <div class="card">
@@ -696,7 +695,7 @@ const RULER = [
             <text x="100" y="30" font-size="11" font-weight="800" fill="#17171b" text-anchor="middle">Start</text>
           </svg>
         </div>
-        <div class="tip">Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten. Schrittgeschwindigkeit. Vor dem Lenken rundum schauen, Fußgänger haben Vorrang.</div>
+        <div class="tip">Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten. Schrittgeschwindigkeit. Vor dem Lenken rundum schauen, Fußgänger haben Vorrang. Höchstens zwei Korrekturzüge.</div>
       </div>
 
       <div class="card">
@@ -710,7 +709,7 @@ const RULER = [
             <path d="M230 100 Q160 40 60 40" stroke="#00a86b" stroke-width="3" fill="none"/><text x="20" y="34" font-size="12" font-weight="800" fill="#17171b">3 vor</text>
           </svg>
         </div>
-        <div class="tip">Vor jedem Zug <b>rundum</b> schauen. Lenken im <b>Rollen</b>, nicht im Stand. Ein Zug mehr ist besser als der Bordstein.</div>
+        <div class="tip">Vor jedem Zug <b>rundum</b> schauen. Lenken im <b>Rollen</b>, nicht im Stand. Ein Zug mehr ist besser als der Bordstein. Ort und Art wählst du selbst, z. B. Wenden in drei Zügen, Einfahrt oder Parkplatz.</div>
       </div>
 
       <div class="card">
@@ -725,7 +724,7 @@ const RULER = [
             <path d="M200 30 Q150 30 150 78" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
           </svg>
         </div>
-        <div class="tip">Mit ca. <b>1 m</b> Abstand vorbei. Einschlagen, wenn deine Schulter auf Höhe der Linie hinter der Lücke ist. Gerade stellen, wenn die Linien in beiden Spiegeln <b>parallel</b> sind.</div>
+        <div class="tip">Mit ca. <b>1 m</b> Abstand vorbei. Einschlagen, wenn deine Schulter auf Höhe der Linie hinter der Lücke ist. Gerade stellen, wenn die Linien in beiden Spiegeln <b>parallel</b> sind. Vorwärts oder rückwärts, wie der Prüfer sagt. Höchstens zwei Korrekturzüge.</div>
       </div>
 
       <div class="card">
@@ -733,10 +732,10 @@ const RULER = [
         <div class="flow small">
           <div><b>1</b>Kupplung + Bremse voll</div>
           <div><b>2</b>Druck halten</div>
-          <div><b>3</b>Warnblinker</div>
+          <div><b>3</b>Stillstand</div>
           <div><b>4</b>Schulterblick, weiter</div>
         </div>
-        <div class="tip">Ca. 30 km/h innerorts. Mit ABS <b>voll draufbleiben</b>: Rattern im Pedal ist normal. Du kannst dabei lenken. Vorher Rückspiegel prüfen.</div>
+        <div class="tip">Aus <b>mindestens 30 km/h</b>. Der Fahrlehrer gibt das Kommando und achtet auf den Verkehr hinter dir. Bremse sofort mit voller Kraft treten und Spur halten. Mit ABS <b>voll draufbleiben</b>: Rattern im Pedal ist normal.</div>
       </div>
     </div>
   </Section>
@@ -786,7 +785,7 @@ const RULER = [
   <Section id="fehler" title="Häufigste Durchfallgründe">
     <div class="fails">
       <div><b>Vorfahrt</b> missachtet, jemand muss bremsen</div>
-      <div><b>Schulterblick</b> vergessen</div>
+      <div><b>Schulterblick</b> vergessen beim Spurwechsel oder Abbiegen (vor allem mehrmals oder mit Gefahr)</div>
       <div>Über die <b>Haltlinie</b> gerollt bei Stopp (Zeichen 206): Räder müssen stehen</div>
       <div><b>Rot</b> überfahren</div>
       <div><b>Tempo</b> deutlich zu hoch, auch in der 30-Zone</div>

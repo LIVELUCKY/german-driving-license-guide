@@ -36,8 +36,8 @@
     "kw": "uberholverbot no overtaking passing",
     "nameDe": "Überholverbot",
     "stvo": "276",
-    "de": "Überholen von Kfz verboten.",
-    "tipDe": "Zwei Autos nebeneinander = kein Überholen."
+    "de": "Mehrspurige Kraftfahrzeuge und Krafträder mit Beiwagen dürfen nicht überholt werden. Motorrad und Fahrrad darfst du überholen.",
+    "tipDe": "Zwei Autos nebeneinander = keine Autos überholen. Einspurige sind erlaubt."
   },
   {
     "cat": "prohibit",
@@ -69,7 +69,7 @@
     "nameDe": "Verbot für LKW",
     "stvo": "253",
     "de": "Verbot für Kraftfahrzeuge über 3,5 t zulässiger Gesamtmasse, einschließlich Anhänger. Pkw und Kraftomnibusse sind ausgenommen.",
-    "tipDe": "Entscheidend ist die zulässige Gesamtmasse im Fahrzeugschein, nicht die Ladung. Anhänger zählen mit."
+    "tipDe": "Entscheidend ist die zulässige Gesamtmasse laut Fahrzeugschein, nicht die Ladung. Ein Pkw mit Anhänger ist nicht betroffen."
   },
   {
     "cat": "prohibit",
@@ -124,7 +124,7 @@
     "kw": "uberholverbot lkw trucks no overtaking",
     "nameDe": "Überholverbot für LKW",
     "stvo": "277",
-    "de": "Lkw dürfen hier nicht überholen.",
+    "de": "Kraftfahrzeuge über 3,5 t und Zugmaschinen dürfen mehrspurige Kraftfahrzeuge nicht überholen. Pkw und Busse sind ausgenommen.",
     "tipDe": "Lkw + Auto nebeneinander im roten Ring = Überholverbot für Lkw."
   },
   {
@@ -164,7 +164,7 @@
     "kw": "gefahrgut hazardous goods tanker explosive",
     "nameDe": "Verbot für Gefahrgut",
     "stvo": "261",
-    "de": "Gefahrgut-Transporte verboten (Tunnel, Wasserschutz).",
+    "de": "Verbot für Fahrzeuge mit kennzeichnungspflichtigen gefährlichen Gütern (z. B. vor Tunneln).",
     "tipDe": "Gefahrgutunfälle sperren Straßen tagelang."
   }
 ]

@@ -8,7 +8,7 @@ A German cheat sheet for the driving licence Klasse B: the theory exam and the p
 
 - **Theorie**: every formula (Reaktionsweg, Bremsweg, Gefahrbremsung, Anhalteweg) and the numbers the question catalogue keeps asking, as charts and with memory hooks
 - **Vorfahrt**: right of way as diagrams
-- **Zeichen**: 109 road signs with official StVO artwork
+- **Zeichen**: 107 road signs with official StVO artwork
 - **Praxis**: the basic maneuvers as diagrams, exam format, common fail reasons
 - Static HTML, no server, no database
 

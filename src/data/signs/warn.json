@@ -46,7 +46,7 @@
     "nameDe": "Fußgänger",
     "stvo": "133-10",
     "de": "Mit querenden Fußgängern rechnen.",
-    "tipDe": "Fußgänger kreuzen unerwartet — wie 30er Zone behandeln."
+    "tipDe": "Langsamer fahren und bremsbereit sein. Fußgänger können plötzlich auf die Straße treten."
   },
   {
     "cat": "warn",
@@ -117,8 +117,8 @@
     "kw": "steigung steep hill uphill ascent berg anstieg",
     "nameDe": "Steigung",
     "stvo": "110-10",
-    "de": "Starke Steigung — früh zurückschalten, auf Gefälle danach vorbereiten.",
-    "tipDe": "Langsam hinauf = oben am Gefälle gut vorbereitet sein.",
+    "de": "Starke Steigung. Rechtzeitig zurückschalten.",
+    "tipDe": "Vor der Steigung in einen kleineren Gang schalten, nicht erst wenn der Motor schon zieht.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><polygon points=\"40,7 76,69 4,69\" fill=\"#fff\" stroke=\"#d92f2f\" stroke-width=\"5.5\" stroke-linejoin=\"round\"/><path d=\"M24 60 L56 38\" stroke=\"#111\" stroke-width=\"5\"/><text x=\"40\" y=\"32\" font-size=\"13\" font-weight=\"800\" fill=\"#111\" text-anchor=\"middle\">10%</text></svg>"
   },
   {

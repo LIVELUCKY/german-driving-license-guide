@@ -52,8 +52,8 @@
     "kw": "rollstuhl behinderte disabled wheelchair",
     "nameDe": "Nur Schwerbehinderte",
     "stvo": "1044-10",
-    "de": "Parken nur mit Behinderten-Ausweis.",
-    "tipDe": "Blauer Ausweis für Schwerbehinderte muss sichtbar ausliegen."
+    "de": "Parken nur mit blauem EU-Parkausweis (außergewöhnliche Gehbehinderung oder blind).",
+    "tipDe": "Ein normaler Schwerbehindertenausweis reicht nicht. Parkausweis sichtbar hinter die Windschutzscheibe legen."
   },
   {
     "cat": "supp",
