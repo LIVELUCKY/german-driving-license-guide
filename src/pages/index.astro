@@ -22,6 +22,28 @@ const STOP = [30, 50, 70, 100, 130].map(v => {
 const maxStop = Math.max(...STOP.map(s => s.sum));
 const pct = (m: number) => (m / maxStop) * 100;
 
+// Each formula: worked chains for 50 and 100 km/h (value, operation, value, …, result) plus a memory hook.
+const FORMULAS = [
+  { name: 'Reaktionsweg', x: '(v ÷ 10) × 3',
+    ex: [['50', 'Null weg', '5', '× 3', '15 m'], ['100', 'Null weg', '10', '× 3', '30 m']],
+    m: '1 Sekunde Schreck = 3-mal die Tacho-Ziffer. Bei 2 Sekunden Reaktion doppelt so lang.' },
+  { name: 'Bremsweg', x: '(v ÷ 10)²', 
+    ex: [['50', 'Null weg', '5', '× 5', '25 m'], ['100', 'Null weg', '10', '× 10', '100 m']],
+    m: 'Die Zahl mal sich selbst. Darum wird der Bremsweg bei doppeltem Tempo 4-mal so lang.' },
+  { name: 'Gefahrbremsung', x: '(v ÷ 10)² ÷ 2',
+    ex: [['50', 'Bremsweg', '25', '÷ 2', '12,5 m'], ['100', 'Bremsweg', '100', '÷ 2', '50 m']],
+    m: 'Voll in die Eisen = halber Bremsweg.' },
+  { name: 'Anhalteweg', x: 'Reaktionsweg + Bremsweg', hl: true,
+    ex: [['50', 'Reaktion + Bremsen', '15 + 25', '=', '40 m'], ['100', 'Reaktion + Bremsen', '30 + 100', '=', '130 m']],
+    m: 'Erst erschrecken, dann bremsen: beides zusammen. Das Auto steht erst nach dem Anhalteweg.' },
+  { name: 'Anhalteweg bei Gefahr', x: 'Reaktionsweg + Bremsweg ÷ 2',
+    ex: [['50', 'Reaktion + halber Bremsweg', '15 + 12,5', '=', '27,5 m'], ['100', 'Reaktion + halber Bremsweg', '30 + 50', '=', '80 m']],
+    m: 'Nur der Bremsweg wird halbiert, der Reaktionsweg bleibt.' },
+  { name: 'Sicherheitsabstand', x: 'v ÷ 2 (in Metern)',
+    ex: [['80', 'halbieren', '40 m'], ['100', 'halbieren', '50 m']],
+    m: '„Halber Tacho“. Ohne Zahlen: 2 Sekunden Abstand, „einundzwanzig, zweiundzwanzig“.' },
+] as const;
+
 // Distances in metres, drawn as bars on one shared scale (max 50 m).
 const RULER = [
   { m: 1.5, t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'innerorts (§ 5 Abs. 4)' },
@@ -64,12 +86,20 @@ const RULER = [
   </Section>
 
   <Section id="formeln" title="Formeln">
-    <div class="formulas">
-      <div class="formula"><span class="f-n">Reaktionsweg</span><span class="f-x">(v ÷ 10) × 3</span><span class="f-e">50 km/h → 5 × 3 = <b>15 m</b></span></div>
-      <div class="formula"><span class="f-n">Bremsweg</span><span class="f-x">(v ÷ 10)²</span><span class="f-e">50 km/h → 5 × 5 = <b>25 m</b></span></div>
-      <div class="formula"><span class="f-n">Gefahrbremsung</span><span class="f-x">(v ÷ 10)² ÷ 2</span><span class="f-e">50 km/h → 25 ÷ 2 = <b>12,5 m</b></span></div>
-      <div class="formula"><span class="f-n">Anhalteweg bei Gefahr</span><span class="f-x">Reaktionsweg + Bremsweg ÷ 2</span><span class="f-e">50 km/h → 15 + 12,5 = <b>27,5 m</b></span></div>
-      <div class="formula hl"><span class="f-n">Anhalteweg</span><span class="f-x">Reaktionsweg + Bremsweg</span><span class="f-e">50 km/h → 15 + 25 = <b>40 m</b></span></div>
+    <div class="formula-key">
+      <span>Tacho ÷ 10</span><i>dann</i><span><b>× 3</b> Reaktion</span><span><b>hoch 2</b> Bremsen</span><span><b>÷ 2</b> Gefahr</span><span><b>+</b> Anhalten</span>
+    </div>
+    <p class="note note-mb"><b>Merksatz:</b> „Null weg, <b>mal drei</b> fürs Erschrecken, <b>mal sich selbst</b> fürs Bremsen, <b>halbe</b> in Gefahr, <b>zusammen</b> zum Stehen.“</p>
+    <div class="fcards">
+      {FORMULAS.map(f => (
+        <div class={`fcard${'hl' in f ? ' hl' : ''}`}>
+          <div class="fc-h"><b>{f.name}</b><code>{f.x}</code></div>
+          {f.ex.map(chain => (
+            <div class="chain">{chain.map((c, i, a) => <span class={i === a.length - 1 ? 'res' : i % 2 ? 'op' : ''}>{c}</span>)}</div>
+          ))}
+          <p class="fc-m">💡 {f.m}</p>
+        </div>
+      ))}
     </div>
 
     <h3 class="sub-h">Anhalteweg im Vergleich</h3>
