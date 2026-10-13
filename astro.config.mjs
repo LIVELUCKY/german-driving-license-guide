@@ -1,10 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
-import rehypeExternalLinks from 'rehype-external-links';
-import rehypeSlug from 'rehype-slug';
 import astroBrokenLinksChecker from 'astro-broken-links-checker';
 
 // SITE_URL / BASE_PATH are injected by GitHub Actions so the same source
@@ -19,19 +16,6 @@ export default defineConfig({
 
   integrations: [
     icon({ include: { lucide: ['moon','sun','menu','x','search'] } }),
-
-    mdx({
-      // Auto-add id slugs to headings and handle external links in MDX content
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeExternalLinks, {
-          target: '_blank',
-          rel: ['noopener', 'noreferrer'],
-          content: { type: 'text', value: ' ↗' },
-        }],
-      ],
-    }),
-
     sitemap({
       filter: (page) => !page.includes('/search-index'),
     }),
@@ -51,12 +35,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     build: { chunkSizeWarningLimit: 750 },
-  },
-
-
-  markdown: {
-    // rehypeSlug + rehypeExternalLinks wired in mdx() above;
-    // Shiki for code blocks in .md files
-    shikiConfig: { theme: 'github-dark' },
   },
 });

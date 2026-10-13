@@ -4,21 +4,18 @@ A German-only cheat sheet for the Klasse B theory and practical exams. Visual fi
 
 ## Stack
 
-- **Framework**: Astro (static, no SSR)
+- **Framework**: Astro 7 (static, no SSR)
 - **Styling**: Tailwind CSS v4 + hand-written components in `src/styles/global.css`
-- **Language**: TypeScript / plain JS, no client framework
+- **Language**: TypeScript 6 / plain JS, no client framework (TypeScript 7 waits for `@astrojs/check` support)
 - **Deployment**: GitHub Pages; `SITE_URL` / `BASE_PATH` are injected by the workflow
 
 ## Pages
 
 | Route | File | Content |
 |---|---|---|
-| `/` | `src/pages/index.astro` | Start page |
-| `/theory/` | `src/pages/theory.astro` | Formulas, numbers, mnemonics from the official question catalogue |
-| `/priority/` | `src/pages/priority.astro` | Right of way, with SVG diagrams |
+| `/` | `src/pages/index.astro` | The whole cheat sheet (theory + practical) |
 | `/signs/`, `/signs/[cat]/` | `src/pages/signs/` | Sign catalogue |
-| `/practical/` | `src/pages/practical.astro` | Basic maneuvers, exam format, common fail reasons |
-| `/legal/` | `src/pages/legal.astro` + `src/content/legal/de.mdx` | Sources, licences, privacy |
+| `/legal/` | `src/pages/legal.astro` | Sources, licences, privacy |
 
 Content lives directly in the page files as markup. Navigation is the `NAV` array in `src/lib/nav.js`.
 
