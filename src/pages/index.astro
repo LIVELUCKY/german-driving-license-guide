@@ -81,7 +81,7 @@ const RULER = [
       <b>Theorie</b>
       <a href="#pruefung">Prüfung</a><a href="#formeln">Formeln</a><a href="#zahlen">Zahlenfragen</a><a href="#tempo">Tempo</a><a href="#meter">Meter</a><a href="#alkohol">Alkohol</a><a href="#punkte">Punkte</a><a href="#licht">Licht &amp; Wetter</a><a href="#unfall">Unfall</a><a href="#fahrzeug">Fahrzeug</a><a href="#vorfahrt">Vorfahrt</a><a href="#vergessen">Oft verwechselt</a><a href="#verhalten">Oft gefragt</a>
       <b>Praxis</b>
-      <a href="#praxis">Prüfung</a><a href="#blick">Blick</a><a href="#aufgaben">Manöver</a><a href="#fahren">Fahrtechnik</a><a href="#fehler">Durchfallgründe</a><a href="#quellen">Quellen</a>
+      <a href="#praxis">Prüfung</a><a href="#blick">Blick</a><a href="#aufgaben">Manöver</a><a href="#fahren">Fahrtechnik</a><a href="#situationen">Im Verkehr</a><a href="#sichern">Sichern</a><a href="#fehler">Sofort durch</a><a href="#quellen">Quellen</a>
     </div>
   </nav>
 
@@ -491,7 +491,7 @@ const RULER = [
         <div class="kv"><span class="lab">kennzeichnen ab</span><span class="val">mehr als 1 m über die Rückstrahler</span></div>
         <div class="kv"><span class="lab">wie</span><span class="val">rote Fahne oder Schild mind. 30 × 30 cm, max. 1,5 m hoch; bei Dunkelheit zusätzlich rote Leuchte</span></div>
         <div class="kv"><span class="lab">nach vorn</span><span class="val">nichts, ab 2,5 m Höhe bis 50 cm</span></div>
-        <div class="kv"><span class="lab">seitlich kennzeichnen</span><span class="val">mehr als 40 cm über die Leuchten (bei Dunkelheit Leuchten)</span></div>
+        <div class="kv"><span class="lab">seitlich</span><span class="val">mehr als 40 cm über die Leuchten: bei Dunkelheit kennzeichnen</span></div>
         <div class="tip"><b>Merksatz:</b> ab <b>1</b> markieren, bis <b>1,5</b> raus, <b>3</b> nur unter 100 km.</div>
       </div>
       <div class="card">
@@ -862,12 +862,15 @@ const RULER = [
           </svg>
         </div>
         <div class="steps">
-          <div>Neben das vordere Auto, ca. <b>50 cm</b> Abstand, Heck auf einer Höhe. Blinker rechts.</div>
-          <div>Zurück, bis dein Hinterrad auf Höhe seines Hecks ist, dann <b>voll rechts</b> einschlagen.</div>
-          <div>Bei ca. <b>45°</b> (Scheinwerfer des hinteren Autos im linken Spiegel) Räder gerade, weiter zurück.</div>
-          <div>Vorderes Eck frei? <b>Voll links</b> einschlagen, einschwenken, gerade stellen.</div>
+          <div>Blinker rechts. Neben das vordere Auto, <b>0,5–1 m</b> seitlich, Heck auf einer Höhe</div>
+          <div>Spiegel + Schulterblick, langsam zurückrollen</div>
+          <div>Dein Hinterrad auf Höhe seines Hecks: <b>voll rechts</b></div>
+          <div>Ca. <b>45°</b>, hinteres Auto ganz im linken Spiegel: Räder gerade</div>
+          <div>Vorderes Eck frei: <b>voll links</b>, dann gerade stellen</div>
+          <div>Parallel stehen, höchstens <b>30 cm</b> zum Bordstein</div>
         </div>
-        <div class="tip">Lücke in der Prüfung etwa <b>8 m</b> (knapp 2 Autolängen). Bordstein nicht berühren, höchstens <b>30 cm</b> Abstand. Höchstens <b>zwei</b> Korrekturzüge.</div>
+        <p class="note"><b>Prüfer will:</b> Lücke ca. <b>8 m</b>, höchstens <b>2 Korrekturzüge</b>, parallel, max. 30 cm.<br/><b>Fehler:</b> Bordstein berührt, schräg, zu weit weg, andere zugeparkt, zu wenig geschaut.</p>
+        <div class="tip"><b>Merke:</b> „Heck an Heck, rechts, gerade, links.“</div>
       </div>
 
       <div class="card">
@@ -883,7 +886,16 @@ const RULER = [
             <text x="100" y="30" font-size="11" font-weight="800" fill="#17171b" text-anchor="middle">Start</text>
           </svg>
         </div>
-        <div class="tip">Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten. Schrittgeschwindigkeit. Vor dem Lenken rundum schauen, Fußgänger haben Vorrang. Höchstens zwei Korrekturzüge.</div>
+        <div class="steps">
+          <div>An der Ecke vorbei, ca. <b>1 m</b> zum Bordstein, ca. 1 Autolänge nach der Ecke halten. Blinker rechts</div>
+          <div>Rundum schauen: Innenspiegel, beide Außenspiegel, Schulterblick</div>
+          <div>Schritttempo zurück. Hinterrad am Beginn der Kurve: <b>rechts einlenken</b></div>
+          <div>Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten</div>
+          <div>Immer wieder nach links schauen: die Front schwenkt aus</div>
+          <div>Gerade stellen, parallel anhalten</div>
+        </div>
+        <p class="note"><b>Prüfer will:</b> möglichst <b>enger Bogen</b>, rechts halten, Endstellung rückwärts und parallel, höchstens 2 Korrekturzüge.<br/><b>Fehler:</b> Bogen zu weit, Bordstein berührt, schräg. Fußgänger haben Vorrang.</p>
+        <div class="tip"><b>Merke:</b> „Bordstein klebt im Spiegel.“</div>
       </div>
 
       <div class="card">
@@ -897,7 +909,15 @@ const RULER = [
             <path d="M230 100 Q160 40 60 40" stroke="#00a86b" stroke-width="3" fill="none"/><text x="20" y="34" font-size="12" font-weight="800" fill="#17171b">3 vor</text>
           </svg>
         </div>
-        <div class="tip">Vor jedem Zug <b>rundum</b> schauen. Lenken im <b>Rollen</b>, nicht im Stand. Ein Zug mehr ist besser als der Bordstein. Ort und Art wählst du selbst, z. B. Wenden in drei Zügen, Einfahrt oder Parkplatz.</div>
+        <div class="steps">
+          <div>Ort und Art <b>wählst du selbst</b>: Einfahrt, Einmündung, Parkplatz oder Wenden in 3 Zügen</div>
+          <div>Blinker, Spiegel, Schulterblick</div>
+          <div>Vor <b>jedem</b> Zug rundum schauen, dann fahren. Lenken im <b>Rollen</b></div>
+          <div>Vor dem Anhalten schon in die andere Richtung lenken</div>
+          <div>Am Ende wieder auf der rechten Seite</div>
+        </div>
+        <p class="note"><b>Prüfer will:</b> keine Grenze bei der Anzahl der Züge.<br/><b>Fehler:</b> zu wenig Beobachtung, Rechtsfahrgebot nicht beachtet.</p>
+        <div class="tip"><b>Merke:</b> „Jeder Zug: erst schauen.“</div>
       </div>
 
       <div class="card">
@@ -912,18 +932,38 @@ const RULER = [
             <path d="M200 30 Q150 30 150 78" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
           </svg>
         </div>
-        <div class="tip">Mit ca. <b>1 m</b> Abstand vorbei. Einschlagen, wenn deine Schulter auf Höhe der Linie hinter der Lücke ist. Gerade stellen, wenn die Linien in beiden Spiegeln <b>parallel</b> sind. Vorwärts oder rückwärts, wie der Prüfer sagt. Höchstens zwei Korrekturzüge.</div>
+        <div class="vs">
+          <div><b>Vorwärts</b>
+        <div class="steps">
+          <div>Mit <b>1,5–2 m</b> Abstand vorbei, Blinker</div>
+          <div>Spiegel auf Höhe der ersten Linie: <b>voll einschlagen</b></div>
+          <div>Ecken der Nachbarautos in beiden Spiegeln</div>
+          <div>Linien parallel: gerade, anhalten</div>
+        </div>
+          </div>
+          <div><b>Rückwärts</b>
+        <div class="steps">
+          <div>Mit ca. <b>1 m</b> vorbei. Schulter auf Höhe der Linie <b>nach</b> der Lücke: halten</div>
+          <div>Spiegel + Schulterblick, voll einschlagen, langsam zurück</div>
+          <div>Linien in beiden Spiegeln <b>parallel</b>: gerade</div>
+          <div>Halten, wenn die Front in der Markierung ist</div>
+        </div>
+          </div>
+        </div>
+        <p class="note"><b>Prüfer will:</b> Vorwärts oder rückwärts, wie angesagt. Ganz in der Markierung, genug Seitenabstand, höchstens 2 Korrekturzüge.<br/><b>Fehler:</b> Auto steht über die Markierung, zu wenig Seitenabstand.</p>
+        <div class="tip"><b>Merke:</b> „Linien parallel = gerade.“</div>
       </div>
 
       <div class="card">
         <h3><span>🅱️</span>Gefahrbremsung</h3>
         <div class="flow small">
-          <div><b>1</b>Kupplung + Bremse voll</div>
-          <div><b>2</b>Druck halten</div>
-          <div><b>3</b>Stillstand</div>
-          <div><b>4</b>Schulterblick, weiter</div>
+          <div><b>1</b>mind. 30 km/h, gerade</div>
+          <div><b>2</b>Kommando vom Fahrlehrer</div>
+          <div><b>3</b>Bremse + Kupplung schlagartig voll</div>
+          <div><b>4</b>Druck halten bis Stillstand</div>
         </div>
-        <div class="tip">Aus <b>mindestens 30 km/h</b>. Der Fahrlehrer gibt das Kommando und achtet auf den Verkehr hinter dir. Bremse sofort mit voller Kraft treten und Spur halten. Mit ABS <b>voll draufbleiben</b>: Rattern im Pedal ist normal.</div>
+        <p class="note"><b>Prüfer will:</b> Spur gerade halten, mit ABS voll draufbleiben (Rattern ist normal). Nach hinten schauen musst du nicht, das macht der Fahrlehrer.<br/><b>Fehler:</b> unter 30 km/h, zu schwach oder nicht schlagartig gebremst, Motor abgewürgt, aus der Spur gelenkt.</p>
+        <div class="tip"><b>Merke:</b> „Beide Füße, voll, bis Stillstand.“</div>
       </div>
     </div>
   </Section>
@@ -933,9 +973,9 @@ const RULER = [
       <div class="card">
         <h3><span>⚙️</span>Schalten</h3>
         <div class="gears">
-          <span><b>1</b>Anfahren</span><span><b>2</b>~20–30</span><span><b>3</b>~30–50</span><span><b>4</b>~50–70</span><span><b>5</b>&gt;70</span>
+          <span><b>1</b>Anfahren</span><span><b>2</b>bis ~20</span><span><b>3</b>~20–40</span><span><b>4</b>~40–60</span><span><b>5/6</b>ab ~60</span>
         </div>
-        <div class="tip">Früh hochschalten (~2.000 U/min). <b>Vor</b> der Kurve bremsen und schalten, nicht in ihr. Nie im Leerlauf rollen.</div>
+        <div class="tip">Früh hochschalten (~2.000 U/min). Falscher Gang oder zu hohe Drehzahl ist ein Prüfungsfehler. <b>Vor</b> der Kurve bremsen und schalten, nicht in ihr. Nie im Leerlauf rollen.</div>
       </div>
       <div class="card">
         <h3><span>🦶</span>Anfahren am Berg</h3>
@@ -945,7 +985,7 @@ const RULER = [
           <div><b>3</b>etwas Gas</div>
           <div><b>4</b>Handbremse lösen</div>
         </div>
-        <div class="tip">Abgewürgt? Kupplung treten, neu starten, durchatmen. Das allein ist kein Durchfaller.</div>
+        <div class="tip">Abgewürgt? Kupplung treten, neu starten, durchatmen. Zählt als <b>leichter Fehler</b>. Mehr als <b>50 cm</b> zurückrollen ist ein schwerer Fehler.</div>
       </div>
       <div class="card">
         <h3><span>↪️</span>Abbiegen in 8 Schritten</h3>
@@ -970,16 +1010,136 @@ const RULER = [
     </div>
   </Section>
 
-  <Section id="fehler" title="Häufigste Durchfallgründe">
-    <div class="fails">
-      <div><b>Vorfahrt</b> missachtet, jemand muss bremsen</div>
-      <div><b>Schulterblick</b> vergessen beim Spurwechsel oder Abbiegen (vor allem mehrmals oder mit Gefahr)</div>
-      <div>Über die <b>Haltlinie</b> gerollt bei Stopp (Zeichen 206): Räder müssen stehen</div>
-      <div><b>Rot</b> überfahren</div>
-      <div><b>Tempo</b> deutlich zu hoch, auch in der 30-Zone</div>
-      <div>Fahrlehrer oder Prüfer muss <b>eingreifen</b></div>
-      <div>Fußgänger am <b>Zebrastreifen</b> übersehen</div>
+  <Section id="situationen" title="Fahraufgaben im Verkehr">
+    <div class="rules">
+      <div class="card"><h3><span>🚦</span>Anfahren vom Rand</h3>
+        <div class="steps">
+          <div>Blinker links</div>
+          <div>Spiegel, <b>Schulterblick links</b></div>
+          <div>Lücke nutzen, Blinker aus</div>
+        </div>
+        <p class="note">Vorrang des fließenden Verkehrs missachtet = sofort durch.</p>
+      </div>
+      <div class="card"><h3><span>🏠</span>Aus Einfahrt oder Parkplatz</h3>
+        <div class="steps">
+          <div>Langsam vortasten</div>
+          <div><b>Allen</b> Vorrang geben (§ 10)</div>
+          <div>Wenn nötig, einweisen lassen</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>↔️</span>Fahrstreifenwechsel</h3>
+        <div class="steps">
+          <div>Nötig und erlaubt?</div>
+          <div>Spiegel, Blinker, <b>Schulterblick</b></div>
+          <div>Tempo anpassen, wechseln, Blinker aus</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>🛣️</span>Auf die Autobahn</h3>
+        <div class="steps">
+          <div>Früh auf die Hauptfahrbahn schauen</div>
+          <div>Einfädelungsstreifen <b>weit nutzen</b>, Tempo angleichen</div>
+          <div>Schulterblick links, einfädeln</div>
+        </div>
+        <p class="note">Unter 80 km/h, wo 100 erlaubt ist, gilt als Fehler. Nie auf dem Streifen anhalten.</p>
+      </div>
+      <div class="card"><h3><span>🚪</span>Von der Autobahn</h3>
+        <div class="steps">
+          <div>Früh blinken, früh rüber</div>
+          <div>Erst auf dem <b>Ausfädelungsstreifen</b> bremsen</div>
+          <div>Tacho prüfen: du bist schneller, als es sich anfühlt</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>🚗</span>Überholen</h3>
+        <div class="steps">
+          <div>Erlaubt? Freie Sicht?</div>
+          <div>Spiegel, Blinker, Schulterblick, ausscheren</div>
+          <div>Rad: 1,5 m innerorts, 2 m außerorts</div>
+          <div>Blinker rechts, einscheren, Blinker aus</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>🚧</span>Engstelle</h3>
+        <div class="steps">
+          <div>Hindernis auf <b>deiner</b> Seite: Gegenverkehr zuerst (§ 6)</div>
+          <div>Spiegel, evtl. Blinker, Schulterblick</div>
+          <div>Vorbei mit mind. 1 m Abstand bei 50</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>🔄</span>Kreisverkehr</h3>
+        <div class="steps">
+          <div>Rein <b>ohne</b> Blinker</div>
+          <div>Kreis hat Vorfahrt (mit Zeichen 205)</div>
+          <div>Vor deiner Ausfahrt rechts blinken, <b>Schulterblick rechts</b> (Radfahrer)</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>🚂</span>Bahnübergang</h3>
+        <div class="steps">
+          <div>Ab erster Bake nicht überholen</div>
+          <div>Gleise links und rechts prüfen</div>
+          <div>Vor dem Andreaskreuz warten</div>
+          <div>Nur fahren, wenn hinter den Schienen Platz ist</div>
+        </div>
+      </div>
+      <div class="card"><h3><span>🦓</span>Zebrastreifen und Bus</h3>
+        <div class="steps">
+          <div>Nicht überholen am Zebrastreifen</div>
+          <div>Fußgänger will rüber: langsam ran, <b>anhalten</b></div>
+          <div>Bus mit Warnblinker: Schritttempo, nicht überholen</div>
+        </div>
+      </div>
     </div>
+  </Section>
+
+  <Section id="sichern" title="Auto sichern und bedienen">
+    <div class="grid cols2">
+      <div class="card">
+        <h3><span>⛰️</span>Am Berg parken</h3>
+        <div class="kv"><span class="lab">bergauf</span><span class="val">1. Gang + Handbremse</span></div>
+        <div class="kv"><span class="lab">bergab</span><span class="val">Rückwärtsgang + Handbremse</span></div>
+        <div class="kv"><span class="lab">Automatik</span><span class="val">erst Handbremse, dann P</span></div>
+        <div class="kv"><span class="lab">bergab mit Bordstein</span><span class="val">Räder zum Bordstein</span></div>
+        <div class="kv"><span class="lab">bergauf mit Bordstein</span><span class="val">Räder vom Bordstein weg</span></div>
+        <div class="tip"><b>Merke:</b> „Gang gegen die Rollrichtung.“</div>
+      </div>
+      <div class="card">
+        <h3><span>🔑</span>Auto verlassen und Prüfungsende</h3>
+        <div class="steps">
+          <div>Richtig parken</div>
+          <div>Gegen Wegrollen sichern: Gang und Handbremse, oder P</div>
+          <div>Schlüssel ab, Lenkradschloss, abschließen (§ 14: gegen unbefugte Benutzung)</div>
+          <div>Vor und beim Türöffnen auf Verkehr achten, niemanden gefährden</div>
+        </div>
+        <p class="note">Nach einer Panne: sofort Warnblinker, dann Warndreieck (§ 15).</p>
+      </div>
+      <div class="card">
+        <h3><span>🎛️</span>Bedienelemente im Griff</h3>
+        <p class="note">In der Prüfung musst du Licht, Wischer und Waschanlage, Heizung, Lüftung und Heckscheibenheizung <b>selbst richtig</b> nutzen. Gar nicht nutzen, wenn es nötig wäre = schwerer Fehler.</p>
+        <div class="tip"><b>Beschlagene Scheibe:</b> Gebläse auf die Frontscheibe, stärker stellen, Klima an, Heckscheibenheizung an.</div>
+      </div>
+      <div class="card">
+        <h3><span>🔧</span>Falls der Prüfer Technik fragt</h3>
+        <p class="note">Offiziell gibt es für Klasse B keine Pflicht-Technikfragen mehr. Manche Prüfer fragen trotzdem.</p>
+        <div class="kv"><span class="lab">Ölstand</span><span class="val">Messstab, zwischen min und max, Motor aus, Auto eben</span></div>
+        <div class="kv"><span class="lab">Kühlmittel</span><span class="val">Ausgleichsbehälter, min/max, nur kalt öffnen</span></div>
+        <div class="kv"><span class="lab">Bremsflüssigkeit</span><span class="val">Behälter, zwischen min und max</span></div>
+        <div class="kv"><span class="lab">Wischwasser</span><span class="val">Behälter mit Scheiben-Symbol</span></div>
+        <div class="kv"><span class="lab">Reifendruck</span><span class="val">Aufkleber in Tür oder Tankklappe, kalt prüfen</span></div>
+        <div class="kv"><span class="lab">Profil</span><span class="val">mind. 1,6 mm, TWI-Stege im Profil</span></div>
+        <div class="kv"><span class="lab">Licht</span><span class="val">rundum gehen; Bremslicht mit Helfer oder Spiegelung</span></div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="fehler" title="Sofort durchgefallen">
+    <div class="fails">
+      <div><b>Vorfahrt oder Vorrang</b> missachtet (auch beim Anfahren vom Rand)</div>
+      <div><b>Rot</b> oder ein Vorschriftzeichen missachtet, z. B. über die Haltlinie bei Stopp gerollt</div>
+      <div><b>Tempo:</b> innerorts mehr als 5, außerorts mehr als 10 km/h zu schnell und nicht in 3 s korrigiert</div>
+      <div>Überholen bei <b>unklarer Lage</b>, oder schneller werden, während du überholt wirst</div>
+      <div>Auf den <b>Schienen</b> halten, falsch herum im <b>Kreisverkehr</b>, Bus mit Warnblinker überholen</div>
+      <div>Verkehr <b>gar nicht beobachtet</b>, vermeidbar von der Fahrbahn abgekommen</div>
+      <div>Fahrlehrer oder Prüfer muss <b>eingreifen</b></div>
+    </div>
+    <p class="note note-mt">Viele kleine Fehler (z. B. Schulterblick mehrmals vergessen) können zusammen auch zum Nichtbestehen führen. Bewertet werden 5 Bereiche: <b>Verkehrsbeobachtung, Fahrzeugpositionierung, Geschwindigkeit, Kommunikation, Fahrzeugbedienung und umweltbewusstes Fahren</b>.</p>
   </Section>
 
   <Section id="quellen" title="Gute Quellen zum Weiterlernen">
