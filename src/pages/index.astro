@@ -698,13 +698,13 @@ const RULER = [
         <li>Fußgänger durchlassen: anhalten. <b>Lichthupe als Einladung ist falsch</b></li>
       </ul></div>
       <div class="card"><h3><span>🚌</span>Bus und Straßenbahn</h3><ul>
-        <li>Bus mit Warnblinker hält: <b>Schritttempo</b>, auch Gegenverkehr und alle Spuren</li>
+        <li>Linien- oder Schulbus hält mit Warnblinker an der Haltestelle: <b>Schritttempo</b>, auch für den Gegenverkehr auf derselben Fahrbahn</li>
         <li>Bus fährt mit Warnblinker heran: <b>nicht überholen</b></li>
-        <li>Straßenbahn-Haltestelle ohne Insel: rechts nur <b>Schritttempo</b>, wenn niemand gefährdet ist, sonst warten</li>
+        <li>Straßenbahn-Haltestelle ohne Insel, Fahrgäste steigen ein oder aus: rechts nur <b>Schritttempo</b>, niemand gefährden oder behindern, sonst warten</li>
         <li>Fahrende Straßenbahn <b>rechts</b> überholen. Links nur in Einbahnstraße oder wenn Schienen zu weit rechts liegen</li>
       </ul></div>
       <div class="card"><h3><span>🚲</span>Rad, Reiter, Tiere</h3><ul>
-        <li>Seitenabstand hängt von Rad und Tempo ab. Nur 50 cm Platz: <b>nicht überholen</b></li>
+        <li>Seitenabstand zum Rad: mindestens <b>1,5 m innerorts, 2 m außerorts</b>, mehr bei Kindern und Tempo. Nur 50 cm Platz: <b>nicht überholen</b></li>
         <li>Radfahrer am Berg <b>pendeln</b>: mehr Abstand</li>
         <li>Rechne mit Rädern in falscher Richtung, ohne Licht. <b>E-Bikes</b> sind schneller als gedacht</li>
         <li>Pferdekutsche: leise, viel Abstand, auf Handzeichen achten</li>
@@ -719,7 +719,7 @@ const RULER = [
         <li>Nebelscheinwerfer auch bei Regen/Schnee. Nebelschlussleuchte <b>nur bei Nebel &lt; 50 m</b></li>
         <li>Im Nebel nicht auf der Mittellinie fahren. Nebel oft an Flüssen, Seen, Mooren</li>
         <li><b>Erster Regen</b> nach Trockenheit: Schmierfilm, sofort mehr Abstand</li>
-        <li>Glätte testen: bei ganz langsamer Fahrt kurz bremsen. Öl auf der Straße: Feuerwehr rufen</li>
+        <li>Glätte testen: nur ganz langsam und wenn niemand hinter dir ist, kurz bremsen. Öl auf der Straße: Feuerwehr rufen</li>
         <li>Seitenwind: <b>gegenlenken</b>, langsamer. Brücken, Waldschneisen, Lkw überholen</li>
         <li>Kurve: <b>vorher bremsen</b>, erst am Ausgang Gas geben</li>
         <li>Zu viel Gas in der Kurve: <b>wo der Antrieb ist, rutscht es</b> (Front vorne, Heck hinten)</li>
@@ -729,14 +729,14 @@ const RULER = [
         <li>Du wirst überholt: <b>nicht schneller werden</b>, rechts halten</li>
         <li>Überholen abbrechen, wenn der andere beschleunigt oder Gegenverkehr kommt</li>
         <li>Lichthupe hinter dir beim Überholen: <b>zügig fertig überholen</b>, dann rechts. Nicht bremsen</li>
-        <li>Rechts überholen auf der Autobahn nur, wenn <b>links eine Schlange</b> fährt</li>
+        <li>Rechts überholen auf der Autobahn nur, wenn links eine Schlange <b>steht oder langsam fährt</b>, dann nur etwas schneller und sehr vorsichtig</li>
         <li>Einfädeln: schneller sein ist ok, aber die <b>Autobahn hat Vorfahrt</b></li>
         <li>Ausfahrt verpasst: <b>bis zur nächsten</b> weiter. Nie zurück, nie halten</li>
         <li>Falsch eingeordnet: in <b>Pfeilrichtung</b> weiterfahren</li>
         <li>Stau: Kreuzung, Einmündung, Bahnübergang, Zebrastreifen <b>freihalten</b></li>
         <li>Geschlossener Verband (Polizei, Bundeswehr): durchlassen, auch bei Grün</li>
         <li>Abknickende Vorfahrt <b>geradeaus</b> verlassen: nicht blinken</li>
-        <li>Wartepflichtiger verzichtet: erst fahren, wenn er es <b>eindeutig per Hand</b> zeigt</li>
+        <li>Wer Vorfahrt hat, verzichtet: erst fahren, wenn ihr euch <b>eindeutig verständigt</b> habt, z. B. per Handzeichen</li>
       </ul></div>
       <div class="card"><h3><span>🚂</span>Bahnübergang</h3><ul>
         <li>Rotes Blinklicht, Halbschranke noch offen: <b>warten</b></li>
@@ -761,7 +761,7 @@ const RULER = [
         <li>Abstandstempomat kann bei Regen/Schnee ausfallen. Tempomat übersteuern mit <b>Bremse oder Gas</b></li>
         <li>Assistenten gleichen <b>Müdigkeit nicht aus</b></li>
         <li>Kontrollleuchten: Fernlicht <b>blau</b>, Nebelschluss <b>gelb</b>. Öldruck bleibt an: <b>Motor sofort aus</b></li>
-        <li>Blinker-Kontrolle blinkt <b>doppelt schnell</b>: eine Lampe ist kaputt</li>
+        <li>Blinker-Kontrolle blinkt <b>viel schneller als sonst</b>: eine Lampe ist kaputt</li>
         <li>Bremspedal geht bis zum Boden: <b>stehen lassen</b>. Bremsflüssigkeit wird gewechselt, weil sie Wasser zieht</li>
         <li>Langes Gefälle: <b>kleiner Gang</b>, nie Leerlauf oder getretene Kupplung</li>
         <li>Zu wenig Luft: Reifen wird heiß. Auto zieht nach links: evtl. vorne links zu wenig Luft</li>
@@ -950,7 +950,7 @@ const RULER = [
         </div>
           </div>
         </div>
-        <p class="note"><b>Prüfer will:</b> Vorwärts oder rückwärts, wie angesagt. Ganz in der Markierung, genug Seitenabstand, höchstens 2 Korrekturzüge.<br/><b>Fehler:</b> Auto steht über die Markierung, zu wenig Seitenabstand.</p>
+        <p class="note"><b>Prüfer will:</b> Vorwärts oder rückwärts. Ganz in der Markierung, genug Seitenabstand, höchstens 2 Korrekturzüge.<br/><b>Fehler:</b> Auto steht über die Markierung, zu wenig Seitenabstand.</p>
         <div class="tip"><b>Merke:</b> „Linien parallel = gerade.“</div>
       </div>
 
@@ -1018,7 +1018,7 @@ const RULER = [
           <div>Spiegel, <b>Schulterblick links</b></div>
           <div>Lücke nutzen, Blinker aus</div>
         </div>
-        <p class="note">Vorrang des fließenden Verkehrs missachtet = sofort durch.</p>
+        <p class="note">Muss ein anderer deinetwegen stark bremsen = sofort durch.</p>
       </div>
       <div class="card"><h3><span>🏠</span>Aus Einfahrt oder Parkplatz</h3>
         <div class="steps">
@@ -1040,7 +1040,7 @@ const RULER = [
           <div>Einfädelungsstreifen <b>weit nutzen</b>, Tempo angleichen</div>
           <div>Schulterblick links, einfädeln</div>
         </div>
-        <p class="note">Unter 80 km/h, wo 100 erlaubt ist, gilt als Fehler. Nie auf dem Streifen anhalten.</p>
+        <p class="note">Mit unter 80 km/h einfädeln, wo 100 erlaubt ist und der Streifen lang genug ist = schwerer Fehler. Möglichst nicht anhalten, nur ohne Lücke am Ende des Streifens warten.</p>
       </div>
       <div class="card"><h3><span>🚪</span>Von der Autobahn</h3>
         <div class="steps">
@@ -1083,7 +1083,7 @@ const RULER = [
         <div class="steps">
           <div>Nicht überholen am Zebrastreifen</div>
           <div>Fußgänger will rüber: langsam ran, <b>anhalten</b></div>
-          <div>Bus mit Warnblinker: Schritttempo, nicht überholen</div>
+          <div>Bus fährt mit Warnblinker an die Haltestelle: <b>nicht überholen</b>. Bus hält mit Warnblinker: nur <b>Schritttempo</b>, auch im Gegenverkehr</div>
         </div>
       </div>
     </div>
@@ -1112,7 +1112,7 @@ const RULER = [
       </div>
       <div class="card">
         <h3><span>🎛️</span>Bedienelemente im Griff</h3>
-        <p class="note">In der Prüfung musst du Licht, Wischer und Waschanlage, Heizung, Lüftung und Heckscheibenheizung <b>selbst richtig</b> nutzen. Gar nicht nutzen, wenn es nötig wäre = schwerer Fehler.</p>
+        <p class="note">In der Prüfung musst du Licht, Wischer und Waschanlage, Heizung, Lüftung und Heckscheibenheizung <b>selbst richtig</b> nutzen. <b>Licht oder Wischer</b> gar nicht nutzen, wenn es nötig wäre = schwerer Fehler.</p>
         <div class="tip"><b>Beschlagene Scheibe:</b> Gebläse auf die Frontscheibe, stärker stellen, Klima an, Heckscheibenheizung an.</div>
       </div>
       <div class="card">
@@ -1132,12 +1132,15 @@ const RULER = [
   <Section id="fehler" title="Sofort durchgefallen">
     <div class="fails">
       <div><b>Vorfahrt oder Vorrang</b> missachtet (auch beim Anfahren vom Rand)</div>
-      <div><b>Rot</b> oder ein Vorschriftzeichen missachtet, z. B. über die Haltlinie bei Stopp gerollt</div>
+      <div><b>Rot</b> oder ein Vorschriftzeichen missachtet, z. B. bei Stopp nicht angehalten</div>
       <div><b>Tempo:</b> innerorts mehr als 5, außerorts mehr als 10 km/h zu schnell und nicht in 3 s korrigiert</div>
       <div>Überholen bei <b>unklarer Lage</b>, oder schneller werden, während du überholt wirst</div>
-      <div>Auf den <b>Schienen</b> halten, falsch herum im <b>Kreisverkehr</b>, Bus mit Warnblinker überholen</div>
+      <div>Auf den <b>Schienen</b> halten, falsch herum im <b>Kreisverkehr</b></div>
+      <div><b>Bus</b> überholen, der mit Warnblinker an die Haltestelle heranfährt, oder am haltenden Bus deutlich schneller als Schritttempo vorbei</div>
+      <div><b>Überholverbot</b> missachtet (auch am Zebrastreifen), grundlos auf der Gegenfahrbahn, falscher Pfeil-Fahrstreifen</div>
+      <div><b>Abstand</b> unter 1/4 Tacho ohne Korrektur, andere blenden</div>
       <div>Verkehr <b>gar nicht beobachtet</b>, vermeidbar von der Fahrbahn abgekommen</div>
-      <div>Fahrlehrer oder Prüfer muss <b>eingreifen</b></div>
+      <div>Fahrlehrer oder Prüfer muss <b>eingreifen</b>, um eine Gefahr zu verhindern</div>
     </div>
     <p class="note note-mt">Viele kleine Fehler (z. B. Schulterblick mehrmals vergessen) können zusammen auch zum Nichtbestehen führen. Bewertet werden 5 Bereiche: <b>Verkehrsbeobachtung, Fahrzeugpositionierung, Geschwindigkeit, Kommunikation, Fahrzeugbedienung und umweltbewusstes Fahren</b>.</p>
   </Section>
@@ -1147,7 +1150,7 @@ const RULER = [
       <a class="res-link" href="https://www.clickclickdrive.de/fragenkatalog" target="_blank" rel="noopener noreferrer"><span>📘</span><b>Fragenkatalog mit Lösungen</b><small>Alle offiziellen Theoriefragen nach Kapiteln, mit Antworten (ClickClickDrive)</small></a>
       <a class="res-link" href="https://www.fahren-lernen.de/" target="_blank" rel="noopener noreferrer"><span>📱</span><b>Fahren Lernen</b><small>Die Lern-App, mit der viele Fahrschulen arbeiten, plus Infos zur Prüfung</small></a>
       <a class="res-link" href="https://www.gesetze-im-internet.de/stvo_2013/" target="_blank" rel="noopener noreferrer"><span>⚖️</span><b>StVO im Original</b><small>Straßenverkehrs-Ordnung auf gesetze-im-internet.de</small></a>
-      <a class="res-link" href="https://www.gesetze-im-internet.de/bkatv_2013/" target="_blank" rel="noopener noreferrer"><span>🧾</span><b>Bußgeldkatalog (amtlich)</b><small>Bußgeldkatalog-Verordnung mit allen Bußgeldern und Punkten</small></a>
+      <a class="res-link" href="https://www.gesetze-im-internet.de/bkatv_2013/" target="_blank" rel="noopener noreferrer"><span>🧾</span><b>Bußgeldkatalog (amtlich)</b><small>Bußgeldkatalog-Verordnung mit allen Bußgeldern und Fahrverboten</small></a>
       <a class="res-link" href="https://www.gesetze-im-internet.de/fev_2010/anlage_7.html" target="_blank" rel="noopener noreferrer"><span>🚗</span><b>Prüfungsregeln (FeV Anlage 7)</b><small>Ablauf, Dauer und Bewertung von Theorie- und Praxisprüfung</small></a>
       <a class="res-link" href="https://www.adac.de/verkehr/rund-um-den-fuehrerschein/" target="_blank" rel="noopener noreferrer"><span>🟡</span><b>ADAC: Rund um den Führerschein</b><small>Kosten, Ablauf, Begleitetes Fahren, Probezeit</small></a>
       <a class="res-link" href="https://www.kba.de/DE/Themen/ZentraleRegister/FAER/faer_node.html" target="_blank" rel="noopener noreferrer"><span>🔢</span><b>KBA: Punkte in Flensburg</b><small>Eigenen Punktestand kostenlos abfragen</small></a>
