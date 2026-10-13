@@ -1,4 +1,801 @@
 ---
-import P from '../components/HomePage.astro';
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import { urlFor } from '../lib/nav.js';
+import { SIGNS } from '../lib/signs.js';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const img = (id: string) => (SIGNS.find((s: any) => s.id === id) as any)?.img;
+
+// Sign pairs people mix up in the exam: [left id, left text, right id, right text].
+const PAIRS = [
+  ['vorfahrt-gewaehren', '<b>Vorfahrt gewähren</b> (205): nur anhalten, wenn jemand kommt', 'stop', '<b>Stopp</b> (206): <b>immer</b> anhalten, Räder stehen, an der Haltlinie'],
+  ['vorfahrt', '<b>Vorfahrt</b> (301): nur an der <b>nächsten</b> Kreuzung', 'vorfahrtstrasse', '<b>Vorfahrtstraße</b> (306): bis zum Ende-Schild'],
+  ['eingeschraenktes-halteverbot', '<b>Eingeschränktes Halteverbot</b> (286): bis 3 Min halten, Ein-/Aussteigen, Be-/Entladen ok', 'absolutes-halteverbot', '<b>Absolutes Halteverbot</b> (283): gar nicht halten'],
+  ['ueberholverbot', '<b>Überholverbot</b> (276): keine <b>mehrspurigen</b> Kfz. Motorrad, Rad, Mofa darfst du überholen', 'ueberholverbot-fuer-lkw', '<b>Überholverbot Lkw</b> (277): gilt für Kfz über 3,5 t, nicht für Pkw und Bus'],
+  ['tempo-30-zone', '<b>Tempo-30-Zone</b> (274.1): 30, meist rechts vor links', 'verkehrsberuhigter-bereich', '<b>Verkehrsberuhigter Bereich</b> (325.1): Schritttempo, Kinder spielen überall, Parken nur auf markierten Flächen'],
+] as const;
+// Stopping distance per the textbook formulas used in the official question catalogue.
+const STOP = [30, 50, 70, 100, 130].map(v => {
+  const r = (v / 10) * 3, b = (v / 10) ** 2;
+  return { v, r, b, sum: r + b, emergency: b / 2 };
+});
+const maxStop = Math.max(...STOP.map(s => s.sum));
+const pct = (m: number) => (m / maxStop) * 100;
+
+// Distances in metres, drawn as bars on one shared scale (max 50 m).
+const RULER = [
+  { m: 1.5, t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'innerorts (§ 5 Abs. 4)' },
+  { m: 2,   t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'außerorts' },
+  { m: 3,   t: 'Restfahrbahn bis zur durchgezogenen Linie, sonst Parkverbot', s: '§ 12 Abs. 3' },
+  { m: 5,   t: 'Parkverbot vor und hinter Kreuzung/Einmündung', s: '§ 12 Abs. 3' },
+  { m: 5,   t: 'Halteverbot vor dem Zebrastreifen (und darauf)', s: '§ 12 Abs. 1' },
+  { m: 5,   t: 'Parkverbot vor Andreaskreuz innerorts', s: 'Zeichen 201' },
+  { m: 5,   t: 'Abschleppseil: maximaler Abstand', s: '§ 43 StVZO' },
+  { m: 8,   t: 'Parkverbot vor Kreuzung, wenn rechts ein Radweg ist', s: 'nur davor' },
+  { m: 10,  t: 'Halteverbot vor Ampel, Andreaskreuz, Vorfahrt gewähren, Stopp', s: 'nur wenn du sie verdeckst' },
+  { m: 15,  t: 'Parkverbot vor und hinter Haltestellenschild', s: 'Zeichen 224' },
+  { m: 50,  t: 'Parkverbot vor Andreaskreuz außerorts', s: 'Zeichen 201' },
+  { m: 50,  t: 'Abstand Lkw > 3,5 t / Bus auf Autobahn ab 50 km/h', s: '§ 4 Abs. 3' },
+  { m: 50,  t: 'Leitpfosten stehen alle …', s: 'zum Schätzen von Abstand und Sicht' },
+];
 ---
-<P lang="de" />
+<Base slug="">
+  <div class="wrap pagehead">
+    <span class="kicker">Klasse B · Theorie + Praxis</span>
+    <h1>Führerschein-Spickzettel</h1>
+    <p>Alle Formeln, Zahlenfragen, Vorfahrt, Dinge, die man gern vergisst, und alle Manöver auf einer Seite. Strg/Cmd + P druckt sie.</p>
+    <nav class="toc">
+      <a href="#formeln">Formeln</a><a href="#zahlen">Zahlenfragen</a><a href="#tempo">Tempo</a><a href="#meter">Meter</a>
+      <a href="#vorfahrt">Vorfahrt</a><a href="#alkohol">Alkohol</a><a href="#punkte">Punkte</a><a href="#licht">Licht &amp; Wetter</a>
+      <a href="#unfall">Unfall</a><a href="#fahrzeug">Fahrzeug</a><a href="#vergessen">Oft vergessen</a><a href="#praxis">Praxis</a><a href="#aufgaben">Manöver</a>
+    </nav>
+  </div>
+
+
+  <Section id="pruefung" title="Theorieprüfung in Zahlen">
+    <div class="stats">
+      <div class="stat"><b>30</b><span>Fragen<br/>20 Grundstoff + 10 Klasse B</span></div>
+      <div class="stat"><b>2–5</b><span>Fehlerpunkte<br/>pro Frage</span></div>
+      <div class="stat ok"><b>≤ 10</b><span>Fehlerpunkte<br/>= bestanden</span></div>
+      <div class="stat bad"><b>2×5</b><span>zwei 5-Punkte-Fragen falsch<br/>= durchgefallen</span></div>
+      <div class="stat"><b>12</b><span>Monate gültig<br/>bis zur Praxisprüfung</span></div>
+    </div>
+    <p class="note note-mt">Bei Mehrfachauswahl zählt eine Frage nur, wenn <b>alle</b> richtigen Kreuze gesetzt sind. Mindestens eine Antwort ist immer richtig.</p>
+  </Section>
+
+  <Section id="formeln" title="Formeln">
+    <div class="formulas">
+      <div class="formula"><span class="f-n">Reaktionsweg</span><span class="f-x">(v ÷ 10) × 3</span><span class="f-e">50 km/h → 5 × 3 = <b>15 m</b></span></div>
+      <div class="formula"><span class="f-n">Bremsweg</span><span class="f-x">(v ÷ 10)²</span><span class="f-e">50 km/h → 5 × 5 = <b>25 m</b></span></div>
+      <div class="formula"><span class="f-n">Gefahrbremsung</span><span class="f-x">(v ÷ 10)² ÷ 2</span><span class="f-e">50 km/h → 25 ÷ 2 = <b>12,5 m</b></span></div>
+      <div class="formula"><span class="f-n">Anhalteweg bei Gefahr</span><span class="f-x">Reaktionsweg + Bremsweg ÷ 2</span><span class="f-e">50 km/h → 15 + 12,5 = <b>27,5 m</b></span></div>
+      <div class="formula hl"><span class="f-n">Anhalteweg</span><span class="f-x">Reaktionsweg + Bremsweg</span><span class="f-e">50 km/h → 15 + 25 = <b>40 m</b></span></div>
+    </div>
+
+    <h3 class="sub-h">Anhalteweg im Vergleich</h3>
+    <div class="bars" role="img" aria-label="Anhalteweg bei 30, 50, 70, 100 und 130 km/h">
+      {STOP.map(s => (
+        <div class="bar-row">
+          <span class="bar-v">{s.v}</span>
+          <div class="bar-track">
+            <span class="bar-r" style={`width:${pct(s.r)}%`}></span><span class="bar-b" style={`width:${pct(s.b)}%`}></span>
+          </div>
+          <span class="bar-sum">{s.sum} m</span>
+        </div>
+      ))}
+      <div class="legend"><span class="lg-r"></span>Reaktionsweg <span class="lg-b"></span>Bremsweg</div>
+    </div>
+
+    <div class="grid cols3 note-mt">
+      <div class="card">
+        <h3><span>✖️</span>Quadrat-Regel</h3>
+        <div class="kv"><span class="lab">doppelt so schnell</span><span class="val">4 × Bremsweg</span></div>
+        <div class="kv"><span class="lab">dreimal so schnell</span><span class="val">9 × Bremsweg</span></div>
+        <div class="kv"><span class="lab">Reaktionsweg</span><span class="val">wächst nur ×2 / ×3</span></div>
+        <div class="tip">Bremsweg wächst <b>im Quadrat</b>, Reaktionsweg nur <b>einfach</b>.</div>
+      </div>
+      <div class="card">
+        <h3><span>📏</span>Sicherheitsabstand</h3>
+        <div class="kv"><span class="lab">außerorts</span><span class="val">halber Tacho in m</span></div>
+        <div class="kv"><span class="lab">100 km/h</span><span class="val">50 m</span></div>
+        <div class="kv"><span class="lab">Faustregel</span><span class="val">2 Sekunden</span></div>
+        <div class="kv"><span class="lab">Stadt, 50 km/h</span><span class="val">15 m = 3 Pkw-Längen</span></div>
+        <div class="tip">„<b>Einundzwanzig, zweiundzwanzig</b>“ zählen, ab dem Leitpfosten, den der Vordermann passiert.</div>
+      </div>
+      <div class="card">
+        <h3><span>⏱️</span>Reaktionszeit</h3>
+        <div class="kv"><span class="lab">Faustformel</span><span class="val">1 Sekunde</span></div>
+        <div class="kv"><span class="lab">länger durch</span><span class="val">Müdigkeit, Alkohol, Ablenkung</span></div>
+        <div class="tip">In 1 Sekunde fährst du bei 50 km/h etwa <b>14 m</b> blind (km/h ÷ 3,6 = m/s).</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="zahlen" title="Zahlenfragen aus dem Fragenkatalog">
+    <p class="note note-mb">Frage → Antwort. Die kleine Nummer ist die Fragennummer im amtlichen Katalog.</p>
+    <h3 class="sub-h">Rechnen</h3>
+    <div class="qa">
+      <div><span>Reaktionsweg bei 100 km/h (1 s)<small>2.2.03-008</small></span><b>30 m</b></div>
+      <div><span>Bremsweg bei 100 km/h<small>2.2.03-007</small></span><b>100 m</b></div>
+      <div><span>Anhalteweg bei 100 km/h<small>2.2.03-006</small></span><b>130 m</b></div>
+      <div><span>Reaktionsweg bei 50 km/h<small>2.2.03-011</small></span><b>15 m</b></div>
+      <div><span>Bremsweg bei 50 km/h<small>2.2.03-010</small></span><b>25 m</b></div>
+      <div><span>Anhalteweg bei 50 km/h<small>2.2.03-009</small></span><b>40 m</b></div>
+      <div><span>Gefahrbremsung bei 50 km/h<small>2.2.03-016</small></span><b>12,5 m</b></div>
+      <div><span>Bremsweg bei 30 km/h = 9 m. Bei 60 km/h?<small>1.2.03-106</small></span><b>36 m</b></div>
+      <div><span>Tempo verdoppelt: Bremsweg<small>1.2.03-102</small></span><b>4-mal so lang</b></div>
+      <div><span>Tempo verdoppelt: Reaktionsweg<small>2.1.07-208</small></span><b>2-mal so lang</b></div>
+      <div><span>Schmale Straße, 50 m Sicht: längster Anhalteweg<small>2.2.03-012</small></span><b>25 m (halbe Sicht)</b></div>
+      <div><span>Gut ausgebaute Straße: anhalten innerhalb …<small>1.2.03-107</small></span><b>der Sichtweite</b></div>
+      <div><span>Nachts mit Abblendlicht: anhalten innerhalb …<small>2.2.03-024</small></span><b>der Leuchtweite</b></div>
+    </div>
+    <h3 class="sub-h">Abstand und Überholen</h3>
+    <div class="qa">
+      <div><span>Abstand bei 80 km/h<small>2.2.04-001</small></span><b>40 m</b></div>
+      <div><span>Abstand bei 100 km/h<small>2.2.04-004</small></span><b>50 m</b></div>
+      <div><span>Kolonne in der Stadt, 50 km/h<small>2.2.04-002</small></span><b>15 m (3 Pkw-Längen)</b></div>
+      <div><span>Seitenabstand Rad / E-Scooter innerorts<small>1.2.05-004</small></span><b>1,5 m</b></div>
+      <div><span>Seitenabstand Rad / Fußgänger außerorts<small>1.2.05-003</small></span><b>2 m</b></div>
+      <div><span>Mit 100 einen Lkw mit 70 überholen: Abstand zur Kuppe<small>2.2.05-005</small></span><b>800 m</b></div>
+    </div>
+    <h3 class="sub-h">Tempo</h3>
+    <div class="qa">
+      <div><span>Innerorts<small>1.2.03-101</small></span><b>50 km/h</b></div>
+      <div><span>Pkw außerorts<small>2.2.03-104</small></span><b>100 km/h</b></div>
+      <div><span>Pkw mit Anhänger außerorts<small>2.2.03-018</small></span><b>80 km/h</b></div>
+      <div><span>100er-Anhänger auf Bundesstraße (keine Kraftfahrstraße)<small>2.2.03-110</small></span><b>80 km/h</b></div>
+      <div><span>Mit Schneeketten<small>2.2.03-101</small></span><b>50 km/h</b></div>
+      <div><span>Nebel, Sicht 50 m<small>2.2.03-005</small></span><b>50 km/h</b></div>
+      <div><span>Mofa<small>2.2.03-002</small></span><b>25 km/h</b></div>
+      <div><span>Autobahn: Fahrzeug muss bauartbedingt schneller als<small>1.2.02-111</small></span><b>60 km/h</b></div>
+      <div><span>Kraftfahrstraße: bauartbedingt mindestens<small>1.4.42-116</small></span><b>61 km/h</b></div>
+      <div><span>Fahrradzone<small>1.4.41-171</small></span><b>30 km/h</b></div>
+      <div><span>Winterreifen-Aufkleber „max. 190“<small>2.7.05-105</small></span><b>nicht schneller</b></div>
+    </div>
+    <h3 class="sub-h">Halten und Parken</h3>
+    <div class="qa">
+      <div><span>Vor/hinter Kreuzung parken verboten<small>1.2.12-131</small></span><b>5 m</b></div>
+      <div><span>… mit baulichem Radweg (davor)<small>1.2.12-133</small></span><b>8 m</b></div>
+      <div><span>Vor Fußgängerüberweg nicht halten<small>1.2.12-108</small></span><b>5 m</b></div>
+      <div><span>Andreaskreuz innerorts / außerorts<small>1.2.12-111</small></span><b>5 m / 50 m</b></div>
+      <div><span>Vor/hinter Haltestellenschild<small>1.2.12-112</small></span><b>je 15 m</b></div>
+      <div><span>Halten an der Haltestelle höchstens<small>1.2.12-113</small></span><b>3 Min</b></div>
+      <div><span>Restfahrbahn zur durchgezogenen Linie beim Parken<small>2.2.12-204</small></span><b>3 m</b></div>
+      <div><span>Ankunft 10:40, Parkscheibe stellen auf<small>2.2.13-003</small></span><b>11:00</b></div>
+    </div>
+    <h3 class="sub-h">Ladung, Anhänger, Fahrzeug</h3>
+    <div class="qa">
+      <div><span>Überstand hinten ohne Kennzeichnung<small>1.2.22-101</small></span><b>bis 1 m</b></div>
+      <div><span>Überstand hinten, Fahrt über 100 km<small>2.2.22-129</small></span><b>max. 1,5 m</b></div>
+      <div><span>Nach vorn erlaubt 50 cm ab Höhe<small>1.2.22-108</small></span><b>2,50 m</b></div>
+      <div><span>Rote Leuchte an Ladung höchstens<small>2.2.22-109</small></span><b>1,50 m hoch</b></div>
+      <div><span>Seitlicher Überstand kennzeichnen ab<small>2.2.22-108</small></span><b>40 cm</b></div>
+      <div><span>Anhänger hinter einem Pkw<small>2.6.03-116</small></span><b>1</b></div>
+      <div><span>Pkw + Anhänger höchstens<small>2.6.06-103</small></span><b>18 m lang</b></div>
+      <div><span>Mindestprofil<small>2.7.05-108</small></span><b>1,6 mm</b></div>
+      <div><span>Pkw 3 Jahre, neue HU. Nächste HU nach<small>2.6.01-108</small></span><b>24 Monaten</b></div>
+    </div>
+    <h3 class="sub-h">Mensch und Umwelt</h3>
+    <div class="qa">
+      <div><span>Kindersitz bis<small>2.2.21-122</small></span><b>unter 12 J. und unter 150 cm</b></div>
+      <div><span>Schwere Verletzungen ohne Gurt schon ab<small>2.2.21-111</small></span><b>30 km/h</b></div>
+      <div><span>Abbau von 1,0 ‰ dauert<small>1.1.09-006</small></span><b>ca. 10 Stunden</b></div>
+      <div><span>Cannabis im Urin nachweisbar<small>1.1.09-027</small></span><b>noch nach Wochen</b></div>
+      <div><span>2-Punkte-Verstoß getilgt frühestens nach<small>1.8.01-003</small></span><b>5 Jahren</b></div>
+      <div><span>Probezeit<small>2.8.01-001</small></span><b>2 Jahre (verlängert 4)</b></div>
+      <div><span>Ein Tropfen Öl verdirbt Trinkwasser<small>1.5.01-006</small></span><b>bis 600 Liter</b></div>
+      <div><span>Europaweiter Notruf<small>1.2.34-011</small></span><b>112</b></div>
+      <div><span>Panne hinter Kurve: Warndreieck etwa<small>2.2.15-115</small></span><b>100 m dahinter</b></div>
+    </div>
+  </Section>
+
+  <Section id="tempo" title="Tempo">
+    <div class="tablewrap">
+      <table class="spd">
+        <thead><tr><th>Fahrzeug</th><th>Innerorts</th><th>Außerorts</th><th>Kraftfahrstraße</th><th>Autobahn</th></tr></thead>
+        <tbody>
+          <tr><td>Pkw, Motorrad</td><td><b class="p50">50</b></td><td><b class="p100">100</b></td><td><b class="p100">100</b> · frei bei getrennten Fahrbahnen*</td><td><b class="pfree">frei</b> · 130 empfohlen</td></tr>
+          <tr><td>Pkw mit Anhänger</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · 100 mit Plakette</td><td><b class="p80">80</b> · 100 mit Tempo-100-Plakette</td></tr>
+          <tr><td>Kfz 3,5–7,5 t (außer Pkw)</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td></tr>
+          <tr><td>Lkw über 7,5 t</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td><td><b class="p80">80</b></td></tr>
+          <tr><td>Bus</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · Reisebus mit Zulassung 100</td></tr>
+          <tr><td>Bus mit stehenden Fahrgästen</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td></tr>
+          <tr><td>Moped, S-Pedelec</td><td><b class="p50">45</b></td><td><b class="p50">45</b></td><td>verboten</td><td>verboten</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note note-mt">* Kraftfahrstraße mit baulich getrennten Fahrbahnen oder 2 Fahrstreifen je Richtung: für Pkw kein allgemeines Limit. S-Pedelec = Kraftfahrzeug: Führerschein, Versicherungskennzeichen, Helm, keine Radwege. Schilder gehen immer vor.</p>
+    <div class="tip note-mt"><b>Merksatz:</b> außerorts gilt „Anhänger oder Lkw = 80, richtig schwer über 7,5 t = 60“. 130 auf der Autobahn ist nur <b>Richtgeschwindigkeit</b>.</div>
+
+    <div class="chips note-mt">
+      <div><b class="p50">50</b> bei <b>Sicht unter 50 m</b> (Nebel, Schnee, Regen), überall</div>
+      <div><b class="p50">50</b> mit <b>Schneeketten</b></div>
+      <div><b class="p50">50</b> ab der <b>Ortstafel</b> sofort. Ende eines Limits innerorts = wieder 50, nicht frei</div>
+      <div><b class="p30">30</b> in der <b>Tempo-30-Zone</b> (flächig, meist rechts vor links)</div>
+      <div><b class="p30">30</b> in Fahrradstraße und Fahrradzone, für alle Fahrzeuge</div>
+      <div><b class="pwalk">7</b> Schrittgeschwindigkeit (ca. 4–7 km/h): verkehrsberuhigter Bereich, Bus mit Warnblinker an Haltestelle</div>
+      <div><b class="pmin">&gt;60</b> Autobahn und Kraftfahrstraße nur für Kfz, die bauartbedingt <b>schneller als 60</b> fahren</div>
+    </div>
+  </Section>
+
+  <Section id="meter" title="Die wichtigen Meter">
+    <div class="ruler">
+      {RULER.map(r => (
+        <div class="rl">
+          <span class="rl-m">{String(r.m).replace('.', ',')} m</span>
+          <span class="rl-bar"><span style={`width:${Math.max(r.m / 50 * 100, 2)}%`}></span></span>
+          <span class="rl-t">{r.t}<small>{r.s}</small></span>
+        </div>
+      ))}
+    </div>
+    <div class="tip note-mt"><b>Merksatz Parken:</b> <b>5</b> an der Kreuzung, <b>8</b> mit Radweg, <b>15</b> an der Haltestelle. <b>Halten</b> = bis 3 Minuten und du bleibst da. Länger oder ausgestiegen = <b>Parken</b>.</div>
+
+    <h3 class="sub-h">Baken und Gefahrzeichen</h3>
+    <div class="grid cols2">
+      <div class="card">
+        <h3><span>🚂</span>Bahnübergang</h3>
+        <div class="diag">
+          <svg viewBox="0 0 320 110" role="img" aria-label="Baken vor dem Bahnübergang bei 240, 160 und 80 Metern">
+            <rect x="0" y="70" width="320" height="16" fill="#c7ced6"/>
+            <g transform="translate(40,10)"><rect width="16" height="56" fill="#fff" stroke="#17171b"/><path d="M0 14 L16 6 M0 30 L16 22 M0 46 L16 38" stroke="#d92f2f" stroke-width="5"/></g>
+            <g transform="translate(130,10)"><rect width="16" height="56" fill="#fff" stroke="#17171b"/><path d="M0 22 L16 14 M0 40 L16 32" stroke="#d92f2f" stroke-width="5"/></g>
+            <g transform="translate(220,10)"><rect width="16" height="56" fill="#fff" stroke="#17171b"/><path d="M0 32 L16 24" stroke="#d92f2f" stroke-width="5"/></g>
+            <path d="M290 20 L310 60 M310 20 L290 60" stroke="#d92f2f" stroke-width="6"/>
+            <text x="48" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">240 m</text>
+            <text x="138" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">160 m</text>
+            <text x="228" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">80 m</text>
+          </svg>
+        </div>
+        <p class="note"><b>Merksatz:</b> jeder Streifen = 80 m. Ab der ersten Bake (Zeichen 156) <b>nicht überholen</b>. Andreaskreuz = Bahn hat <b>immer</b> Vorrang.</p>
+      </div>
+      <div class="card">
+        <h3><span>⚠️</span>Wo Schilder stehen</h3>
+        <div class="kv"><span class="lab">Gefahrzeichen außerorts</span><span class="val">150–250 m vor der Gefahr</span></div>
+        <div class="kv"><span class="lab">Gefahrzeichen innerorts</span><span class="val">kurz davor</span></div>
+        <div class="kv"><span class="lab">Autobahn-Ausfahrt</span><span class="val">Baken 300 / 200 / 100 m</span></div>
+        <div class="kv"><span class="lab">Leitpfosten</span><span class="val">alle 50 m</span></div>
+        <div class="tip">Andere Entfernung? Dann steht sie auf einer Zusatztafel („in 400 m“).</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="alkohol" title="Alkohol und Drogen">
+    <div class="scale" role="img" aria-label="Promilleskala">
+      <div class="sc-track">
+        <span class="z0" style="width:0.5%"></span>
+        <span class="z1" style="width:16%"></span>
+        <span class="z2" style="width:11%"></span>
+        <span class="z3" style="width:33%"></span>
+        <span class="z4" style="width:39.5%"></span>
+      </div>
+      <div class="sc-ticks">
+        <span><b>0,0</b>Probezeit &amp; unter 21: Grenze</span>
+        <span><b>0,3</b>mit Ausfallerscheinung oder Unfall: Straftat</span>
+        <span><b>0,5</b>immer: Ordnungswidrigkeit, Fahrverbot</span>
+        <span><b>1,1</b>absolut fahruntüchtig: Straftat</span>
+        <span><b>1,6</b>MPU (auch auf dem Fahrrad)</span>
+      </div>
+    </div>
+    <div class="grid cols3 note-mt">
+      <div class="card">
+        <h3><span>🍺</span>Abbau</h3>
+        <div class="kv"><span class="lab">pro Stunde</span><span class="val">ca. 0,1 ‰</span></div>
+        <div class="tip">Kaffee, Schlaf oder Dusche beschleunigen <b>nichts</b>. Nur Zeit hilft. Restalkohol am Morgen zählt.</div>
+      </div>
+      <div class="card">
+        <h3><span>🌿</span>Cannabis</h3>
+        <div class="kv"><span class="lab">THC-Grenzwert</span><span class="val">3,5 ng/ml</span></div>
+        <div class="kv"><span class="lab">mit Alkohol</span><span class="val">verboten</span></div>
+        <div class="kv"><span class="lab">Probezeit / unter 21</span><span class="val">verboten</span></div>
+      </div>
+      <div class="card">
+        <h3><span>💊</span>Medikamente</h3>
+        <div class="tip">Beipackzettel lesen. Wer fahruntüchtig ist, macht sich strafbar, auch mit Rezept. Andere illegale Drogen: <b>null</b> Toleranz.</div>
+      </div>
+      <div class="card">
+        <h3><span>😴</span>Müdigkeit</h3>
+        <div class="kv"><span class="lab">Pause</span><span class="val">alle ca. 2 Stunden</span></div>
+        <div class="kv"><span class="lab">Powernap</span><span class="val">Kaffee + ca. 20 Min Schlaf</span></div>
+        <div class="tip">Sekundenschlaf: bei 100 km/h fährst du in 1 Sekunde fast <b>28 m</b> blind.</div>
+      </div>
+    </div>
+    <div class="tip note-mt"><b>Merksatz:</b> <b>0,0</b> wenn du neu bist, <b>0,3</b> wenn etwas passiert, <b>0,5</b> immer, <b>1,1</b> Straftat, <b>1,6</b> MPU.</div>
+  </Section>
+
+  <Section id="punkte" title="Punkte und Probezeit">
+    <div class="points" role="img" aria-label="Punkteskala Flensburg">
+      {[1,2,3,4,5,6,7,8].map(n => <span class={n <= 3 ? 'pt0' : n <= 5 ? 'pt1' : n <= 7 ? 'pt2' : 'pt3'}>{n}</span>)}
+    </div>
+    <div class="points-l">
+      <span class="pt0">1–3 vorgemerkt</span><span class="pt1">4–5 Ermahnung</span><span class="pt2">6–7 Verwarnung</span><span class="pt3">8 Führerschein weg</span>
+    </div>
+    <div class="grid cols2 note-mt">
+      <div class="card">
+        <h3><span>🗓️</span>Wann Punkte verfallen</h3>
+        <div class="kv"><span class="lab">1 Punkt</span><span class="val">nach 2,5 Jahren</span></div>
+        <div class="kv"><span class="lab">2 Punkte</span><span class="val">nach 5 Jahren</span></div>
+        <div class="kv"><span class="lab">3 Punkte (Straftat mit Entzug)</span><span class="val">nach 10 Jahren</span></div>
+      </div>
+      <div class="card">
+        <h3><span>🪪</span>Probezeit</h3>
+        <div class="steps">
+          <div><b>2 Jahre</b> ab dem ersten Führerschein</div>
+          <div>1 schwerer (A) oder 2 leichtere (B) Verstöße → <b>Aufbauseminar + 2 Jahre länger</b></div>
+          <div>noch einmal → <b>Verwarnung</b>, verkehrspsychologische Beratung empfohlen</div>
+          <div>noch einmal → <b>Führerschein weg</b></div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="licht" title="Licht und Wetter">
+    <div class="grid cols3">
+      <div class="card">
+        <h3><span>🌫️</span>Nebelschlussleuchte</h3>
+        <div class="kv"><span class="lab">nur bei</span><span class="val">Nebel + Sicht &lt; 50 m</span></div>
+        <div class="kv"><span class="lab">dann max.</span><span class="val">50 km/h</span></div>
+        <div class="tip">Nicht bei Regen oder Schnee, sonst blendet sie den Hintermann. Merke: <b>50 m Sicht, 50 km/h</b>.</div>
+      </div>
+      <div class="card">
+        <h3><span>💡</span>Abblendlicht</h3>
+        <div class="tip">Am Tag Pflicht bei Nebel, Schnee, Regen mit schlechter Sicht und im Tunnel. <b>Tagfahrlicht reicht dann nicht</b>. Kein Fernlicht bei Gegenverkehr oder dicht hinter jemandem.</div>
+      </div>
+      <div class="card">
+        <h3><span>🌊</span>Aquaplaning</h3>
+        <div class="tip"><b>Auskuppeln</b>, nicht bremsen, Lenkrad gerade halten, bis die Reifen wieder greifen.</div>
+      </div>
+      <div class="card">
+        <h3><span>❄️</span>Winter</h3>
+        <div class="kv"><span class="lab">Winterreifen</span><span class="val">Alpine-Symbol (Berg + Schneeflocke)</span></div>
+        <div class="kv"><span class="lab">Pflicht</span><span class="val">bei Glätte, Schnee, Eis (situativ)</span></div>
+        <div class="tip">Alle Scheiben frei machen, kein Guckloch. Brücken und Waldstücke frieren zuerst.</div>
+      </div>
+      <div class="card">
+        <h3><span>🚨</span>Warnblinker</h3>
+        <div class="tip">Stauende auf Autobahn, Panne, Abschleppen, Schulbus mit Kindern an der Haltestelle. <b>Nicht</b> zum Falschparken.</div>
+      </div>
+      <div class="card">
+        <h3><span>🚑</span>Rettungsgasse</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 90" role="img" aria-label="Rettungsgasse zwischen linker Spur und den übrigen Spuren">
+            <rect x="0" y="0" width="300" height="90" fill="#c7ced6"/>
+            <g fill="#1565d8"><rect x="12" y="8" width="26" height="40" rx="4"/><rect x="12" y="50" width="26" height="36" rx="4"/></g>
+            <g fill="#d92f2f"><rect x="122" y="8" width="26" height="40" rx="4"/><rect x="122" y="50" width="26" height="36" rx="4"/><rect x="200" y="8" width="26" height="40" rx="4"/><rect x="200" y="50" width="26" height="36" rx="4"/></g>
+            <path d="M80 10 V80" stroke="#f5a400" stroke-width="5" stroke-dasharray="8 6"/>
+            <text x="80" y="50" font-size="11" font-weight="800" fill="#17171b" text-anchor="middle" transform="rotate(-90 80 50)" dy="-6">Gasse</text>
+          </svg>
+        </div>
+        <p class="note">Linke Spur nach <b>links</b>, alle anderen nach <b>rechts</b>. Schon bei Schrittgeschwindigkeit bilden, auf Autobahn und außerorts ab 2 Spuren je Richtung. <b>Rechte-Hand-Regel: Daumen = linke Spur, Finger = der Rest.</b></p>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="unfall" title="Unfall und Panne">
+    <div class="flow">
+      <div><b>1</b>Warnblinker</div>
+      <div><b>2</b>Warnweste</div>
+      <div><b>3</b>Warndreieck</div>
+      <div><b>4</b>Notruf 112</div>
+      <div><b>5</b>Erste Hilfe</div>
+    </div>
+    <p class="note note-mt">Erst sichern, dann helfen. Helfen ist Pflicht. Wer ohne Angaben wegfährt, begeht <b>Unfallflucht</b>. Notruf <b>112</b>, Polizei <b>110</b>.</p>
+
+    <h3 class="sub-h">Warndreieck: wie weit zurück?</h3>
+    <div class="ruler">
+      <div class="rl"><span class="rl-m">50 m</span><span class="rl-bar"><span style="width:25%"></span></span><span class="rl-t">innerorts</span></div>
+      <div class="rl"><span class="rl-m">100 m</span><span class="rl-bar"><span style="width:50%"></span></span><span class="rl-t">Landstraße</span></div>
+      <div class="rl"><span class="rl-m">150–200 m</span><span class="rl-bar"><span style="width:100%"></span></span><span class="rl-t">Autobahn<small>hinter der Leitplanke gehen</small></span></div>
+    </div>
+    <div class="tip note-mt"><b>Merksatz:</b> Leitpfosten zählen: Landstraße <b>2</b> Pfosten, Autobahn <b>3–4</b> Pfosten.</div>
+  </Section>
+
+  <Section id="fahrzeug" title="Fahrzeug, Ladung, Anhänger">
+    <div class="grid cols3">
+      <div class="card">
+        <h3><span>🛞</span>Reifen</h3>
+        <div class="kv"><span class="lab">Mindestprofil</span><span class="val">1,6 mm</span></div>
+        <div class="kv"><span class="lab">empfohlen</span><span class="val">Sommer 3 mm · Winter 4 mm</span></div>
+        <div class="tip">Luftdruck bei <b>kalten</b> Reifen prüfen. Volle Beladung = mehr Druck.</div>
+      </div>
+      <div class="card">
+        <h3><span>📦</span>Ladung</h3>
+        <div class="kv"><span class="lab">nach hinten raus</span><span class="val">max. 1,5 m</span></div>
+        <div class="kv"><span class="lab">bei Fahrt bis 100 km</span><span class="val">max. 3 m</span></div>
+        <div class="kv"><span class="lab">kennzeichnen ab</span><span class="val">mehr als 1 m</span></div>
+        <div class="kv"><span class="lab">wie</span><span class="val">rote Fahne 30 × 30 cm, nachts rote Leuchte (max. 1,5 m hoch)</span></div>
+        <div class="kv"><span class="lab">nach vorn</span><span class="val">nichts, ab 2,5 m Höhe bis 50 cm</span></div>
+        <div class="kv"><span class="lab">seitlich kennzeichnen</span><span class="val">ab 40 cm über die Leuchten</span></div>
+        <div class="tip"><b>Merksatz:</b> ab <b>1</b> markieren, bis <b>1,5</b> raus, <b>3</b> nur unter 100 km.</div>
+      </div>
+      <div class="card">
+        <h3><span>🚙</span>Klasse B darf</h3>
+        <div class="kv"><span class="lab">Fahrzeug</span><span class="val">bis 3.500 kg</span></div>
+        <div class="kv"><span class="lab">Anhänger</span><span class="val">bis 750 kg</span></div>
+        <div class="kv"><span class="lab">schwerer Anhänger</span><span class="val">wenn Zug ≤ 3.500 kg</span></div>
+        <div class="kv"><span class="lab">mit B96</span><span class="val">Zug bis 4.250 kg</span></div>
+        <div class="kv"><span class="lab">Pkw + Anhänger</span><span class="val">1 Anhänger, max. 18 m lang</span></div>
+        <div class="kv"><span class="lab">Mindestalter</span><span class="val">18 · begleitet ab 17</span></div>
+      </div>
+      <div class="card">
+        <h3><span>🧒</span>Kinder</h3>
+        <div class="kv"><span class="lab">Kindersitz bis</span><span class="val">unter 12 Jahre <b>und</b> unter 150 cm</span></div>
+        <div class="tip">Rückwärts gerichteter Sitz auf dem Beifahrersitz nur mit <b>ausgeschaltetem</b> Airbag.</div>
+      </div>
+      <div class="card">
+        <h3><span>📱</span>Handy</h3>
+        <div class="tip">In die Hand nehmen nur, wenn das Auto steht <b>und</b> der Motor ganz aus ist. Start-Stopp-Automatik zählt <b>nicht</b>.</div>
+      </div>
+      <div class="card">
+        <h3><span>🔧</span>Prüfungen und Pflichten</h3>
+        <div class="kv"><span class="lab">HU (TÜV) Neuwagen</span><span class="val">nach 3 Jahren</span></div>
+        <div class="kv"><span class="lab">danach</span><span class="val">alle 2 Jahre</span></div>
+        <div class="kv"><span class="lab">dabeihaben</span><span class="val">Führerschein, Zulassung Teil I</span></div>
+        <div class="kv"><span class="lab">im Auto</span><span class="val">Warndreieck, Weste, Verbandkasten</span></div>
+        <div class="tip">Abschleppen: Seil max. <b>5 m</b>, kennzeichnen, beide Warnblinker. Autobahn an der nächsten Ausfahrt verlassen.</div>
+      </div>
+      <div class="card">
+        <h3><span>🌱</span>Umweltbewusst fahren</h3>
+        <div class="tip">Früh hochschalten (ca. 2.000 U/min), vorausschauend rollen lassen, Motor aus bei längerem Warten, Dachbox abbauen, Reifendruck prüfen. Unnützes Hin- und Herfahren ist <b>verboten</b>.</div>
+      </div>
+    </div>
+  </Section>
+
+
+
+  <Section id="vorfahrt" title="Vorfahrt: oben schlägt unten">
+    <div class="ladder">
+      <div><span>1</span>👮 Polizei</div>
+      <div><span>2</span>🚦 Ampel</div>
+      <div><span>3</span>⛔ Verkehrszeichen</div>
+      <div><span>4</span>〰️ Markierungen</div>
+      <div><span>5</span>↔️ Rechts vor links</div>
+    </div>
+    <div class="tip note-mt"><b>Merksatz:</b> Polizei schlägt Ampel, Ampel schlägt Schild, Schild schlägt rechts vor links. Ampel aus oder gelb blinkend? Dann gelten die Schilder.</div>
+  </Section>
+
+  <Section title="Vorfahrt: die Klassiker">
+    <div class="grid cols2">
+
+      <div class="card">
+        <h3><span>↔️</span>Rechts vor links</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Kreuzung ohne Schilder: das Auto von rechts fährt zuerst">
+            <rect x="118" y="0" width="64" height="190" fill="#c7ced6"/>
+            <rect x="0" y="70" width="300" height="64" fill="#c7ced6"/>
+            <rect x="152" y="150" width="24" height="34" rx="5" fill="#d92f2f"/>
+            <rect x="236" y="74" width="34" height="24" rx="5" fill="#1565d8"/>
+            <text x="164" y="172" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+            <text x="253" y="90" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+          </svg>
+        </div>
+        <p class="note">Keine Schilder, keine Ampel: <b>wer von rechts kommt, fährt zuerst.</b> Gilt auch in fast allen Tempo-30-Zonen.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>↩️</span>Links abbiegen</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Linksabbieger wartet auf Gegenverkehr">
+            <rect x="118" y="0" width="64" height="190" fill="#c7ced6"/>
+            <rect x="0" y="70" width="300" height="64" fill="#c7ced6"/>
+            <rect x="124" y="6" width="22" height="32" rx="5" fill="#1565d8"/>
+            <text x="135" y="27" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+            <rect x="154" y="150" width="22" height="32" rx="5" fill="#d92f2f"/>
+            <path d="M165 150 q0 -45 -50 -50" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
+            <text x="165" y="172" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+          </svg>
+        </div>
+        <p class="note">Wer links abbiegt, lässt den <b>Gegenverkehr</b> und Fußgänger der Zielstraße zuerst. Kommen sich zwei Linksabbieger entgegen: <b>voreinander</b> abbiegen, außer die Kreuzung ist anders markiert.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🔄</span>Kreisverkehr</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Kreisverkehr: rein ohne Blinker, raus mit Blinker rechts">
+            <circle cx="150" cy="95" r="70" fill="#c7ced6"/>
+            <circle cx="150" cy="95" r="32" fill="#7fb77e"/>
+            <rect x="130" y="160" width="40" height="30" fill="#c7ced6"/>
+            <rect x="215" y="75" width="85" height="40" fill="#c7ced6"/>
+            <rect x="140" y="160" width="20" height="28" rx="4" fill="#d92f2f"/>
+            <text x="150" y="152" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">rein: kein Blinker</text>
+            <circle cx="218" cy="103" r="5" fill="#f5a400"/>
+            <text x="258" y="70" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">raus: rechts ▸</text>
+            <path d="M150 145 A50 50 0 0 1 200 95" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
+          </svg>
+        </div>
+        <p class="note">Mit Zeichen 215 + 205: <b>der Kreis hat Vorfahrt</b>. Beim Einfahren blinken ist <b>verboten</b>, beim Ausfahren <b>Pflicht</b>. Im Kreis nicht halten.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>↪️</span>Abknickende Vorfahrt</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Zusatztafel abknickende Vorfahrt: dicke Linie ist die Vorfahrtstraße">
+            <rect x="105" y="10" width="90" height="170" rx="6" fill="#fff" stroke="#17171b" stroke-width="3"/>
+            <path d="M150 170 V95 H112" stroke="#17171b" stroke-width="12" fill="none"/>
+            <path d="M150 95 V22 M150 95 H188" stroke="#17171b" stroke-width="4" fill="none"/>
+            <text x="235" y="80" font-size="11" font-weight="800" fill="var(--ink)">dick =</text>
+            <text x="235" y="95" font-size="11" font-weight="800" fill="var(--ink)">Vorfahrt</text>
+          </svg>
+        </div>
+        <p class="note">Die <b>dicke Linie</b> ist die Vorfahrtstraße. Folgst du dem Knick, behältst du Vorfahrt, musst aber <b>blinken</b>. Untereinander gilt auf den dünnen Ästen rechts vor links.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🪢</span>Reißverschluss</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 120" role="img" aria-label="Reißverschluss: bis zum Ende der Spur fahren, dann abwechselnd einfädeln">
+            <rect x="0" y="20" width="300" height="40" fill="#c7ced6"/>
+            <path d="M0 60 H200 L240 60 L240 60 L200 100 H0 Z" fill="#c7ced6"/>
+            <path d="M0 60 H200" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <rect x="40" y="28" width="30" height="22" rx="4" fill="#1565d8"/><rect x="110" y="28" width="30" height="22" rx="4" fill="#1565d8"/>
+            <rect x="75" y="70" width="30" height="22" rx="4" fill="#d92f2f"/><rect x="150" y="70" width="30" height="22" rx="4" fill="#d92f2f"/>
+            <path d="M182 80 Q205 78 220 50" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="5 4"/>
+            <text x="250" y="110" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">erst am Ende</text>
+          </svg>
+        </div>
+        <p class="note">Endende Spur <b>bis zum Ende</b> nutzen, dann abwechselnd je ein Fahrzeug (§ 7 Abs. 4). Zu frühes Wechseln ist falsch.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>👮</span>Polizei-Zeichen</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 120" role="img" aria-label="Drei Haltungen des Polizisten">
+            <g transform="translate(60,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M-7 26 H-34 M7 26 H34" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">1</text></g>
+            <g transform="translate(150,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M0 21 L0 -6" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">2</text></g>
+            <g transform="translate(240,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M7 26 L34 16" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">3</text></g>
+          </svg>
+        </div>
+        <p class="note"><b>1</b> Brust oder Rücken zu dir: <b>Halt</b> (wie Rot). Seitlich: frei (wie Grün). <b>2</b> Arm hoch: alle halten, <b>wie Gelb</b>. <b>3</b> Winken: diese Richtung fahren.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section title="Vorfahrt: immer warten">
+    <div class="chips">
+      <div>🏠 Aus <b>Grundstück</b>, Parkplatz, Feldweg oder verkehrsberuhigtem Bereich raus: <b>alle</b> haben Vorrang (§ 10)</div>
+      <div>🚨 <b>Blaulicht + Martinshorn</b>: sofort freie Bahn schaffen</div>
+      <div>🚌 Linienbus will von gekennzeichneter <b>Haltestelle</b> abfahren: abfahren lassen, notfalls warten</div>
+      <div>🚊 <b>Straßenbahn</b>: normale Vorfahrtregeln, aber beim Abbiegen und neben dir in gleicher Richtung hat sie Vorrang</div>
+      <div>🚶 Fußgänger am <b>Zebrastreifen</b> und beim Abbiegen in die Querstraße</div>
+      <div>🚦 Stau hinter der Kreuzung: <b>nicht einfahren</b>, auch bei Grün</div>
+    </div>
+  </Section>
+
+  <Section title="Grünpfeil">
+    <div class="vs">
+      <div><b>Grünpfeil-Schild</b> (Blech, Zeichen 720) neben Rot<br/><span class="big">STOPP</span>erst ganz anhalten, dann rechts abbiegen, wenn frei</div>
+      <div><b>Leuchtender</b> grüner Pfeil in der Ampel<br/><span class="big go">FAHREN</span>normale freie Fahrt in Pfeilrichtung</div>
+    </div>
+  </Section>
+
+
+  <Section id="vergessen" title="Oft verwechselt">
+    <div class="pairs">
+      {PAIRS.map(([a, at, b, bt]) => (
+        <div class="pair">
+          <div><img src={img(a)} alt="" width="56" height="56" loading="lazy" /><span set:html={at} /></div>
+          <div><img src={img(b)} alt="" width="56" height="56" loading="lazy" /><span set:html={bt} /></div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Oft vergessen">
+    <div class="chips">
+      <div>🟡 <b>Gelbe</b> Baustellen-Markierung geht vor weißer</div>
+      <div>🚦 <b>Rot + Gelb</b> = gleich Grün, aber noch <b>nicht</b> fahren. Gelb allein = anhalten, wenn es gefahrlos geht</div>
+      <div>🦓 Am Zebrastreifen <b>nicht überholen</b> (§ 26)</div>
+      <div>📯 Hupe und Lichthupe: bei Gefahr, außerorts auch zum <b>Ankündigen des Überholens</b></div>
+      <div>🅿️ Links parken nur in der <b>Einbahnstraße</b> oder wenn rechts Schienen liegen</div>
+      <div>🅿️ Auf dem Gehweg parken nur mit Zeichen 315</div>
+      <div>🕐 Parkscheibe auf die <b>nächste halbe Stunde</b> vorstellen (10:05 → 10:30)</div>
+      <div>🚒 Vor Feuerwehrzufahrten nicht halten. In zweiter Reihe nicht halten</div>
+      <div>🚲 Bei „Verbot für Fahrzeuge aller Art“ (250) darf man Rad <b>schieben</b></div>
+      <div>🌿 <b>Umweltzone</b>: nur mit (grüner) Plakette, sonst Bußgeld</div>
+      <div>🚑 Blaulicht + Martinshorn: sofort freie Bahn. Blaulicht allein: nur Warnung</div>
+      <div>❤️ Erste Hilfe: <b>30 × drücken, 2 × beatmen</b>, ca. 100–120 pro Minute</div>
+      <div>🪪 Immer dabei: Führerschein + Zulassungsbescheinigung Teil I</div>
+      <div>🔁 Probezeit: 2 Jahre, <b>0,0 ‰</b> und kein Cannabis, egal wie alt</div>
+    </div>
+  </Section>
+
+
+
+  <Section id="praxis" title="Praktische Prüfung in Zahlen">
+    <div class="stats">
+      <div class="stat"><b>55</b><span>Minuten gesamt</span></div>
+      <div class="stat"><b>≥ 30</b><span>Minuten reine Fahrzeit</span></div>
+      <div class="stat"><b>3</b><span>Grundfahraufgaben</span></div>
+      <div class="stat"><b>5 · 4 · 3</b><span>Sonderfahrten vorher:<br/>Überland · Autobahn · Nacht<br/>je 45 Min</span></div>
+    </div>
+    <div class="chips note-mt">
+      <div>👀 Vor dem Losfahren: Sitz, Kopfstütze, Spiegel, Gurt. Der Prüfer schaut zu.</div>
+      <div>🗺️ Stadt, Landstraße und meist Autobahn oder Kraftfahrstraße</div>
+      <div>🅰️ Prüfung im Automatik = nur Automatik. Ausnahme <b>B197</b>: 10 Schaltstunden à 45 Min + 15 Min Testfahrt in der Fahrschule, Eintrag binnen 1 Jahr</div>
+      <div>🔧 <b>Abfahrtkontrolle</b> (Licht, Reifen, Flüssigkeiten) gehört nur zu C, C1, D, D1, T, nicht zu Klasse B</div>
+    </div>
+  </Section>
+
+  <Section id="blick" title="Die Blickroutine">
+    <div class="flow">
+      <div><b>1</b>Innenspiegel</div>
+      <div><b>2</b>Außenspiegel</div>
+      <div><b>3</b>Blinker</div>
+      <div><b>4</b>Schulterblick</div>
+      <div><b>5</b>Fahren</div>
+    </div>
+    <div class="grid cols2 note-mt">
+      <div class="card">
+        <h3><span>👀</span>Der tote Winkel</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 150" role="img" aria-label="Toter Winkel links und rechts hinter dem Auto">
+            <path d="M150 75 L20 20 L20 60 Z" fill="#f5a400" opacity=".55"/>
+            <path d="M150 75 L280 20 L280 60 Z" fill="#f5a400" opacity=".55" transform="translate(0,0)"/>
+            <path d="M120 70 L10 120 L60 140 Z" fill="#d92f2f" opacity=".55"/>
+            <path d="M180 70 L290 120 L240 140 Z" fill="#d92f2f" opacity=".55"/>
+            <rect x="125" y="20" width="50" height="90" rx="10" fill="#1565d8"/>
+            <text x="150" y="70" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+            <text x="45" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
+            <text x="200" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
+          </svg>
+        </div>
+        <p class="note">Gelb = siehst du im Spiegel. Rot = kein Spiegel zeigt es. Nur der <b>Schulterblick</b> (Kopf drehen, nicht nur Augen) deckt das ab.</p>
+      </div>
+      <div class="card">
+        <h3><span>📋</span>Wann Schulterblick?</h3>
+        <div class="steps">
+          <div>Anfahren vom Fahrbahnrand: <b>links</b></div>
+          <div>Spurwechsel und Einfädeln: zur <b>Zielseite</b></div>
+          <div>Rechts abbiegen: <b>rechts</b> (Radweg!), kurz vor dem Abbiegen noch einmal</div>
+          <div>Links abbiegen: <b>links</b></div>
+          <div>Tür öffnen: Spiegel + Schulterblick (oder <b>holländischer Griff</b>: Tür mit der rechten Hand öffnen)</div>
+        </div>
+        <div class="tip">Kopf ca. <b>45°</b> drehen. Der Prüfer sieht nur deinen Kopf. Bewegt er sich nicht, hat der Blick nicht stattgefunden.</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="aufgaben" title="Grundfahraufgaben">
+    <p class="note note-mb">Du fährst <b>3</b>: eine aus Gruppe A und zwei aus Gruppe B. Der Prüfer wählt aus.</p>
+    <div class="grid cols2">
+      <div class="card">
+        <h3><span>🅰️</span>Rückwärts längs einparken</h3>
+        <div class="diag">
+          <svg viewBox="0 0 320 150" role="img" aria-label="Längs einparken in drei Schritten">
+            <rect x="0" y="0" width="320" height="150" fill="#c7ced6"/>
+            <rect x="0" y="100" width="320" height="50" fill="#9aa3ad"/>
+            <rect x="10" y="102" width="70" height="34" rx="6" fill="#62626b"/>
+            <rect x="230" y="102" width="70" height="34" rx="6" fill="#62626b"/>
+            <rect x="225" y="50" width="70" height="34" rx="6" fill="#1565d8" opacity=".35"/>
+            <text x="260" y="44" font-size="11" text-anchor="middle" font-weight="800" fill="#17171b">1</text>
+            <rect x="160" y="68" width="70" height="34" rx="6" fill="#1565d8" opacity=".6" transform="rotate(-30 195 85)"/>
+            <text x="180" y="54" font-size="11" text-anchor="middle" font-weight="800" fill="#17171b">2</text>
+            <rect x="110" y="104" width="70" height="34" rx="6" fill="#1565d8"/>
+            <text x="145" y="126" font-size="11" text-anchor="middle" font-weight="800" fill="#fff">3</text>
+            <path d="M260 92 C230 100 200 110 160 120" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+          </svg>
+        </div>
+        <div class="steps">
+          <div>Neben das vordere Auto, ca. <b>50 cm</b> Abstand, Heck auf einer Höhe. Blinker rechts.</div>
+          <div>Zurück, bis dein Hinterrad auf Höhe seines Hecks ist, dann <b>voll rechts</b> einschlagen.</div>
+          <div>Bei ca. <b>45°</b> (Scheinwerfer des hinteren Autos im linken Spiegel) Räder gerade, weiter zurück.</div>
+          <div>Vorderes Eck frei? <b>Voll links</b> einschlagen, einschwenken, gerade stellen.</div>
+        </div>
+        <div class="tip">Lücke mind. ca. 1,5 Fahrzeuglängen. Nicht den Bordstein berühren, max. ca. <b>30 cm</b> Abstand. Korrigieren ist erlaubt.</div>
+      </div>
+
+      <div class="card">
+        <h3><span>🅰️</span>Rückwärts um die Ecke (rechts)</h3>
+        <div class="diag">
+          <svg viewBox="0 0 320 150" role="img" aria-label="Rückwärts nach rechts in eine Einmündung fahren">
+            <rect x="0" y="0" width="320" height="70" fill="#c7ced6"/>
+            <rect x="200" y="70" width="70" height="80" fill="#c7ced6"/>
+            <path d="M200 70 Q200 70 200 70" stroke="#17171b"/>
+            <rect x="70" y="40" width="70" height="28" rx="6" fill="#1565d8" opacity=".4"/>
+            <rect x="205" y="100" width="28" height="50" rx="6" fill="#1565d8"/>
+            <path d="M140 54 Q215 54 219 100" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+            <text x="100" y="30" font-size="11" font-weight="800" fill="#17171b" text-anchor="middle">Start</text>
+          </svg>
+        </div>
+        <div class="tip">Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten. Schrittgeschwindigkeit. Vor dem Lenken rundum schauen, Fußgänger haben Vorrang.</div>
+      </div>
+
+      <div class="card">
+        <h3><span>🅱️</span>Umkehren</h3>
+        <div class="diag">
+          <svg viewBox="0 0 320 130" role="img" aria-label="Wenden in drei Zügen">
+            <rect x="0" y="10" width="320" height="110" fill="#c7ced6"/>
+            <path d="M0 65 H320" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <path d="M60 95 Q150 95 170 25" stroke="#1565d8" stroke-width="3" fill="none"/><text x="175" y="22" font-size="12" font-weight="800" fill="#17171b">1 vor</text>
+            <path d="M170 25 Q160 95 230 100" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/><text x="232" y="112" font-size="12" font-weight="800" fill="#17171b">2 zurück</text>
+            <path d="M230 100 Q160 40 60 40" stroke="#00a86b" stroke-width="3" fill="none"/><text x="20" y="34" font-size="12" font-weight="800" fill="#17171b">3 vor</text>
+          </svg>
+        </div>
+        <div class="tip">Vor jedem Zug <b>rundum</b> schauen. Lenken im <b>Rollen</b>, nicht im Stand. Ein Zug mehr ist besser als der Bordstein.</div>
+      </div>
+
+      <div class="card">
+        <h3><span>🅱️</span>Quer oder schräg einparken</h3>
+        <div class="diag">
+          <svg viewBox="0 0 320 130" role="img" aria-label="Rückwärts quer einparken">
+            <rect x="0" y="0" width="320" height="130" fill="#c7ced6"/>
+            <g stroke="#fff" stroke-width="3"><path d="M60 70 V130 M120 70 V130 M180 70 V130 M240 70 V130"/></g>
+            <rect x="62" y="74" width="54" height="52" rx="6" fill="#62626b"/><rect x="182" y="74" width="54" height="52" rx="6" fill="#62626b"/>
+            <rect x="200" y="15" width="70" height="30" rx="6" fill="#1565d8" opacity=".4"/>
+            <rect x="133" y="78" width="34" height="50" rx="6" fill="#1565d8"/>
+            <path d="M200 30 Q150 30 150 78" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
+          </svg>
+        </div>
+        <div class="tip">Mit ca. <b>1 m</b> Abstand vorbei. Einschlagen, wenn deine Schulter auf Höhe der Linie hinter der Lücke ist. Gerade stellen, wenn die Linien in beiden Spiegeln <b>parallel</b> sind.</div>
+      </div>
+
+      <div class="card">
+        <h3><span>🅱️</span>Gefahrbremsung</h3>
+        <div class="flow small">
+          <div><b>1</b>Kupplung + Bremse voll</div>
+          <div><b>2</b>Druck halten</div>
+          <div><b>3</b>Warnblinker</div>
+          <div><b>4</b>Schulterblick, weiter</div>
+        </div>
+        <div class="tip">Ca. 30 km/h innerorts. Mit ABS <b>voll draufbleiben</b>: Rattern im Pedal ist normal. Du kannst dabei lenken. Vorher Rückspiegel prüfen.</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="fahren" title="Fahrtechnik">
+    <div class="grid cols3">
+      <div class="card">
+        <h3><span>⚙️</span>Schalten</h3>
+        <div class="gears">
+          <span><b>1</b>Anfahren</span><span><b>2</b>~20–30</span><span><b>3</b>~30–50</span><span><b>4</b>~50–70</span><span><b>5</b>&gt;70</span>
+        </div>
+        <div class="tip">Früh hochschalten (~2.000 U/min). <b>Vor</b> der Kurve bremsen und schalten, nicht in ihr. Nie im Leerlauf rollen.</div>
+      </div>
+      <div class="card">
+        <h3><span>🦶</span>Anfahren am Berg</h3>
+        <div class="flow small">
+          <div><b>1</b>Handbremse an</div>
+          <div><b>2</b>Schleifpunkt</div>
+          <div><b>3</b>etwas Gas</div>
+          <div><b>4</b>Handbremse lösen</div>
+        </div>
+        <div class="tip">Abgewürgt? Kupplung treten, neu starten, durchatmen. Das allein ist kein Durchfaller.</div>
+      </div>
+      <div class="card">
+        <h3><span>↪️</span>Abbiegen in 8 Schritten</h3>
+        <div class="steps">
+          <div>Spiegel</div><div>Blinken</div><div>Einordnen</div><div>Tempo raus, Gang wählen</div>
+          <div>Vorfahrt beachten</div><div><b>Zweiter Blick</b> (rechts: Radfahrer!)</div>
+          <div>Fußgänger der Zielstraße</div><div>Rechts <b>eng</b>, links <b>weit</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><span>🛣️</span>Autobahn</h3>
+        <div class="tip">Beschleunigungsstreifen <b>ganz</b> nutzen und Tempo angleichen. Erst auf dem Verzögerungsstreifen bremsen. Rechtsfahrgebot. Kein Halten, Wenden, Rückwärtsfahren.</div>
+      </div>
+      <div class="card">
+        <h3><span>🗣️</span>Ansagen hilft</h3>
+        <div class="tip">„Ich lasse den Radfahrer durch.“ Zeigt dem Prüfer, dass du die Situation siehst.</div>
+      </div>
+      <div class="card">
+        <h3><span>😌</span>Nach einem Fehler</h3>
+        <div class="tip">Weiterfahren, sicher bleiben. Ein kleiner Fehler heißt fast nie durchgefallen. Im Zweifel die sichere Option.</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="fehler" title="Häufigste Durchfallgründe">
+    <div class="fails">
+      <div><b>Vorfahrt</b> missachtet, jemand muss bremsen</div>
+      <div><b>Schulterblick</b> vergessen</div>
+      <div>Über die <b>Haltlinie</b> gerollt bei Stopp (Zeichen 206): Räder müssen stehen</div>
+      <div><b>Rot</b> überfahren</div>
+      <div><b>Tempo</b> deutlich zu hoch, auch in der 30-Zone</div>
+      <div>Fahrlehrer oder Prüfer muss <b>eingreifen</b></div>
+      <div>Fußgänger am <b>Zebrastreifen</b> übersehen</div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="disc">⚠️ Lernhilfe, kein Ersatz für Fahrschule und amtlichen Fragenkatalog. Alle Verkehrszeichen zum Nachschlagen: <a href={urlFor('signs')}>Zeichen-Katalog →</a></div>
+  </Section>
+</Base>

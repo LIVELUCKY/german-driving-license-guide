@@ -1,29 +1,24 @@
 ---
-import { t, urlFor } from '../lib/i18n.js';
-const { lang } = Astro.props;
+import { urlFor } from '../lib/nav.js';
 ---
 <div id="cookieBackdrop" class="cookie-backdrop" style="display:none" aria-hidden="true"></div>
 
 <div id="cookieBanner" class="cookie-banner" role="dialog" aria-modal="true"
-     aria-label={t(lang,'Cookie consent','Cookie-Einwilligung','موافقة ملفات الارتباط')}
+     aria-label="Cookie-Einwilligung"
      style="display:none">
   <div class="cookie-icon">🍪</div>
   <div class="cookie-body">
-    <p class="cookie-title">{t(lang,'Analytics & privacy','Analyse & Datenschutz','التحليل والخصوصية')}</p>
+    <p class="cookie-title">Analyse &amp; Datenschutz</p>
     <p class="cookie-text">
-      {t(lang,
-        'We use Google Analytics to understand which pages are useful. No ads, no cross-site tracking.',
-        'Wir nutzen Google Analytics um zu sehen, welche Seiten nützlich sind. Keine Werbung, kein seitenübergreifendes Tracking.',
-        'نستخدم Google Analytics لمعرفة الصفحات المفيدة. لا إعلانات، لا تتبع عبر المواقع.'
-      )}
-      {' '}<a href={urlFor(lang, 'legal')}>{t(lang,'Privacy →','Datenschutz →','الخصوصية →')}</a>
+      Wir nutzen Google Analytics um zu sehen, welche Seiten nützlich sind. Keine Werbung, kein seitenübergreifendes Tracking.
+      {' '}<a href={urlFor('legal')}>Datenschutz →</a>
     </p>
     <div class="cookie-actions">
       <button id="cookieAccept" class="cookie-btn cookie-btn-yes">
-        {t(lang,'Accept analytics','Analyse akzeptieren','قبول التحليل')}
+        Analyse akzeptieren
       </button>
       <button id="cookieDecline" class="cookie-btn cookie-btn-no">
-        {t(lang,'No thanks','Nein danke','لا شكراً')}
+        Nein danke
       </button>
     </div>
   </div>
@@ -100,7 +95,7 @@ const { lang } = Astro.props;
 .cookie-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 49; /* below header (z-index:50) so lang/theme switcher stays clickable */
+  z-index: 49; /* below header (z-index:50) so the theme switcher stays clickable */
   background: rgba(0,0,0,.5);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);

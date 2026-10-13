@@ -3,273 +3,168 @@
     "cat": "prohibit",
     "kw": "einfahrt verbot no entry einbahn do not enter",
     "nameDe": "Verbot der Einfahrt",
-    "nameEn": "No entry",
     "stvo": "267",
-    "en": "Do not drive in (often a one-way exit).",
     "de": "Einfahrt verboten (oft Einbahn-Ausgang).",
-    "tipEn": "White bar on red = no entry. Often one-way exit.",
-    "tipDe": "Weißer Balken auf Rot = Einfahrt verboten.",
-    "ar": "لا تدخل — غالباً مخرج اتجاه واحد.",
-    "tipAr": "شريط أبيض أفقي على أحمر = لا مدخل."
+    "tipDe": "Weißer Balken auf Rot = Einfahrt verboten."
   },
   {
     "cat": "prohibit",
     "kw": "verbot fahrzeuge aller art no vehicles durchfahrt",
     "nameDe": "Verbot für Fahrzeuge aller Art",
-    "nameEn": "No vehicles",
     "stvo": "250",
-    "en": "Closed to all vehicles in both directions.",
     "de": "Für alle Fahrzeuge gesperrt (Durchfahrt verboten).",
-    "tipEn": "Empty red circle = nothing goes through.",
-    "tipDe": "Leerer roter Ring = kein Fahrzeug darf durch.",
-    "ar": "مغلق لجميع المركبات في الاتجاهين.",
-    "tipAr": "دائرة حمراء فارغة = لا شيء يمر."
+    "tipDe": "Leerer roter Ring = kein Fahrzeug darf durch."
   },
   {
     "cat": "prohibit",
     "kw": "hochstgeschwindigkeit speed limit tempo 50 limit",
     "nameDe": "Höchstgeschwindigkeit",
-    "nameEn": "Speed limit",
     "stvo": "274-50",
-    "en": "Max speed in km/h (the number shown).",
     "de": "Höchsttempo in km/h (gezeigte Zahl).",
-    "tipEn": "Red ring = maximum. Blue circle = minimum. Never mix up.",
-    "tipDe": "Roter Ring = Maximum. Blauer Kreis = Minimum. Nie verwechseln.",
-    "ar": "الحد الأقصى للسرعة بالكم/ساعة (الرقم المبين).",
-    "tipAr": "الرقم بحلقة حمراء = حد أقصى. أزرق = حد أدنى."
+    "tipDe": "Roter Ring = Maximum. Blauer Kreis = Minimum. Nie verwechseln."
   },
   {
     "cat": "prohibit",
     "kw": "ende hochstgeschwindigkeit end speed limit aufhebung",
     "nameDe": "Ende der Höchstgeschwindigkeit",
-    "nameEn": "End of speed limit",
     "stvo": "278-50",
-    "en": "That limit no longer applies.",
     "de": "Das Tempolimit endet hier.",
-    "tipEn": "Grey with stripes = restriction over. Watch for new ones.",
-    "tipDe": "Grau mit Streifen = Verbot vorbei. Auf neue achten.",
-    "ar": "قيد السرعة لم يعد ينطبق هنا.",
-    "tipAr": "إشارة رمادية مشطوبة = انتهى القيد."
+    "tipDe": "Grau mit Streifen = Verbot vorbei. Auf neue achten."
   },
   {
     "cat": "prohibit",
     "kw": "uberholverbot no overtaking passing",
     "nameDe": "Überholverbot",
-    "nameEn": "No overtaking",
     "stvo": "276",
-    "en": "Overtaking motor vehicles is forbidden.",
     "de": "Überholen von Kfz verboten.",
-    "tipEn": "Two cars side by side in red ring = no overtaking.",
-    "tipDe": "Zwei Autos nebeneinander = kein Überholen.",
-    "ar": "التجاوز محظور.",
-    "tipAr": "سيارتان جنباً لجنب في دائرة حمراء = لا تجاوز."
+    "tipDe": "Zwei Autos nebeneinander = kein Überholen."
   },
   {
     "cat": "prohibit",
     "kw": "halteverbot no stopping stopping halten",
     "nameDe": "Absolutes Halteverbot",
-    "nameEn": "No stopping",
     "stvo": "283",
-    "en": "You may not stop here at all.",
     "de": "Hier darfst du gar nicht halten.",
-    "tipEn": "Count the stripes: two means you may not even pause. One stripe is 286, where three minutes is fine.",
-    "tipDe": "Streifen zählen: zwei heißt, du darfst nicht einmal kurz stehen. Ein Streifen ist 286, dort sind drei Minuten in Ordnung.",
-    "ar": "لا يجوز التوقف هنا إطلاقاً.",
-    "tipAr": "عُدّ الشرائط: شريطان يعنيان أنه لا يجوز لك التوقف ولو للحظة. أما شريط واحد فهو الإشارة 286 حيث تُقبل ثلاث دقائق."
+    "tipDe": "Streifen zählen: zwei heißt, du darfst nicht einmal kurz stehen. Ein Streifen ist 286, dort sind drei Minuten in Ordnung."
   },
   {
     "cat": "prohibit",
     "kw": "parkverbot no parking eingeschranktes halteverbot",
     "nameDe": "Eingeschränktes Halteverbot",
-    "nameEn": "No parking",
     "stvo": "286",
-    "en": "No parking. You may hold up to three minutes, and longer only while people get in or out or you load or unload.",
     "de": "Parken verboten. Halten bis zu drei Minuten erlaubt, länger nur zum Ein- und Aussteigen oder Be- und Entladen.",
-    "tipEn": "One stripe = no parking. Two stripes = no stopping at all.",
-    "tipDe": "Ein Streifen = kein Parken. Zwei Streifen = kein Halten.",
-    "ar": "ممنوع الركن. يجوز التوقف حتى ثلاث دقائق، وأطول من ذلك فقط لصعود الركاب ونزولهم أو للتحميل والتفريغ.",
-    "tipAr": "شريط واحد = لا ركن؛ شريطان = لا توقف على الإطلاق."
+    "tipDe": "Ein Streifen = kein Parken. Zwei Streifen = kein Halten."
   },
   {
     "cat": "prohibit",
     "kw": "verbot kraftfahrzeuge no motor cars auto kraftwagen mehrspurig multi-track",
     "nameDe": "Verbot für Kraftwagen",
-    "nameEn": "No cars",
     "stvo": "251",
-    "en": "No cars, vans or lorries. It covers multi-track motor vehicles only.",
     "de": "Keine Pkw, Transporter oder Lkw. Das Verbot gilt nur für mehrspurige Kraftfahrzeuge.",
-    "tipEn": "A solo motorcycle is single-track, so this sign does not stop it. Zeichen 260 is the one that bans motorcycles too.",
-    "tipDe": "Ein einspuriges Kraftrad ist nicht mehrspurig, dieses Zeichen hält es also nicht auf. Zeichen 260 verbietet auch Krafträder.",
-    "ar": "ممنوع مرور السيارات والشاحنات. المنع يشمل المركبات الآلية متعددة المسارات فقط.",
-    "tipAr": "الدراجة النارية أحادية المسار غير مشمولة بهذه الإشارة. الإشارة 260 هي التي تمنع الدراجات النارية أيضاً."
+    "tipDe": "Ein einspuriges Kraftrad ist nicht mehrspurig, dieses Zeichen hält es also nicht auf. Zeichen 260 verbietet auch Krafträder."
   },
   {
     "cat": "prohibit",
     "kw": "verbot lkw no trucks lorry gewicht",
     "nameDe": "Verbot für LKW",
-    "nameEn": "No trucks",
     "stvo": "253",
-    "en": "No motor vehicles over 3.5 t permitted total mass, trailers included. Cars and buses are exempt.",
     "de": "Verbot für Kraftfahrzeuge über 3,5 t zulässiger Gesamtmasse, einschließlich Anhänger. Pkw und Kraftomnibusse sind ausgenommen.",
-    "tipEn": "What counts is the permitted total mass in the vehicle papers, not what you are carrying. Trailers count towards it.",
-    "tipDe": "Entscheidend ist die zulässige Gesamtmasse im Fahrzeugschein, nicht die Ladung. Anhänger zählen mit.",
-    "ar": "ممنوع مرور المركبات الآلية التي يتجاوز وزنها الإجمالي المسموح به 3.5 طن، بما في ذلك مقطوراتها. السيارات والحافلات مستثناة.",
-    "tipAr": "المعيار هو الوزن الإجمالي المسموح به في أوراق المركبة وليس الحمولة. والمقطورات محسوبة ضمنه."
+    "tipDe": "Entscheidend ist die zulässige Gesamtmasse im Fahrzeugschein, nicht die Ladung. Anhänger zählen mit."
   },
   {
     "cat": "prohibit",
     "kw": "verbot radfahrer no bicycles fahrrad bike",
     "nameDe": "Verbot für Radfahrer",
-    "nameEn": "No bicycles",
     "stvo": "254",
-    "en": "Cycling not permitted here.",
     "de": "Radfahren verboten.",
-    "tipEn": "Cyclists must find an alternative route.",
-    "tipDe": "Radfahrer müssen ausweichen.",
-    "ar": "الدراجات ممنوعة هنا.",
-    "tipAr": "الدراجون يجب استخدام طريق بديل."
+    "tipDe": "Radfahrer müssen ausweichen."
   },
   {
     "cat": "prohibit",
     "kw": "hohe max height durchfahrtshohe 3.5m",
     "nameDe": "Tatsächliche Höhe",
-    "nameEn": "Max height",
     "stvo": "265",
-    "en": "Vehicles taller than shown may not pass.",
     "de": "Fahrzeuge höher als angegeben verboten.",
-    "tipEn": "Add roof rack/load to vehicle height before deciding.",
-    "tipDe": "Dachträger/Ladung zur Fahrzeughöhe addieren.",
-    "ar": "المركبات الأعلى مما هو مبين ممنوعة.",
-    "tipAr": "تذكر إضافة حمولة السطح عند حساب الارتفاع."
+    "tipDe": "Dachträger/Ladung zur Fahrzeughöhe addieren."
   },
   {
     "cat": "prohibit",
     "kw": "wenden verboten no u-turn umkehren",
     "nameDe": "Wenden verboten",
-    "nameEn": "No U-turn",
     "stvo": "272",
-    "en": "Turning around is forbidden.",
     "de": "Wenden ist verboten.",
-    "tipEn": "U-arrow with slash = no U-turn allowed.",
-    "tipDe": "U-Pfeil mit Strich = Wenden verboten.",
-    "ar": "الانعطاف الكامل (U-turn) ممنوع.",
-    "tipAr": "سهم U مع خط = لا انعطاف."
+    "tipDe": "U-Pfeil mit Strich = Wenden verboten."
   },
   {
     "cat": "prohibit",
     "kw": "gewicht weight tonnen 3.5t maximum",
     "nameDe": "Tatsächliche Masse",
-    "nameEn": "Max weight",
     "stvo": "262",
-    "en": "Vehicles heavier than shown may not pass (bridges!).",
     "de": "Schwerere Fahrzeuge verboten (Brücken!).",
-    "tipEn": "Bridges fail. Weight limits exist for a reason.",
-    "tipDe": "Brücken haben Tragfähigkeitsgrenzen. Diese existieren aus gutem Grund.",
-    "ar": "المركبات الأثقل مما هو مبين ممنوعة (تنبه للجسور).",
-    "tipAr": "الجسور لها حدود وزن — خسارة تجاوزها."
+    "tipDe": "Brücken haben Tragfähigkeitsgrenzen. Diese existieren aus gutem Grund."
   },
   {
     "cat": "prohibit",
     "kw": "breite width breit 2m",
     "nameDe": "Tatsächliche Breite",
-    "nameEn": "Max width",
     "stvo": "264",
-    "en": "Wider vehicles may not pass.",
     "de": "Breitere Fahrzeuge verboten.",
-    "tipEn": "Measure total width including mirrors.",
-    "tipDe": "Gesamtbreite einschließlich Spiegel messen.",
-    "ar": "المركبات الأوسع ممنوعة.",
-    "tipAr": "احسب العرض الكلي مع المرايا."
+    "tipDe": "Gesamtbreite einschließlich Spiegel messen."
   },
   {
     "cat": "prohibit",
     "kw": "abstand minimum distance lkw 70m",
     "nameDe": "Mindestabstand",
-    "nameEn": "Minimum gap (trucks)",
     "stvo": "273",
-    "en": "Trucks must keep at least this distance.",
     "de": "Lkw müssen diesen Mindestabstand halten.",
-    "tipEn": "Trucks have massive stopping distances. Gap saves lives.",
-    "tipDe": "Lkw brauchen enorme Bremswege. Abstand rettet Leben.",
-    "ar": "الشاحنات يجب الحفاظ على هذه المسافة الدنيا.",
-    "tipAr": "الشاحنات تحتاج مسافات فرملة هائلة — البعد ضروري."
+    "tipDe": "Lkw brauchen enorme Bremswege. Abstand rettet Leben."
   },
   {
     "cat": "prohibit",
     "kw": "uberholverbot lkw trucks no overtaking",
     "nameDe": "Überholverbot für LKW",
-    "nameEn": "No overtaking (trucks)",
     "stvo": "277",
-    "en": "Trucks may not overtake here.",
     "de": "Lkw dürfen hier nicht überholen.",
-    "tipEn": "Truck + car side by side in red ring = trucks banned from overtaking.",
-    "tipDe": "Lkw + Auto nebeneinander im roten Ring = Überholverbot für Lkw.",
-    "ar": "الشاحنات لا تتجاوز هنا.",
-    "tipAr": "شاحنة + سيارة جنباً لجنب في دائرة حمراء."
+    "tipDe": "Lkw + Auto nebeneinander im roten Ring = Überholverbot für Lkw."
   },
   {
     "cat": "prohibit",
     "kw": "ende uberholverbot end no overtaking",
     "nameDe": "Ende Überholverbot",
-    "nameEn": "End of no overtaking",
     "stvo": "280",
-    "en": "Overtaking allowed again (if safe).",
     "de": "Überholen wieder erlaubt (wenn sicher).",
-    "tipEn": "Permission not obligation. Only overtake if safe.",
-    "tipDe": "Erlaubt heißt nicht erzwungen. Nur überholen wenn sicher.",
-    "ar": "التجاوز مسموح مجدداً (إذا كان آمناً).",
-    "tipAr": "الإذن لا يعني الإلزام — تأكد من السلامة أولاً."
+    "tipDe": "Erlaubt heißt nicht erzwungen. Nur überholen wenn sicher."
   },
   {
     "cat": "prohibit",
     "kw": "ende samtlicher verbote end all bans aufhebung",
     "nameDe": "Ende aller Streckenverbote",
-    "nameEn": "End of all bans",
     "stvo": "282",
-    "en": "All local speed & overtaking bans end.",
     "de": "Alle Tempo- und Überholverbote enden.",
-    "tipEn": "Revert to standard road rules: 50 in town, 100 outside.",
-    "tipDe": "Zurück zu normalen Regeln: 50 in der Stadt, 100 außerorts.",
-    "ar": "جميع قيود السرعة والتجاوز المحلية تنتهي.",
-    "tipAr": "عود لقواعد الطريق الاعتيادية — مدينة أو خارجها."
+    "tipDe": "Zurück zu normalen Regeln: 50 in der Stadt, 100 außerorts."
   },
   {
     "cat": "prohibit",
     "kw": "verbot motorrader no motorcycles kraftrader",
     "nameDe": "Verbot für Krafträder",
-    "nameEn": "No motorcycles",
     "stvo": "255",
-    "en": "Motorbikes banned.",
     "de": "Motorräder verboten.",
-    "tipEn": "Motorbike inside red circle = banned.",
-    "tipDe": "Motorrad im roten Ring = verboten.",
-    "ar": "الدراجات النارية ممنوعة.",
-    "tipAr": "دراجة نارية في دائرة حمراء = ممنوع."
+    "tipDe": "Motorrad im roten Ring = verboten."
   },
   {
     "cat": "prohibit",
     "kw": "verbot fussganger no pedestrians",
     "nameDe": "Verbot für Fußgänger",
-    "nameEn": "No pedestrians",
     "stvo": "259",
-    "en": "Walking prohibited (e.g. motorway ramps).",
     "de": "Fußgänger verboten (z. B. Auffahrten).",
-    "tipEn": "Pedestrians on motorways: extremely dangerous. Use emergency phones.",
-    "tipDe": "Fußgänger auf Autobahnen: lebensgefährlich. Notrufsäulen nutzen.",
-    "ar": "المشي ممنوع هنا (مثل منحدرات الطريق السريع).",
-    "tipAr": "المشاة على الطرق السريعة خطر مميت."
+    "tipDe": "Fußgänger auf Autobahnen: lebensgefährlich. Notrufsäulen nutzen."
   },
   {
     "cat": "prohibit",
     "kw": "gefahrgut hazardous goods tanker explosive",
     "nameDe": "Verbot für Gefahrgut",
-    "nameEn": "No hazardous goods",
     "stvo": "261",
-    "en": "Dangerous-cargo trucks banned (tunnels, water areas).",
     "de": "Gefahrgut-Transporte verboten (Tunnel, Wasserschutz).",
-    "tipEn": "Hazmat incidents close roads for days. Follow routing.",
-    "tipDe": "Gefahrgutunfälle sperren Straßen tagelang.",
-    "ar": "شاحنات البضائع الخطرة ممنوعة (أنفاق، مناطق مائية).",
-    "tipAr": "حوادث الشاحنات الخطرة تُغلق طرقاً لأيام."
+    "tipDe": "Gefahrgutunfälle sperren Straßen tagelang."
   }
 ]

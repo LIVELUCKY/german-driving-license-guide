@@ -5,31 +5,21 @@ import { SEO } from 'astro-seo';
 import { Icon } from 'astro-icon/components';
 import { Image, getImage } from 'astro:assets';
 import logoSrc from '../assets/logo.jpg';
-import { NAV, urlFor, prevNext, t, withBase, LOCALES, DEFAULT_LANG, isRTL, navTree, groupOf } from '../lib/i18n.js';
-import { makeT } from '../lib/dict.js';
+import { NAV, urlFor, withBase } from '../lib/nav.js';
 import Analytics from '../components/Analytics.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-const { lang = DEFAULT_LANG, slug = '', title, description } = Astro.props;
-const T = makeT(lang);
-const { prev, next } = prevNext(lang, slug);
+const { slug = '', title, description } = Astro.props;
 const cur = NAV.find(n => n.slug === slug);
-const pageTitle = title ?? (cur ? t(lang, cur.en, cur.de, cur.ar) : 'Führerschein');
-const fullTitle = slug === '' ? pageTitle : `${pageTitle} · Führerschein Guide`;
-const navItems = NAV.filter(n => n.slug !== '');
-const tree = navTree(navItems);
-const curGroup = groupOf(slug);
-const dir = isRTL(lang) ? 'rtl' : 'ltr';
-const metaDesc = description ?? t(lang,
-  'Bilingual study guide for the German driving licence: signs, theory, practical.',
-  'Lernbegleiter für den Führerschein: Zeichen, Theorie, Praxis.',
-  'دليل دراسة ثنائي اللغة لرخصة القيادة الألمانية: إشارات، نظرية، تطبيق.');
+const pageTitle = title ?? cur?.label ?? 'Führerschein';
+const fullTitle = slug === '' ? pageTitle : `${pageTitle} · Führerschein Spickzettel`;
+const metaDesc = description ?? 'Spickzettel für den Führerschein Klasse B: Formeln, Zahlen, Merksätze, Vorfahrt, Zeichen und Praxis.';
 const ogImage = await getImage({ src: logoSrc, width: 1200, height: 1200, format: 'jpeg' });
 const siteBase = Astro.site ?? new URL('https://example.com');
 const abs = (p: string) => new URL(p, siteBase).href;
 const ogImageUrl = abs(ogImage.src);
 ---
 <!DOCTYPE html>
-<html lang={lang} data-lang={lang} dir={dir}>
+<html lang="de">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,25 +27,22 @@ const ogImageUrl = abs(ogImage.src);
 <SEO
   title={fullTitle}
   description={metaDesc}
-  canonical={abs(urlFor(lang, slug))}
+  canonical={abs(urlFor(slug))}
   openGraph={{
-    basic: { title: fullTitle, type: 'website', url: abs(urlFor(lang, slug)), image: ogImageUrl },
-    optional: { description: metaDesc, locale: lang },
+    basic: { title: fullTitle, type: 'website', url: abs(urlFor(slug)), image: ogImageUrl },
+    optional: { description: metaDesc, locale: 'de' },
   }}
   twitter={{ card: 'summary', title: fullTitle, description: metaDesc }}
   noindex={false}
   extend={{
     link: [
-      ...LOCALES.map(l => ({ rel: 'alternate', hreflang: l, href: abs(urlFor(l, slug)) })),
-      { rel: 'alternate', hreflang: 'x-default', href: abs(urlFor(DEFAULT_LANG, slug)) },
       { rel: 'preload', href: withBase('fonts/archivo-black-latin-400-normal.woff2'), as: 'font', type: 'font/woff2', crossorigin: '' },
       { rel: 'preload', href: withBase('fonts/space-grotesk-latin-400-normal.woff2'), as: 'font', type: 'font/woff2', crossorigin: '' },
       { rel: 'icon', href: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2316161a'/><rect x='10' y='10' width='80' height='80' fill='none' stroke='%23ffd400' stroke-width='9'/><text x='50' y='67' font-size='40' font-weight='800' fill='white' text-anchor='middle' font-family='Arial Black,Arial'>DE</text></svg>" },
-      { rel: 'alternate', type: 'application/rss+xml', title: 'Führerschein Guide — Study Tips', href: withBase('rss.xml') },
     ],
   }}
 />
-<!-- Font faces — absolute paths via withBase() so /de/ and /ar/ routes resolve correctly -->
+<!-- Font faces: absolute paths via withBase() so sub-path deploys resolve -->
 <style set:html={`
 @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url('${withBase('fonts/space-grotesk-latin-400-normal.woff2')}') format('woff2');unicode-range:U+0000-00FF}
 @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('${withBase('fonts/space-grotesk-latin-500-normal.woff2')}') format('woff2');unicode-range:U+0000-00FF}
@@ -65,7 +52,6 @@ const ogImageUrl = abs(ogImage.src);
 @font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url('${withBase('fonts/archivo-black-latin-400-normal.woff2')}') format('woff2');unicode-range:U+0000-00FF}
 @font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url('${withBase('fonts/archivo-black-latin-ext-400-normal.woff2')}') format('woff2');unicode-range:U+0100-024F}
 `} />
-<!-- PWA manifest + SW injected by @vite-pwa/astro at build time -->
 <ClientRouter />
 <script is:inline>
 // Apply theme immediately to avoid flash on hard load
@@ -78,77 +64,38 @@ document.addEventListener('astro:before-swap',function(e){
 <Analytics />
 </head>
 <body>
-<a class="skip" href="#main">{T('a11y.skip')}</a>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 <header class="bar"><div class="wrap row">
-  <a class="brand" href={urlFor(lang, '')}>
+  <a class="brand" href={urlFor('')}>
     <Image src={logoSrc} width={36} height={36} alt="Führerschein Guide" class="brand-logo" widths={[36, 72]} sizes="36px" loading="eager" />
-    <span>Führerschein<small>{T('brand.tag')}</small></span>
+    <span>Führerschein<small>Spickzettel Klasse B</small></span>
   </a>
-  <nav class="dnav" aria-label={T('nav.menu')}>
-    {tree.map(x => x.group ? (
-      <details class="navgroup">
-        <summary class={curGroup === x.group ? 'on' : ''}>
-          {t(lang, x.group.en, x.group.de, x.group.ar)}
-          <Icon name="lucide:chevron-down" size={13} aria-hidden="true" />
-        </summary>
-        <div class="navpanel">
-          {x.items.map(n => (
-            <a class={slug === n.slug ? 'on' : ''} href={urlFor(lang, n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>
-              <span class="np-t">{t(lang, n.en, n.de, n.ar)}</span>
-              <span class="np-d">{t(lang, n.d_en, n.d_de, n.d_ar)}</span>
-            </a>
-          ))}
-        </div>
-      </details>
-    ) : (
-      <a class={slug === x.item.slug ? 'on' : ''} href={urlFor(lang, x.item.slug)} aria-current={slug === x.item.slug ? 'page' : undefined}>
-        {t(lang, x.item.en, x.item.de, x.item.ar)}
-      </a>
+  <nav class="dnav" aria-label="Hauptmenü">
+    {NAV.filter(n => n.slug !== 'legal').map(n => (
+      <a class={slug === n.slug ? 'on' : ''} href={urlFor(n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>{n.label}</a>
     ))}
   </nav>
   <div class="spacer"></div>
-  <nav class="ctrl" aria-label={T('a11y.language')}>
-    {LOCALES.map(l => (
-      <a class={lang === l ? 'on' : ''}
-         href={lang === l ? undefined : urlFor(l, slug)}
-         aria-current={lang === l ? 'true' : undefined}
-         lang={l}
-         onclick={lang !== l ? `if(typeof __fsTrack==='function')__fsTrack('language_switch',{from:'${lang}',to:'${l}'})` : undefined}
-         >{l === 'ar' ? 'عر' : l.toUpperCase()}</a>
-    ))}
-  </nav>
-  <button class="iconbtn" id="themeBtn" aria-label={T('a11y.theme')}>
+  <button class="iconbtn" id="themeBtn" aria-label="Dunkles Design">
     <Icon name="lucide:moon" id="iconMoon" size={18} />
     <Icon name="lucide:sun" id="iconSun" size={18} style="display:none" />
   </button>
-  <button class="iconbtn navtoggle" id="navBtn" aria-label={T('a11y.nav')} aria-expanded="false">
+  <button class="iconbtn navtoggle" id="navBtn" aria-label="Menü öffnen" aria-expanded="false">
     <Icon name="lucide:menu" id="iconMenu" size={18} />
     <Icon name="lucide:x" id="iconClose" size={18} style="display:none" />
   </button>
 </div></header>
 
-<nav class="mnav" id="mnav" aria-label={T('nav.menu')}>
-  {tree.map(x => x.group ? (
-    <div class="mgroup">
-      <h2 class="mgroup-h">{t(lang, x.group.en, x.group.de, x.group.ar)}</h2>
-      {x.items.map(n => (
-        <a href={urlFor(lang, n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>
-          {t(lang, n.en, n.de, n.ar)}
-        </a>
-      ))}
-    </div>
-  ) : (
-    <a href={urlFor(lang, x.item.slug)} aria-current={slug === x.item.slug ? 'page' : undefined}>
-      {t(lang, x.item.en, x.item.de, x.item.ar)}
-    </a>
+<nav class="mnav" id="mnav" aria-label="Hauptmenü">
+  {NAV.map(n => (
+    <a href={urlFor(n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>{n.label}</a>
   ))}
 </nav>
 
 {slug !== '' && (
   <div class="wrap crumbs">
-    <a href={urlFor(lang, '')}>{T('crumb.home')}</a>
+    <a href={urlFor('')}>Start</a>
     <span>/</span>
-    {curGroup && <><span class="cr-g">{t(lang, curGroup.en, curGroup.de, curGroup.ar)}</span><span>/</span></>}
     <span>{pageTitle}</span>
   </div>
 )}
@@ -157,26 +104,15 @@ document.addEventListener('astro:before-swap',function(e){
   <slot />
 </main>
 
-{slug !== '' && (prev || next) && (
-  <div class="wrap pn">
-    {prev ? <a href={prev.url}><span class="dir"><Icon name="lucide:arrow-left" size={13} /> {T('pn.prev')}</span><span class="t">{prev.title}</span></a> : <span></span>}
-    {next ? <a class="next" href={next.url}><span class="dir">{T('pn.next')} <Icon name="lucide:arrow-right" size={13} /></span><span class="t">{next.title}</span></a> : <span></span>}
-  </div>
-)}
-
 <footer><div class="wrap">
   <div class="ft-row">
     <div class="ft">Führerschein Guide</div>
     <div class="ft-links">
-      <a href={urlFor(lang, 'legal')}>{T('nav.legal')}</a>
-      {lang !== 'de' && <a href={urlFor('de', slug)}>Auf Deutsch</a>}
-      {lang !== 'en' && <a href={urlFor('en', slug)}>In English</a>}
-      {lang !== 'ar' && <a href={urlFor('ar', slug)}>بالعربية</a>}
+      <a href={urlFor('legal')}>Rechtliches</a>
     </div>
   </div>
-  <small>{T('footer.line1')}</small>
-  <small>⚠️ {T('footer.line2')}</small>
-  <small>🖨️ {T('footer.print')}</small>
+  <small>⚠️ Inoffizielle Lernhilfe. Maßgeblich sind StVO, der amtliche Fragenkatalog und deine Fahrschule.</small>
+  <small>🖨️ Strg/Cmd + P druckt jede Seite als Spickzettel.</small>
   <div class="ft-author">
     <span>by Nazmi</span>
     <a href="https://www.linkedin.com/in/0-nazmi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -188,7 +124,7 @@ document.addEventListener('astro:before-swap',function(e){
   </div>
 </div></footer>
 
-<script is:inline define:vars={{ darkLabel: T('theme.dark'), lightLabel: T('theme.light'), pageLang: lang, pageSlug: slug }}>
+<script is:inline define:vars={{ darkLabel: 'Dunkles Design', lightLabel: 'Helles Design' }}>
 function paintTheme(){
   var d=document.documentElement.dataset.theme==='dark';
   var b=document.getElementById('themeBtn');
@@ -204,7 +140,7 @@ function fsPageInit(){
   if(hash){var t=document.getElementById(hash.slice(1));if(t)t.scrollIntoView({behavior:'instant',block:'start'});}
 
   // Track page view
-  if(typeof window.__fsTrack==='function') window.__fsTrack('page_view',{page_path:location.pathname,page_lang:pageLang});
+  if(typeof window.__fsTrack==='function') window.__fsTrack('page_view',{page_path:location.pathname});
 
   // Theme toggle — rebind every page (View Transitions replace DOM)
   var b=document.getElementById('themeBtn');
@@ -232,39 +168,11 @@ function fsPageInit(){
     });
   }
 
-  // Scroll-reveal
-  if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&'IntersectionObserver' in window){
-    var SELECTORS='.card,.sign-front,.combo,.path a.step,.cathub a.cat,details.more,.bento-item';
-    var els=document.querySelectorAll(SELECTORS);
-    var groups=new Map();
-    els.forEach(function(el){
-      if(el.classList.contains('rv'))return;
-      el.classList.add('rv');
-      var parent=el.parentElement||document.body;
-      if(!groups.has(parent))groups.set(parent,[]);
-      groups.get(parent).push(el);
-    });
-    groups.forEach(function(children){
-      children.forEach(function(el,i){el.style.transitionDelay=Math.min(i*55,280)+'ms';});
-    });
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){
-          var parent=e.target.parentElement;
-          if(parent){parent.querySelectorAll('.rv:not(.in)').forEach(function(s){s.classList.add('in');});}
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    },{rootMargin:'0px 0px -6% 0px',threshold:.06});
-    els.forEach(function(el){if(!el.classList.contains('in'))io.observe(el);});
-  }
-
   // Nav link click tracking
   document.querySelectorAll('.bar nav a:not([data-nav-t])').forEach(function(a){
     a.dataset.navT='1';
     a.addEventListener('click',function(){
-      if(typeof window.__fsTrack==='function') window.__fsTrack('nav_click',{label:(a.textContent||'').trim(),href:a.getAttribute('href'),lang:pageLang});
+      if(typeof window.__fsTrack==='function') window.__fsTrack('nav_click',{label:(a.textContent||'').trim(),href:a.getAttribute('href')});
     });
   });
   // Outbound link tracking
@@ -272,13 +180,13 @@ function fsPageInit(){
     try{if(new URL(a.href).hostname===location.hostname)return;}catch(e){return;}
     a.dataset.outT='1';
     a.addEventListener('click',function(){
-      if(typeof window.__fsTrack==='function') window.__fsTrack('outbound_link',{url:a.href,lang:pageLang});
+      if(typeof window.__fsTrack==='function') window.__fsTrack('outbound_link',{url:a.href});
     });
   });
 }
 document.addEventListener('astro:page-load', fsPageInit);
 if(document.readyState!=='loading') fsPageInit();
 </script>
-{slug !== 'legal' && <CookieBanner lang={lang} />}
+{slug !== 'legal' && <CookieBanner />}
 </body>
 </html>

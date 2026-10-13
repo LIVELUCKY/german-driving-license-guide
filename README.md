@@ -1,40 +1,24 @@
 # German Driving License Guide
 
-A trilingual study site for the German driving licence (Führerschein) — **German · English · Arabic (RTL)**.
+A German cheat sheet for the driving licence Klasse B: the theory exam and the practical exam on a few visual pages.
 
 **Live → [livelucky.github.io/german-driving-license-guide](https://livelucky.github.io/german-driving-license-guide/)**
 
 ## What's inside
 
-- **109 road signs** with official StVO artwork and descriptions in all three languages
-- **Theory & practical rules** — right-of-way, priority chains, road markings, streets
-- **German grammar** for driving vocabulary (articles, cases)
-- **Full RTL support** for Arabic
-- Static HTML — no server, no database, sub-second page loads
+- **Theorie**: every formula (Reaktionsweg, Bremsweg, Gefahrbremsung, Anhalteweg) and the numbers the question catalogue keeps asking, as charts and with memory hooks
+- **Vorfahrt**: right of way as diagrams
+- **Zeichen**: 109 road signs with official StVO artwork
+- **Praxis**: the basic maneuvers as diagrams, exam format, common fail reasons
+- Static HTML, no server, no database
 
 ## Stack
 
 | Layer | Choice |
 |---|---|
-| Framework | Astro 6 (static, no SSR) |
+| Framework | Astro 6 (static) |
 | Styling | Tailwind CSS v4 |
-| Interactivity | React islands |
-| Content | MDX + typed JSON |
-| Language | TypeScript |
 | Deployment | GitHub Pages via Actions |
-
-## Project structure
-
-```
-src/
-  pages/          # / = German (default), /en/ = English, /ar/ = Arabic
-  components/     # One component per page, all accept lang prop
-  data/signs/     # Sign catalogue split by category (warn, prio, prohibit, ...)
-  lib/            # i18n helpers, sign utils, content data
-  i18n/           # UI string dictionaries (en.json, de.json, ar.json)
-  content/        # Long-form MDX (legal pages)
-public/signs/     # Official StVO SVG artwork (88 files, public domain)
-```
 
 ## Develop
 

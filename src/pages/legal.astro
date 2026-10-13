@@ -1,4 +1,14 @@
 ---
-import P from '../components/LegalPage.astro';
+import Base from '../layouts/Base.astro';
+import { Content, frontmatter as fm } from '../content/legal/de.mdx';
 ---
-<P lang="de" />
+<Base slug="legal" title={fm.title}>
+  <div class="wrap pagehead">
+    <span class="kicker">{fm.kicker}</span>
+    <h1>{fm.title}</h1>
+    <p>{fm.desc}</p>
+  </div>
+  <section class="blk"><div class="wrap prose">
+    <Content />
+  </div></section>
+</Base>

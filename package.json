@@ -1,13 +1,12 @@
 {
   "name": "fuehrerschein-guide",
   "version": "1.0.0",
-  "description": "Bilingual German driving-licence study guide — static Astro site with React islands",
+  "description": "German driving licence (Klasse B) cheat sheet: static Astro site",
   "keywords": [
     "astro",
     "driving-licence",
     "führerschein",
     "germany",
-    "react",
     "tailwind"
   ],
   "private": true,
@@ -26,7 +25,6 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.3",
-    "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/archivo-black": "^5.2.8",
     "@fontsource/space-grotesk": "^5.2.10",

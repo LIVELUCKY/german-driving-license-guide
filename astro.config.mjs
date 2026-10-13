@@ -18,7 +18,7 @@ export default defineConfig({
   trailingSlash: 'always',
 
   integrations: [
-    icon({ include: { lucide: ['chevron-down','moon','sun','menu','x','arrow-left','arrow-right','search','check','rotate-cw'] } }),
+    icon({ include: { lucide: ['moon','sun','menu','x','search'] } }),
 
     mdx({
       // Auto-add id slugs to headings and handle external links in MDX content
@@ -33,10 +33,6 @@ export default defineConfig({
     }),
 
     sitemap({
-      i18n: {
-        defaultLocale: 'de',
-        locales: { de: 'de', en: 'en', ar: 'ar' },
-      },
       filter: (page) => !page.includes('/search-index'),
     }),
 
@@ -57,11 +53,6 @@ export default defineConfig({
     build: { chunkSizeWarningLimit: 750 },
   },
 
-  i18n: {
-    defaultLocale: 'de',
-    locales: ['de', 'en', 'ar'],
-    routing: { prefixDefaultLocale: false },
-  },
 
   markdown: {
     // rehypeSlug + rehypeExternalLinks wired in mdx() above;

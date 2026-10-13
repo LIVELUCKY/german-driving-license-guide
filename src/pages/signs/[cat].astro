@@ -1,9 +1,59 @@
 ---
-import P from '../../components/SignCategoryPage.astro';
-import { CATS } from '../../lib/signs.js';
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import SignTile from '../../components/SignTile.astro';
+import { Icon } from 'astro-icon/components';
+import { urlFor } from '../../lib/nav.js';
+import { CATS, byCat, catOf } from '../../lib/signs.js';
 export function getStaticPaths() {
   return CATS.map(c => ({ params: { cat: c.id } }));
 }
-const { cat } = Astro.params;
+const catId = Astro.params.cat;
+const cat = catOf(catId)!;
+const signs = byCat(catId);
+const i = CATS.findIndex(c => c.id === catId);
+const prevCat = i > 0 ? CATS[i - 1] : null;
+const nextCat = i < CATS.length - 1 ? CATS[i + 1] : null;
 ---
-<P lang="de" catId={cat} />
+<Base slug="signs" title={cat.de}>
+  <div class="wrap pagehead">
+    <span class="kicker">
+      <a href={urlFor('signs')} style="color:inherit">Alle Zeichen</a>
+      <span aria-hidden="true"> · </span>
+      {signs.length} Zeichen
+    </span>
+    <h1 class="catpage-h1">
+      <span class="catpage-dot" style={`--cat-color:${cat.color}`}></span>
+      {cat.de}
+    </h1>
+    <p>{cat.d}</p>
+  </div>
+  <Section>
+    <label class="search"><Icon name="lucide:search" size={16} /><input type="search" id="cq" placeholder="In dieser Kategorie suchen" aria-label="In dieser Kategorie suchen" /></label>
+    <div class="signgrid" id="grid">
+      {signs.map((s, i) => <SignTile sign={s} eager={i < 6} />)}
+    </div>
+    <div class="pn note-mt">
+      {prevCat
+        ? <a href={urlFor('signs') + prevCat.id + '/'}><span class="dir">← Vorherige</span><span class="t">{prevCat.de}</span></a>
+        : <a href={urlFor('signs')}><span class="dir">←</span><span class="t">Alle Zeichen</span></a>}
+      {nextCat
+        ? <a class="next" href={urlFor('signs') + nextCat.id + '/'}><span class="dir">Nächste →</span><span class="t">{nextCat.de}</span></a>
+        : <a class="next" href={urlFor('signs')}><span class="dir">→</span><span class="t">Alle Zeichen</span></a>}
+    </div>
+  </Section>
+  <script is:inline>
+  function initFilter() {
+    var cq = document.getElementById('cq'), grid = document.getElementById('grid');
+    if (!cq || !grid) return;
+    cq.addEventListener('input', () => {
+      const v = cq.value.trim().toLowerCase();
+      grid.querySelectorAll('.sign').forEach(s => {
+        s.style.display = !v || (s.dataset.kw + ' ' + s.textContent).toLowerCase().includes(v) ? '' : 'none';
+      });
+    });
+  }
+  document.addEventListener('astro:page-load', initFilter);
+  if (document.readyState !== 'loading') initFilter();
+  </script>
+</Base>
