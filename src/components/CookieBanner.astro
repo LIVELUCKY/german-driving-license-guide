@@ -1,9 +1,7 @@
 ---
 import { urlFor } from '../lib/nav.js';
 ---
-<div id="cookieBackdrop" class="cookie-backdrop" style="display:none" aria-hidden="true"></div>
-
-<div id="cookieBanner" class="cookie-banner" role="dialog" aria-modal="true"
+<div id="cookieBanner" class="cookie-banner" role="region"
      aria-label="Cookie-Einwilligung"
      style="display:none">
   <div class="cookie-icon">🍪</div>
@@ -28,35 +26,25 @@ import { urlFor } from '../lib/nav.js';
 (function() {
   function initBanner() {
     var banner = document.getElementById('cookieBanner');
-    var backdrop = document.getElementById('cookieBackdrop');
     if (!banner || banner.dataset.init) return;
     banner.dataset.init = '1';
 
     try { if (localStorage.getItem('fs_consent')) return; } catch(e) {}
 
     function show() {
-      backdrop.style.display = '';
       banner.style.display = '';
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
           banner.classList.add('cookie-visible');
-          backdrop.classList.add('cookie-visible');
         });
       });
-      // Focus first button for accessibility
-      setTimeout(function() {
-        var btn = banner.querySelector('button');
-        if (btn) btn.focus();
-      }, 350);
     }
 
     function hide(choice) {
       banner.classList.remove('cookie-visible');
-      backdrop.classList.remove('cookie-visible');
       banner.classList.add('cookie-exit');
       setTimeout(function() {
         banner.style.display = 'none';
-        backdrop.style.display = 'none';
         banner.classList.remove('cookie-exit');
       }, 380);
       if (typeof window.__gaConsent === 'function') {
@@ -70,20 +58,8 @@ import { urlFor } from '../lib/nav.js';
 
     document.getElementById('cookieAccept').addEventListener('click', function() { hide('granted'); });
     document.getElementById('cookieDecline').addEventListener('click', function() { hide('denied'); });
-    // Backdrop click does NOT dismiss — user must choose
-
-    // aria-modal tells assistive tech the page is inert, so Tab must not walk out of
-    // the banner into content that is dimmed and unclickable. Escape declines, which
-    // is the correct GDPR default.
-    banner.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { hide('denied'); return; }
-      if (e.key !== 'Tab') return;
-      var f = banner.querySelectorAll('button, a[href]');
-      if (!f.length) return;
-      var first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    });
+    // Non-blocking bar: the page stays usable; Escape inside it declines.
+    banner.addEventListener('keydown', function(e) { if (e.key === 'Escape') hide('denied'); });
   }
 
   document.addEventListener('astro:page-load', initBanner);
@@ -92,20 +68,6 @@ import { urlFor } from '../lib/nav.js';
 </script>
 
 <style>
-.cookie-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 49; /* below header (z-index:50) so the theme switcher stays clickable */
-  background: rgba(0,0,0,.5);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  opacity: 0;
-  transition: opacity .3s ease;
-  pointer-events: all;
-  cursor: default;
-}
-.cookie-backdrop.cookie-visible { opacity: 1; }
-
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -114,11 +76,11 @@ import { urlFor } from '../lib/nav.js';
   z-index: 9999;
   background: var(--surface);
   border-top: 3px solid var(--ink);
-  box-shadow: 0 -8px 40px rgba(0,0,0,.25);
-  padding: clamp(20px,3vw,32px) clamp(16px,4vw,40px);
+  box-shadow: 0 -4px 16px rgba(0,0,0,.12);
+  padding: 12px clamp(16px,4vw,40px);
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  gap: 16px;
   transform: translateY(105%);
   transition: transform .38s cubic-bezier(.22,1,.36,1);
 }
@@ -131,6 +93,7 @@ import { urlFor } from '../lib/nav.js';
 }
 
 .cookie-icon {
+  display: none;
   font-size: 2.4rem;
   flex: none;
   line-height: 1;
@@ -146,7 +109,7 @@ import { urlFor } from '../lib/nav.js';
 
 .cookie-title {
   font-family: var(--display);
-  font-size: 1.05rem;
+  font-size: .85rem;
   text-transform: uppercase;
   letter-spacing: .04em;
   margin: 0 0 6px;
@@ -154,9 +117,9 @@ import { urlFor } from '../lib/nav.js';
 }
 
 .cookie-text {
-  font-size: .85rem;
+  font-size: .82rem;
   color: var(--muted);
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   line-height: 1.55;
 }
 .cookie-text a {
@@ -169,8 +132,8 @@ import { urlFor } from '../lib/nav.js';
 .cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .cookie-btn {
-  padding: 11px 24px;
-  font-size: .88rem;
+  padding: 7px 16px;
+  font-size: .82rem;
   font-weight: 700;
   border-radius: var(--r);
   cursor: pointer;
@@ -197,7 +160,6 @@ import { urlFor } from '../lib/nav.js';
 @media(max-width:480px) {
   .cookie-icon { display: none; }
   .cookie-banner { padding: 16px; }
-  .cookie-actions { flex-direction: column; }
   .cookie-btn { text-align: center; }
 }
 </style>

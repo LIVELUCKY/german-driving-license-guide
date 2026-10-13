@@ -66,13 +66,18 @@ const RULER = [
     <span class="kicker">Klasse B · Theorie + Praxis</span>
     <h1>Führerschein-Spickzettel</h1>
     <p>Alle Formeln, Zahlenfragen, Vorfahrt, Dinge, die man gern vergisst, und alle Manöver auf einer Seite. Strg/Cmd + P druckt sie.</p>
-    <nav class="toc">
-      <a href="#formeln">Formeln</a><a href="#zahlen">Zahlenfragen</a><a href="#tempo">Tempo</a><a href="#meter">Meter</a>
-      <a href="#vorfahrt">Vorfahrt</a><a href="#alkohol">Alkohol</a><a href="#punkte">Punkte</a><a href="#licht">Licht &amp; Wetter</a>
-      <a href="#unfall">Unfall</a><a href="#fahrzeug">Fahrzeug</a><a href="#vergessen">Oft vergessen</a><a href="#praxis">Praxis</a><a href="#aufgaben">Manöver</a>
-    </nav>
   </div>
+  <nav class="jump" aria-label="Abschnitte">
+    <div class="wrap jump-row">
+      <b>Theorie</b>
+      <a href="#pruefung">Prüfung</a><a href="#formeln">Formeln</a><a href="#zahlen">Zahlenfragen</a><a href="#tempo">Tempo</a><a href="#meter">Meter</a><a href="#alkohol">Alkohol</a><a href="#punkte">Punkte</a><a href="#licht">Licht &amp; Wetter</a><a href="#unfall">Unfall</a><a href="#fahrzeug">Fahrzeug</a><a href="#vorfahrt">Vorfahrt</a><a href="#vergessen">Oft verwechselt</a>
+      <b>Praxis</b>
+      <a href="#praxis">Prüfung</a><a href="#blick">Blick</a><a href="#aufgaben">Manöver</a><a href="#fahren">Fahrtechnik</a><a href="#fehler">Durchfallgründe</a>
+    </div>
+  </nav>
 
+
+  <div class="wrap part" id="theorie"><h2>Theorie</h2><span>Was in den 30 Fragen drankommt</span></div>
 
   <Section id="pruefung" title="Theorieprüfung in Zahlen">
     <div class="stats">
@@ -629,6 +634,8 @@ const RULER = [
 
 
 
+  <div class="wrap part" id="teil-praxis"><h2>Praxis</h2><span>Was der Prüfer im Auto sehen will</span></div>
+
   <Section id="praxis" title="Praktische Prüfung in Zahlen">
     <div class="stats">
       <div class="stat"><b>55</b><span>Minuten gesamt</span></div>
@@ -827,4 +834,25 @@ const RULER = [
   <Section>
     <div class="disc">⚠️ Lernhilfe, kein Ersatz für Fahrschule und amtlichen Fragenkatalog. Alle Verkehrszeichen zum Nachschlagen: <a href={urlFor('signs')}>Zeichen-Katalog →</a></div>
   </Section>
+  <script is:inline>
+  // Highlight the jump-bar chip of the section currently on screen.
+  (function(){
+    function init(){
+      var links=[].slice.call(document.querySelectorAll('.jump a'));
+      if(!links.length||!('IntersectionObserver' in window))return;
+      var byId={};links.forEach(function(a){byId[a.getAttribute('href').slice(1)]=a;});
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(!e.isIntersecting)return;
+          var a=byId[e.target.id];if(!a)return;
+          links.forEach(function(l){l.classList.toggle('on',l===a);});
+          var row=a.parentNode;row.scrollLeft=a.offsetLeft-row.clientWidth/2+a.offsetWidth/2;
+        });
+      },{rootMargin:'-140px 0px -65% 0px'});
+      Object.keys(byId).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+    }
+    document.addEventListener('astro:page-load',init);
+    if(document.readyState!=='loading')init();
+  })();
+  </script>
 </Base>
