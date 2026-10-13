@@ -504,3 +504,4 @@ table.spd{min-width:680px}table.spd td{white-space:normal}table.spd td:first-chi
 .res-link small{color:var(--muted);font-size:.8rem;line-height:1.4}
 .res-link:hover b{color:var(--pop-text)}
 .rules{columns:3 300px;column-gap:12px}.rules .card{break-inside:avoid;margin-bottom:12px}
+.note b{color:var(--ink)}
