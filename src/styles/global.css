@@ -26,7 +26,7 @@
   --pop:var(--color-pop);--pop2:var(--color-cobalt);--pop3:var(--color-sun);--pop4:var(--color-go);
   --warn:#e03131;--prio:#f5b50a;--prohibit:#e03131;--mandate:#2547f4;--info:#00a86b;--supp:#62626b;--signal:#17171b;
   --shadow:5px 5px 0 rgba(23,23,27,.9);--shadow-sm:3px 3px 0 rgba(23,23,27,.85);
-  --pop-text:#d63316;                 /* 4.54:1 on --bg — --pop itself is only 2.92:1 */
+  --pop-text:#b8280e;                 /* 5.5:1 on --bg, 5:1 on the active-nav tint; --pop itself is only 2.9:1 */
   --r:4px;--maxw:1140px;
   --font:var(--font-sans);--display:var(--font-display);--ease:var(--ease-out-quart);
 }
@@ -229,6 +229,7 @@
     .hstat{padding:10px 8px}
     .hstat b{font-size:1.15rem}
   }
+  .disc a{text-decoration:underline;text-underline-offset:3px}
   .disc{margin-top:clamp(20px,3.4vw,30px);font-size:.8rem;color:var(--ink);background:var(--bg2);border:2px dashed var(--muted);border-radius:var(--r);padding:12px 15px}
 
   /* study path */
@@ -417,7 +418,7 @@ table.spd{min-width:680px}table.spd td{white-space:normal}table.spd td:first-chi
 .rl-m{font-family:var(--display);font-size:1.05rem;text-align:right}
 .rl-bar{height:12px;background:var(--soft);border-radius:2px;overflow:hidden}
 .rl-bar span{display:block;height:100%;background:var(--pop2)}
-.rl-t{font-size:.88rem;line-height:1.35}.rl-t small{display:block;color:var(--muted);font-size:.74rem}
+.rl-t{font-size:.88rem;line-height:1.35}.rl-t small{display:block;color:inherit;opacity:.8;font-size:.74rem}
 @media(max-width:600px){.rl{grid-template-columns:70px 1fr}.rl-bar{display:none}}
 .scale{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:18px 16px 12px}
 .sc-track{display:flex;height:26px;border-radius:4px;overflow:hidden}
@@ -481,8 +482,8 @@ table.spd{min-width:680px}table.spd td{white-space:normal}table.spd td:first-chi
 .chain span{padding:3px 8px;border-radius:4px;background:var(--bg2);font-weight:700}
 .chain span.op{background:transparent;font-weight:500;color:var(--muted)}
 .chain span.op::before{content:"→ ";}
-.chain span.res{background:var(--pop);color:#fff}
-.fcard.hl .chain span{background:rgba(255,255,255,.55)}.fcard.hl .chain span.op{background:transparent;color:#17171b}.fcard.hl .chain span.res{background:var(--pop);color:#fff}
+.chain span.res{background:#b8280e;color:#fff}
+.fcard.hl .chain span{background:rgba(255,255,255,.55)}.fcard.hl .chain span.op{background:transparent;color:#17171b}.fcard.hl .chain span.res{background:#b8280e;color:#fff}
 .fc-m{font-size:.82rem;line-height:1.4;margin:0}
 .jump{position:sticky;top:64px;z-index:45;background:color-mix(in srgb,var(--bg) 96%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
 .jump-row{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;padding-block:8px}
@@ -491,7 +492,15 @@ table.spd{min-width:680px}table.spd td{white-space:normal}table.spd td:first-chi
 .jump-row b:not(:first-child){margin-left:10px;padding-left:14px;border-left:2px solid var(--line)}
 .jump-row a{flex:none;font-size:.8rem;font-weight:700;color:var(--ink);padding:5px 11px;border-radius:999px;border:2px solid transparent;white-space:nowrap}
 .jump-row a:hover{border-color:var(--line)}
+.jump .jump-row a{transition:none}
 .jump .jump-row a.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .part{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:clamp(36px,6vw,64px);padding-bottom:10px;border-bottom:6px solid var(--line);scroll-margin-top:130px}
 .part h2{font-family:var(--display);font-size:clamp(2.2rem,7vw,4rem);line-height:1;text-transform:uppercase}
 .part span{color:var(--muted);font-size:.95rem}
+.res-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.res-link{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:start;background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:12px 14px;color:var(--ink)}
+.res-link span{grid-row:span 2;font-size:1.3rem;line-height:1.2}
+.res-link b{text-decoration:underline;text-underline-offset:3px}
+.res-link small{color:var(--muted);font-size:.8rem;line-height:1.4}
+.res-link:hover b{color:var(--pop-text)}
+.rules{columns:3 300px;column-gap:12px}.rules .card{break-inside:avoid;margin-bottom:12px}
