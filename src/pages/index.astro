@@ -15,7 +15,7 @@ const PAIRS = [
   ['tempo-30-zone', '<b>Tempo-30-Zone</b> (274.1): 30, meist rechts vor links', 'verkehrsberuhigter-bereich', '<b>Verkehrsberuhigter Bereich</b> (325.1): Schritttempo, Kinder spielen überall, Parken nur auf markierten Flächen'],
 ] as const;
 // Stopping distance per the textbook formulas used in the official question catalogue.
-const STOP = [30, 50, 70, 100, 130].map(v => {
+const STOP = [30, 40, 50, 70, 100, 130].map(v => {
   const r = (v / 10) * 3, b = (v / 10) ** 2;
   return { v, r, b, sum: r + b, emergency: b / 2 };
 });
@@ -42,6 +42,15 @@ const FORMULAS = [
   { name: 'Sicherheitsabstand', x: 'v ÷ 2 (in Metern)',
     ex: [['80', 'halbieren', '40 m'], ['100', 'halbieren', '50 m']],
     m: '„Halber Tacho“. Ohne Zahlen: 2 Sekunden Abstand, „einundzwanzig, zweiundzwanzig“.' },
+  { name: 'Anhänger mit Klasse B', x: '3.500 − Pkw (zul. Gesamtmasse)',
+    ex: [['3.500 kg', '− Pkw 2.400 kg', '1.100 kg Anhänger']],
+    m: 'Bis 750 kg geht immer. Schwerer nur, wenn Pkw + Anhänger zusammen höchstens 3.500 kg (zulässig) wiegen.' },
+  { name: 'Stützlast', x: 'mind. 4 % vom Anhänger',
+    ex: [['600 kg', '× 4 %', '24 kg']],
+    m: 'Vier Prozent drücken auf die Kupplung, sonst schlingert der Anhänger.' },
+  { name: 'Überholweg (Idee hinter 800 m)', x: 'Strecke × v ÷ (v − v Lkw)',
+    ex: [['100 gegen 70 km/h', 'Überholweg', '≈ 410 m', '+ Gegenverkehr fährt gleich weit', '≈ 800 m Sicht']],
+    m: 'Du überholst nur mit der Differenz (30 km/h). Der Gegenverkehr fährt dir in der gleichen Zeit genauso weit entgegen. Darum braucht man doppelt so viel freie Sicht.' },
 ] as const;
 
 // Distances in metres, drawn as bars on one shared scale (max 50 m).
@@ -108,7 +117,7 @@ const RULER = [
     </div>
 
     <h3 class="sub-h">Anhalteweg im Vergleich</h3>
-    <div class="bars" role="img" aria-label="Anhalteweg bei 30, 50, 70, 100 und 130 km/h">
+    <div class="bars" role="img" aria-label="Anhalteweg bei 30, 40, 50, 70, 100 und 130 km/h">
       {STOP.map(s => (
         <div class="bar-row">
           <span class="bar-v">{s.v}</span>
@@ -127,7 +136,8 @@ const RULER = [
         <div class="kv"><span class="lab">doppelt so schnell</span><span class="val">4 × Bremsweg</span></div>
         <div class="kv"><span class="lab">dreimal so schnell</span><span class="val">9 × Bremsweg</span></div>
         <div class="kv"><span class="lab">Reaktionsweg</span><span class="val">wächst nur ×2 / ×3</span></div>
-        <div class="tip">Bremsweg wächst <b>im Quadrat</b>, Reaktionsweg nur <b>einfach</b>.</div>
+        <div class="kv"><span class="lab">Fliehkraft in der Kurve</span><span class="val">auch im Quadrat: 2× Tempo = 4×</span></div>
+        <div class="tip">Bremsweg und Fliehkraft wachsen <b>im Quadrat</b>, Reaktionsweg nur <b>einfach</b>.</div>
       </div>
       <div class="card">
         <h3><span>📏</span>Sicherheitsabstand</h3>
@@ -163,6 +173,10 @@ const RULER = [
       <div><span>Schmale Straße, 50 m Sicht: längster Anhalteweg<small>2.2.03-012</small></span><b>25 m (halbe Sicht)</b></div>
       <div><span>Gut ausgebaute Straße: anhalten innerhalb …<small>1.2.03-107</small></span><b>der Sichtweite</b></div>
       <div><span>Nachts mit Abblendlicht: anhalten innerhalb …<small>2.2.03-024</small></span><b>der Leuchtweite</b></div>
+      <div><span>Kind läuft 20 m vor dir auf die Straße. Ab welchem Tempo kracht es trotz Gefahrbremsung?<small>2.1.02-002</small></span><b>50 km/h (27,5 m &gt; 20 m)</b></div>
+      <div><span>40 km/h, Ampel wird 10 m vorher gelb<small>2.2.37-002</small></span><b>weiterfahren</b></div>
+      <div><span>40 km/h, Ampel wird 40 m vorher gelb<small>2.2.37-003</small></span><b>anhalten (Anhalteweg 28 m)</b></div>
+      <div><span>Kurve mit 60 statt 30 km/h: Fliehkraft<small>2.7.01-046</small></span><b>4-mal so groß</b></div>
     </div>
     <h3 class="sub-h">Abstand und Überholen</h3>
     <div class="qa">
@@ -172,6 +186,9 @@ const RULER = [
       <div><span>Seitenabstand Rad / E-Scooter innerorts<small>1.2.05-004</small></span><b>1,5 m</b></div>
       <div><span>Seitenabstand Rad / Fußgänger außerorts<small>1.2.05-003</small></span><b>2 m</b></div>
       <div><span>Mit 100 einen Lkw mit 70 überholen: Abstand zur Kuppe<small>2.2.05-005</small></span><b>800 m</b></div>
+      <div><span>Zug länger als … außerorts: Lücke für Überholer lassen<small>2.2.04-101</small></span><b>mehr als 7 m</b></div>
+      <div><span>Stau im Tunnel, Stillstand: Abstand<small>1.1.07-121</small></span><b>ca. 5 m + Warnblinker</b></div>
+      <div><span>Einfädeln vor einen Lkw, wenn du schneller bist um mind.<small>2.1.08-021</small></span><b>20 km/h</b></div>
     </div>
     <h3 class="sub-h">Tempo</h3>
     <div class="qa">
@@ -181,11 +198,15 @@ const RULER = [
       <div><span>100er-Anhänger auf Bundesstraße (keine Kraftfahrstraße)<small>2.2.03-110</small></span><b>80 km/h</b></div>
       <div><span>Mit Schneeketten<small>2.2.03-101</small></span><b>50 km/h</b></div>
       <div><span>Nebel, Sicht 50 m<small>2.2.03-005</small></span><b>50 km/h</b></div>
-      <div><span>Mofa<small>2.2.03-002</small></span><b>25 km/h</b></div>
       <div><span>Autobahn: Fahrzeug muss bauartbedingt schneller als<small>1.2.02-111</small></span><b>60 km/h</b></div>
       <div><span>Kraftfahrstraße: bauartbedingt mindestens<small>1.4.42-116</small></span><b>61 km/h</b></div>
       <div><span>Fahrradzone<small>1.4.41-171</small></span><b>30 km/h</b></div>
       <div><span>Winterreifen-Aufkleber „max. 190“<small>2.7.05-105</small></span><b>nicht schneller</b></div>
+      <div><span>Richtgeschwindigkeit 130 gilt auch auf<small>2.2.03-305</small></span><b>Kraftfahrstraßen mit getrennten Fahrbahnen oder 2 Spuren je Richtung</b></div>
+      <div><span>Freie Fahrstreifenwahl innerorts für Kfz bis<small>2.2.07-002</small></span><b>3,5 t</b></div>
+      <div><span>Außerorts 3 Spuren je Richtung: durchgehend befahren darfst du die<small>2.2.02-006</small></span><b>mittlere</b></div>
+      <div><span>Mit Notrad höchstens<small>2.7.01-112</small></span><b>80 km/h</b></div>
+      <div><span>Bahnübergang mit Schild 10 km/h<small>1.2.19-113</small></span><b>heranfahren und queren max. 10</b></div>
     </div>
     <h3 class="sub-h">Halten und Parken</h3>
     <div class="qa">
@@ -197,6 +218,9 @@ const RULER = [
       <div><span>Halten an der Haltestelle höchstens<small>1.2.12-113</small></span><b>3 Min</b></div>
       <div><span>Restfahrbahn zur durchgezogenen Linie beim Parken<small>2.2.12-204</small></span><b>3 m</b></div>
       <div><span>Ankunft 10:40, Parkscheibe stellen auf<small>2.2.13-003</small></span><b>11:00</b></div>
+      <div><span>Parken auf dem Gehweg (Zeichen 315) nur bis<small>1.4.42-112</small></span><b>2,8 t</b></div>
+      <div><span>Anhänger ohne Zugfahrzeug auf der Straße höchstens<small>2.2.12-106</small></span><b>2 Wochen</b></div>
+      <div><span>Anhänger über 2 t regelmäßig nachts/sonntags innerorts parken<small>2.2.12-105</small></span><b>nur Gewerbegebiet oder markierte Parkplätze</b></div>
     </div>
     <h3 class="sub-h">Ladung, Anhänger, Fahrzeug</h3>
     <div class="qa">
@@ -209,6 +233,29 @@ const RULER = [
       <div><span>Pkw + Anhänger höchstens<small>2.6.06-103</small></span><b>18 m lang</b></div>
       <div><span>Mindestprofil<small>2.7.05-108</small></span><b>1,6 mm</b></div>
       <div><span>Pkw 3 Jahre, neue HU. Nächste HU nach<small>2.6.01-108</small></span><b>24 Monaten</b></div>
+      <div><span>Pkw 2.400 kg zul. Gesamtmasse, Klasse B: größter Anhänger<small>2.6.02-104</small></span><b>1.100 kg (Antwort: 1.000 kg)</b></div>
+      <div><span>Stützlast mindestens 4 %: Anhänger 600 kg<small>2.6.03-406</small></span><b>24 kg</b></div>
+      <div><span>Ladung über 1 m nachts: hinten<small>1.2.22-102</small></span><b>rote Leuchte + roter Rückstrahler</b></div>
+      <div><span>Überladung schon ab<small>1.2.22-104</small></span><b>20 % gefährlich</b></div>
+      <div><span>DOT-Nummer „1217“ am Reifen<small>2.7.05-001</small></span><b>Woche 12 / 2017</b></div>
+      <div><span>Winterreifen-Luftdruck<small>2.7.10-102</small></span><b>ca. 0,2 bar höher</b></div>
+      <div><span>Sonntagsfahrverbot (0–22 Uhr) gilt für<small>2.2.30-101</small></span><b>Lkw über 7,5 t und Lkw mit Anhänger</b></div>
+    </div>
+    <h3 class="sub-h">Schilder mit Zahlen</h3>
+    <div class="qa">
+      <div><span>Blaues Schild 60 (Mindestgeschwindigkeit, Zeichen 275)<small>1.4.41-128</small></span><b>mind. 60; wer das nicht kann, darf da nicht fahren</b></div>
+      <div><span>60 mit Zusatz „bei Nässe“, Straße trocken<small>1.4.41-127</small></span><b>schneller erlaubt</b></div>
+      <div><span>Gewicht im roten Ring (z. B. 7,5 t)<small>2.4.41-102</small></span><b>tatsächliche Masse</b></div>
+      <div><span>Lkw-Symbol mit Zusatz 7,5 t<small>2.4.41-103</small></span><b>zulässige Gesamtmasse</b></div>
+      <div><span>Achslast-Schild 2 t<small>2.4.41-104</small></span><b>tatsächliche Achslast</b></div>
+      <div><span>Breiten-Schild 2 m<small>2.4.41-105</small></span><b>Breite inklusive Ladung</b></div>
+      <div><span>Baustelle, linke Spur max. 2 m<small>2.6.06-213</small></span><b>echte Breite inkl. Spiegel zählt</b></div>
+      <div><span>Höhen-Schild 3,8 m: verboten ist<small>2.4.41-106</small></span><b>Fahrzeug 4 m hoch</b></div>
+      <div><span>Längen-Schild 10 m: verboten sind<small>2.4.41-107</small></span><b>Pkw + Wohnanhänger 11 m, Traktor + Anhänger 12 m</b></div>
+      <div><span>Zusatz „800 m“ unter Gefälle<small>1.4.40-106</small></span><b>Gefälle ist 800 m lang</b></div>
+      <div><span>Zusatz „3 km“ unter Überholverbot<small>1.4.41-130</small></span><b>gilt auf 3 km</b></div>
+      <div><span>Zusatz „200 m“ unter Überholverbot<small>1.4.41-131</small></span><b>beginnt in 200 m</b></div>
+      <div><span>Zusatz „22–6 h“<small>1.4.41-172</small></span><b>gilt nur nachts 22 bis 6 Uhr</b></div>
     </div>
     <h3 class="sub-h">Mensch und Umwelt</h3>
     <div class="qa">
@@ -221,6 +268,12 @@ const RULER = [
       <div><span>Ein Tropfen Öl verdirbt Trinkwasser<small>1.5.01-006</small></span><b>bis 600 Liter</b></div>
       <div><span>Europaweiter Notruf<small>1.2.34-011</small></span><b>112</b></div>
       <div><span>Panne hinter Kurve: Warndreieck etwa<small>2.2.15-115</small></span><b>100 m dahinter</b></div>
+      <div><span>Ohne Gurt kann man sich nicht mehr abstützen ab<small>2.2.21-108</small></span><b>ca. 20 km/h</b></div>
+      <div><span>THC-Abbau: wie lange?<small>1.1.09-015</small></span><b>nicht abschätzbar (Falle: nicht 0,1 ‰/h)</b></div>
+      <div><span>Drogenabhängige wieder fahrgeeignet nach<small>1.1.09-014</small></span><b>mind. 1 Jahr drogenfrei</b></div>
+      <div><span>160 statt 130 km/h: Mehrverbrauch<small>2.5.01-113</small></span><b>bis zu 35 %</b></div>
+      <div><span>Leise durch den Ort im<small>2.5.01-111</small></span><b>4. oder 5. Gang</b></div>
+      <div><span>Höchstes Unfallrisiko im Alter<small>2.1.11-119</small></span><b>18–24</b></div>
     </div>
   </Section>
 
