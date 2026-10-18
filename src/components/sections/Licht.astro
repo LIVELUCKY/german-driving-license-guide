@@ -1,0 +1,44 @@
+---
+import Section from '../Section.astro';
+---
+  <Section id="licht" title="Licht und Wetter">
+    <div class="grid cols3">
+      <div class="card">
+        <h3><span>🌫️</span>Nebelschlussleuchte</h3>
+        <div class="kv"><span class="lab">nur bei</span><span class="val">Nebel + Sicht &lt; 50 m</span></div>
+        <div class="kv"><span class="lab">dann max.</span><span class="val">50 km/h</span></div>
+        <div class="tip">Nicht bei Regen oder Schnee, sonst blendet sie den Hintermann. Merke: <b>50 m Sicht, 50 km/h</b>.</div>
+      </div>
+      <div class="card">
+        <h3><span>💡</span>Abblendlicht</h3>
+        <div class="tip">Am Tag Pflicht bei Nebel, Schnee, Regen mit schlechter Sicht und im Tunnel. <b>Tagfahrlicht reicht dann nicht</b>. Kein Fernlicht bei Gegenverkehr oder dicht hinter jemandem.</div>
+      </div>
+      <div class="card">
+        <h3><span>🌊</span>Aquaplaning</h3>
+        <div class="tip">Fuß vorsichtig <b>vom Gas</b>, nicht bremsen, Lenkrad gerade halten, bis die Reifen wieder greifen.</div>
+      </div>
+      <div class="card">
+        <h3><span>❄️</span>Winter</h3>
+        <div class="kv"><span class="lab">Winterreifen</span><span class="val">Alpine-Symbol (Berg + Schneeflocke)</span></div>
+        <div class="kv"><span class="lab">Pflicht</span><span class="val">bei Glatteis, Schneeglätte, Schneematsch, Eis- oder Reifglätte (situativ)</span></div>
+        <div class="tip">Alle Scheiben frei machen, kein Guckloch. Brücken und Waldstücke frieren zuerst.</div>
+      </div>
+      <div class="card">
+        <h3><span>🚨</span>Warnblinker</h3>
+        <div class="tip">Stauende, Panne, Abschleppen, sehr langsames Fahren auf der Autobahn. Linienbus oder Schulbus blinkt an der Haltestelle: nur Schrittgeschwindigkeit vorbei. <b>Nicht</b> zum Falschparken.</div>
+      </div>
+      <div class="card">
+        <h3><span>🚑</span>Rettungsgasse</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 90" role="img" aria-label="Rettungsgasse zwischen linker Spur und den übrigen Spuren">
+            <rect x="0" y="0" width="300" height="90" fill="#c7ced6"/>
+            <g fill="#1565d8"><rect x="12" y="8" width="26" height="40" rx="4"/><rect x="12" y="50" width="26" height="36" rx="4"/></g>
+            <g fill="#d92f2f"><rect x="122" y="8" width="26" height="40" rx="4"/><rect x="122" y="50" width="26" height="36" rx="4"/><rect x="200" y="8" width="26" height="40" rx="4"/><rect x="200" y="50" width="26" height="36" rx="4"/></g>
+            <path d="M80 10 V80" stroke="#f5a400" stroke-width="5" stroke-dasharray="8 6"/>
+            <text x="80" y="50" font-size="11" font-weight="800" fill="#17171b" text-anchor="middle" transform="rotate(-90 80 50)" dy="-6">Gasse</text>
+          </svg>
+        </div>
+        <p class="note">Linke Spur nach <b>links</b>, alle anderen nach <b>rechts</b>. Schon bei Schrittgeschwindigkeit bilden, auf Autobahn und außerorts ab 2 Spuren je Richtung. <b>Rechte-Hand-Regel: Daumen = linke Spur, Finger = der Rest.</b></p>
+      </div>
+    </div>
+  </Section>

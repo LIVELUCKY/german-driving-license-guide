@@ -1,0 +1,44 @@
+---
+import Section from '../Section.astro';
+import { RULER } from '../../data/cheatsheet';
+---
+  <Section id="meter" title="Die wichtigen Meter">
+    <div class="ruler">
+      {RULER.map(r => (
+        <div class="rl">
+          <span class="rl-m">{String(r.m).replace('.', ',')} m</span>
+          <span class="rl-bar"><span style={`width:${Math.max(r.m / 50 * 100, 2)}%`}></span></span>
+          <span class="rl-t">{r.t}<small>{r.s}</small></span>
+        </div>
+      ))}
+    </div>
+    <div class="tip note-mt"><b>Merksatz Parken:</b> <b>5</b> an der Kreuzung, <b>8</b> mit Radweg, <b>15</b> an der Haltestelle. <b>Halten</b> = bis 3 Minuten und du bleibst da. Länger oder ausgestiegen = <b>Parken</b>.</div>
+
+    <h3 class="sub-h">Baken und Gefahrzeichen</h3>
+    <div class="grid cols2">
+      <div class="card">
+        <h3><span>🚂</span>Bahnübergang</h3>
+        <div class="diag">
+          <svg viewBox="0 0 320 110" role="img" aria-label="Baken vor dem Bahnübergang bei 240, 160 und 80 Metern">
+            <rect x="0" y="70" width="320" height="16" fill="#c7ced6"/>
+            <g transform="translate(40,10)"><rect width="16" height="56" fill="#fff" stroke="#17171b"/><path d="M0 14 L16 6 M0 30 L16 22 M0 46 L16 38" stroke="#d92f2f" stroke-width="5"/></g>
+            <g transform="translate(130,10)"><rect width="16" height="56" fill="#fff" stroke="#17171b"/><path d="M0 22 L16 14 M0 40 L16 32" stroke="#d92f2f" stroke-width="5"/></g>
+            <g transform="translate(220,10)"><rect width="16" height="56" fill="#fff" stroke="#17171b"/><path d="M0 32 L16 24" stroke="#d92f2f" stroke-width="5"/></g>
+            <path d="M290 20 L310 60 M310 20 L290 60" stroke="#d92f2f" stroke-width="6"/>
+            <text x="48" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">240 m</text>
+            <text x="138" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">160 m</text>
+            <text x="228" y="104" font-size="13" text-anchor="middle" font-weight="800" fill="var(--ink)">80 m</text>
+          </svg>
+        </div>
+        <p class="note"><b>Merksatz:</b> jeder Streifen = 80 m. Ab der ersten Bake (Zeichen 156) <b>keine Kraftfahrzeuge überholen</b>. Andreaskreuz = Bahn hat <b>immer</b> Vorrang.</p>
+      </div>
+      <div class="card">
+        <h3><span>⚠️</span>Wo Schilder stehen</h3>
+        <div class="kv"><span class="lab">Gefahrzeichen außerorts</span><span class="val">150–250 m vor der Gefahr</span></div>
+        <div class="kv"><span class="lab">Gefahrzeichen innerorts</span><span class="val">meist kürzer davor</span></div>
+        <div class="kv"><span class="lab">Autobahn-Ausfahrt</span><span class="val">Baken 300 / 200 / 100 m</span></div>
+        <div class="kv"><span class="lab">Leitpfosten</span><span class="val">alle 50 m</span></div>
+        <div class="tip">Deutlich kürzer? Dann steht die Entfernung auf einer Zusatztafel („in 50 m“).</div>
+      </div>
+    </div>
+  </Section>

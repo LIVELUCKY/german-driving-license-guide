@@ -26,7 +26,8 @@ const TASKS: ((v: number) => Task)[] = [
 
 export default function Quiz(props: { cards: Card[] }) {
   const [mode, setMode] = createSignal<Mode>('formel');
-  const [task, setTask] = createSignal<Task>(pick(TASKS)(pick(SPEEDS)));
+  // Fixed first task so server render and hydration match; random from the first answer on.
+  const [task, setTask] = createSignal<Task>(TASKS[3]!(50));
   const [deck, setDeck] = createSignal<Card[]>([]);
   const [shown, setShown] = createSignal(false);
   const [ok, setOk] = createSignal(0);

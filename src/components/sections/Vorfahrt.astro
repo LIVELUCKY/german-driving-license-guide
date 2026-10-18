@@ -1,0 +1,126 @@
+---
+import Section from '../Section.astro';
+---
+  <Section id="vorfahrt" title="Vorfahrt: oben schlägt unten">
+    <div class="ladder">
+      <div><span>1</span>👮 Polizei</div>
+      <div><span>2</span>🚦 Ampel</div>
+      <div><span>3</span>⛔ Schilder und Markierungen</div>
+      <div><span>4</span>↔️ Rechts vor links</div>
+    </div>
+    <div class="tip note-mt"><b>Merksatz:</b> Polizei schlägt Ampel, Ampel schlägt Schild, Schild schlägt rechts vor links. Ampel aus oder gelb blinkend? Dann gelten die Schilder.</div>
+  </Section>
+
+  <Section title="Vorfahrt: die Klassiker">
+    <div class="grid cols2">
+
+      <div class="card">
+        <h3><span>↔️</span>Rechts vor links</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Kreuzung ohne Schilder: das Auto von rechts fährt zuerst">
+            <rect x="118" y="0" width="64" height="190" fill="#c7ced6"/>
+            <rect x="0" y="70" width="300" height="64" fill="#c7ced6"/>
+            <rect x="152" y="150" width="24" height="34" rx="5" fill="#d92f2f"/>
+            <rect x="236" y="74" width="34" height="24" rx="5" fill="#1565d8"/>
+            <text x="164" y="172" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+            <text x="253" y="90" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+          </svg>
+        </div>
+        <p class="note">Keine Schilder, keine Ampel: <b>wer von rechts kommt, fährt zuerst.</b> Gilt auch in fast allen Tempo-30-Zonen.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>↩️</span>Links abbiegen</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Linksabbieger wartet auf Gegenverkehr">
+            <rect x="118" y="0" width="64" height="190" fill="#c7ced6"/>
+            <rect x="0" y="70" width="300" height="64" fill="#c7ced6"/>
+            <rect x="124" y="6" width="22" height="32" rx="5" fill="#1565d8"/>
+            <text x="135" y="27" font-size="12" fill="#fff" text-anchor="middle" font-weight="800">1</text>
+            <rect x="154" y="150" width="22" height="32" rx="5" fill="#d92f2f"/>
+            <path d="M165 150 q0 -32 -50 -32" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
+            <text x="165" y="172" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+          </svg>
+        </div>
+        <p class="note">Wer links abbiegt, lässt den <b>Gegenverkehr</b> und Fußgänger der Zielstraße zuerst. Kommen sich zwei Linksabbieger entgegen: <b>voreinander</b> abbiegen, außer Verkehr oder Bauart der Kreuzung verlangen, erst aneinander vorbeizufahren.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🔄</span>Kreisverkehr</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Kreisverkehr: rein ohne Blinker, raus mit Blinker rechts">
+            <circle cx="150" cy="95" r="70" fill="#c7ced6"/>
+            <circle cx="150" cy="95" r="32" fill="#7fb77e"/>
+            <rect x="130" y="160" width="40" height="30" fill="#c7ced6"/>
+            <rect x="215" y="75" width="85" height="40" fill="#c7ced6"/>
+            <rect x="150" y="160" width="20" height="28" rx="4" fill="#d92f2f"/>
+            <text x="150" y="152" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">rein: kein Blinker</text>
+            <circle cx="218" cy="103" r="5" fill="#f5a400"/>
+            <text x="258" y="70" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">raus: rechts ▸</text>
+            <path d="M160 145 A50 50 0 0 0 200 95" fill="none" stroke="#d92f2f" stroke-width="3" stroke-dasharray="6 5"/>
+          </svg>
+        </div>
+        <p class="note">Mit Zeichen 215 + 205: <b>der Kreis hat Vorfahrt</b>. Beim Einfahren blinken ist <b>verboten</b>, beim Ausfahren <b>Pflicht</b>. Im Kreis nicht halten.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>↪️</span>Abknickende Vorfahrt</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 190" role="img" aria-label="Zusatztafel abknickende Vorfahrt: dicke Linie ist die Vorfahrtstraße">
+            <rect x="105" y="10" width="90" height="170" rx="6" fill="#fff" stroke="#17171b" stroke-width="3"/>
+            <path d="M150 170 V95 H112" stroke="#17171b" stroke-width="12" fill="none"/>
+            <path d="M150 95 V22 M150 95 H188" stroke="#17171b" stroke-width="4" fill="none"/>
+            <text x="235" y="80" font-size="11" font-weight="800" fill="var(--ink)">dick =</text>
+            <text x="235" y="95" font-size="11" font-weight="800" fill="var(--ink)">Vorfahrt</text>
+          </svg>
+        </div>
+        <p class="note">Die <b>dicke Linie</b> ist die Vorfahrtstraße. Folgst du dem Knick, behältst du Vorfahrt, musst aber <b>blinken</b>. Untereinander gilt auf den dünnen Ästen rechts vor links.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>🪢</span>Reißverschluss</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 120" role="img" aria-label="Reißverschluss: bis zum Ende der Spur fahren, dann abwechselnd einfädeln">
+            <rect x="0" y="20" width="300" height="40" fill="#c7ced6"/>
+            <path d="M0 60 H200 L240 60 L240 60 L200 100 H0 Z" fill="#c7ced6"/>
+            <path d="M0 60 H200" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <rect x="40" y="28" width="30" height="22" rx="4" fill="#1565d8"/><rect x="110" y="28" width="30" height="22" rx="4" fill="#1565d8"/>
+            <rect x="75" y="70" width="30" height="22" rx="4" fill="#d92f2f"/><rect x="150" y="70" width="30" height="22" rx="4" fill="#d92f2f"/>
+            <path d="M182 80 Q205 78 220 50" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="5 4"/>
+            <text x="250" y="110" font-size="11" text-anchor="middle" font-weight="800" fill="var(--ink)">erst am Ende</text>
+          </svg>
+        </div>
+        <p class="note">Endende Spur <b>bis zum Ende</b> nutzen, dann abwechselnd je ein Fahrzeug (§ 7 Abs. 4). Nicht zu früh wechseln.</p>
+      </div>
+
+      <div class="card">
+        <h3><span>👮</span>Polizei-Zeichen</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 120" role="img" aria-label="Drei Haltungen des Polizisten">
+            <g transform="translate(60,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M-7 26 H-34 M7 26 H34" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">1</text></g>
+            <g transform="translate(150,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M0 21 L0 -6" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">2</text></g>
+            <g transform="translate(240,12)"><circle cx="0" cy="10" r="9" fill="var(--ink)"/><rect x="-7" y="21" width="14" height="34" rx="4" fill="var(--ink)"/><path d="M7 26 L34 16" stroke="var(--ink)" stroke-width="6"/><text x="0" y="78" font-size="11" text-anchor="middle" fill="var(--muted)" font-weight="700">3</text></g>
+          </svg>
+        </div>
+        <p class="note"><b>1</b> Brust oder Rücken zu dir: <b>Halt</b> (wie Rot). Seitlich: frei (wie Grün). <b>2</b> Arm hoch: vor der Kreuzung warten, wer schon drin ist, räumt die Kreuzung (<b>wie Gelb</b>). <b>3</b> Winken: diese Richtung fahren.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section title="Vorfahrt: immer warten">
+    <div class="chips">
+      <div>🏠 Aus <b>Grundstück</b>, Parkplatz, Fußgängerzone, verkehrsberuhigtem Bereich oder über abgesenkten Bordstein raus: <b>alle</b> haben Vorrang (§ 10). Aus Feld- oder Waldweg: keine Vorfahrt (§ 8)</div>
+      <div>🚨 <b>Blaulicht + Martinshorn</b>: sofort freie Bahn schaffen</div>
+      <div>🚌 Linienbus will von gekennzeichneter <b>Haltestelle</b> abfahren: abfahren lassen, notfalls warten</div>
+      <div>🚊 <b>Straßenbahn</b>: normale Vorfahrtregeln, aber beim Abbiegen und neben dir in gleicher Richtung hat sie Vorrang</div>
+      <div>🚶 Fußgänger am <b>Zebrastreifen</b> und beim Abbiegen in die Querstraße</div>
+      <div>🚦 Stau hinter der Kreuzung: <b>nicht einfahren</b>, auch bei Grün</div>
+    </div>
+  </Section>
+
+  <Section title="Grünpfeil">
+    <div class="vs">
+      <div><b>Grünpfeil-Schild</b> (Blech, § 37) neben Rot<br/><span class="big">STOPP</span>erst ganz anhalten, dann rechts abbiegen, nur aus dem rechten Fahrstreifen, niemanden behindern</div>
+      <div><b>Leuchtender</b> grüner Pfeil in der Ampel<br/><span class="big go">FAHREN</span>normale freie Fahrt in Pfeilrichtung</div>
+    </div>
+  </Section>

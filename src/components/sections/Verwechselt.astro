@@ -1,0 +1,33 @@
+---
+import Section from '../Section.astro';
+import { img, PAIRS } from '../../data/cheatsheet';
+---
+  <Section id="vergessen" title="Oft verwechselt">
+    <div class="pairs">
+      {PAIRS.map(([a, at, b, bt]) => (
+        <div class="pair">
+          <div><img src={img(a)} alt="" width="56" height="56" loading="lazy" /><span set:html={at} /></div>
+          <div><img src={img(b)} alt="" width="56" height="56" loading="lazy" /><span set:html={bt} /></div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section title="Oft vergessen">
+    <div class="chips">
+      <div>🟡 <b>Gelbe</b> Baustellen-Markierung geht vor weißer</div>
+      <div>🚦 <b>Rot + Gelb</b> = gleich Grün, aber noch <b>nicht</b> fahren. Gelb allein = anhalten, wenn es gefahrlos geht</div>
+      <div>🦓 Am Zebrastreifen <b>nicht überholen</b> (§ 26)</div>
+      <div>📯 Hupe und Lichthupe: bei Gefahr, außerorts auch zum <b>Ankündigen des Überholens</b></div>
+      <div>🅿️ Links parken nur in der <b>Einbahnstraße</b> oder wenn rechts Schienen liegen</div>
+      <div>🅿️ Auf dem Gehweg parken nur mit Zeichen 315 oder markierter Parkfläche</div>
+      <div>🕐 Parkscheibe auf die <b>nächste halbe Stunde</b> vorstellen (10:05 → 10:30)</div>
+      <div>🚒 Vor Feuerwehrzufahrten nicht halten. In zweiter Reihe nicht halten</div>
+      <div>🚲 Bei „Verbot für Fahrzeuge aller Art“ (250) darf man Rad <b>schieben</b></div>
+      <div>🌿 <b>Umweltzone</b>: nur mit (grüner) Plakette, sonst Bußgeld</div>
+      <div>🚑 Blaulicht + Martinshorn: sofort freie Bahn. Blaulicht ohne Horn: Warnung vor Unfall- oder Einsatzstelle, Einsatzfahrt (Platz machen) oder geschlossener Verband</div>
+      <div>❤️ Erste Hilfe: <b>30 × drücken, 2 × beatmen</b>, ca. 100–120 pro Minute</div>
+      <div>🪪 Immer dabei: Führerschein + Zulassungsbescheinigung Teil I</div>
+      <div>🔁 Probezeit: 2 Jahre, <b>0,0 ‰</b> und kein Cannabis, egal wie alt</div>
+    </div>
+  </Section>

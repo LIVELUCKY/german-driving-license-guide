@@ -1,0 +1,28 @@
+---
+import Section from '../Section.astro';
+---
+  <Section id="punkte" title="Punkte und Probezeit">
+    <div class="points" role="img" aria-label="Punkteskala Flensburg">
+      {[1,2,3,4,5,6,7,8].map(n => <span class={n <= 3 ? 'pt0' : n <= 5 ? 'pt1' : n <= 7 ? 'pt2' : 'pt3'}>{n}</span>)}
+    </div>
+    <div class="points-l">
+      <span class="pt0">1–3 vorgemerkt</span><span class="pt1">4–5 Ermahnung</span><span class="pt2">6–7 Verwarnung</span><span class="pt3">8 Führerschein weg</span>
+    </div>
+    <div class="grid cols2 note-mt">
+      <div class="card">
+        <h3><span>🗓️</span>Wann Punkte verfallen</h3>
+        <div class="kv"><span class="lab">1 Punkt</span><span class="val">nach 2,5 Jahren</span></div>
+        <div class="kv"><span class="lab">2 Punkte</span><span class="val">nach 5 Jahren</span></div>
+        <div class="kv"><span class="lab">3 Punkte (Straftat mit Entzug)</span><span class="val">nach 10 Jahren</span></div>
+      </div>
+      <div class="card">
+        <h3><span>🪪</span>Probezeit</h3>
+        <div class="steps">
+          <div><b>2 Jahre</b> ab dem ersten Führerschein</div>
+          <div>1 schwerer (A) oder 2 leichtere (B) Verstöße → <b>Aufbauseminar + 2 Jahre länger</b></div>
+          <div>noch einmal → <b>Verwarnung</b>, verkehrspsychologische Beratung empfohlen</div>
+          <div>noch einmal → <b>Führerschein weg</b></div>
+        </div>
+      </div>
+    </div>
+  </Section>

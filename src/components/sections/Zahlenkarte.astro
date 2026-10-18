@@ -1,0 +1,17 @@
+---
+import Section from '../Section.astro';
+import { ZAHLENKARTE, UNIT } from '../../data/cheatsheet';
+---
+  <Section id="zahlenkarte" title="Zahlen-Landkarte: eine Zahl, viele Regeln">
+    <p class="note note-mb">Viele Prüfungszahlen kommen mehrfach vor. Lerne pro Zahl, wofür sie steht. Die Farbe zeigt die Einheit.</p>
+    <div class="units">{Object.entries(UNIT).map(([k, l]) => <span class={`u-${k}`}>{l}</span>)}</div>
+    <div class="zmap">
+      {ZAHLENKARTE.map(z => (
+        <div class="ztile">
+          <b class="zn">{z.n}</b>
+          <ul>{z.items.map(([f, u, t]) => <li class={`u-${f}`}><i>{u}</i> {t}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+    <div class="tip note-mt"><b>Merke die großen Familien:</b> <b>5 · 8 · 15</b> Meter Parken, <b>50 · 80 · 100</b> km/h Tempo, <b>0,0 · 0,3 · 0,5 · 1,1 · 1,6</b> Promille, <b>1,5 · 2</b> Meter Seitenabstand.</div>
+  </Section>

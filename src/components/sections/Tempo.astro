@@ -1,0 +1,31 @@
+---
+import Section from '../Section.astro';
+---
+  <Section id="tempo" title="Tempo">
+    <div class="tablewrap">
+      <table class="spd">
+        <thead><tr><th>Fahrzeug</th><th>Innerorts</th><th>Außerorts</th><th>Kraftfahrstraße</th><th>Autobahn</th></tr></thead>
+        <tbody>
+          <tr><td>Pkw, Motorrad</td><td><b class="p50">50</b></td><td><b class="p100">100</b></td><td><b class="p100">100</b> · frei bei getrennten Fahrbahnen*</td><td><b class="pfree">frei</b> · 130 empfohlen</td></tr>
+          <tr><td>Pkw mit Anhänger</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · 100 mit Plakette bei getrennten Fahrbahnen</td><td><b class="p80">80</b> · 100 mit Tempo-100-Plakette</td></tr>
+          <tr><td>Kfz 3,5–7,5 t (außer Pkw)</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td></tr>
+          <tr><td>Lkw über 7,5 t</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b> · 80 bei getrennten Fahrbahnen</td><td><b class="p80">80</b></td></tr>
+          <tr><td>Bus</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · Reisebus mit Zulassung 100</td></tr>
+          <tr><td>Bus mit stehenden Fahrgästen</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td></tr>
+          <tr><td>Moped, S-Pedelec</td><td><b class="p50">45</b></td><td><b class="p50">45</b></td><td>verboten</td><td>verboten</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note note-mt">* Kraftfahrstraße mit baulich getrennten Fahrbahnen oder 2 Fahrstreifen je Richtung: für Pkw kein allgemeines Limit. S-Pedelec = Kraftfahrzeug: Führerschein, Versicherungskennzeichen, Helm, keine Radwege. Schilder gehen immer vor.</p>
+    <div class="tip note-mt"><b>Merksatz:</b> außerorts gilt „Anhänger, Bus oder über 3,5 t = 80, über 7,5 t = 60“. Lkw bis 3,5 t ohne Anhänger: 100. 130 auf der Autobahn ist nur <b>Richtgeschwindigkeit</b>.</div>
+
+    <div class="chips note-mt">
+      <div><b class="p50">50</b> bei <b>Sicht unter 50 m</b> (Nebel, Schnee, Regen), überall</div>
+      <div><b class="p50">50</b> mit <b>Schneeketten</b></div>
+      <div><b class="p50">50</b> ab der <b>Ortstafel</b> sofort. Ende eines Limits innerorts = wieder 50, nicht frei</div>
+      <div><b class="p30">30</b> in der <b>Tempo-30-Zone</b> (flächig, meist rechts vor links)</div>
+      <div><b class="p30">30</b> in Fahrradstraße und Fahrradzone, für alle Fahrzeuge</div>
+      <div><b class="pwalk">Schritt</b> Schrittgeschwindigkeit (ca. 4–7 km/h, keine feste Zahl im Gesetz): verkehrsberuhigter Bereich, Bus mit Warnblinker an Haltestelle</div>
+      <div><b class="pmin">&gt;60</b> Autobahn und Kraftfahrstraße nur für Kfz, die bauartbedingt <b>schneller als 60</b> fahren</div>
+    </div>
+  </Section>

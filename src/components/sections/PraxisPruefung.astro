@@ -1,0 +1,56 @@
+---
+import Section from '../Section.astro';
+---
+  <Section id="praxis" title="Praktische Prüfung in Zahlen">
+    <div class="stats">
+      <div class="stat"><b>55</b><span>Minuten gesamt</span></div>
+      <div class="stat"><b>≥ 30</b><span>Minuten reine Fahrzeit</span></div>
+      <div class="stat"><b>3</b><span>Grundfahraufgaben</span></div>
+      <div class="stat"><b>5 · 4 · 3</b><span>Sonderfahrten vorher:<br/>Überland · Autobahn · Nacht<br/>je 45 Min</span></div>
+    </div>
+    <div class="chips note-mt">
+      <div>👀 Vor dem Losfahren: Sitz, Kopfstütze, Spiegel, Gurt. Der Prüfer schaut zu.</div>
+      <div>🗺️ Stadt, Landstraße und meist Autobahn oder Kraftfahrstraße</div>
+      <div>🅰️ Prüfung im Automatik = nur Automatik. Ausnahme <b>B197</b>: mindestens 10 Schaltstunden à 45 Min + 15 Min Testfahrt in der Fahrschule, Eintrag binnen 1 Jahr</div>
+      <div>🔧 <b>Abfahrtkontrolle</b> (Licht, Reifen, Flüssigkeiten) gehört nur zu C, C1, D, D1, T, nicht zu Klasse B</div>
+    </div>
+  </Section>
+
+  <Section id="blick" title="Die Blickroutine">
+    <div class="flow">
+      <div><b>1</b>Innenspiegel</div>
+      <div><b>2</b>Außenspiegel</div>
+      <div><b>3</b>Blinker</div>
+      <div><b>4</b>Schulterblick</div>
+      <div><b>5</b>Fahren</div>
+    </div>
+    <div class="grid cols2 note-mt">
+      <div class="card">
+        <h3><span>👀</span>Der tote Winkel</h3>
+        <div class="diag">
+          <svg viewBox="0 0 300 150" role="img" aria-label="Toter Winkel links und rechts hinter dem Auto">
+            <path d="M150 75 L20 20 L20 60 Z" fill="#f5a400" opacity=".55"/>
+            <path d="M150 75 L280 20 L280 60 Z" fill="#f5a400" opacity=".55" transform="translate(0,0)"/>
+            <path d="M120 70 L10 120 L60 140 Z" fill="#d92f2f" opacity=".55"/>
+            <path d="M180 70 L290 120 L240 140 Z" fill="#d92f2f" opacity=".55"/>
+            <rect x="125" y="20" width="50" height="90" rx="10" fill="#1565d8"/>
+            <text x="150" y="70" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+            <text x="45" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
+            <text x="200" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
+          </svg>
+        </div>
+        <p class="note">Gelb = siehst du im Spiegel. Rot = kein Spiegel zeigt es. Nur der <b>Schulterblick</b> (Kopf drehen, nicht nur Augen) deckt das ab.</p>
+      </div>
+      <div class="card">
+        <h3><span>📋</span>Wann Schulterblick?</h3>
+        <div class="steps">
+          <div>Anfahren vom Fahrbahnrand: <b>links</b></div>
+          <div>Spurwechsel und Einfädeln: zur <b>Zielseite</b></div>
+          <div>Rechts abbiegen: <b>rechts</b> (Radweg!), kurz vor dem Abbiegen noch einmal</div>
+          <div>Links abbiegen: <b>links</b>, kurz vor dem Abbiegen noch einmal</div>
+          <div>Tür öffnen: Spiegel + Schulterblick (oder <b>holländischer Griff</b>: Tür mit der rechten Hand öffnen)</div>
+        </div>
+        <div class="tip">Kopf ca. <b>45°</b> drehen. Der Prüfer sieht nur deinen Kopf. Bewegt er sich nicht, hat der Blick nicht stattgefunden.</div>
+      </div>
+    </div>
+  </Section>

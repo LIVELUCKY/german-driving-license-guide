@@ -1,0 +1,85 @@
+---
+import Section from '../Section.astro';
+import { STOP, pct, FORMULAS, TROWS, de } from '../../data/cheatsheet';
+---
+  <Section id="formeln" title="Formeln">
+    <h3 class="sub-h">Was ist was? (Beispiel 50 km/h)</h3>
+    <div class="stopline" role="img" aria-label="Anhalteweg bei 50 km/h: 15 m Reaktionsweg plus 25 m Bremsweg">
+      <div class="sl-marks"><span>⚠️ Gefahr gesehen</span><span>🦶 Fuß auf der Bremse</span><span>🛑 Auto steht</span></div>
+      <div class="sl-bar"><span class="sl-r">Reaktionsweg 15 m</span><span class="sl-b">Bremsweg 25 m</span></div>
+      <div class="sl-total">Anhalteweg 40 m</div>
+    </div>
+    <div class="defs">
+      <div><b class="d-r">Reaktionsweg</b>Strecke vom <b>Sehen</b> der Gefahr bis der Fuß <b>auf der Bremse</b> ist. Das Auto fährt in dieser Zeit (ca. 1 Sekunde) <b>ungebremst</b> weiter.</div>
+      <div><b class="d-b">Bremsweg</b>Strecke vom <b>Bremsbeginn</b> bis zum <b>Stillstand</b>. Bei einer Gefahrbremsung (voll treten) ungefähr halb so lang.</div>
+      <div><b class="d-a">Anhalteweg</b>Die <b>ganze</b> Strecke bis das Auto steht: Reaktionsweg + Bremsweg. Er muss kürzer sein als die Strecke, die du siehst.</div>
+      <div><b class="d-s">Sicherheitsabstand</b>Lücke zum Vordermann. Außerorts „halber Tacho“ in Metern, sonst 2 Sekunden.</div>
+    </div>
+
+    <h3 class="sub-h">Der T-Trick: alles mit einer Zahl</h3>
+    <p class="note note-mb">Nimm vom Tacho die Null weg: <b>T = Tempo ÷ 10</b>. Dann brauchst du nur noch: Reaktion <b>3·T</b>, Bremsen <b>T·T</b>, Gefahr <b>T·T ÷ 2</b>, Abstand <b>5·T</b>.</p>
+    <div class="tablewrap">
+      <table class="spd ttable">
+        <thead><tr><th>Tempo</th><th>T</th><th>Reaktion 3·T</th><th>Bremsen T·T</th><th>Gefahr T·T÷2</th><th>Anhalteweg</th><th>Abstand 5·T</th></tr></thead>
+        <tbody>
+          {TROWS.map(r => <tr><td>{r.v} km/h</td><td><b>{r.t}</b></td><td>{de(r.r)} m</td><td>{de(r.b)} m</td><td>{de(r.g)} m</td><td><b>{de(r.a)} m</b></td><td>{de(r.s)} m</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">Die Formeln Schritt für Schritt</h3>
+    <div class="formula-key">
+      <span>Tacho ÷ 10</span><i>dann</i><span><b>× 3</b> Reaktion</span><span><b>hoch 2</b> Bremsen</span><span><b>÷ 2</b> Gefahr</span><span><b>+</b> Anhalten</span>
+    </div>
+    <p class="note note-mb"><b>Merksatz:</b> „Null weg, <b>mal drei</b> fürs Erschrecken, <b>mal sich selbst</b> fürs Bremsen, <b>halbe</b> in Gefahr, <b>zusammen</b> zum Stehen.“</p>
+    <div class="fcards">
+      {FORMULAS.map(f => (
+        <div class={`fcard${'hl' in f ? ' hl' : ''}`}>
+          <div class="fc-h"><b>{f.name}</b><code>{f.x}</code></div>
+          {f.ex.map(chain => (
+            <div class="chain">{chain.map((c, i, a) => <span class={i === a.length - 1 ? 'res' : i % 2 ? 'op' : ''}>{c}</span>)}</div>
+          ))}
+          <p class="fc-m">💡 {f.m}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="sub-h">Anhalteweg im Vergleich</h3>
+    <div class="bars" role="img" aria-label="Anhalteweg bei 30, 40, 50, 70, 100 und 130 km/h">
+      {STOP.map(s => (
+        <div class="bar-row">
+          <span class="bar-v">{s.v}</span>
+          <div class="bar-track">
+            <span class="bar-r" style={`width:${pct(s.r)}%`}></span><span class="bar-b" style={`width:${pct(s.b)}%`}></span>
+          </div>
+          <span class="bar-sum">{s.sum} m</span>
+        </div>
+      ))}
+      <div class="legend"><span class="lg-r"></span>Reaktionsweg <span class="lg-b"></span>Bremsweg</div>
+    </div>
+
+    <div class="grid cols3 note-mt">
+      <div class="card">
+        <h3><span>✖️</span>Quadrat-Regel</h3>
+        <div class="kv"><span class="lab">doppelt so schnell</span><span class="val">4 × Bremsweg</span></div>
+        <div class="kv"><span class="lab">dreimal so schnell</span><span class="val">9 × Bremsweg</span></div>
+        <div class="kv"><span class="lab">Reaktionsweg</span><span class="val">wächst nur ×2 / ×3</span></div>
+        <div class="kv"><span class="lab">Fliehkraft in der Kurve</span><span class="val">auch im Quadrat: 2× Tempo = 4×</span></div>
+        <div class="tip">Bremsweg und Fliehkraft wachsen <b>im Quadrat</b>, Reaktionsweg nur <b>einfach</b>.</div>
+      </div>
+      <div class="card">
+        <h3><span>📏</span>Sicherheitsabstand</h3>
+        <div class="kv"><span class="lab">außerorts</span><span class="val">halber Tacho in m</span></div>
+        <div class="kv"><span class="lab">100 km/h</span><span class="val">50 m</span></div>
+        <div class="kv"><span class="lab">Faustregel</span><span class="val">2 Sekunden</span></div>
+        <div class="kv"><span class="lab">Stadt, 50 km/h</span><span class="val">15 m = 3 Pkw-Längen</span></div>
+        <div class="tip">„<b>Einundzwanzig, zweiundzwanzig</b>“ zählen, ab dem Leitpfosten, den der Vordermann passiert.</div>
+      </div>
+      <div class="card">
+        <h3><span>⏱️</span>Reaktionszeit</h3>
+        <div class="kv"><span class="lab">Faustformel</span><span class="val">1 Sekunde</span></div>
+        <div class="kv"><span class="lab">länger durch</span><span class="val">Müdigkeit, Alkohol, Ablenkung</span></div>
+        <div class="tip">In 1 Sekunde fährst du bei 50 km/h etwa <b>14 m</b> blind (km/h ÷ 3,6 = m/s).</div>
+      </div>
+    </div>
+  </Section>

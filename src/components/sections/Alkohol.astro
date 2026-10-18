@@ -1,0 +1,45 @@
+---
+import Section from '../Section.astro';
+---
+  <Section id="alkohol" title="Alkohol und Drogen">
+    <div class="scale" role="img" aria-label="Promilleskala">
+      <div class="sc-track">
+        <span class="z0" style="width:0.5%"></span>
+        <span class="z1" style="width:16%"></span>
+        <span class="z2" style="width:11%"></span>
+        <span class="z3" style="width:33%"></span>
+        <span class="z4" style="width:39.5%"></span>
+      </div>
+      <div class="sc-ticks">
+        <span><b>0,0</b>Probezeit &amp; unter 21: Grenze</span>
+        <span><b>0,3</b>mit Ausfallerscheinung (z. B. Unfall wegen Alkohol): Straftat</span>
+        <span><b>0,5</b>immer: Ordnungswidrigkeit, Fahrverbot</span>
+        <span><b>1,1</b>absolut fahruntüchtig: Straftat</span>
+        <span><b>1,6</b>MPU (auch auf dem Fahrrad)</span>
+      </div>
+    </div>
+    <div class="grid cols3 note-mt">
+      <div class="card">
+        <h3><span>🍺</span>Abbau</h3>
+        <div class="kv"><span class="lab">pro Stunde</span><span class="val">ca. 0,1 ‰</span></div>
+        <div class="tip">Kaffee, Schlaf oder Dusche beschleunigen <b>nichts</b>. Nur Zeit hilft. Restalkohol am Morgen zählt.</div>
+      </div>
+      <div class="card">
+        <h3><span>🌿</span>Cannabis</h3>
+        <div class="kv"><span class="lab">THC-Grenzwert</span><span class="val">3,5 ng/ml</span></div>
+        <div class="kv"><span class="lab">mit Alkohol</span><span class="val">verboten</span></div>
+        <div class="kv"><span class="lab">Probezeit / unter 21</span><span class="val">verboten</span></div>
+      </div>
+      <div class="card">
+        <h3><span>💊</span>Medikamente</h3>
+        <div class="tip">Beipackzettel lesen. Wer fahruntüchtig ist, macht sich strafbar, auch mit Rezept. Andere illegale Drogen: <b>null</b> Toleranz.</div>
+      </div>
+      <div class="card">
+        <h3><span>😴</span>Müdigkeit</h3>
+        <div class="kv"><span class="lab">Pause</span><span class="val">alle ca. 2 Stunden</span></div>
+        <div class="kv"><span class="lab">Powernap</span><span class="val">Kaffee + ca. 20 Min Schlaf</span></div>
+        <div class="tip">Sekundenschlaf: bei 100 km/h fährst du in 1 Sekunde fast <b>28 m</b> blind.</div>
+      </div>
+    </div>
+    <div class="tip note-mt"><b>Merksatz:</b> <b>0,0</b> wenn du neu bist, <b>0,3</b> wenn etwas passiert, <b>0,5</b> immer, <b>1,1</b> Straftat, <b>1,6</b> MPU.</div>
+  </Section>
