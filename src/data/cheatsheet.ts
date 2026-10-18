@@ -1,6 +1,5 @@
 // Content data for the cheat sheet. Every number here must be sourced (see CLAUDE.md).
 import { SIGNS } from '../lib/signs.js';
-import ZAHLEN from './zahlenfragen.json';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const img = (id: string) => (SIGNS.find((s: any) => s.id === id) as any)?.img;
@@ -15,10 +14,9 @@ export const PAIRS = [
 ] as const;
 // Section bar: chips point to the first section of each group, in reading order.
 export const JUMP = [
-  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['formeln', 'Formeln'], ['zahlenkarte', 'Zahlen-Landkarte'], ['tempo', 'Tempo'], ['meter', 'Meter'], ['vorfahrt', 'Vorfahrt'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['vergessen', 'Oft verwechselt'], ['verhalten', 'Oft gefragt'], ['zahlen', 'Fragenkatalog'], ['test', 'Selbsttest'], ['begriffe', 'Begriffe']] },
+  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['formeln', 'Formeln'], ['zahlenkarte', 'Zahlen-Landkarte'], ['tempo', 'Tempo'], ['strassen', 'Straßenarten'], ['meter', 'Meter'], ['vorfahrt', 'Vorfahrt'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['vergessen', 'Oft verwechselt'], ['verhalten', 'Oft gefragt'], ['zahlen', 'Fragenkatalog'], ['test', 'Selbsttest'], ['begriffe', 'Begriffe']] },
   { label: 'Praxis', links: [['praxis', 'Prüfung'], ['aufgaben', 'Manöver'], ['situationen', 'Im Verkehr'], ['sichern', 'Sichern'], ['fehler', 'Sofort durch'], ['quellen', 'Quellen']] },
 ].map(g => ({ label: g.label, links: g.links.map(([id, label]) => ({ href: `#${id}`, label: label! })) }));
-export const QUIZ_CARDS = ZAHLEN.flatMap(g => g.rows);
 
 // Stopping distance per the textbook formulas used in the official question catalogue.
 export const STOP = [30, 40, 50, 70, 100, 130].map(v => {

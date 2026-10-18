@@ -1,0 +1,53 @@
+---
+import Section from '../Section.astro';
+import Tip from '../ui/Tip.astro';
+import Note from '../ui/Note.astro';
+import { SIGNS } from '../../lib/signs.js';
+import { AB_VS_KFS, COLS, ROADS } from '../../data/strassen';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const img = (id: string | null) => id ? (SIGNS.find((s: any) => s.id === id) as any)?.img as string | undefined : undefined;
+---
+<Section id="strassen" title="Straßenarten im Vergleich">
+  <h3 class="mb-2.5 font-display text-base uppercase tracking-[.04em]">Autobahn oder Kraftfahrstraße?</h3>
+  <div class="overflow-hidden rounded-box border-2 border-line bg-surface shadow-hard">
+    <div class="grid grid-cols-[minmax(76px,.7fr)_minmax(0,1fr)_minmax(0,1fr)] hyphens-auto break-words border-b-2 border-line bg-bg2 text-[.8rem] font-bold">
+      <span class="p-2.5"></span>
+      <span class="flex flex-wrap items-center gap-2 p-2.5"><img src={img("autobahn")} alt="" width="32" height="32" class="size-7 sm:size-8" />Autobahn</span>
+      <span class="flex flex-wrap items-center gap-2 p-2.5"><img src={img("kraftfahrstrasse")} alt="" width="32" height="32" class="size-7 sm:size-8" />Kraftfahrstraße</span>
+    </div>
+    {AB_VS_KFS.map(([l, a, k]) => (
+      <div class="grid grid-cols-[minmax(76px,.7fr)_minmax(0,1fr)_minmax(0,1fr)] hyphens-auto break-words border-b border-dashed border-muted/40 text-[.86rem] leading-snug last:border-b-0">
+        <span class="p-2.5 font-bold">{l}</span>
+        {k ? <><span class="p-2.5">{a}</span><span class="p-2.5">{k}</span></> : <span class="col-span-2 p-2.5 text-accent-text font-bold">{a}</span>}
+      </div>
+    ))}
+  </div>
+  <Tip label="Merksatz">„Blaues Schild mit Auto: <b>nicht halten, nicht wenden, nicht rückwärts</b>.“ „Mehr als 60 muss er können“ (Prüfungsantwort: <b>61 km/h</b>). „Autobahn: rein an der <b>Anschlussstelle</b>. Kraftfahrstraße: rein an der <b>Kreuzung</b>.“</Tip>
+
+  <h3 class="mt-6 mb-2.5 font-display text-base uppercase tracking-[.04em]">Alle Straßenarten</h3>
+  <Note class="mb-2">Auf dem Handy seitlich wischen. Die erste Spalte bleibt stehen.</Note>
+  <div class="overflow-x-auto rounded-box border-2 border-line bg-surface">
+    <table class="w-full min-w-[980px] border-collapse text-left text-[.82rem] leading-snug">
+      <thead>
+        <tr class="bg-ink text-bg">
+          <th class="sticky left-0 z-1 bg-ink p-2.5 text-[.7rem] uppercase tracking-wide">Straße</th>
+          {COLS.map(c => <th class="p-2.5 text-[.7rem] uppercase tracking-wide">{c}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {ROADS.map(r => (
+          <tr class="border-b border-soft align-top last:border-b-0 even:bg-bg2/60">
+            <th scope="row" class="sticky left-0 z-1 w-[150px] bg-surface p-2.5 font-bold">
+              <span class="flex items-center gap-2">
+                {img(r.sign) ? <img src={img(r.sign)} alt="" width="34" height="34" class="size-[34px] flex-none object-contain" /> : <span class="text-2xl" aria-hidden="true">{r.icon}</span>}
+                <span>{r.name}<small class="block text-[.7rem] font-normal text-muted">{/^\d/.test(r.zeichen) ? `Zeichen ${r.zeichen}` : r.zeichen}</small></span>
+              </span>
+            </th>
+            {r.cells.map(c => <td class="p-2.5 [&_b]:text-ink" set:html={c} />)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Tip label="Merksatz">„Blaues Schild mit <b>Haus und Kind</b>: Schritt, Parken nur auf Markierung, raus wie aus der Einfahrt.“ „<b>Fahrrad-Schild</b>: Rad ist Chef. Auto nur mit Zusatz, höchstens 30.“</Tip>
+</Section>

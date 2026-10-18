@@ -353,16 +353,8 @@ table.spd{min-width:680px}table.spd td{white-space:normal}table.spd td:first-chi
 .part span{color:var(--muted);font-size:.95rem}
 .rules{columns:3 300px;column-gap:12px}.rules .card{break-inside:avoid;margin-bottom:12px}
 .note b{color:var(--ink)}
-.quiz{max-width:720px}
-.quiz-q{font-size:clamp(1.05rem,2.6vw,1.3rem);line-height:1.4;font-weight:500}
-.quiz-a{background:var(--pop3);color:#17171b;border-radius:var(--r);padding:12px 14px;font-size:1rem}
-.quiz-a small{opacity:.7}
-.quiz-show{background:var(--ink)!important;color:var(--bg)!important}
-.quiz-ok{border-color:var(--pop4)!important}
-.quiz-no{border-color:var(--warn)!important}
-.quiz-score{margin-top:8px;font-size:.85rem;color:var(--muted)}
 .pagehead p a{color:var(--pop-text);text-decoration:underline;text-underline-offset:3px;font-weight:700}
-@media print{.quiz,#test{display:none!important}}
+@media print{#test{display:none!important}}
 @media(max-width:600px){.zn{font-size:1.5rem}}
 .zn{display:block;font-family:var(--display);font-size:1.9rem;line-height:1;margin-bottom:6px}
 /* cookie consent bar (non-blocking) */
