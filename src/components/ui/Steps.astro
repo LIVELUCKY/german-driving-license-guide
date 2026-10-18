@@ -1,0 +1,13 @@
+---
+// Numbered steps. Items may contain inline HTML (<b>).
+interface Props { items: string[] }
+const { items } = Astro.props;
+---
+<ol class="my-1.5 flex flex-col gap-1.5">
+  {items.map((it, i) => (
+    <li class="relative min-h-[22px] pl-8 text-[.88rem] leading-[1.45]">
+      <span class="absolute top-0 left-0 grid size-[22px] place-items-center rounded-full bg-ink text-[.72rem] font-bold text-bg" aria-hidden="true">{i + 1}</span>
+      <Fragment set:html={it} />
+    </li>
+  ))}
+</ol>

@@ -1,0 +1,6 @@
+---
+// Small grey explanation text.
+interface Props { class?: string }
+const { class: cls } = Astro.props;
+---
+<p class:list={['text-[.85rem] text-muted [&_b]:text-ink', cls]}><slot /></p>

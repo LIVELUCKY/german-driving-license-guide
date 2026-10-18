@@ -1,0 +1,9 @@
+---
+// One label/value row inside a Card (the value goes in the slot).
+interface Props { label: string }
+const { label } = Astro.props;
+---
+<div class="grid grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)] items-baseline gap-3 border-b border-dashed border-muted/50 py-2 last:border-b-0">
+  <span class="text-[.9rem] text-muted">{label}</span>
+  <span class="font-bold"><slot /></span>
+</div>

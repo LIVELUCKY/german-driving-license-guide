@@ -1,0 +1,8 @@
+---
+// Yellow memory hook. Optional bold `label` in front (e.g. "Merksatz").
+interface Props { label?: string | false; class?: string }
+const { label, class: cls } = Astro.props;
+---
+<div class:list={['mt-3 rounded-r-box border-l-[5px] border-fixed-ink bg-tip px-3 py-2.5 text-[.84rem] leading-normal text-fixed-ink [&_b]:text-fixed-ink', cls]}>
+  💡 {label && <b>{label}: </b>}<slot />
+</div>

@@ -1,0 +1,13 @@
+---
+// Framed content box. `title` + `icon` render the card heading.
+interface Props { icon?: string; title?: string; class?: string }
+const { icon, title, class: cls } = Astro.props;
+---
+<div class:list={['rounded-box border-2 border-line bg-surface p-[clamp(18px,2.6vw,26px)] shadow-hard', cls]}>
+  {title && (
+    <h3 class="mb-3 flex items-center gap-2.5 text-[.98rem] font-bold uppercase tracking-[.03em]">
+      {icon && <span aria-hidden="true">{icon}</span>}{title}
+    </h3>
+  )}
+  <slot />
+</div>

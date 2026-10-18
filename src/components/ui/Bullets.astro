@@ -1,0 +1,10 @@
+---
+// Diamond bullet list. Items may contain inline HTML (<b>).
+interface Props { items: string[]; class?: string }
+const { items, class: cls } = Astro.props;
+---
+<ul class:list={['flex flex-col gap-2', cls]}>
+  {items.map(it => (
+    <li class="relative pl-5 text-[.9rem] leading-[1.45] before:absolute before:top-2 before:left-[3px] before:size-[7px] before:rotate-45 before:bg-accent"><Fragment set:html={it} /></li>
+  ))}
+</ul>

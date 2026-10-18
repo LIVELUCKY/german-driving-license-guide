@@ -1,0 +1,9 @@
+---
+// Collapsible chunk with its memory hook visible while closed (chunking + cue).
+interface Props { icon: string; title: string; hook: string; count: number }
+const { icon, title, hook, count } = Astro.props;
+---
+<details class="fold">
+  <summary><span class="fi" aria-hidden="true">{icon}</span><span class="ft">{title}<small>{hook}</small></span><span class="fc">{count}</span></summary>
+  <slot />
+</details>

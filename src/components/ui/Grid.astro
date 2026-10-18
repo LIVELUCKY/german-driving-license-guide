@@ -1,0 +1,8 @@
+---
+// Responsive card grid: columns fill up to the given minimum card width.
+interface Props { min?: number; class?: string }
+const { min = 290, class: cls } = Astro.props;
+---
+<div class:list={['grid items-start gap-[clamp(14px,2vw,20px)]', cls]} style={`grid-template-columns:repeat(auto-fit,minmax(min(100%,${min}px),1fr))`}>
+  <slot />
+</div>

@@ -2,28 +2,41 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #f2f1ed;        /* Pantone Cloud Dancer */
-  --color-canvas2: #eceae4;
-  --color-paper: #fdfdfb;
-  --color-ink: #17171b;
-  --color-mute: #62626b;
-  --color-soft: #e3e1d9;
-  --color-pop: #ff4d2e;
-  --color-cobalt: #2547f4;
-  --color-sun: #ffd400;
-  --color-go: #00a86b;
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Archivo Black', 'Space Grotesk', sans-serif;
   --ease-out-quart: cubic-bezier(.22,1,.36,1);
+}
+
+/* Semantic Tailwind colours that follow the light/dark variables below:
+   bg-surface, text-ink, border-line, text-accent-text, shadow-hard, rounded-box … */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-accent: var(--pop);
+  --color-accent-text: var(--pop-text);
+  --color-blue: var(--pop2);
+  --color-sun: var(--pop3);
+  --color-go: var(--pop4);
+  --color-warn: var(--warn);
+  --color-tip: color-mix(in srgb, var(--pop3) 85%, #fff);
+  --color-fixed-ink: #17171b;
+  --shadow-hard: var(--shadow-sm);
+  --shadow-hard-lg: var(--shadow);
+  --radius-box: var(--r);
 }
 
 /* @font-face declarations are in Base.astro using withBase() for correct absolute paths */
 
 /* ---------- design tokens that flip with theme ---------- */
 :root{
-  --bg:var(--color-canvas);--bg2:var(--color-canvas2);--surface:var(--color-paper);
-  --ink:var(--color-ink);--muted:var(--color-mute);--line:#17171b;--soft:var(--color-soft);
-  --pop:var(--color-pop);--pop2:var(--color-cobalt);--pop3:var(--color-sun);--pop4:var(--color-go);
+  --bg:#f2f1ed;--bg2:#eceae4;--surface:#fdfdfb;
+  --ink:#17171b;--muted:#62626b;--line:#17171b;--soft:#e3e1d9;
+  --pop:#ff4d2e;--pop2:#2547f4;--pop3:#ffd400;--pop4:#00a86b;
   --warn:#e03131;--prio:#f5b50a;--prohibit:#e03131;--mandate:#2547f4;--info:#00a86b;--supp:#62626b;--signal:#17171b;
   --shadow:5px 5px 0 rgba(23,23,27,.9);--shadow-sm:3px 3px 0 rgba(23,23,27,.85);
   --pop-text:#b8280e;                 /* 5.5:1 on --bg, 5:1 on the active-nav tint; --pop itself is only 2.9:1 */
