@@ -3,8 +3,8 @@ import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Section from '../../components/Section.astro';
 import SignTile from '../../components/SignTile.astro';
-import { Icon } from 'astro-icon/components';
-import { urlFor, withBase } from '../../lib/nav.js';
+import SignSearch from '../../components/solid/SignSearch';
+import { urlFor } from '../../lib/nav.js';
 import { CATS, SIGNS, byCat } from '../../lib/signs.js';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sign = (id: string): any => SIGNS.find((s: any) => s.id === id);
@@ -20,6 +20,7 @@ const SHAPES = [
 ].map(([id, form, msg]) => ({ s: sign(id as string), form, msg })).filter(x => x.s);
 const top = ['vorfahrt-gewaehren','stop','vorfahrtstrasse','hoechstgeschwindigkeit','verbot-der-einfahrt','kreuzung'];
 const topSigns = top.map(sign).filter(Boolean);
+const SEARCH = SIGNS.map(({ id, nameDe, de, tipDe, stvo, kw, img, drawn }: any) => ({ id, nameDe, de, tipDe, stvo, kw, img, drawn: img ? undefined : drawn }));
 ---
 <Base slug="signs">
   <PageHead kicker="Verkehrszeichen" title="Alle Zeichen" lead="Erst die Form lesen, dann das Bild. Karte antippen zeigt die Bedeutung." />
@@ -37,56 +38,22 @@ const topSigns = top.map(sign).filter(Boolean);
   </Section>
 
   <Section title="Suchen">
-    <label class="search"><Icon name="lucide:search" size={16} /><input id="q" type="search" placeholder="Zeichen suchen (Name, Nummer …)" aria-label="Zeichen suchen" /></label>
-    <div id="results" class="signgrid" hidden></div>
-    <p id="noresults" class="note" hidden>Nichts gefunden.</p>
+    <SignSearch client:visible mode="hub" signs={SEARCH} placeholder="Zeichen suchen (Name, Nummer, Bedeutung)">
+      <div class="cathub">
+        {CATS.map(c => (
+          <a class="cat" href={urlFor('signs') + c.id + '/'} style={`--c:${c.color}`}>
+            <span class="sw"></span>
+            <span><span class="t">{c.de}</span><br/><span class="d">{c.d}</span></span>
+            <span class="n">{byCat(c.id).length}</span>
+          </a>
+        ))}
+      </div>
 
-    <div id="cats" class="cathub">
-      {CATS.map(c => (
-        <a class="cat" href={urlFor('signs') + c.id + '/'} style={`--c:${c.color}`}>
-          <span class="sw"></span>
-          <span><span class="t">{c.de}</span><br/><span class="d">{c.d}</span></span>
-          <span class="n">{byCat(c.id).length}</span>
-        </a>
-      ))}
-    </div>
-
-    <h2 class="top6-h">⭐ Die 6 wichtigsten</h2>
-    <div class="signgrid">
-      {topSigns.map(s => <SignTile sign={s} />)}
-    </div>
+      <h2 class="top6-h">⭐ Die 6 wichtigsten</h2>
+      <div class="signgrid">
+        {topSigns.map(s => <SignTile sign={s} />)}
+      </div>
+    </SignSearch>
   </Section>
 
-  <script is:inline define:vars={{ indexUrl: withBase('search-index.json') }}>
-  let INDEX = null;
-  async function load() {
-    if (INDEX) return INDEX;
-    INDEX = await (await fetch(indexUrl)).json();
-    return INDEX;
-  }
-  function tile(s) {
-    const img = s.img ? `<img src="${s.img}" alt="${s.nd}" width="72" height="72" loading="lazy">` : s.drawn;
-    const noTag = s.no ? `<div class="no">Zeichen ${s.no}</div>` : '';
-    return `<a class="sign in" href="${s.url}" style="color:inherit"><div class="sign-inner"><div class="sign-front">${img}<div class="nm">${s.nd}</div>${noTag}</div><div class="sign-back"><div class="mn">${s.d}</div></div></div></a>`;
-  }
-  function initSearch() {
-    var q = document.getElementById('q'), results = document.getElementById('results');
-    var cats = document.getElementById('cats'), none = document.getElementById('noresults');
-    if (!q || !results || !cats || !none) return;
-    var deb;
-    q.addEventListener('input', () => {
-      clearTimeout(deb);
-      deb = setTimeout(async () => {
-        const v = q.value.trim().toLowerCase();
-        if (!v) { results.hidden = true; none.hidden = true; cats.style.display = ''; results.innerHTML = ''; return; }
-        const hits = (await load()).filter(s => s.kw.includes(v)).slice(0, 40);
-        cats.style.display = 'none';
-        results.hidden = hits.length === 0; none.hidden = hits.length > 0;
-        results.innerHTML = hits.map(tile).join('');
-      }, 120);
-    });
-  }
-  document.addEventListener('astro:page-load', initSearch);
-  if (document.readyState !== 'loading') initSearch();
-  </script>
 </Base>

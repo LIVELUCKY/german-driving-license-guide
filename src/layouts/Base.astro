@@ -1,13 +1,12 @@
 ---
 import '../styles/global.css';
-import ClientRouter from 'astro/components/ClientRouter.astro';
 import { SEO } from 'astro-seo';
-import { Icon } from 'astro-icon/components';
 import { Image, getImage } from 'astro:assets';
 import logoSrc from '../assets/logo.jpg';
 import { NAV, urlFor, withBase } from '../lib/nav.js';
 import Analytics from '../components/Analytics.astro';
-import CookieBanner from '../components/CookieBanner.astro';
+import CookieBar from '../components/solid/CookieBar';
+import ThemeToggle from '../components/solid/ThemeToggle';
 const { slug = '', title, description } = Astro.props;
 const cur = NAV.find(n => n.slug === slug);
 const pageTitle = title ?? cur?.label ?? 'Führerschein';
@@ -52,14 +51,9 @@ const ogImageUrl = abs(ogImage.src);
 @font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url('${withBase('fonts/archivo-black-latin-400-normal.woff2')}') format('woff2');unicode-range:U+0000-00FF}
 @font-face{font-family:'Archivo Black';font-style:normal;font-weight:400;font-display:swap;src:url('${withBase('fonts/archivo-black-latin-ext-400-normal.woff2')}') format('woff2');unicode-range:U+0100-024F}
 `} />
-<ClientRouter />
 <script is:inline>
 // Apply theme immediately to avoid flash on hard load
 (function(){try{document.documentElement.dataset.theme=localStorage.getItem('fs_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch(e){document.documentElement.dataset.theme='light';}})();
-// Carry theme into every View Transition swap — Astro resets <html> attrs from new doc otherwise
-document.addEventListener('astro:before-swap',function(e){
-  try{e.newDocument.documentElement.dataset.theme=localStorage.getItem('fs_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}catch(e){}
-});
 </script>
 <Analytics />
 </head>
@@ -76,21 +70,8 @@ document.addEventListener('astro:before-swap',function(e){
     ))}
   </nav>
   <div class="spacer"></div>
-  <button class="iconbtn" id="themeBtn" aria-label="Dunkles Design">
-    <Icon name="lucide:moon" id="iconMoon" size={18} />
-    <Icon name="lucide:sun" id="iconSun" size={18} style="display:none" />
-  </button>
-  <button class="iconbtn navtoggle" id="navBtn" aria-label="Menü öffnen" aria-expanded="false">
-    <Icon name="lucide:menu" id="iconMenu" size={18} />
-    <Icon name="lucide:x" id="iconClose" size={18} style="display:none" />
-  </button>
+  <ThemeToggle client:idle />
 </div></header>
-
-<nav class="mnav" id="mnav" aria-label="Hauptmenü">
-  {NAV.map(n => (
-    <a href={urlFor(n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>{n.label}</a>
-  ))}
-</nav>
 
 {slug !== '' && (
   <div class="wrap crumbs">
@@ -124,69 +105,6 @@ document.addEventListener('astro:before-swap',function(e){
   </div>
 </div></footer>
 
-<script is:inline define:vars={{ darkLabel: 'Dunkles Design', lightLabel: 'Helles Design' }}>
-function paintTheme(){
-  var d=document.documentElement.dataset.theme==='dark';
-  var b=document.getElementById('themeBtn');
-  if(b)b.setAttribute('aria-label',d?lightLabel:darkLabel);
-  var m=document.getElementById('iconMoon'),s=document.getElementById('iconSun');
-  if(m&&s){m.style.display=d?'none':'';s.style.display=d?'':'none';}
-}
-
-// ── Per-page init: runs after EVERY View Transition navigation ────────────────
-function fsPageInit(){
-  // Restore hash scroll after View Transition
-  var hash=window.location.hash;
-  if(hash){var t=document.getElementById(hash.slice(1));if(t)t.scrollIntoView({behavior:'instant',block:'start'});}
-
-  // Track page view
-  if(typeof window.__fsTrack==='function') window.__fsTrack('page_view',{page_path:location.pathname});
-
-  // Theme toggle — rebind every page (View Transitions replace DOM)
-  var b=document.getElementById('themeBtn');
-  if(b&&!b.dataset.bound){
-    b.dataset.bound='1';
-    b.addEventListener('click',function(){
-      var next=document.documentElement.dataset.theme==='dark'?'light':'dark';
-      document.documentElement.dataset.theme=next;
-      try{localStorage.setItem('fs_theme',next)}catch(e){}
-      if(typeof window.__fsTrack==='function') window.__fsTrack('theme_toggle',{theme:next});
-      paintTheme();
-    });
-  }
-  paintTheme();
-
-  // Mobile nav toggle
-  var nb=document.getElementById('navBtn'),mn=document.getElementById('mnav');
-  if(mn){mn.classList.remove('open');}
-  if(nb&&mn&&!nb.dataset.bound){
-    nb.dataset.bound='1';
-    nb.addEventListener('click',function(){
-      var open=mn.classList.toggle('open');
-      nb.setAttribute('aria-expanded',String(open));
-      var im=document.getElementById('iconMenu'),ic=document.getElementById('iconClose');if(im&&ic){im.style.display=open?'none':'';ic.style.display=open?'':'none';}
-    });
-  }
-
-  // Nav link click tracking
-  document.querySelectorAll('.bar nav a:not([data-nav-t])').forEach(function(a){
-    a.dataset.navT='1';
-    a.addEventListener('click',function(){
-      if(typeof window.__fsTrack==='function') window.__fsTrack('nav_click',{label:(a.textContent||'').trim(),href:a.getAttribute('href')});
-    });
-  });
-  // Outbound link tracking
-  document.querySelectorAll('a[href^="http"]:not([data-out-t])').forEach(function(a){
-    try{if(new URL(a.href).hostname===location.hostname)return;}catch(e){return;}
-    a.dataset.outT='1';
-    a.addEventListener('click',function(){
-      if(typeof window.__fsTrack==='function') window.__fsTrack('outbound_link',{url:a.href});
-    });
-  });
-}
-document.addEventListener('astro:page-load', fsPageInit);
-if(document.readyState!=='loading') fsPageInit();
-</script>
-{slug !== 'legal' && <CookieBanner />}
+{slug !== 'legal' && <CookieBar client:idle privacyUrl={urlFor('legal')} />}
 </body>
 </html>

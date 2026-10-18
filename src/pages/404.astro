@@ -4,13 +4,7 @@ import { urlFor } from '../lib/nav.js';
 ---
 <Base slug="" title="Seite nicht gefunden">
   <script is:inline>
-  (function(){
-    function track404(){
-      if(typeof __fsTrack==='function')__fsTrack('page_not_found',{path:location.pathname,referrer:document.referrer||'direct'});
-    }
-    document.addEventListener('astro:page-load',track404);
-    if(document.readyState!=='loading') track404();
-  })();
+    if (typeof __fsTrack === 'function') __fsTrack('page_not_found', { path: location.pathname, referrer: document.referrer || 'direct' });
   </script>
   <div class="wrap e404">
     <div class="code" aria-hidden="true">404</div>

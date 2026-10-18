@@ -25,13 +25,13 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "@iconify-json/lucide": "^1.2.143",
+    "@astrojs/solid-js": "^7.1.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.8",
     "astro-broken-links-checker": "^1.1.0",
-    "astro-icon": "^1.2.0",
     "astro-seo": "^1.2.0",
     "sharp": "^0.35.5",
+    "solid-js": "^1.9.17",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

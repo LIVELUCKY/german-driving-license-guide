@@ -1,8 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Section from '../../components/Section.astro';
-import SignTile from '../../components/SignTile.astro';
-import { Icon } from 'astro-icon/components';
+import SignSearch from '../../components/solid/SignSearch';
 import { urlFor } from '../../lib/nav.js';
 import { CATS, byCat, catOf } from '../../lib/signs.js';
 export function getStaticPaths() {
@@ -11,6 +10,8 @@ export function getStaticPaths() {
 const catId = Astro.params.cat;
 const cat = catOf(catId)!;
 const signs = byCat(catId);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SEARCH = signs.map(({ id, nameDe, de, tipDe, stvo, kw, img, drawn }: any) => ({ id, nameDe, de, tipDe, stvo, kw, img, drawn: img ? undefined : drawn }));
 const i = CATS.findIndex(c => c.id === catId);
 const prevCat = i > 0 ? CATS[i - 1] : null;
 const nextCat = i < CATS.length - 1 ? CATS[i + 1] : null;
@@ -29,10 +30,7 @@ const nextCat = i < CATS.length - 1 ? CATS[i + 1] : null;
     <p>{cat.d}</p>
   </div>
   <Section>
-    <label class="search"><Icon name="lucide:search" size={16} /><input type="search" id="cq" placeholder="In dieser Kategorie suchen" aria-label="In dieser Kategorie suchen" /></label>
-    <div class="signgrid" id="grid">
-      {signs.map((s, i) => <SignTile sign={s} eager={i < 6} />)}
-    </div>
+    <SignSearch client:visible mode="list" signs={SEARCH} placeholder="In dieser Kategorie suchen" />
     <div class="pn note-mt">
       {prevCat
         ? <a href={urlFor('signs') + prevCat.id + '/'}><span class="dir">← Vorherige</span><span class="t">{prevCat.de}</span></a>
@@ -42,18 +40,4 @@ const nextCat = i < CATS.length - 1 ? CATS[i + 1] : null;
         : <a class="next" href={urlFor('signs')}><span class="dir">→</span><span class="t">Alle Zeichen</span></a>}
     </div>
   </Section>
-  <script is:inline>
-  function initFilter() {
-    var cq = document.getElementById('cq'), grid = document.getElementById('grid');
-    if (!cq || !grid) return;
-    cq.addEventListener('input', () => {
-      const v = cq.value.trim().toLowerCase();
-      grid.querySelectorAll('.sign').forEach(s => {
-        s.style.display = !v || (s.dataset.kw + ' ' + s.textContent).toLowerCase().includes(v) ? '' : 'none';
-      });
-    });
-  }
-  document.addEventListener('astro:page-load', initFilter);
-  if (document.readyState !== 'loading') initFilter();
-  </script>
 </Base>

@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import icon from 'astro-icon';
+import solidJs from '@astrojs/solid-js';
 import astroBrokenLinksChecker from 'astro-broken-links-checker';
 
 // SITE_URL / BASE_PATH are injected by GitHub Actions so the same source
@@ -15,7 +15,7 @@ export default defineConfig({
   trailingSlash: 'always',
 
   integrations: [
-    icon({ include: { lucide: ['moon','sun','menu','x','search'] } }),
+    solidJs(),
     sitemap({
       filter: (page) => !page.includes('/search-index'),
     }),

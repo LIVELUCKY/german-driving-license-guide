@@ -87,7 +87,9 @@
     "a": "4-mal so groß",
     "n": "2.7.01-046"
    }
-  ]
+  ],
+  "i": "🧮",
+  "hook": "T-Trick: Reaktion 3·T, Bremsen T·T, Gefahr die Hälfte"
  },
  {
   "h": "Abstand und Überholen",
@@ -137,7 +139,9 @@
     "a": "20 km/h",
     "n": "2.1.08-021"
    }
-  ]
+  ],
+  "i": "↔️",
+  "hook": "Halber Tacho. Rad: 1,5 m innen, 2 m außen"
  },
  {
   "h": "Tempo",
@@ -217,7 +221,9 @@
     "a": "heranfahren und queren max. 10",
     "n": "1.2.19-113"
    }
-  ]
+  ],
+  "i": "🚗",
+  "hook": "50 innen, 100 außen, 80 mit Anhänger"
  },
  {
   "h": "Halten und Parken",
@@ -277,7 +283,9 @@
     "a": "nur Gewerbegebiet oder markierte Parkplätze",
     "n": "2.2.12-105"
    }
-  ]
+  ],
+  "i": "🅿️",
+  "hook": "5 Kreuzung, 8 mit Radweg, 15 Haltestelle"
  },
  {
   "h": "Ladung, Anhänger, Fahrzeug",
@@ -362,7 +370,9 @@
     "a": "Lkw über 7,5 t und Lkw mit Anhänger",
     "n": "2.2.30-101"
    }
-  ]
+  ],
+  "i": "📦",
+  "hook": "Ladung hinten: 1 markieren, 1,5 max, 3 unter 100 km"
  },
  {
   "h": "Schilder mit Zahlen",
@@ -432,7 +442,9 @@
     "a": "gilt nur nachts 22 bis 6 Uhr",
     "n": "1.4.41-172"
    }
-  ]
+  ],
+  "i": "🔢",
+  "hook": "Roter Ring = tatsächlich, Fahrzeug-Zusatz = zulässig"
  },
  {
   "h": "Mensch und Umwelt",
@@ -512,6 +524,8 @@
     "a": "18–24",
     "n": "2.1.11-119"
    }
-  ]
+  ],
+  "i": "🧠",
+  "hook": "Alkohol baut nur Zeit ab: ca. 0,1 ‰ pro Stunde"
  }
 ]
