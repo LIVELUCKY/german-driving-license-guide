@@ -1,21 +1,19 @@
 ---
 import Section from '../Section.astro';
+import Flow from '../ui/Flow.astro';
 import Note from '../ui/Note.astro';
+import Tip from '../ui/Tip.astro';
 
 const STEPS = [
   'Formeln verstehen, nicht auswendig',
   'Zahlen-Landkarte: eine Zahl, viele Regeln',
   'Oft gefragt und oft verwechselt lesen',
   'Selbsttest jeden Tag 5 Minuten',
+  'Alle Fragen im amtlichen Katalog üben',
 ];
 ---
 <Section id="lernen" title="So lernst du mit dieser Seite">
-  <ol class="flex flex-wrap items-stretch gap-1.5">
-    {STEPS.map((s, i) => (
-      <li class="flex flex-[1_1_110px] flex-col items-center gap-1 rounded-box border-2 border-line bg-surface px-2 py-3 text-center text-[.88rem] font-bold">
-        <span class="grid size-7 place-items-center rounded-full bg-accent text-[.85rem] text-white" aria-hidden="true">{i + 1}</span>{s}
-      </li>
-    ))}
-  </ol>
+  <Flow items={STEPS} />
   <Note class="mt-[clamp(10px,1.6vw,16px)]">Was du im Selbsttest nicht wusstest, kommt später wieder. Wiederholen mit Pausen (nicht alles an einem Abend) bleibt am längsten hängen.</Note>
+  <Tip label="Wichtig">Die Prüfung zieht 30 Fragen aus über 1.500 amtlichen Fragen, mit Bildern und Videos. Dieser Spickzettel bringt dir die Regeln und Zahlen dahinter bei. Bestehen kommt, wenn du zusätzlich <b>jede Frage einmal geübt</b> hast, z. B. in der App deiner Fahrschule (siehe <a class="underline" href="#quellen">Quellen</a>).</Tip>
 </Section>

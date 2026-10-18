@@ -5,24 +5,24 @@ export type Road = { sign: string | null; icon?: string; name: string; zeichen: 
 export const ROADS: Road[] = [
   { sign: 'autobahn', name: 'Autobahn', zeichen: '330.1', cells: [
     'nur Kfz, die bauartbedingt <b>mehr als 60 km/h</b> schaffen (auch mit Anhänger)',
-    '<b>kein Limit</b>, 130 empfohlen',
+    '<b>kein Limit</b> außerorts, 130 empfohlen. Schilder gehen vor',
     '<b>Halten verboten</b>, auch auf dem Seitenstreifen. Parken nur auf Parkplätzen',
     '<b>verboten</b>',
     '<b>dürfen nicht</b> auf die Autobahn',
     'rein nur an <b>Anschlussstellen</b>, raus nur an Ausfahrten. Durchgehende Fahrbahn hat Vorfahrt'] },
   { sign: 'kraftfahrstrasse', name: 'Kraftfahrstraße', zeichen: '331.1', cells: [
     'wie Autobahn: nur Kfz <b>mehr als 60 km/h</b>',
-    '<b>100</b>, frei bei getrennten Fahrbahnen oder 2 Spuren je Richtung',
+    '<b>100</b> außerorts, frei bei getrennten Fahrbahnen oder 2 Spuren je Richtung',
     '<b>Halten verboten</b>, auch auf dem Seitenstreifen',
     '<b>verboten</b>',
-    'nur an Kreuzungen und Einmündungen <b>queren</b>',
+    'nur an Kreuzungen, Einmündungen oder dafür vorgesehenen Stellen <b>queren</b>',
     'rein und raus nur an <b>Kreuzungen und Einmündungen</b>. Durchgehende Fahrbahn hat Vorfahrt'] },
   { sign: null, icon: '🌳', name: 'Landstraße', zeichen: 'außerorts', cells: [
     'alle, auch Rad und Traktor',
     '<b>100</b> (frei bei getrennten Fahrbahnen oder 2 Spuren je Richtung)',
     'nach § 12, rechten Seitenstreifen nutzen. Auf Vorfahrtstraße (306) <b>nicht auf der Fahrbahn parken</b>. Nachts eigene Beleuchtung',
     'erlaubt, niemanden gefährden',
-    'ohne Gehweg <b>am linken Rand</b> gehen',
+    'ohne Gehweg <b>am linken Rand</b> gehen, wenn zumutbar',
     'Überholen darf mit Hupe oder Lichthupe angekündigt werden. Seitenabstand Rad <b>2 m</b>'] },
   { sign: 'ortstafel', name: 'Innerorts', zeichen: '310', cells: [
     'alle',
@@ -30,7 +30,7 @@ export const ROADS: Road[] = [
     'nach § 12. Nachts reichen Parkleuchten',
     'erlaubt, niemanden gefährden',
     'auf dem Gehweg',
-    'Kfz bis 3,5 t: freie Spurwahl. Seitenabstand Rad <b>1,5 m</b>'] },
+    'Kfz bis 3,5 t: freie Spurwahl, wenn es <b>mehrere markierte Spuren</b> je Richtung gibt. Seitenabstand Rad <b>1,5 m</b>'] },
   { sign: 'tempo-30-zone', name: 'Tempo-30-Zone', zeichen: '274.1', cells: [
     'alle',
     '<b>30</b> in der ganzen Zone, bis zum Ende-Schild',
@@ -65,6 +65,6 @@ export const AB_VS_KFS: [string, string, string][] = [
   ['Tempo', 'kein Limit, 130 empfohlen', '100 (frei nur bei getrennten Fahrbahnen oder 2 Spuren je Richtung)'],
   ['Rein und raus', 'nur an Anschlussstellen', 'an Kreuzungen und Einmündungen'],
   ['Kreuzungen', 'keine', 'möglich (dort hat die Kraftfahrstraße Vorfahrt)'],
-  ['Fußgänger', 'nie', 'dürfen an Kreuzungen und Einmündungen queren'],
+  ['Fußgänger', 'nie', 'dürfen an Kreuzungen, Einmündungen oder dafür vorgesehenen Stellen queren'],
   ['Gleich bei beiden', 'nur Kfz > 60 km/h, nicht halten, nicht wenden, nicht rückwärts', ''],
 ];

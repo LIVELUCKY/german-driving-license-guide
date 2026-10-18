@@ -7,7 +7,7 @@ import { OFT_GEFRAGT } from '../../data/oftgefragt';
 const total = OFT_GEFRAGT.reduce((n, g) => n + g.topics.length, 0);
 ---
 <Section id="verhalten" title="Oft gefragt: Verhalten, Technik, Pflichten">
-  <Note class="mb-3">{total} Themen in 4 Gruppen, je ein Merksatz. Lies erst nur die Merksätze, dann öffne ein Thema.</Note>
+  <Note class="mb-3">{total} Themen in {OFT_GEFRAGT.length} Gruppen, je ein Merksatz. Lies erst nur die Merksätze, dann öffne ein Thema.</Note>
   {OFT_GEFRAGT.map(g => (
     <>
       <h3 class="mt-5 mb-2.5 font-display text-base uppercase tracking-[.04em] first-of-type:mt-0">{g.title}</h3>

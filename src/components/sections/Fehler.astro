@@ -4,6 +4,14 @@ import Note from '../ui/Note.astro';
 import Tip from '../ui/Tip.astro';
 
 // Errors that end the practical exam at once (Prüfungsrichtlinie, FeV Anlage 7).
+// The 5 Kompetenzbereiche of the practical exam (FeV Anlage 7, Fahraufgabenkatalog).
+const AREAS: [string, string][] = [
+  ['Verkehrsbeobachtung', 'Spiegel, Schulterblick, weit vorausschauen'],
+  ['Fahrzeugpositionierung', 'richtige Spur, Abstand nach vorn und zur Seite'],
+  ['Geschwindigkeit', 'passend zu Limit, Sicht, Wetter und Verkehr'],
+  ['Kommunikation', 'rechtzeitig blinken, Blickkontakt, Handzeichen anderer beachten, Verzicht klar zeigen'],
+  ['Bedienung und Umwelt', 'richtiger Gang, niedrige Drehzahl, Bedienelemente, Motor aus beim Warten'],
+];
 const FAILS = [
   '<b>Vorfahrt oder Vorrang</b> missachtet (auch beim Anfahren vom Rand)',
   '<b>Rot</b> oder ein Vorschriftzeichen (Gebots- und Verbotsschilder, meist rund) missachtet, z. B. bei Stopp nicht angehalten',
@@ -15,12 +23,19 @@ const FAILS = [
   '<b>Abstand</b> unter 1/4 Tacho ohne Korrektur, andere blenden',
   'Verkehr <b>gar nicht beobachtet</b>, vermeidbar von der Fahrbahn abgekommen',
   'Fahrlehrer oder Prüfer muss <b>eingreifen</b>, um eine Gefahr zu verhindern',
+  'Keine Reaktion auf <b>Blaulicht mit Horn</b>, auf dem Fahrstreifen des <b>Gegenverkehrs</b> einordnen, Über- oder Untersteuern',
 ];
 ---
 <Section id="fehler" title="Sofort durchgefallen">
   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-2.5">
     {FAILS.map(f => <div class="rounded-r-box border-l-[5px] border-warn bg-surface px-3.5 py-2.5 text-[.9rem]" set:html={f} />)}
   </div>
-  <Tip label="Merksatz">„Ein Viertel Tacho Abstand: Prüfung vorbei.“ Bei 80 km/h also unter 20 m.</Tip>
-  <Note class="mt-[clamp(10px,1.6vw,16px)]">Viele kleine Fehler (z. B. Schulterblick mehrmals vergessen) können zusammen auch zum Nichtbestehen führen. Bewertet werden 5 Bereiche: <b>Verkehrsbeobachtung, Fahrzeugpositionierung, Geschwindigkeit, Kommunikation, Fahrzeugbedienung und umweltbewusstes Fahren</b>.</Note>
+  <Tip label="Merksatz">„Ein Viertel Tacho Abstand: Prüfung vorbei.“ Bei 80 km/h also unter 20 m, wenn du es nicht korrigierst (Fahraufgabenkatalog, sofortiger Abbruch).</Tip>
+  <Note class="mt-[clamp(10px,1.6vw,16px)]"><b>Schwere Fehler</b> (zählen viel, aber nicht sofort durch): Haltlinie deutlich überfahren, zu wenig Seitenabstand, Licht oder Wischer nicht genutzt, Assistenzsysteme falsch bedient. Viele kleine Fehler (z. B. Schulterblick mehrmals vergessen) können zusammen auch zum Nichtbestehen führen.</Note>
+  <h3 class="mt-5 mb-2.5 font-display text-base uppercase tracking-[.04em]">Darauf achtet der Prüfer: 5 Bereiche</h3>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-2.5">
+    {AREAS.map(([t, d], i) => (
+      <div class="rounded-box border-2 border-line bg-surface p-3"><b class="mb-1 flex items-center gap-2 text-[.88rem]"><span class="grid size-6 place-items-center rounded-full bg-ink text-[.75rem] text-bg">{i + 1}</span>{t}</b><p class="text-[.84rem] leading-snug text-muted">{d}</p></div>
+    ))}
+  </div>
 </Section>
