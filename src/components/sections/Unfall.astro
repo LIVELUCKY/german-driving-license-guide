@@ -1,20 +1,41 @@
 ---
+import Flow from '../ui/Flow.astro';
 import Section from '../Section.astro';
----
-  <Section id="unfall" title="Unfall und Panne">
-    <div class="flow">
-      <div><b>1</b>Warnblinker</div>
-      <div><b>2</b>Warnweste</div>
-      <div><b>3</b>Warndreieck</div>
-      <div><b>4</b>Erste Hilfe</div>
-      <div><b>5</b>Rettungsdienst rufen (112)</div>
-    </div>
-    <p class="note note-mt"><b>Prüfungsantwort:</b> Absichern → Erste Hilfe → Rettungsdienst alarmieren. In echt: Notruf so früh wie möglich, am besten ruft ein zweiter Helfer an. Helfen ist Pflicht. Wer ohne Angaben wegfährt, begeht <b>Unfallflucht</b>. Notruf <b>112</b>, Polizei <b>110</b>.</p>
+import Note from '../ui/Note.astro';
+import Tip from '../ui/Tip.astro';
 
-    <h3 class="sub-h">Warndreieck: wie weit zurück?</h3>
-    <div class="ruler">
-      <div class="rl"><span class="rl-m">50 m</span><span class="rl-bar"><span style="width:50%"></span></span><span class="rl-t">innerorts</span></div>
-      <div class="rl"><span class="rl-m">100 m</span><span class="rl-bar"><span style="width:100%"></span></span><span class="rl-t">Landstraße und Autobahn (Prüfungsantwort)<small>auf der Autobahn in echt gern weiter, immer hinter der Leitplanke gehen</small></span></div>
-    </div>
-    <div class="tip note-mt"><b>Merksatz:</b> Leitpfosten stehen alle 50 m, also ca. <b>2 Pfosten</b> zurück (100 m).</div>
-  </Section>
+const FLOW = ['Warnblinker', 'Warnweste', 'Warndreieck', 'Erste Hilfe', 'Rettungsdienst rufen (112)'];
+// Warning triangle distance as asked in the official question catalogue.
+const RULER = [
+  { m: '50 m', w: 50, t: 'innerorts' },
+  { m: '100 m', w: 100, t: 'Landstraße und Autobahn (Prüfungsantwort)', s: 'auf der Autobahn in echt gern weiter, immer hinter der Leitplanke gehen' },
+];
+---
+<Section id="unfall" title="Unfall und Panne">
+  <Flow items={FLOW} />
+  <Note class="mt-4"><b>Prüfungsantwort:</b> Absichern → Erste Hilfe → Rettungsdienst alarmieren. In echt: Notruf so früh wie möglich, am besten ruft ein zweiter Helfer an. Helfen ist Pflicht. Wer ohne Angaben wegfährt, begeht <b>Unfallflucht</b> (unerlaubtes Entfernen vom Unfallort, eine Straftat). Notruf <b>112</b>, Polizei <b>110</b>.</Note>
+  <Tip label="Merksatz">„<b>Absichern, Helfen, Rufen</b>“, so will es die Prüfung.</Tip>
+  <Tip label="Merksatz">Wiederbelebung: „<b>Prüfen, Rufen, Drücken</b>“ (Atmung prüfen, 112 rufen, Herzdruckmassage). Dann „30 drücken, 2 beatmen“.</Tip>
+
+  <h3 class="mt-7 mb-3 font-display text-base uppercase tracking-[.04em]">Warndreieck: wie weit zurück?</h3>
+  <div class="flex flex-col gap-1.5">
+    {RULER.map(r => (
+      <div class="rl">
+        <span class="rl-m">{r.m}</span>
+        <span class="rl-bar"><span style={`width:${r.w}%`}></span></span>
+        <span class="rl-t">{r.t}{r.s && <small>{r.s}</small>}</span>
+      </div>
+    ))}
+  </div>
+  <Tip label="Merksatz" class="mt-4">„<b>Zwei Pfosten, hundert Meter</b>.“ Leitpfosten (weiß-schwarze Pfähle am Rand) stehen alle 50 m.</Tip>
+</Section>
+
+<style>
+  .rl{display:grid;grid-template-columns:76px minmax(60px,1fr) minmax(0,1.6fr);gap:12px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--soft)}
+  .rl-m{font-family:var(--display);font-size:1.05rem;text-align:right}
+  .rl-bar{height:12px;background:var(--soft);border-radius:2px;overflow:hidden}
+  .rl-bar span{display:block;height:100%;background:var(--pop2)}
+  .rl-t{font-size:.88rem;line-height:1.35}
+  .rl-t small{display:block;color:inherit;opacity:.8;font-size:.74rem}
+  @media(max-width:600px){.rl{grid-template-columns:70px 1fr}.rl-bar{display:none}}
+</style>

@@ -1,13 +1,30 @@
 ---
+import Flow from '../ui/Flow.astro';
 import Section from '../Section.astro';
----
-  <Section id="aufgaben" title="Grundfahraufgaben">
-    <p class="note note-mb">Du fährst <b>3</b>: eine aus Gruppe A und zwei aus Gruppe B. Der Prüfer wählt aus.</p>
-    <div class="grid cols2">
-      <div class="card">
-        <h3><span>🅰️</span>Rückwärts längs einparken</h3>
-        <div class="diag">
-          <svg viewBox="0 0 320 150" role="img" aria-label="Längs einparken in drei Schritten">
+import Card from '../ui/Card.astro';
+import Grid from '../ui/Grid.astro';
+import Note from '../ui/Note.astro';
+import Steps from '../ui/Steps.astro';
+import Tip from '../ui/Tip.astro';
+
+// Grundfahraufgaben Klasse B (FeV Anlage 7, Prüfungsrichtlinie).
+interface Manoever {
+  title: string;
+  group: 'A' | 'B';
+  svg?: string;
+  steps?: string[];
+  variants?: { label: string; steps: string[] }[];
+  flow?: string[];
+  examinerWants: string;
+  faults: string;
+  hook: string;
+}
+
+const MANOEVER: Manoever[] = [
+  {
+    title: 'Rückwärts längs einparken',
+    group: 'A',
+    svg: `<svg viewBox="0 0 320 150" role="img" aria-label="Längs einparken in drei Schritten">
             <rect x="0" y="0" width="320" height="150" fill="#c7ced6"/>
             <rect x="0" y="100" width="320" height="50" fill="#9aa3ad"/>
             <rect x="10" y="102" width="70" height="34" rx="6" fill="#62626b"/>
@@ -19,24 +36,23 @@ import Section from '../Section.astro';
             <rect x="110" y="104" width="70" height="34" rx="6" fill="#1565d8"/>
             <text x="145" y="126" font-size="11" text-anchor="middle" font-weight="800" fill="#fff">3</text>
             <path d="M260 92 C230 100 200 110 160 120" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
-          </svg>
-        </div>
-        <div class="steps">
-          <div>Blinker rechts. Neben das vordere Auto, <b>0,5–1 m</b> seitlich, Heck auf einer Höhe</div>
-          <div>Spiegel + Schulterblick, langsam zurückrollen</div>
-          <div>Dein Hinterrad auf Höhe seines Hecks: <b>voll rechts</b></div>
-          <div>Ca. <b>45°</b>, hinteres Auto ganz im linken Spiegel: Räder gerade</div>
-          <div>Vorderes Eck frei: <b>voll links</b>, dann gerade stellen</div>
-          <div>Parallel stehen, höchstens <b>30 cm</b> zum Bordstein</div>
-        </div>
-        <p class="note"><b>Prüfer will:</b> Lücke ca. <b>8 m</b>, höchstens <b>2 Korrekturzüge</b>, parallel, max. 30 cm.<br/><b>Fehler:</b> Bordstein berührt, schräg, zu weit weg, andere zugeparkt, zu wenig geschaut.</p>
-        <div class="tip"><b>Merke:</b> „Heck an Heck, rechts, gerade, links.“</div>
-      </div>
-
-      <div class="card">
-        <h3><span>🅰️</span>Rückwärts um die Ecke (rechts)</h3>
-        <div class="diag">
-          <svg viewBox="0 0 320 150" role="img" aria-label="Rückwärts nach rechts in eine Einmündung fahren">
+          </svg>`,
+    steps: [
+      'Blinker rechts. Neben das vordere Auto, <b>0,5–1 m</b> seitlich, Heck auf einer Höhe',
+      'Spiegel + Schulterblick, langsam zurückrollen',
+      'Dein Hinterrad auf Höhe seines Hecks: <b>voll rechts</b>',
+      'Ca. <b>45°</b>, hinteres Auto ganz im linken Spiegel: Räder gerade',
+      'Vorderes Eck frei: <b>voll links</b>, dann gerade stellen',
+      'Parallel stehen, höchstens <b>30 cm</b> zum Bordstein',
+    ],
+    examinerWants: 'Lücke ca. <b>8 m</b>, höchstens <b>2 Korrekturzüge</b>, parallel, max. 30 cm.',
+    faults: 'Bordstein berührt, schräg, zu weit weg, andere zugeparkt, zu wenig geschaut.',
+    hook: '„Heck an Heck, rechts, gerade, links.“',
+  },
+  {
+    title: 'Rückwärts um die Ecke (rechts)',
+    group: 'A',
+    svg: `<svg viewBox="0 0 320 150" role="img" aria-label="Rückwärts nach rechts in eine Einmündung fahren">
             <rect x="0" y="0" width="320" height="70" fill="#c7ced6"/>
             <rect x="200" y="70" width="70" height="80" fill="#c7ced6"/>
             <path d="M200 70 Q200 70 200 70" stroke="#17171b"/>
@@ -44,86 +60,105 @@ import Section from '../Section.astro';
             <rect x="205" y="100" width="28" height="50" rx="6" fill="#1565d8"/>
             <path d="M140 54 Q215 54 219 100" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
             <text x="100" y="30" font-size="11" font-weight="800" fill="#17171b" text-anchor="middle">Start</text>
-          </svg>
-        </div>
-        <div class="steps">
-          <div>An der Ecke vorbei, ca. <b>1 m</b> zum Bordstein, ca. 1 Autolänge nach der Ecke halten. Blinker rechts</div>
-          <div>Rundum schauen: Innenspiegel, beide Außenspiegel, Schulterblick</div>
-          <div>Schritttempo zurück. Hinterrad am Beginn der Kurve: <b>rechts einlenken</b></div>
-          <div>Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten</div>
-          <div>Immer wieder nach links schauen: die Front schwenkt aus</div>
-          <div>Gerade stellen, parallel anhalten</div>
-        </div>
-        <p class="note"><b>Prüfer will:</b> möglichst <b>enger Bogen</b>, rechts halten, Endstellung rückwärts und parallel, höchstens 2 Korrekturzüge.<br/><b>Fehler:</b> Bogen zu weit, Bordstein berührt, schräg. Fußgänger haben Vorrang.</p>
-        <div class="tip"><b>Merke:</b> „Bordstein klebt im Spiegel.“</div>
-      </div>
-
-      <div class="card">
-        <h3><span>🅱️</span>Umkehren</h3>
-        <div class="diag">
-          <svg viewBox="0 0 320 130" role="img" aria-label="Wenden in drei Zügen">
+          </svg>`,
+    steps: [
+      'An der Ecke vorbei, ca. <b>1 m</b> zum Bordstein, ca. 1 Autolänge nach der Ecke halten. Blinker rechts',
+      'Rundum schauen: Innenspiegel, beide Außenspiegel, Schulterblick',
+      'Schritttempo zurück. Hinterrad am Beginn der Kurve: <b>rechts einlenken</b>',
+      'Bordstein im rechten Spiegel <b>immer an der gleichen Stelle</b> halten',
+      'Immer wieder nach links schauen: die Front schwenkt aus',
+      'Gerade stellen, parallel anhalten',
+    ],
+    examinerWants: 'möglichst <b>enger Bogen</b>, rechts halten, Endstellung rückwärts und parallel, höchstens 2 Korrekturzüge.',
+    faults: 'Bogen zu weit, Bordstein berührt, schräg. Fußgänger haben Vorrang.',
+    hook: '„Bordstein klebt im Spiegel.“',
+  },
+  {
+    title: 'Umkehren',
+    group: 'B',
+    svg: `<svg viewBox="0 0 320 130" role="img" aria-label="Wenden in drei Zügen">
             <rect x="0" y="10" width="320" height="110" fill="#c7ced6"/>
             <path d="M0 65 H320" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
             <path d="M60 95 Q150 95 170 25" stroke="#1565d8" stroke-width="3" fill="none"/><text x="175" y="22" font-size="12" font-weight="800" fill="#17171b">1 vor</text>
             <path d="M170 25 Q160 95 230 100" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/><text x="232" y="112" font-size="12" font-weight="800" fill="#17171b">2 zurück</text>
             <path d="M230 100 Q160 40 60 40" stroke="#00a86b" stroke-width="3" fill="none"/><text x="20" y="34" font-size="12" font-weight="800" fill="#17171b">3 vor</text>
-          </svg>
-        </div>
-        <div class="steps">
-          <div>Ort und Art <b>wählst du selbst</b>: Einfahrt, Einmündung, Parkplatz oder Wenden in 3 Zügen</div>
-          <div>Blinker, Spiegel, Schulterblick</div>
-          <div>Vor <b>jedem</b> Zug rundum schauen, dann fahren. Lenken im <b>Rollen</b></div>
-          <div>Vor dem Anhalten schon in die andere Richtung lenken</div>
-          <div>Am Ende wieder auf der rechten Seite</div>
-        </div>
-        <p class="note"><b>Prüfer will:</b> keine Grenze bei der Anzahl der Züge.<br/><b>Fehler:</b> zu wenig Beobachtung, Rechtsfahrgebot nicht beachtet.</p>
-        <div class="tip"><b>Merke:</b> „Jeder Zug: erst schauen.“</div>
-      </div>
-
-      <div class="card">
-        <h3><span>🅱️</span>Quer oder schräg einparken</h3>
-        <div class="diag">
-          <svg viewBox="0 0 320 130" role="img" aria-label="Rückwärts quer einparken">
+          </svg>`,
+    steps: [
+      'Ort und Art <b>wählst du selbst</b>: Einfahrt, Einmündung, Parkplatz oder Wenden in 3 Zügen',
+      'Blinker, Spiegel, Schulterblick',
+      'Vor <b>jedem</b> Zug rundum schauen, dann fahren. Lenken im <b>Rollen</b>',
+      'Vor dem Anhalten schon in die andere Richtung lenken',
+      'Am Ende wieder auf der rechten Seite',
+    ],
+    examinerWants: 'keine Grenze bei der Anzahl der Züge.',
+    faults: 'zu wenig Beobachtung, Rechtsfahrgebot nicht beachtet.',
+    hook: '„Jeder Zug: erst schauen.“',
+  },
+  {
+    title: 'Quer oder schräg einparken',
+    group: 'B',
+    svg: `<svg viewBox="0 0 320 130" role="img" aria-label="Rückwärts quer einparken">
             <rect x="0" y="0" width="320" height="130" fill="#c7ced6"/>
             <g stroke="#fff" stroke-width="3"><path d="M60 70 V130 M120 70 V130 M180 70 V130 M240 70 V130"/></g>
             <rect x="62" y="74" width="54" height="52" rx="6" fill="#62626b"/><rect x="182" y="74" width="54" height="52" rx="6" fill="#62626b"/>
             <rect x="200" y="15" width="70" height="30" rx="6" fill="#1565d8" opacity=".4"/>
             <rect x="133" y="78" width="34" height="50" rx="6" fill="#1565d8"/>
             <path d="M200 30 Q150 30 150 78" stroke="#d92f2f" stroke-width="3" fill="none" stroke-dasharray="6 5"/>
-          </svg>
-        </div>
-        <div class="vs">
-          <div><b>Vorwärts</b>
-        <div class="steps">
-          <div>Mit <b>1,5–2 m</b> Abstand vorbei, Blinker</div>
-          <div>Spiegel auf Höhe der ersten Linie: <b>voll einschlagen</b></div>
-          <div>Ecken der Nachbarautos in beiden Spiegeln</div>
-          <div>Linien parallel: gerade, anhalten</div>
-        </div>
+          </svg>`,
+    variants: [
+      {
+        label: 'Vorwärts',
+        steps: [
+          'Mit <b>1,5–2 m</b> Abstand vorbei, Blinker',
+          'Spiegel auf Höhe der ersten Linie: <b>voll einschlagen</b>',
+          'Ecken der Nachbarautos in beiden Spiegeln',
+          'Linien parallel: gerade, anhalten',
+        ],
+      },
+      {
+        label: 'Rückwärts',
+        steps: [
+          'Mit ca. <b>1 m</b> vorbei. Schulter auf Höhe der Linie <b>nach</b> der Lücke: halten',
+          'Spiegel + Schulterblick, voll einschlagen, langsam zurück',
+          'Linien in beiden Spiegeln <b>parallel</b>: gerade',
+          'Halten, wenn die Front in der Markierung ist',
+        ],
+      },
+    ],
+    examinerWants: 'Vorwärts oder rückwärts. Ganz in der Markierung, genug Seitenabstand, höchstens 2 Korrekturzüge.',
+    faults: 'Auto steht über die Markierung, zu wenig Seitenabstand.',
+    hook: '„Linien parallel = gerade.“',
+  },
+  {
+    title: 'Gefahrbremsung',
+    group: 'B',
+    flow: ['mind. 30 km/h, gerade', 'Kommando vom Fahrlehrer', 'Bremse + Kupplung schlagartig voll', 'Druck halten bis Stillstand'],
+    examinerWants: 'Spur gerade halten, mit ABS voll draufbleiben (Rattern ist normal). Nach hinten schauen musst du nicht, das macht der Fahrlehrer.',
+    faults: 'unter 30 km/h, zu schwach oder nicht schlagartig gebremst, Motor abgewürgt, aus der Spur gelenkt.',
+    hook: '„Beide Füße, voll, bis Stillstand.“',
+  },
+];
+---
+<Section id="aufgaben" title="Grundfahraufgaben">
+  <Note class="mb-[clamp(8px,1.2vw,12px)]">Du fährst <b>3</b>: eine aus Gruppe A und zwei aus Gruppe B. Der Prüfer wählt aus. <b>Gruppe A</b> = rückwärts längs einparken oder rückwärts um die Ecke. <b>Gruppe B</b> = Umkehren, quer oder schräg einparken, Gefahrbremsung. <b>Korrekturzug</b> = einmal vor oder zurück zum Ausrichten.</Note>
+  <Grid min={300}>
+    {MANOEVER.map(m => (
+      <Card icon={m.group === 'A' ? '🅰️' : '🅱️'} title={m.title}>
+        {m.svg && <div class="[&_svg]:h-auto [&_svg]:w-full [&_svg]:rounded-box [&_svg]:border-2 [&_svg]:border-line [&_svg]:bg-bg2" set:html={m.svg} />}
+        {m.steps && <Steps items={m.steps} />}
+        {m.variants && (
+          <div class="grid gap-3">
+            {m.variants.map(v => (
+              <div class="rounded-box border-2 border-line bg-surface p-3.5 text-[.88rem] leading-[1.45]"><b>{v.label}</b><Steps items={v.steps} /></div>
+            ))}
           </div>
-          <div><b>Rückwärts</b>
-        <div class="steps">
-          <div>Mit ca. <b>1 m</b> vorbei. Schulter auf Höhe der Linie <b>nach</b> der Lücke: halten</div>
-          <div>Spiegel + Schulterblick, voll einschlagen, langsam zurück</div>
-          <div>Linien in beiden Spiegeln <b>parallel</b>: gerade</div>
-          <div>Halten, wenn die Front in der Markierung ist</div>
-        </div>
-          </div>
-        </div>
-        <p class="note"><b>Prüfer will:</b> Vorwärts oder rückwärts. Ganz in der Markierung, genug Seitenabstand, höchstens 2 Korrekturzüge.<br/><b>Fehler:</b> Auto steht über die Markierung, zu wenig Seitenabstand.</p>
-        <div class="tip"><b>Merke:</b> „Linien parallel = gerade.“</div>
-      </div>
-
-      <div class="card">
-        <h3><span>🅱️</span>Gefahrbremsung</h3>
-        <div class="flow small">
-          <div><b>1</b>mind. 30 km/h, gerade</div>
-          <div><b>2</b>Kommando vom Fahrlehrer</div>
-          <div><b>3</b>Bremse + Kupplung schlagartig voll</div>
-          <div><b>4</b>Druck halten bis Stillstand</div>
-        </div>
-        <p class="note"><b>Prüfer will:</b> Spur gerade halten, mit ABS voll draufbleiben (Rattern ist normal). Nach hinten schauen musst du nicht, das macht der Fahrlehrer.<br/><b>Fehler:</b> unter 30 km/h, zu schwach oder nicht schlagartig gebremst, Motor abgewürgt, aus der Spur gelenkt.</p>
-        <div class="tip"><b>Merke:</b> „Beide Füße, voll, bis Stillstand.“</div>
-      </div>
-    </div>
-  </Section>
+        )}
+        {m.flow && (
+          <Flow items={m.flow} small />
+        )}
+        <Note class="mt-2"><b>Prüfer will:</b> <Fragment set:html={m.examinerWants} /><br/><b>Fehler:</b> <Fragment set:html={m.faults} /></Note>
+        <Tip label="Merksatz">{m.hook}</Tip>
+      </Card>
+    ))}
+  </Grid>
+</Section>

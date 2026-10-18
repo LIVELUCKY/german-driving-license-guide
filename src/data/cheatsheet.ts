@@ -15,7 +15,7 @@ export const PAIRS = [
 ] as const;
 // Section bar: chips point to the first section of each group, in reading order.
 export const JUMP = [
-  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['formeln', 'Formeln'], ['zahlenkarte', 'Zahlen-Landkarte'], ['tempo', 'Tempo'], ['meter', 'Meter'], ['vorfahrt', 'Vorfahrt'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['vergessen', 'Oft verwechselt'], ['verhalten', 'Oft gefragt'], ['zahlen', 'Fragenkatalog'], ['test', 'Selbsttest']] },
+  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['formeln', 'Formeln'], ['zahlenkarte', 'Zahlen-Landkarte'], ['tempo', 'Tempo'], ['meter', 'Meter'], ['vorfahrt', 'Vorfahrt'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['vergessen', 'Oft verwechselt'], ['verhalten', 'Oft gefragt'], ['zahlen', 'Fragenkatalog'], ['test', 'Selbsttest'], ['begriffe', 'Begriffe']] },
   { label: 'Praxis', links: [['praxis', 'Prüfung'], ['aufgaben', 'Manöver'], ['situationen', 'Im Verkehr'], ['sichern', 'Sichern'], ['fehler', 'Sofort durch'], ['quellen', 'Quellen']] },
 ].map(g => ({ label: g.label, links: g.links.map(([id, label]) => ({ href: `#${id}`, label: label! })) }));
 export const QUIZ_CARDS = ZAHLEN.flatMap(g => g.rows);
@@ -32,28 +32,28 @@ export const pct = (m: number) => (m / maxStop) * 100;
 export const FORMULAS = [
   { name: 'Reaktionsweg', x: '(v ÷ 10) × 3',
     ex: [['50', 'Null weg', '5', '× 3', '15 m'], ['100', 'Null weg', '10', '× 3', '30 m']],
-    m: '1 Sekunde Schreck = 3-mal die Tacho-Ziffer. Bei 2 Sekunden Reaktion doppelt so lang.' },
+    k: '„Null weg, mal drei.“', m: '1 Sekunde Schreck = 3-mal die Tacho-Ziffer (das Tempo ohne die letzte Null). Bei 2 Sekunden Reaktion doppelt so lang.' },
   { name: 'Bremsweg', x: '(v ÷ 10)²', 
     ex: [['50', 'Null weg', '5', '× 5', '25 m'], ['100', 'Null weg', '10', '× 10', '100 m']],
-    m: 'Die Zahl mal sich selbst. Darum wird der Bremsweg bei doppeltem Tempo 4-mal so lang.' },
+    k: '„Zahl mal Zahl.“', m: 'Die Zahl mal sich selbst. Darum wird der Bremsweg bei doppeltem Tempo 4-mal so lang.' },
   { name: 'Gefahrbremsung', x: '(v ÷ 10)² ÷ 2',
     ex: [['50', 'Bremsweg', '25', '÷ 2', '12,5 m'], ['100', 'Bremsweg', '100', '÷ 2', '50 m']],
-    m: 'Voll in die Eisen = halber Bremsweg.' },
+    k: '„In Gefahr nur halb so weit.“', m: 'Voll in die Eisen = halber Bremsweg.' },
   { name: 'Anhalteweg', x: 'Reaktionsweg + Bremsweg', hl: true,
     ex: [['50', 'Reaktion + Bremsen', '15 + 25', '=', '40 m'], ['100', 'Reaktion + Bremsen', '30 + 100', '=', '130 m']],
-    m: 'Erst erschrecken, dann bremsen: beides zusammen. Das Auto steht erst nach dem Anhalteweg.' },
+    k: '„Schreck plus Bremsen, dann stehst du.“', m: 'Erst erschrecken, dann bremsen: beides zusammen. Das Auto steht erst nach dem Anhalteweg.' },
   { name: 'Anhalteweg bei Gefahr', x: 'Reaktionsweg + Bremsweg ÷ 2',
     ex: [['50', 'Reaktion + halber Bremsweg', '15 + 12,5', '=', '27,5 m'], ['100', 'Reaktion + halber Bremsweg', '30 + 50', '=', '80 m']],
     m: 'Nur der Bremsweg wird halbiert, der Reaktionsweg bleibt.' },
   { name: 'Sicherheitsabstand', x: 'v ÷ 2 (in Metern)',
     ex: [['80', 'halbieren', '40 m'], ['100', 'halbieren', '50 m']],
-    m: '„Halber Tacho“. Ohne Zahlen: 2 Sekunden Abstand, „einundzwanzig, zweiundzwanzig“.' },
+    k: '„Halber Tacho.“', m: 'Ohne Zahlen: 2 Sekunden Abstand, „einundzwanzig, zweiundzwanzig“.' },
   { name: 'Anhänger mit Klasse B', x: '3.500 − Pkw (zul. Gesamtmasse)',
     ex: [['3.500 kg', '− Pkw 2.400 kg', '1.100 kg Anhänger']],
-    m: 'Bis 750 kg geht immer. Schwerer nur, wenn Pkw + Anhänger zusammen höchstens 3.500 kg (zulässig) wiegen.' },
+    m: 'Bis 750 kg geht immer. Schwerer nur, wenn Pkw + Anhänger zusammen höchstens 3.500 kg (zulässig) wiegen. Zulässige Gesamtmasse = was das Auto voll beladen höchstens wiegen darf (Fahrzeugschein, Feld F.2).' },
   { name: 'Stützlast', x: 'mind. 4 % vom Anhänger',
     ex: [['600 kg', '× 4 %', '24 kg']],
-    m: 'Vier Prozent drücken auf die Kupplung, sonst schlingert der Anhänger.' },
+    m: 'Vier Prozent drücken auf die Anhängerkupplung (nicht auf das Kupplungspedal), sonst schlingert der Anhänger.' },
   { name: 'Überholweg (Idee hinter 800 m)', x: 'Strecke × v ÷ (v − v Lkw)',
     ex: [['100 gegen 70 km/h', 'Überholweg', '≈ 410 m', '+ Gegenverkehr fährt gleich weit', '≈ 800 m Sicht']],
     m: 'Du überholst nur mit der Differenz (30 km/h). Der Gegenverkehr fährt dir in der gleichen Zeit genauso weit entgegen. Darum braucht man doppelt so viel freie Sicht.' },
@@ -63,17 +63,17 @@ export const FORMULAS = [
 export const RULER = [
   { m: 1.5, t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'innerorts (§ 5 Abs. 4)' },
   { m: 2,   t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'außerorts' },
-  { m: 3,   t: 'Restfahrbahn bis zur durchgezogenen Linie, sonst Parkverbot', s: 'Zeichen 295' },
-  { m: 5,   t: 'Parkverbot vor und hinter Kreuzung/Einmündung', s: '§ 12 Abs. 3' },
+  { m: 3,   t: 'Restfahrbahn bis zur durchgezogenen Linie, sonst Parkverbot', s: 'Zeichen 295 (durchgezogene Linie)' },
+  { m: 5,   t: 'Parkverbot vor und hinter Kreuzung/Einmündung', s: '§ 12 Abs. 3 · Einmündung = eine Straße stößt auf eine andere (T-Form)' },
   { m: 5,   t: 'Haltverbot vor dem Zebrastreifen (und darauf)', s: 'Zeichen 293' },
-  { m: 5,   t: 'Parkverbot vor und hinter Andreaskreuz innerorts', s: 'Zeichen 201' },
+  { m: 5,   t: 'Parkverbot vor und hinter Andreaskreuz innerorts', s: 'Zeichen 201 (rot-weißes Kreuz am Bahnübergang)' },
   { m: 5,   t: 'Abschleppseil: maximaler Abstand', s: '§ 43 StVZO' },
-  { m: 8,   t: 'Parkverbot vor Kreuzung, wenn rechts ein baulicher Radweg ist', s: 'nur davor' },
+  { m: 8,   t: 'Parkverbot vor Kreuzung, wenn rechts ein baulicher Radweg ist', s: 'nur davor · baulich = mit Bordstein abgetrennt, nicht nur aufgemalt' },
   { m: 10,  t: 'Haltverbot vor Ampel, Andreaskreuz, Vorfahrt gewähren, Stopp', s: 'nur wenn du sie verdeckst' },
-  { m: 15,  t: 'Parkverbot vor und hinter Haltestellenschild', s: 'Zeichen 224' },
+  { m: 15,  t: 'Parkverbot vor und hinter Haltestellenschild', s: 'Zeichen 224 (Haltestellenschild: grünes H auf gelbem Grund)' },
   { m: 50,  t: 'Parkverbot vor und hinter Andreaskreuz außerorts', s: 'Zeichen 201' },
   { m: 50,  t: 'Abstand Lkw > 3,5 t / Bus auf Autobahn ab 50 km/h', s: '§ 4 Abs. 3' },
-  { m: 50,  t: 'Leitpfosten stehen alle …', s: 'zum Schätzen von Abstand und Sicht' },
+  { m: 50,  t: 'Leitpfosten stehen alle …', s: 'weiß-schwarze Pfähle am Rand, zum Schätzen von Abstand und Sicht' },
 ];
 // T trick: every formula only needs T = speed ÷ 10.
 export const TROWS = [30, 50, 70, 80, 100, 130].map(v => {
@@ -90,7 +90,7 @@ export const ZAHLENKARTE: { n: string; items: [string, string, string][] }[] = [
   { n: '0,5', items: [['pm', '‰', 'Ordnungswidrigkeit, Fahrverbot']] },
   { n: '1', items: [['m', 'm', 'Ladung hinten ohne Kennzeichnung']] },
   { n: '1,1', items: [['pm', '‰', 'absolut fahruntüchtig']] },
-  { n: '1,5', items: [['m', 'm', 'Seitenabstand Rad innerorts'], ['m', 'm', 'Ladung hinten max. (über 100 km)'], ['m', 'm', 'rote Fahne/Leuchte max. hoch']] },
+  { n: '1,5', items: [['m', 'm', 'Seitenabstand Rad innerorts'], ['m', 'm', 'Ladung hinten max. (über 100 km)'], ['m', 'm', 'Fahne/Leuchte an Ladung höchstens 1,5 m über der Straße']] },
   { n: '1,6', items: [['x', 'mm', 'Mindestprofil'], ['pm', '‰', 'MPU, auch mit dem Rad']] },
   { n: '2', items: [['m', 'm', 'Seitenabstand Rad außerorts'], ['zeit', 'Sek', 'Abstand („zweiundzwanzig“)'], ['zeit', 'Jahre', 'Probezeit, HU-Intervall'], ['zeit', 'Wochen', 'Anhänger allein parken']] },
   { n: '3', items: [['m', 'm', 'Ladung hinten bis 100 km Fahrt'], ['m', 'm', 'Restfahrbahn zur durchgezogenen Linie'], ['zeit', 'Min', 'länger halten = parken'], ['zeit', 'Jahre', 'bis zur ersten HU'], ['x', '×', 'Grundfahraufgaben, Nachtfahrten']] },
@@ -108,7 +108,7 @@ export const ZAHLENKARTE: { n: string; items: [string, string, string][] }[] = [
   { n: '80', items: [['kmh', 'km/h', 'Anhänger, Bus, über 3,5 t'], ['kmh', 'km/h', 'mit Notrad'], ['m', 'm', 'je Bakenstreifen am Bahnübergang']] },
   { n: '100', items: [['kmh', 'km/h', 'Pkw außerorts'], ['kmh', 'km/h', 'Anhänger mit Tempo-100-Plakette'], ['m', 'm', 'Warndreieck (Prüfungsantwort)'], ['x', 'km', 'Grenze für 3 m Überstand']] },
   { n: '130', items: [['kmh', 'km/h', 'Richtgeschwindigkeit, kein Limit']] },
-  { n: '150', items: [['x', 'cm', 'Kindersitz darunter (und unter 12)'], ['m', 'm', 'bis 250 m: Gefahrzeichen außerorts davor']] },
-  { n: '3.500', items: [['x', 'kg', 'Klasse B; mit Anhänger über 750 kg auch der ganze Zug']] },
+  { n: '150', items: [['x', 'cm', 'Kindersitz darunter (und unter 12)'], ['m', 'm', 'bis 250 m: so weit stehen Gefahrzeichen außerorts vor der Gefahr']] },
+  { n: '3.500', items: [['x', 'kg', 'Klasse B (zulässige Gesamtmasse); mit Anhänger über 750 kg darf der ganze Zug höchstens so viel wiegen']] },
 ];
 export const UNIT: Record<string, string> = { kmh: 'km/h', m: 'Meter', pm: 'Promille', zeit: 'Zeit', x: 'Sonstiges' };

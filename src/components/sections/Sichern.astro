@@ -1,42 +1,56 @@
 ---
 import Section from '../Section.astro';
+import Card from '../ui/Card.astro';
+import Grid from '../ui/Grid.astro';
+import Kv from '../ui/Kv.astro';
+import Note from '../ui/Note.astro';
+import Steps from '../ui/Steps.astro';
+import Tip from '../ui/Tip.astro';
+
+const GANG = [
+  ['bergauf', '1. Gang + Handbremse'],
+  ['bergab', 'Rückwärtsgang + Handbremse'],
+  ['Automatik', 'erst Handbremse, dann P'],
+];
+const BORDSTEIN = [
+  ['bergab mit Bordstein', 'Räder zum Bordstein'],
+  ['bergauf mit Bordstein', 'Räder vom Bordstein weg'],
+];
+const VERLASSEN = [
+  'Richtig parken',
+  'Gegen Wegrollen sichern: Gang und Handbremse, oder P',
+  'Schlüssel ab, Lenkradschloss, abschließen (§ 14: gegen unbefugte Benutzung)',
+  'Vor und beim Türöffnen auf Verkehr achten, niemanden gefährden',
+];
+const TECHNIK = [
+  ['Ölstand', 'Messstab, zwischen min und max, Motor aus, Auto eben'],
+  ['Kühlmittel', 'Ausgleichsbehälter, min/max, nur kalt öffnen'],
+  ['Bremsflüssigkeit', 'Behälter, zwischen min und max'],
+  ['Wischwasser', 'Behälter mit Scheiben-Symbol'],
+  ['Reifendruck', 'Aufkleber in Tür oder Tankklappe, kalt prüfen'],
+  ['Profil', 'mind. 1,6 mm, TWI-Stege im Profil (kleine Stege in der Profilrille, zeigen 1,6 mm an)'],
+  ['Licht', 'rundum gehen; Bremslicht mit Helfer oder Spiegelung'],
+];
 ---
-  <Section id="sichern" title="Auto sichern und bedienen">
-    <div class="grid cols2">
-      <div class="card">
-        <h3><span>⛰️</span>Am Berg parken</h3>
-        <div class="kv"><span class="lab">bergauf</span><span class="val">1. Gang + Handbremse</span></div>
-        <div class="kv"><span class="lab">bergab</span><span class="val">Rückwärtsgang + Handbremse</span></div>
-        <div class="kv"><span class="lab">Automatik</span><span class="val">erst Handbremse, dann P</span></div>
-        <div class="kv"><span class="lab">bergab mit Bordstein</span><span class="val">Räder zum Bordstein</span></div>
-        <div class="kv"><span class="lab">bergauf mit Bordstein</span><span class="val">Räder vom Bordstein weg</span></div>
-        <div class="tip"><b>Merke:</b> „Gang gegen die Rollrichtung.“</div>
-      </div>
-      <div class="card">
-        <h3><span>🔑</span>Auto verlassen und Prüfungsende</h3>
-        <div class="steps">
-          <div>Richtig parken</div>
-          <div>Gegen Wegrollen sichern: Gang und Handbremse, oder P</div>
-          <div>Schlüssel ab, Lenkradschloss, abschließen (§ 14: gegen unbefugte Benutzung)</div>
-          <div>Vor und beim Türöffnen auf Verkehr achten, niemanden gefährden</div>
-        </div>
-        <p class="note">Nach einer Panne: sofort Warnblinker, dann Warndreieck (§ 15).</p>
-      </div>
-      <div class="card">
-        <h3><span>🎛️</span>Bedienelemente im Griff</h3>
-        <p class="note">In der Prüfung musst du Licht, Wischer und Waschanlage, Heizung, Lüftung und Heckscheibenheizung <b>selbst richtig</b> nutzen. <b>Licht oder Wischer</b> gar nicht nutzen, wenn es nötig wäre = schwerer Fehler.</p>
-        <div class="tip"><b>Beschlagene Scheibe:</b> Gebläse auf die Frontscheibe, stärker stellen, Klima an, Heckscheibenheizung an.</div>
-      </div>
-      <div class="card">
-        <h3><span>🔧</span>Falls der Prüfer Technik fragt</h3>
-        <p class="note">Offiziell gibt es für Klasse B keine Pflicht-Technikfragen mehr. Manche Prüfer fragen trotzdem.</p>
-        <div class="kv"><span class="lab">Ölstand</span><span class="val">Messstab, zwischen min und max, Motor aus, Auto eben</span></div>
-        <div class="kv"><span class="lab">Kühlmittel</span><span class="val">Ausgleichsbehälter, min/max, nur kalt öffnen</span></div>
-        <div class="kv"><span class="lab">Bremsflüssigkeit</span><span class="val">Behälter, zwischen min und max</span></div>
-        <div class="kv"><span class="lab">Wischwasser</span><span class="val">Behälter mit Scheiben-Symbol</span></div>
-        <div class="kv"><span class="lab">Reifendruck</span><span class="val">Aufkleber in Tür oder Tankklappe, kalt prüfen</span></div>
-        <div class="kv"><span class="lab">Profil</span><span class="val">mind. 1,6 mm, TWI-Stege im Profil</span></div>
-        <div class="kv"><span class="lab">Licht</span><span class="val">rundum gehen; Bremslicht mit Helfer oder Spiegelung</span></div>
-      </div>
-    </div>
-  </Section>
+<Section id="sichern" title="Auto sichern und bedienen">
+  <Grid min={300}>
+    <Card icon="⛰️" title="Am Berg parken">
+      {GANG.map(([l, v]) => <Kv label={l!}>{v}</Kv>)}
+      <Tip label="Merksatz">„Gang gegen die Rollrichtung.“</Tip>
+      {BORDSTEIN.map(([l, v]) => <Kv label={l!}>{v}</Kv>)}
+      <Tip label="Merksatz">„Bergab zum Bord, bergauf davon.“</Tip>
+    </Card>
+    <Card icon="🔑" title="Auto verlassen und Prüfungsende">
+      <Steps items={VERLASSEN} />
+      <Note class="mt-2">Nach einer Panne: sofort Warnblinker, dann Warndreieck (§ 15).</Note>
+    </Card>
+    <Card icon="🎛️" title="Bedienelemente im Griff">
+      <Note>In der Prüfung musst du Licht, Wischer und Waschanlage, Heizung, Lüftung und Heckscheibenheizung <b>selbst richtig</b> nutzen. <b>Licht oder Wischer</b> gar nicht nutzen, wenn es nötig wäre = schwerer Fehler.</Note>
+      <Tip label="Beschlagene Scheibe">Gebläse auf die Frontscheibe, stärker stellen, Klima an, Heckscheibenheizung an.</Tip>
+    </Card>
+    <Card icon="🔧" title="Falls der Prüfer Technik fragt">
+      <Note class="mb-1">Offiziell gibt es für Klasse B keine Pflicht-Technikfragen mehr. Manche Prüfer fragen trotzdem.</Note>
+      {TECHNIK.map(([l, v]) => <Kv label={l!}>{v}</Kv>)}
+    </Card>
+  </Grid>
+</Section>

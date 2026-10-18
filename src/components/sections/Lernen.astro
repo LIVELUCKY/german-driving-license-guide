@@ -1,12 +1,21 @@
 ---
 import Section from '../Section.astro';
+import Note from '../ui/Note.astro';
+
+const STEPS = [
+  'Formeln verstehen, nicht auswendig',
+  'Zahlen-Landkarte: eine Zahl, viele Regeln',
+  'Oft gefragt und oft verwechselt lesen',
+  'Selbsttest jeden Tag 5 Minuten',
+];
 ---
-  <Section id="lernen" title="So lernst du mit dieser Seite">
-    <div class="flow">
-      <div><b>1</b>Formeln verstehen, nicht auswendig</div>
-      <div><b>2</b>Zahlen-Landkarte: eine Zahl, viele Regeln</div>
-      <div><b>3</b>Oft gefragt und oft verwechselt lesen</div>
-      <div><b>4</b>Selbsttest jeden Tag 5 Minuten</div>
-    </div>
-    <p class="note note-mt">Was du im Selbsttest nicht wusstest, kommt später wieder. Wiederholen mit Pausen (nicht alles an einem Abend) bleibt am längsten hängen.</p>
-  </Section>
+<Section id="lernen" title="So lernst du mit dieser Seite">
+  <ol class="flex flex-wrap items-stretch gap-1.5">
+    {STEPS.map((s, i) => (
+      <li class="flex flex-[1_1_110px] flex-col items-center gap-1 rounded-box border-2 border-line bg-surface px-2 py-3 text-center text-[.88rem] font-bold">
+        <span class="grid size-7 place-items-center rounded-full bg-accent text-[.85rem] text-white" aria-hidden="true">{i + 1}</span>{s}
+      </li>
+    ))}
+  </ol>
+  <Note class="mt-[clamp(10px,1.6vw,16px)]">Was du im Selbsttest nicht wusstest, kommt später wieder. Wiederholen mit Pausen (nicht alles an einem Abend) bleibt am längsten hängen.</Note>
+</Section>

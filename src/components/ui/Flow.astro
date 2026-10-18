@@ -1,0 +1,13 @@
+---
+// Numbered sequence of boxes (a routine or an order of actions). `small` for use inside cards.
+interface Props { items: string[]; small?: boolean }
+const { items, small = false } = Astro.props;
+---
+<ol class="flex flex-wrap items-stretch gap-1.5">
+  {items.map((it, i) => (
+    <li class:list={['flex flex-col items-center gap-1 rounded-box border-2 border-line bg-surface text-center font-bold', small ? 'flex-[1_1_90px] px-1.5 py-2 text-[.78rem]' : 'flex-[1_1_110px] px-2 py-3 text-[.88rem]']}>
+      <b class="grid size-7 place-items-center rounded-full bg-accent-text text-[.85rem] text-white" aria-hidden="true">{i + 1}</b>
+      <Fragment set:html={it} />
+    </li>
+  ))}
+</ol>

@@ -1,56 +1,71 @@
 ---
+import Flow from '../ui/Flow.astro';
 import Section from '../Section.astro';
----
-  <Section id="praxis" title="Praktische Prüfung in Zahlen">
-    <div class="stats">
-      <div class="stat"><b>55</b><span>Minuten gesamt</span></div>
-      <div class="stat"><b>≥ 30</b><span>Minuten reine Fahrzeit</span></div>
-      <div class="stat"><b>3</b><span>Grundfahraufgaben</span></div>
-      <div class="stat"><b>5 · 4 · 3</b><span>Sonderfahrten vorher:<br/>Überland · Autobahn · Nacht<br/>je 45 Min</span></div>
-    </div>
-    <div class="chips note-mt">
-      <div>👀 Vor dem Losfahren: Sitz, Kopfstütze, Spiegel, Gurt. Der Prüfer schaut zu.</div>
-      <div>🗺️ Stadt, Landstraße und meist Autobahn oder Kraftfahrstraße</div>
-      <div>🅰️ Prüfung im Automatik = nur Automatik. Ausnahme <b>B197</b>: mindestens 10 Schaltstunden à 45 Min + 15 Min Testfahrt in der Fahrschule, Eintrag binnen 1 Jahr</div>
-      <div>🔧 <b>Abfahrtkontrolle</b> (Licht, Reifen, Flüssigkeiten) gehört nur zu C, C1, D, D1, T, nicht zu Klasse B</div>
-    </div>
-  </Section>
+import Card from '../ui/Card.astro';
+import Grid from '../ui/Grid.astro';
+import Note from '../ui/Note.astro';
+import Steps from '../ui/Steps.astro';
+import Tip from '../ui/Tip.astro';
 
-  <Section id="blick" title="Die Blickroutine">
-    <div class="flow">
-      <div><b>1</b>Innenspiegel</div>
-      <div><b>2</b>Außenspiegel</div>
-      <div><b>3</b>Blinker</div>
-      <div><b>4</b>Schulterblick</div>
-      <div><b>5</b>Fahren</div>
-    </div>
-    <div class="grid cols2 note-mt">
-      <div class="card">
-        <h3><span>👀</span>Der tote Winkel</h3>
-        <div class="diag">
-          <svg viewBox="0 0 300 150" role="img" aria-label="Toter Winkel links und rechts hinter dem Auto">
-            <path d="M150 75 L20 20 L20 60 Z" fill="#f5a400" opacity=".55"/>
-            <path d="M150 75 L280 20 L280 60 Z" fill="#f5a400" opacity=".55" transform="translate(0,0)"/>
-            <path d="M120 70 L10 120 L60 140 Z" fill="#d92f2f" opacity=".55"/>
-            <path d="M180 70 L290 120 L240 140 Z" fill="#d92f2f" opacity=".55"/>
-            <rect x="125" y="20" width="50" height="90" rx="10" fill="#1565d8"/>
-            <text x="150" y="70" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
-            <text x="45" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
-            <text x="200" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
-          </svg>
-        </div>
-        <p class="note">Gelb = siehst du im Spiegel. Rot = kein Spiegel zeigt es. Nur der <b>Schulterblick</b> (Kopf drehen, nicht nur Augen) deckt das ab.</p>
+// Practical exam frame (FeV Anlage 7, Fahrschüler-Ausbildungsordnung).
+const STATS = [
+  { n: '55', label: 'Minuten gesamt' },
+  { n: '≥ 30', label: 'Minuten reine Fahrzeit' },
+  { n: '3', label: 'Grundfahraufgaben' },
+  { n: '5 · 4 · 3', label: 'Sonderfahrten vorher:<br/>Überland · Autobahn · Nacht<br/>je 45 Min' },
+];
+const CHIPS = [
+  '👀 Vor dem Losfahren: Sitz, Kopfstütze, Spiegel, Gurt. Der Prüfer schaut zu.',
+  '🗺️ Stadt, Landstraße und meist Autobahn oder Kraftfahrstraße',
+  '🅰️ Prüfung im Automatik = nur Automatik. Ausnahme <b>B197</b> (Prüfung im Automatik, trotzdem Schaltwagen erlaubt): mindestens 10 Schaltstunden à 45 Min + 15 Min Testfahrt in der Fahrschule, Eintrag binnen 1 Jahr',
+  '🔧 <b>Abfahrtkontrolle</b> (Licht, Reifen, Flüssigkeiten) gehört nur zu C, C1, D, D1, T (Lkw-, Bus- und Traktor-Klassen), nicht zu Klasse B',
+];
+const ROUTINE = ['Innenspiegel', 'Außenspiegel', 'Blinker', 'Schulterblick', 'Fahren'];
+const SCHULTERBLICK = [
+  'Anfahren vom Fahrbahnrand: <b>links</b>',
+  'Spurwechsel und Einfädeln: zur <b>Zielseite</b>',
+  'Rechts abbiegen: <b>rechts</b> (Radweg!), kurz vor dem Abbiegen noch einmal',
+  'Links abbiegen: <b>links</b>, kurz vor dem Abbiegen noch einmal',
+  'Tür öffnen: Spiegel + Schulterblick (oder <b>holländischer Griff</b>: Tür mit der fernen, also rechten Hand öffnen, so drehst du dich automatisch nach hinten)',
+];
+---
+<Section id="praxis" title="Praktische Prüfung in Zahlen">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
+    {STATS.map(s => (
+      <div class="rounded-box border-2 border-line bg-surface px-4 py-3.5 shadow-hard">
+        <b class="block font-display text-[clamp(1.6rem,4vw,2.2rem)] leading-none text-ink">{s.n}</b>
+        <span class="mt-1.5 block text-[.8rem] leading-[1.35] text-muted" set:html={s.label} />
       </div>
-      <div class="card">
-        <h3><span>📋</span>Wann Schulterblick?</h3>
-        <div class="steps">
-          <div>Anfahren vom Fahrbahnrand: <b>links</b></div>
-          <div>Spurwechsel und Einfädeln: zur <b>Zielseite</b></div>
-          <div>Rechts abbiegen: <b>rechts</b> (Radweg!), kurz vor dem Abbiegen noch einmal</div>
-          <div>Links abbiegen: <b>links</b>, kurz vor dem Abbiegen noch einmal</div>
-          <div>Tür öffnen: Spiegel + Schulterblick (oder <b>holländischer Griff</b>: Tür mit der rechten Hand öffnen)</div>
-        </div>
-        <div class="tip">Kopf ca. <b>45°</b> drehen. Der Prüfer sieht nur deinen Kopf. Bewegt er sich nicht, hat der Blick nicht stattgefunden.</div>
+    ))}
+  </div>
+  <Note class="mt-3"><b>Sonderfahrten</b> = Pflichtfahrten in der Fahrschule vor der Prüfung. <b>Grundfahraufgaben</b> = Manöver, die der Prüfer auswählt.</Note>
+  <div class="mt-[clamp(10px,1.6vw,16px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-2.5">
+    {CHIPS.map(c => <div class="rounded-box border-2 border-soft bg-surface px-3.5 py-2.5 text-[.9rem] leading-[1.45]" set:html={c} />)}
+  </div>
+</Section>
+
+<Section id="blick" title="Die Blickroutine">
+  <Flow items={ROUTINE} />
+  <Tip label="Merksatz">„Spiegel, Blinker, Schulterblick.“ Immer in dieser Reihenfolge, bei jedem Anfahren, Abbiegen und Spurwechsel.</Tip>
+  <Grid min={300} class="mt-[clamp(10px,1.6vw,16px)]">
+    <Card icon="👀" title="Der tote Winkel">
+      <div class="[&_svg]:h-auto [&_svg]:w-full [&_svg]:rounded-box [&_svg]:border-2 [&_svg]:border-line [&_svg]:bg-bg2">
+        <svg viewBox="0 0 300 150" role="img" aria-label="Toter Winkel links und rechts hinter dem Auto">
+          <path d="M150 75 L20 20 L20 60 Z" fill="#f5a400" opacity=".55"/>
+          <path d="M150 75 L280 20 L280 60 Z" fill="#f5a400" opacity=".55" transform="translate(0,0)"/>
+          <path d="M120 70 L10 120 L60 140 Z" fill="#d92f2f" opacity=".55"/>
+          <path d="M180 70 L290 120 L240 140 Z" fill="#d92f2f" opacity=".55"/>
+          <rect x="125" y="20" width="50" height="90" rx="10" fill="#1565d8"/>
+          <text x="150" y="70" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">DU</text>
+          <text x="45" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
+          <text x="200" y="148" font-size="11" fill="var(--ink)" font-weight="800">toter Winkel</text>
+        </svg>
       </div>
-    </div>
-  </Section>
+      <Note class="mt-2">Gelb = siehst du im Spiegel. Rot = kein Spiegel zeigt es. Nur der <b>Schulterblick</b> (Kopf drehen, nicht nur Augen) deckt das ab.</Note>
+    </Card>
+    <Card icon="📋" title="Wann Schulterblick?">
+      <Steps items={SCHULTERBLICK} />
+      <Tip>Kopf ca. <b>45°</b> drehen. Der Prüfer sieht nur deinen Kopf. Bewegt er sich nicht, hat der Blick nicht stattgefunden.</Tip>
+    </Card>
+  </Grid>
+</Section>

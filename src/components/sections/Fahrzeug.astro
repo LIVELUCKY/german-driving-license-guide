@@ -1,53 +1,65 @@
 ---
 import Section from '../Section.astro';
+import Card from '../ui/Card.astro';
+import Grid from '../ui/Grid.astro';
+import Kv from '../ui/Kv.astro';
+import Note from '../ui/Note.astro';
+import Tip from '../ui/Tip.astro';
+
+// One card per topic: label/value rows, optional explanation (note), hint (tip) and mnemonic (merk). Strings may contain inline HTML.
+type Topic = { icon: string; title: string; kv?: [string, string][]; note?: string; tip?: string; merk?: string };
+const TOPICS: Topic[] = [
+  { icon: '🛞', title: 'Reifen',
+    kv: [['Mindestprofil', '1,6 mm'], ['empfohlen', 'Sommer 3 mm · Winter 4 mm']],
+    tip: 'Luftdruck bei <b>kalten</b> Reifen prüfen. Volle Beladung = mehr Druck.' },
+  { icon: '📦', title: 'Ladung',
+    kv: [
+      ['nach hinten raus', 'max. 1,5 m'],
+      ['bei Fahrt bis 100 km', 'max. 3 m'],
+      ['kennzeichnen ab', 'mehr als 1 m über die Rückstrahler (rote Reflektoren hinten)'],
+      ['wie', 'rote Fahne oder Schild mind. 30 × 30 cm, max. 1,5 m hoch; bei Dunkelheit zusätzlich rote Leuchte'],
+      ['nach vorn', 'nichts, ab 2,5 m Höhe bis 50 cm'],
+      ['seitlich', 'mehr als 40 cm über die Leuchten: bei Dunkelheit kennzeichnen'],
+    ],
+    merk: '„<b>Ab 1 Meter Fahne</b>.“ Bis <b>1,5 m</b> raus, <b>3 m</b> nur bei Fahrt bis 100 km.' },
+  { icon: '🚙', title: 'Klasse B darf',
+    kv: [
+      ['Fahrzeug', 'bis 3.500 kg (zulässige Gesamtmasse)'],
+      ['Anhänger', 'bis 750 kg'],
+      ['schwerer Anhänger', 'wenn Zug ≤ 3.500 kg'],
+      ['mit B96', 'Zug bis 4.250 kg'],
+      ['Pkw + Anhänger', '1 Anhänger, max. 18 m lang'],
+      ['Mindestalter', '18 · begleitet ab 17'],
+    ],
+    note: '<b>B96</b> = Schlüsselzahl im Führerschein nach einer Schulung. <b>Begleitet ab 17</b> = BF17 (Begleitetes Fahren ab 17).' },
+  { icon: '🧒', title: 'Kinder',
+    kv: [['Kindersitz bis', 'unter 12 Jahre <b>und</b> unter 150 cm']],
+    tip: 'Rückwärts gerichteter Sitz auf dem Beifahrersitz nur mit <b>ausgeschaltetem</b> Airbag.' },
+  { icon: '📱', title: 'Handy',
+    tip: 'In die Hand nehmen nur, wenn das Auto steht <b>und</b> der Motor ganz aus ist. Start-Stopp-Automatik zählt <b>nicht</b>.' },
+  { icon: '🔧', title: 'Prüfungen und Pflichten',
+    kv: [
+      ['HU (TÜV) Neuwagen', 'nach 3 Jahren'],
+      ['danach', 'alle 2 Jahre'],
+      ['dabeihaben', 'Führerschein, Zulassung Teil I'],
+      ['im Auto', 'Warndreieck, Weste, Verbandkasten'],
+    ],
+    note: '<b>HU</b> = Hauptuntersuchung (TÜV, DEKRA …). <b>Zulassungsbescheinigung Teil I</b> = früher „Fahrzeugschein“.',
+    tip: 'Abschleppen: Seil max. <b>5 m</b>, kennzeichnen, beide Warnblinker. Autobahn an der nächsten Ausfahrt verlassen.',
+    merk: 'HU: „<b>Drei, dann zwei</b>“ (Jahre).' },
+  { icon: '🌱', title: 'Umweltbewusst fahren',
+    tip: 'Früh hochschalten (ca. 2.000 U/min), vorausschauend rollen lassen, Motor aus bei längerem Warten, Dachbox abbauen, Reifendruck prüfen. Unnützes Hin- und Herfahren ist <b>innerorts verboten</b>, wenn es andere stört.' },
+];
 ---
-  <Section id="fahrzeug" title="Fahrzeug, Ladung, Anhänger">
-    <div class="grid cols3">
-      <div class="card">
-        <h3><span>🛞</span>Reifen</h3>
-        <div class="kv"><span class="lab">Mindestprofil</span><span class="val">1,6 mm</span></div>
-        <div class="kv"><span class="lab">empfohlen</span><span class="val">Sommer 3 mm · Winter 4 mm</span></div>
-        <div class="tip">Luftdruck bei <b>kalten</b> Reifen prüfen. Volle Beladung = mehr Druck.</div>
-      </div>
-      <div class="card">
-        <h3><span>📦</span>Ladung</h3>
-        <div class="kv"><span class="lab">nach hinten raus</span><span class="val">max. 1,5 m</span></div>
-        <div class="kv"><span class="lab">bei Fahrt bis 100 km</span><span class="val">max. 3 m</span></div>
-        <div class="kv"><span class="lab">kennzeichnen ab</span><span class="val">mehr als 1 m über die Rückstrahler</span></div>
-        <div class="kv"><span class="lab">wie</span><span class="val">rote Fahne oder Schild mind. 30 × 30 cm, max. 1,5 m hoch; bei Dunkelheit zusätzlich rote Leuchte</span></div>
-        <div class="kv"><span class="lab">nach vorn</span><span class="val">nichts, ab 2,5 m Höhe bis 50 cm</span></div>
-        <div class="kv"><span class="lab">seitlich</span><span class="val">mehr als 40 cm über die Leuchten: bei Dunkelheit kennzeichnen</span></div>
-        <div class="tip"><b>Merksatz:</b> ab <b>1</b> markieren, bis <b>1,5</b> raus, <b>3</b> nur unter 100 km.</div>
-      </div>
-      <div class="card">
-        <h3><span>🚙</span>Klasse B darf</h3>
-        <div class="kv"><span class="lab">Fahrzeug</span><span class="val">bis 3.500 kg</span></div>
-        <div class="kv"><span class="lab">Anhänger</span><span class="val">bis 750 kg</span></div>
-        <div class="kv"><span class="lab">schwerer Anhänger</span><span class="val">wenn Zug ≤ 3.500 kg</span></div>
-        <div class="kv"><span class="lab">mit B96</span><span class="val">Zug bis 4.250 kg</span></div>
-        <div class="kv"><span class="lab">Pkw + Anhänger</span><span class="val">1 Anhänger, max. 18 m lang</span></div>
-        <div class="kv"><span class="lab">Mindestalter</span><span class="val">18 · begleitet ab 17</span></div>
-      </div>
-      <div class="card">
-        <h3><span>🧒</span>Kinder</h3>
-        <div class="kv"><span class="lab">Kindersitz bis</span><span class="val">unter 12 Jahre <b>und</b> unter 150 cm</span></div>
-        <div class="tip">Rückwärts gerichteter Sitz auf dem Beifahrersitz nur mit <b>ausgeschaltetem</b> Airbag.</div>
-      </div>
-      <div class="card">
-        <h3><span>📱</span>Handy</h3>
-        <div class="tip">In die Hand nehmen nur, wenn das Auto steht <b>und</b> der Motor ganz aus ist. Start-Stopp-Automatik zählt <b>nicht</b>.</div>
-      </div>
-      <div class="card">
-        <h3><span>🔧</span>Prüfungen und Pflichten</h3>
-        <div class="kv"><span class="lab">HU (TÜV) Neuwagen</span><span class="val">nach 3 Jahren</span></div>
-        <div class="kv"><span class="lab">danach</span><span class="val">alle 2 Jahre</span></div>
-        <div class="kv"><span class="lab">dabeihaben</span><span class="val">Führerschein, Zulassung Teil I</span></div>
-        <div class="kv"><span class="lab">im Auto</span><span class="val">Warndreieck, Weste, Verbandkasten</span></div>
-        <div class="tip">Abschleppen: Seil max. <b>5 m</b>, kennzeichnen, beide Warnblinker. Autobahn an der nächsten Ausfahrt verlassen.</div>
-      </div>
-      <div class="card">
-        <h3><span>🌱</span>Umweltbewusst fahren</h3>
-        <div class="tip">Früh hochschalten (ca. 2.000 U/min), vorausschauend rollen lassen, Motor aus bei längerem Warten, Dachbox abbauen, Reifendruck prüfen. Unnützes Hin- und Herfahren ist <b>innerorts verboten</b>, wenn es andere stört.</div>
-      </div>
-    </div>
-  </Section>
+<Section id="fahrzeug" title="Fahrzeug, Ladung, Anhänger">
+  <Grid>
+    {TOPICS.map(c => (
+      <Card icon={c.icon} title={c.title}>
+        {c.kv?.map(([l, v]) => <Kv label={l}><Fragment set:html={v} /></Kv>)}
+        {c.note && <Note class="mt-2"><Fragment set:html={c.note} /></Note>}
+        {c.tip && <Tip><Fragment set:html={c.tip} /></Tip>}
+        {c.merk && <Tip label="Merksatz"><Fragment set:html={c.merk} /></Tip>}
+      </Card>
+    ))}
+  </Grid>
+</Section>

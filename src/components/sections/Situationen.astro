@@ -1,81 +1,30 @@
 ---
 import Section from '../Section.astro';
+import Card from '../ui/Card.astro';
+import Note from '../ui/Note.astro';
+import Steps from '../ui/Steps.astro';
+
+// Everyday driving tasks in the practical exam (StVO §§ 5, 6, 9, 10, 19, 20; FeV Anlage 7).
+const SITUATIONEN: { icon: string; title: string; steps: string[]; note?: string }[] = [
+  { icon: '🚦', title: 'Anfahren vom Rand', steps: ['Blinker links', 'Spiegel, <b>Schulterblick links</b>', 'Lücke nutzen, Blinker aus'], note: 'Muss ein anderer deinetwegen stark bremsen = sofort durch.' },
+  { icon: '🏠', title: 'Aus Einfahrt oder Parkplatz', steps: ['Langsam vortasten', '<b>Allen</b> Vorrang geben (§ 10)', 'Wenn nötig, einweisen lassen'] },
+  { icon: '↔️', title: 'Fahrstreifenwechsel', steps: ['Nötig und erlaubt?', 'Spiegel, Blinker, <b>Schulterblick</b>', 'Tempo anpassen, wechseln, Blinker aus'] },
+  { icon: '🛣️', title: 'Auf die Autobahn', steps: ['Früh auf die Hauptfahrbahn schauen', 'Einfädelungsstreifen (Spur zum Auffahren) <b>weit nutzen</b>, Tempo angleichen', 'Schulterblick links, einfädeln'], note: 'Mit unter 80 km/h einfädeln, wo 100 erlaubt ist und der Streifen lang genug ist = schwerer Fehler. Möglichst nicht anhalten, nur ohne Lücke am Ende des Streifens warten.' },
+  { icon: '🚪', title: 'Von der Autobahn', steps: ['Früh blinken, früh rüber', 'Erst auf dem <b>Ausfädelungsstreifen</b> (Spur zum Abfahren) bremsen', 'Tacho prüfen: du bist schneller, als es sich anfühlt'] },
+  { icon: '🚗', title: 'Überholen', steps: ['Erlaubt? Freie Sicht?', 'Spiegel, Blinker, Schulterblick, ausscheren', 'Rad: 1,5 m innerorts, 2 m außerorts', 'Blinker rechts, einscheren, Blinker aus'] },
+  { icon: '🚧', title: 'Engstelle', steps: ['Hindernis auf <b>deiner</b> Seite: Gegenverkehr zuerst (§ 6)', 'Spiegel, evtl. Blinker, Schulterblick', 'Vorbei mit mind. 1 m Abstand bei 50'] },
+  { icon: '🔄', title: 'Kreisverkehr', steps: ['Rein <b>ohne</b> Blinker', 'Kreis hat Vorfahrt (mit Zeichen 205)', 'Vor deiner Ausfahrt rechts blinken, <b>Schulterblick rechts</b> (Radfahrer)'] },
+  { icon: '🚂', title: 'Bahnübergang', steps: ['Ab erster Bake nicht überholen', 'Gleise links und rechts prüfen', 'Vor dem Andreaskreuz warten', 'Nur fahren, wenn hinter den Schienen Platz ist'] },
+  { icon: '🦓', title: 'Zebrastreifen und Bus', steps: ['Nicht überholen am Zebrastreifen', 'Fußgänger will rüber: langsam ran, <b>anhalten</b>', 'Bus fährt mit Warnblinker an die Haltestelle: <b>nicht überholen</b>. Bus hält mit Warnblinker: nur <b>Schritttempo</b>, auch im Gegenverkehr'] },
+];
 ---
-  <Section id="situationen" title="Fahraufgaben im Verkehr">
-    <div class="rules">
-      <div class="card"><h3><span>🚦</span>Anfahren vom Rand</h3>
-        <div class="steps">
-          <div>Blinker links</div>
-          <div>Spiegel, <b>Schulterblick links</b></div>
-          <div>Lücke nutzen, Blinker aus</div>
-        </div>
-        <p class="note">Muss ein anderer deinetwegen stark bremsen = sofort durch.</p>
-      </div>
-      <div class="card"><h3><span>🏠</span>Aus Einfahrt oder Parkplatz</h3>
-        <div class="steps">
-          <div>Langsam vortasten</div>
-          <div><b>Allen</b> Vorrang geben (§ 10)</div>
-          <div>Wenn nötig, einweisen lassen</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>↔️</span>Fahrstreifenwechsel</h3>
-        <div class="steps">
-          <div>Nötig und erlaubt?</div>
-          <div>Spiegel, Blinker, <b>Schulterblick</b></div>
-          <div>Tempo anpassen, wechseln, Blinker aus</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>🛣️</span>Auf die Autobahn</h3>
-        <div class="steps">
-          <div>Früh auf die Hauptfahrbahn schauen</div>
-          <div>Einfädelungsstreifen <b>weit nutzen</b>, Tempo angleichen</div>
-          <div>Schulterblick links, einfädeln</div>
-        </div>
-        <p class="note">Mit unter 80 km/h einfädeln, wo 100 erlaubt ist und der Streifen lang genug ist = schwerer Fehler. Möglichst nicht anhalten, nur ohne Lücke am Ende des Streifens warten.</p>
-      </div>
-      <div class="card"><h3><span>🚪</span>Von der Autobahn</h3>
-        <div class="steps">
-          <div>Früh blinken, früh rüber</div>
-          <div>Erst auf dem <b>Ausfädelungsstreifen</b> bremsen</div>
-          <div>Tacho prüfen: du bist schneller, als es sich anfühlt</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>🚗</span>Überholen</h3>
-        <div class="steps">
-          <div>Erlaubt? Freie Sicht?</div>
-          <div>Spiegel, Blinker, Schulterblick, ausscheren</div>
-          <div>Rad: 1,5 m innerorts, 2 m außerorts</div>
-          <div>Blinker rechts, einscheren, Blinker aus</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>🚧</span>Engstelle</h3>
-        <div class="steps">
-          <div>Hindernis auf <b>deiner</b> Seite: Gegenverkehr zuerst (§ 6)</div>
-          <div>Spiegel, evtl. Blinker, Schulterblick</div>
-          <div>Vorbei mit mind. 1 m Abstand bei 50</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>🔄</span>Kreisverkehr</h3>
-        <div class="steps">
-          <div>Rein <b>ohne</b> Blinker</div>
-          <div>Kreis hat Vorfahrt (mit Zeichen 205)</div>
-          <div>Vor deiner Ausfahrt rechts blinken, <b>Schulterblick rechts</b> (Radfahrer)</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>🚂</span>Bahnübergang</h3>
-        <div class="steps">
-          <div>Ab erster Bake nicht überholen</div>
-          <div>Gleise links und rechts prüfen</div>
-          <div>Vor dem Andreaskreuz warten</div>
-          <div>Nur fahren, wenn hinter den Schienen Platz ist</div>
-        </div>
-      </div>
-      <div class="card"><h3><span>🦓</span>Zebrastreifen und Bus</h3>
-        <div class="steps">
-          <div>Nicht überholen am Zebrastreifen</div>
-          <div>Fußgänger will rüber: langsam ran, <b>anhalten</b></div>
-          <div>Bus fährt mit Warnblinker an die Haltestelle: <b>nicht überholen</b>. Bus hält mit Warnblinker: nur <b>Schritttempo</b>, auch im Gegenverkehr</div>
-        </div>
-      </div>
-    </div>
-  </Section>
+<Section id="situationen" title="Fahraufgaben im Verkehr">
+  <div class="columns-[3_300px] gap-x-3">
+    {SITUATIONEN.map(s => (
+      <Card icon={s.icon} title={s.title} class="mb-3 break-inside-avoid">
+        <Steps items={s.steps} />
+        {s.note && <Note class="mt-2">{s.note}</Note>}
+      </Card>
+    ))}
+  </div>
+</Section>

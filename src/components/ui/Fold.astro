@@ -1,9 +1,15 @@
 ---
 // Collapsible chunk with its memory hook visible while closed (chunking + cue).
+import { fold } from './fold';
 interface Props { icon: string; title: string; hook: string; count: number }
 const { icon, title, hook, count } = Astro.props;
 ---
-<details class="fold">
-  <summary><span class="fi" aria-hidden="true">{icon}</span><span class="ft">{title}<small>{hook}</small></span><span class="fc">{count}</span></summary>
-  <slot />
+<details class:list={['fold', fold.root]}>
+  <summary class={fold.summary}>
+    <span class={fold.icon} aria-hidden="true">{icon}</span>
+    <span class={fold.title}>{title}<small class={fold.hook}>{hook}</small></span>
+    <span class={fold.count}>{count}</span>
+    <span class={fold.chevron} aria-hidden="true"></span>
+  </summary>
+  <div class={fold.body}><slot /></div>
 </details>

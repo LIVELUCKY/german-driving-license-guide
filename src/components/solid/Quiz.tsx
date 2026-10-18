@@ -51,41 +51,43 @@ export default function Quiz(props: { cards: Card[] }) {
     setShown(false);
   };
   const card = () => deck()[0];
+  const chip = 'cursor-pointer rounded-full border-2 border-line px-3.5 py-1.5 text-[.85rem] font-bold';
+  const btn = 'cursor-pointer rounded-box border-2 border-line px-4.5 py-2.5 font-bold';
   const done = () => mode() === 'zahlen' && !card();
 
   return (
-    <div class="quiz">
-      <div class="quiz-modes" role="group" aria-label="Was willst du üben?">
-        <button type="button" aria-pressed={mode() === 'formel'} onClick={() => start('formel')}>Formeln rechnen</button>
-        <button type="button" aria-pressed={mode() === 'zahlen'} onClick={() => start('zahlen')}>Zahlenfragen ({props.cards.length})</button>
+    <div class="quiz max-w-[720px] print:hidden">
+      <div class="mb-2.5 flex flex-wrap gap-1.5" role="group" aria-label="Was willst du üben?">
+        <button type="button" class={mode() === 'formel' ? `${chip} bg-ink text-bg` : `${chip} bg-surface text-ink`} aria-pressed={mode() === 'formel'} onClick={() => start('formel')}>Formeln rechnen</button>
+        <button type="button" class={mode() === 'zahlen' ? `${chip} bg-ink text-bg` : `${chip} bg-surface text-ink`} aria-pressed={mode() === 'zahlen'} onClick={() => start('zahlen')}>Zahlenfragen ({props.cards.length})</button>
       </div>
-      <div class="quiz-card">
+      <div class="flex min-h-[190px] flex-col gap-3.5 rounded-box border-2 border-line bg-surface p-[clamp(16px,3vw,24px)] shadow-hard">
         <Switch>
           <Match when={done()}>
-            <p class="quiz-q">🎉 Alle Zahlenfragen durch!</p>
-            <div class="quiz-actions"><button type="button" class="quiz-show" onClick={() => start('zahlen')}>Nochmal von vorn</button></div>
+            <p class="quiz-q text-[clamp(1.05rem,2.6vw,1.3rem)] leading-snug font-medium">🎉 Alle Zahlenfragen durch!</p>
+            <div class="mt-auto flex flex-wrap gap-2"><button type="button" class={`quiz-show ${btn} bg-ink text-bg`} onClick={() => start('zahlen')}>Nochmal von vorn</button></div>
           </Match>
           <Match when={true}>
-            <p class="quiz-q">
+            <p class="quiz-q text-[clamp(1.05rem,2.6vw,1.3rem)] leading-snug font-medium">
               <Show when={mode() === 'zahlen'} fallback={task().q}><span innerHTML={card()?.q ?? ''} /></Show>
             </p>
             <Show when={shown()}>
-              <div class="quiz-a" aria-live="polite">
+              <div class="quiz-a rounded-box bg-sun px-3.5 py-3 text-base text-fixed-ink [&_small]:opacity-70" aria-live="polite">
                 <Show when={mode() === 'zahlen'} fallback={<>{task().work} = <b>{task().result}</b></>}>
                   <b innerHTML={card()?.a ?? ''} /> <small>({card()?.n})</small>
                 </Show>
               </div>
             </Show>
-            <div class="quiz-actions">
-              <Show when={shown()} fallback={<button type="button" class="quiz-show" onClick={reveal}>Antwort zeigen</button>}>
-                <button type="button" class="quiz-ok" ref={okBtn} onClick={() => answer(true)}>✓ Gewusst</button>
-                <button type="button" class="quiz-no" onClick={() => answer(false)}>✗ Nochmal</button>
+            <div class="mt-auto flex flex-wrap gap-2">
+              <Show when={shown()} fallback={<button type="button" class={`quiz-show ${btn} bg-ink text-bg`} onClick={reveal}>Antwort zeigen</button>}>
+                <button type="button" class={`quiz-ok ${btn} border-go bg-surface text-ink`} ref={okBtn} onClick={() => answer(true)}>✓ Gewusst</button>
+                <button type="button" class={`quiz-no ${btn} border-warn bg-surface text-ink`} onClick={() => answer(false)}>✗ Nochmal</button>
               </Show>
             </div>
           </Match>
         </Switch>
       </div>
-      <p class="quiz-score">
+      <p class="quiz-score mt-2 text-[.85rem] text-muted">
         <Show when={ok() + no()} fallback={mode() === 'zahlen' ? `${deck().length} Karten, zufällig gemischt` : 'Zufällige Tempos, unendlich viele Aufgaben'}>
           ✓ {ok()} gewusst · ✗ {no()} nochmal<Show when={mode() === 'zahlen'}> · noch {deck().length} offen</Show>
         </Show>

@@ -1,15 +1,16 @@
 ---
 import Section from '../Section.astro';
+import Note from '../ui/Note.astro';
 import { QUIZ_CARDS } from '../../data/cheatsheet';
 import ZAHLEN from '../../data/zahlenfragen.json';
 import Quiz from '../solid/Quiz';
 import ZahlenFolds from '../solid/ZahlenFolds';
 ---
-  <Section id="zahlen" title="Zahlenfragen aus dem Fragenkatalog">
-    <ZahlenFolds client:visible groups={ZAHLEN} />
-  </Section>
+<Section id="zahlen" title="Zahlenfragen aus dem Fragenkatalog">
+  <ZahlenFolds client:visible groups={ZAHLEN} />
+</Section>
 
-  <Section id="test" title="Selbsttest">
-    <p class="note note-mb">Erst rechnen oder antworten, dann aufdecken. Ehrlich bewerten: was du nicht wusstest, kommt später nochmal.</p>
-    <Quiz client:visible cards={QUIZ_CARDS} />
-  </Section>
+<Section id="test" title="Selbsttest">
+  <Note class="mb-3">Erst rechnen oder antworten, dann aufdecken. Ehrlich bewerten: was du nicht wusstest, kommt später nochmal.</Note>
+  <Quiz client:visible cards={QUIZ_CARDS} />
+</Section>

@@ -1,15 +1,25 @@
 ---
 import Section from '../Section.astro';
+
+const LINKS = [
+  { href: 'https://www.clickclickdrive.de/fragenkatalog', icon: '📘', title: 'Fragenkatalog mit Lösungen', text: 'Alle offiziellen Theoriefragen nach Kapiteln, mit Antworten (ClickClickDrive)' },
+  { href: 'https://www.fahren-lernen.de/', icon: '📱', title: 'Fahren Lernen', text: 'Die Lern-App, mit der viele Fahrschulen arbeiten, plus Infos zur Prüfung' },
+  { href: 'https://www.gesetze-im-internet.de/stvo_2013/', icon: '⚖️', title: 'StVO im Original', text: 'Straßenverkehrs-Ordnung auf gesetze-im-internet.de' },
+  { href: 'https://www.gesetze-im-internet.de/bkatv_2013/', icon: '🧾', title: 'Bußgeldkatalog (amtlich)', text: 'Bußgeldkatalog-Verordnung mit allen Bußgeldern und Fahrverboten' },
+  { href: 'https://www.gesetze-im-internet.de/fev_2010/anlage_7.html', icon: '🚗', title: 'Prüfungsregeln (FeV Anlage 7)', text: 'Fahrerlaubnis-Verordnung, Teil über die Prüfungen: Ablauf, Dauer und Bewertung von Theorie- und Praxisprüfung' },
+  { href: 'https://www.adac.de/verkehr/rund-um-den-fuehrerschein/', icon: '🟡', title: 'ADAC: Rund um den Führerschein', text: 'Kosten, Ablauf, Begleitetes Fahren, Probezeit' },
+  { href: 'https://www.kba.de/DE/Themen/ZentraleRegister/FAER/faer_node.html', icon: '🔢', title: 'KBA: Punkte in Flensburg', text: 'Eigenen Punktestand kostenlos abfragen' },
+  { href: 'https://www.drk.de/hilfe-in-deutschland/erste-hilfe/', icon: '❤️', title: 'DRK: Erste Hilfe', text: 'Erste-Hilfe-Kurs für den Führerschein finden' },
+];
 ---
-  <Section id="quellen" title="Gute Quellen zum Weiterlernen">
-    <div class="res-links">
-      <a class="res-link" href="https://www.clickclickdrive.de/fragenkatalog" target="_blank" rel="noopener noreferrer"><span>📘</span><b>Fragenkatalog mit Lösungen</b><small>Alle offiziellen Theoriefragen nach Kapiteln, mit Antworten (ClickClickDrive)</small></a>
-      <a class="res-link" href="https://www.fahren-lernen.de/" target="_blank" rel="noopener noreferrer"><span>📱</span><b>Fahren Lernen</b><small>Die Lern-App, mit der viele Fahrschulen arbeiten, plus Infos zur Prüfung</small></a>
-      <a class="res-link" href="https://www.gesetze-im-internet.de/stvo_2013/" target="_blank" rel="noopener noreferrer"><span>⚖️</span><b>StVO im Original</b><small>Straßenverkehrs-Ordnung auf gesetze-im-internet.de</small></a>
-      <a class="res-link" href="https://www.gesetze-im-internet.de/bkatv_2013/" target="_blank" rel="noopener noreferrer"><span>🧾</span><b>Bußgeldkatalog (amtlich)</b><small>Bußgeldkatalog-Verordnung mit allen Bußgeldern und Fahrverboten</small></a>
-      <a class="res-link" href="https://www.gesetze-im-internet.de/fev_2010/anlage_7.html" target="_blank" rel="noopener noreferrer"><span>🚗</span><b>Prüfungsregeln (FeV Anlage 7)</b><small>Ablauf, Dauer und Bewertung von Theorie- und Praxisprüfung</small></a>
-      <a class="res-link" href="https://www.adac.de/verkehr/rund-um-den-fuehrerschein/" target="_blank" rel="noopener noreferrer"><span>🟡</span><b>ADAC: Rund um den Führerschein</b><small>Kosten, Ablauf, Begleitetes Fahren, Probezeit</small></a>
-      <a class="res-link" href="https://www.kba.de/DE/Themen/ZentraleRegister/FAER/faer_node.html" target="_blank" rel="noopener noreferrer"><span>🔢</span><b>KBA: Punkte in Flensburg</b><small>Eigenen Punktestand kostenlos abfragen</small></a>
-      <a class="res-link" href="https://www.drk.de/hilfe-in-deutschland/erste-hilfe/" target="_blank" rel="noopener noreferrer"><span>❤️</span><b>DRK: Erste Hilfe</b><small>Erste-Hilfe-Kurs für den Führerschein finden</small></a>
-    </div>
-  </Section>
+<Section id="quellen" title="Gute Quellen zum Weiterlernen">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-2.5">
+    {LINKS.map(l => (
+      <a class="group grid grid-cols-[auto_1fr] items-start gap-x-2.5 gap-y-0.5 rounded-box border-2 border-line bg-surface px-3.5 py-3 text-ink" href={l.href} target="_blank" rel="noopener noreferrer">
+        <span class="row-span-2 text-[1.3rem] leading-[1.2]" aria-hidden="true">{l.icon}</span>
+        <b class="underline underline-offset-3 group-hover:text-accent-text">{l.title}</b>
+        <small class="text-[.8rem] leading-[1.4] text-muted">{l.text}</small>
+      </a>
+    ))}
+  </div>
+</Section>

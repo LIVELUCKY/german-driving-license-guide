@@ -1,44 +1,54 @@
 ---
+import Flow from '../ui/Flow.astro';
 import Section from '../Section.astro';
+import Card from '../ui/Card.astro';
+import Grid from '../ui/Grid.astro';
+import Note from '../ui/Note.astro';
+import Steps from '../ui/Steps.astro';
+import Tip from '../ui/Tip.astro';
+
+const GEARS = [
+  ['1', 'Anfahren'], ['2', 'bis ~20'], ['3', '~20–40'], ['4', '~40–60'], ['5/6', 'ab ~60'],
+];
+const BERG = ['Handbremse an', 'Schleifpunkt', 'etwas Gas', 'Handbremse lösen'];
+const ABBIEGEN = [
+  'Spiegel', 'Blinken', 'Einordnen', 'Tempo raus, Gang wählen',
+  'Vorfahrt beachten', '<b>Zweiter Blick</b> (rechts: Radfahrer!)',
+  'Fußgänger der Zielstraße', 'Rechts <b>eng</b>, links <b>weit</b>',
+];
+// Cards that hold a single hint only.
+const HINTS = [
+  { icon: '🗣️', title: 'Ansagen hilft', text: '„Ich lasse den Radfahrer durch.“ Zeigt dem Prüfer, dass du die Situation siehst.' },
+  { icon: '😌', title: 'Nach einem Fehler', text: 'Weiterfahren, sicher bleiben. Ein kleiner Fehler heißt fast nie durchgefallen. Im Zweifel die sichere Option.' },
+];
 ---
-  <Section id="fahren" title="Fahrtechnik">
-    <div class="grid cols3">
-      <div class="card">
-        <h3><span>⚙️</span>Schalten</h3>
-        <div class="gears">
-          <span><b>1</b>Anfahren</span><span><b>2</b>bis ~20</span><span><b>3</b>~20–40</span><span><b>4</b>~40–60</span><span><b>5/6</b>ab ~60</span>
-        </div>
-        <div class="tip">Früh hochschalten (~2.000 U/min). Falscher Gang oder zu hohe Drehzahl ist ein Prüfungsfehler. <b>Vor</b> der Kurve bremsen und schalten, nicht in ihr. Nie im Leerlauf rollen.</div>
+<Section id="fahren" title="Fahrtechnik">
+  <Grid min={260}>
+    <Card icon="⚙️" title="Schalten">
+      <div class="mt-1.5 mb-2.5 grid grid-cols-5 gap-1">
+        {GEARS.map(([g, t]) => (
+          <span class="flex flex-col items-center rounded-[3px] bg-bg2 px-0.5 py-1.5 text-[.68rem]"><b class="font-display text-[1.1rem]">{g}</b>{t}</span>
+        ))}
       </div>
-      <div class="card">
-        <h3><span>🦶</span>Anfahren am Berg</h3>
-        <div class="flow small">
-          <div><b>1</b>Handbremse an</div>
-          <div><b>2</b>Schleifpunkt</div>
-          <div><b>3</b>etwas Gas</div>
-          <div><b>4</b>Handbremse lösen</div>
-        </div>
-        <div class="tip">Abgewürgt? Kupplung treten, neu starten, durchatmen. Zählt als <b>leichter Fehler</b>. Mehr als <b>50 cm</b> zurückrollen ist ein schwerer Fehler.</div>
-      </div>
-      <div class="card">
-        <h3><span>↪️</span>Abbiegen in 8 Schritten</h3>
-        <div class="steps">
-          <div>Spiegel</div><div>Blinken</div><div>Einordnen</div><div>Tempo raus, Gang wählen</div>
-          <div>Vorfahrt beachten</div><div><b>Zweiter Blick</b> (rechts: Radfahrer!)</div>
-          <div>Fußgänger der Zielstraße</div><div>Rechts <b>eng</b>, links <b>weit</b></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3><span>🛣️</span>Autobahn</h3>
-        <div class="tip">Beschleunigungsstreifen <b>ganz</b> nutzen und Tempo angleichen. Erst auf dem Verzögerungsstreifen bremsen. Rechtsfahrgebot. Kein Halten, Wenden, Rückwärtsfahren.</div>
-      </div>
-      <div class="card">
-        <h3><span>🗣️</span>Ansagen hilft</h3>
-        <div class="tip">„Ich lasse den Radfahrer durch.“ Zeigt dem Prüfer, dass du die Situation siehst.</div>
-      </div>
-      <div class="card">
-        <h3><span>😌</span>Nach einem Fehler</h3>
-        <div class="tip">Weiterfahren, sicher bleiben. Ein kleiner Fehler heißt fast nie durchgefallen. Im Zweifel die sichere Option.</div>
-      </div>
-    </div>
-  </Section>
+      <Tip>Früh hochschalten (~2.000 U/min). Falscher Gang oder zu hohe Drehzahl ist ein Prüfungsfehler. <b>Vor</b> der Kurve bremsen und schalten, nicht in ihr. Nie im Leerlauf rollen.</Tip>
+      <Tip label="Merksatz">„Langsam rein, zügig raus.“ Vor der Kurve bremsen, aus der Kurve heraus beschleunigen.</Tip>
+    </Card>
+    <Card icon="🦶" title="Anfahren am Berg">
+      <Flow items={BERG} small />
+      <Note class="mt-2"><b>Schleifpunkt</b> = Punkt, an dem die Kupplung zu greifen beginnt.</Note>
+      <Tip>Abgewürgt? Kupplung treten, neu starten, durchatmen. Zählt als <b>leichter Fehler</b>. Mehr als <b>50 cm</b> zurückrollen ist ein schwerer Fehler.</Tip>
+    </Card>
+    <Card icon="↪️" title="Abbiegen in 8 Schritten">
+      <Steps items={ABBIEGEN} />
+      <Tip label="Merksatz">„Rechts eng, links weit.“</Tip>
+    </Card>
+    <Card icon="🛣️" title="Autobahn">
+      <Tip class="mt-0"><b>Einfädelungsstreifen</b> (Spur zum Auffahren) <b>ganz</b> nutzen und Tempo angleichen. Erst auf dem <b>Ausfädelungsstreifen</b> (Spur zum Abfahren) bremsen. Rechtsfahrgebot. Kein Halten, Wenden, Rückwärtsfahren.</Tip>
+    </Card>
+    {HINTS.map(h => (
+      <Card icon={h.icon} title={h.title}>
+        <Tip class="mt-0">{h.text}</Tip>
+      </Card>
+    ))}
+  </Grid>
+</Section>

@@ -1,0 +1,21 @@
+---
+import Section from '../Section.astro';
+import Fold from '../ui/Fold.astro';
+import { GLOSSAR } from '../../data/glossar';
+---
+<Section id="begriffe" title="Begriffe kurz erklärt">
+  <div class="grid items-start gap-2.5 md:grid-cols-2">
+    {GLOSSAR.map(g => (
+      <Fold icon={g.icon} title={g.title} hook={g.terms.slice(0, 3).map(t => t[0]).join(', ') + ' …'} count={g.terms.length}>
+        <dl class="grid gap-x-4 gap-y-2 sm:grid-cols-[minmax(0,.9fr)_minmax(0,1.6fr)]">
+          {g.terms.map(([term, text]) => (
+            <>
+              <dt class="text-[.88rem] font-bold">{term}</dt>
+              <dd class="border-b border-dashed border-muted/40 pb-2 text-[.86rem] text-muted sm:border-0 sm:pb-0">{text}</dd>
+            </>
+          ))}
+        </dl>
+      </Fold>
+    ))}
+  </div>
+</Section>

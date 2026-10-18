@@ -31,13 +31,14 @@ export default function JumpNav(props: { groups: Group[] }) {
   });
 
   return (
-    <nav class="jump" aria-label="Abschnitte">
-      <div class="wrap jump-row" ref={row}>
+    <nav class="jump sticky top-16 z-45 border-b-2 border-line bg-bg/95 backdrop-blur print:hidden" aria-label="Abschnitte">
+      <div class="wrap flex items-center gap-1.5 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={row}>
         <For each={props.groups}>{g => (
           <>
-            <b>{g.label}</b>
+            <b class="flex-none px-1.5 font-display text-[.8rem] text-accent-text uppercase not-first:ml-2.5 not-first:border-l-2 not-first:border-line not-first:pl-3.5">{g.label}</b>
             <For each={g.links}>{l => (
-              <a href={l.href} classList={{ on: active() === l.href }} aria-current={active() === l.href ? 'location' : undefined}>{l.label}</a>
+              <a href={l.href} aria-current={active() === l.href ? 'location' : undefined}
+                class={`flex-none whitespace-nowrap rounded-full border-2 px-2.5 py-1 text-[.8rem] font-bold ${active() === l.href ? 'on border-ink bg-ink text-bg' : 'border-transparent text-ink hover:border-line'}`}>{l.label}</a>
             )}</For>
           </>
         )}</For>

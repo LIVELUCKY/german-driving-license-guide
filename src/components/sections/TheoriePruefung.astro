@@ -1,13 +1,25 @@
 ---
 import Section from '../Section.astro';
+import Note from '../ui/Note.astro';
+
+// Exam figures (FeV Anlage 7). `tone` colours the number: ok = green, bad = red.
+const STATS = [
+  { n: '30', t: 'Fragen<br/>20 Grundstoff + 10 Zusatzstoff (Klasse B)' },
+  { n: '2–5', t: 'Fehlerpunkte<br/>pro Frage' },
+  { n: '≤ 10', t: 'Fehlerpunkte<br/>= bestanden', tone: 'text-go' },
+  { n: '2×5', t: 'zwei 5-Punkte-Fragen falsch<br/>= durchgefallen', tone: 'text-warn' },
+  { n: '12', t: 'Monate gültig<br/>bis zur Praxisprüfung' },
+];
 ---
-  <Section id="pruefung" title="Theorieprüfung in Zahlen">
-    <div class="stats">
-      <div class="stat"><b>30</b><span>Fragen<br/>20 Grundstoff + 10 Klasse B</span></div>
-      <div class="stat"><b>2–5</b><span>Fehlerpunkte<br/>pro Frage</span></div>
-      <div class="stat ok"><b>≤ 10</b><span>Fehlerpunkte<br/>= bestanden</span></div>
-      <div class="stat bad"><b>2×5</b><span>zwei 5-Punkte-Fragen falsch<br/>= durchgefallen</span></div>
-      <div class="stat"><b>12</b><span>Monate gültig<br/>bis zur Praxisprüfung</span></div>
-    </div>
-    <p class="note note-mt">Bei Mehrfachauswahl zählt eine Frage nur, wenn <b>alle</b> richtigen Kreuze gesetzt sind. Mindestens eine Antwort ist immer richtig.</p>
-  </Section>
+<Section id="pruefung" title="Theorieprüfung in Zahlen">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
+    {STATS.map(s => (
+      <div class="rounded-box border-2 border-line bg-surface px-4 py-3.5 shadow-hard">
+        <b class:list={['block font-display text-[clamp(1.6rem,4vw,2.2rem)] leading-none', s.tone ?? 'text-ink']}>{s.n}</b>
+        <span class="mt-1.5 block text-[.8rem] leading-[1.35] text-muted" set:html={s.t} />
+      </div>
+    ))}
+  </div>
+  <Note class="mt-[clamp(10px,1.6vw,16px)]"><b>Grundstoff</b> = Fragen für alle Klassen. <b>Zusatzstoff</b> = Fragen nur für Klasse B. <b>Fehlerpunkte</b>: jede Frage hat 2 bis 5 Punkte, je wichtiger die Regel, desto mehr.</Note>
+  <Note class="mt-2">Bei Mehrfachauswahl zählt eine Frage nur, wenn <b>alle</b> richtigen Kreuze gesetzt sind. Mindestens eine Antwort ist immer richtig.</Note>
+</Section>

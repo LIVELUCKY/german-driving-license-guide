@@ -1,31 +1,77 @@
 ---
 import Section from '../Section.astro';
----
-  <Section id="tempo" title="Tempo">
-    <div class="tablewrap">
-      <table class="spd">
-        <thead><tr><th>Fahrzeug</th><th>Innerorts</th><th>Außerorts</th><th>Kraftfahrstraße</th><th>Autobahn</th></tr></thead>
-        <tbody>
-          <tr><td>Pkw, Motorrad</td><td><b class="p50">50</b></td><td><b class="p100">100</b></td><td><b class="p100">100</b> · frei bei getrennten Fahrbahnen*</td><td><b class="pfree">frei</b> · 130 empfohlen</td></tr>
-          <tr><td>Pkw mit Anhänger</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · 100 mit Plakette bei getrennten Fahrbahnen</td><td><b class="p80">80</b> · 100 mit Tempo-100-Plakette</td></tr>
-          <tr><td>Kfz 3,5–7,5 t (außer Pkw)</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td></tr>
-          <tr><td>Lkw über 7,5 t</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b> · 80 bei getrennten Fahrbahnen</td><td><b class="p80">80</b></td></tr>
-          <tr><td>Bus</td><td><b class="p50">50</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b></td><td><b class="p80">80</b> · Reisebus mit Zulassung 100</td></tr>
-          <tr><td>Bus mit stehenden Fahrgästen</td><td><b class="p50">50</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td><td><b class="p60">60</b></td></tr>
-          <tr><td>Moped, S-Pedelec</td><td><b class="p50">45</b></td><td><b class="p50">45</b></td><td>verboten</td><td>verboten</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note note-mt">* Kraftfahrstraße mit baulich getrennten Fahrbahnen oder 2 Fahrstreifen je Richtung: für Pkw kein allgemeines Limit. S-Pedelec = Kraftfahrzeug: Führerschein, Versicherungskennzeichen, Helm, keine Radwege. Schilder gehen immer vor.</p>
-    <div class="tip note-mt"><b>Merksatz:</b> außerorts gilt „Anhänger, Bus oder über 3,5 t = 80, über 7,5 t = 60“. Lkw bis 3,5 t ohne Anhänger: 100. 130 auf der Autobahn ist nur <b>Richtgeschwindigkeit</b>.</div>
+import Note from '../ui/Note.astro';
+import Tip from '../ui/Tip.astro';
 
-    <div class="chips note-mt">
-      <div><b class="p50">50</b> bei <b>Sicht unter 50 m</b> (Nebel, Schnee, Regen), überall</div>
-      <div><b class="p50">50</b> mit <b>Schneeketten</b></div>
-      <div><b class="p50">50</b> ab der <b>Ortstafel</b> sofort. Ende eines Limits innerorts = wieder 50, nicht frei</div>
-      <div><b class="p30">30</b> in der <b>Tempo-30-Zone</b> (flächig, meist rechts vor links)</div>
-      <div><b class="p30">30</b> in Fahrradstraße und Fahrradzone, für alle Fahrzeuge</div>
-      <div><b class="pwalk">Schritt</b> Schrittgeschwindigkeit (ca. 4–7 km/h, keine feste Zahl im Gesetz): verkehrsberuhigter Bereich, Bus mit Warnblinker an Haltestelle</div>
-      <div><b class="pmin">&gt;60</b> Autobahn und Kraftfahrstraße nur für Kfz, die bauartbedingt <b>schneller als 60</b> fahren</div>
-    </div>
-  </Section>
+// Limits per § 3 StVO and § 18 Abs. 5 StVO. Cell = "limit · extra text"; "verboten" has no badge.
+const COLS = ['Innerorts', 'Außerorts', 'Kraftfahrstraße', 'Autobahn'];
+const ROWS = [
+  ['Pkw, Motorrad', '50', '100', '100 · frei bei getrennten Fahrbahnen*', 'frei · 130 empfohlen'],
+  ['Pkw mit Anhänger', '50', '80', '80 · 100 mit Plakette bei getrennten Fahrbahnen', '80 · 100 mit Tempo-100-Plakette'],
+  ['Kfz 3,5–7,5 t (außer Pkw)', '50', '80', '80', '80'],
+  ['Lkw über 7,5 t', '50', '60', '60 · 80 bei getrennten Fahrbahnen', '80'],
+  ['Bus', '50', '80', '80', '80 · Reisebus mit Zulassung 100'],
+  ['Bus mit stehenden Fahrgästen', '50', '60', '60', '60'],
+  ['Moped, S-Pedelec', '45', '45', 'verboten', 'verboten'],
+];
+const TERMS = [
+  ['Kraftfahrstraße', 'nur für Kfz, blaues Schild mit weißem Auto (Zeichen 331.1)'],
+  ['getrennte Fahrbahnen', 'Mittelstreifen oder Leitplanke zwischen den Richtungen'],
+  ['Tempo-100-Plakette', 'Aufkleber am Anhänger, erlaubt 100 auf Autobahn und Kraftfahrstraße mit getrennten Fahrbahnen'],
+  ['S-Pedelec', 'E-Bike mit Motorhilfe bis 45 km/h'],
+];
+// Badge style: sp = red ring (limit), free = grey, walk/min = blue.
+const CHIPS = [
+  { v: '50', t: 'bei <b>Sicht unter 50 m</b> (Nebel, Schnee, Regen), überall' },
+  { v: '50', t: 'mit <b>Schneeketten</b>' },
+  { v: '50', t: 'ab der <b>Ortstafel</b> (gelbes Ortsschild, Zeichen 310) sofort. Ende eines Limits innerorts = wieder 50, nicht frei' },
+  { v: '30', t: 'in der <b>Tempo-30-Zone</b> (flächig, meist rechts vor links)' },
+  { v: '30', t: 'in Fahrradstraße und Fahrradzone, für alle Fahrzeuge' },
+  { v: 'Schritt', mod: 'walk', t: 'Schrittgeschwindigkeit (ca. 4–7 km/h, keine feste Zahl im Gesetz): verkehrsberuhigter Bereich, Bus mit Warnblinker an Haltestelle' },
+  { v: '>60', mod: 'min', t: 'Autobahn und Kraftfahrstraße nur für Kfz, die <b>bauartbedingt</b> (was das Fahrzeug technisch höchstens schafft) <b>schneller als 60</b> fahren' },
+];
+---
+<Section id="tempo" title="Tempo">
+  <div class="tablewrap">
+    <table class="spd">
+      <thead><tr><th>Fahrzeug</th>{COLS.map(c => <th>{c}</th>)}</tr></thead>
+      <tbody>
+        {ROWS.map(([name, ...cells]) => (
+          <tr><td>{name}</td>{cells.map(c => {
+            const [v, extra] = c.split(' · ');
+            return <td>{v === 'verboten' ? v : <><b class:list={['sp', v === 'frei' && 'free']}>{v}</b>{extra && ` · ${extra}`}</>}</td>;
+          })}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Note class="mt-[clamp(10px,1.6vw,16px)]">* Kraftfahrstraße mit baulich getrennten Fahrbahnen oder 2 Fahrstreifen je Richtung: für Pkw kein allgemeines Limit. S-Pedelec = Kraftfahrzeug: Führerschein, Versicherungskennzeichen, Helm, keine Radwege. Schilder gehen immer vor.</Note>
+  <dl class="mt-2 grid gap-x-4 gap-y-1 text-[.85rem] text-muted sm:grid-cols-2">
+    {TERMS.map(([term, def]) => <div><dt class="inline font-bold text-ink">{term}</dt> <dd class="inline">= {def}</dd></div>)}
+  </dl>
+  <Tip label="Merksatz">„50 innen, 100 außen, 130 empfohlen.“ Gilt für Pkw. 130 auf der Autobahn ist nur <b>Richtgeschwindigkeit</b> (Empfehlung, kein Limit; wer schneller fährt, haftet bei einem Unfall oft mit).</Tip>
+  <Tip label="Merksatz">„Anhänger, Bus, über 3,5 t: 80.“ Das gilt außerorts. Über 7,5 t: 60. Lkw bis 3,5 t ohne Anhänger: 100.</Tip>
+
+  <div class="mt-[clamp(10px,1.6vw,16px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-2.5">
+    {CHIPS.map(c => (
+      <div class="rounded-box border-2 border-soft bg-surface px-3.5 py-[11px] text-[.9rem] leading-[1.45]">
+        <b class:list={['sp mr-1.5', c.mod]}>{c.v}</b> <Fragment set:html={c.t} />
+      </div>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .tablewrap{overflow-x:auto;border:2px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);background:var(--surface);-webkit-overflow-scrolling:touch}
+  table.spd{width:100%;border-collapse:collapse;font-size:.88rem;min-width:680px}
+  table.spd th,table.spd td{padding:11px 13px;text-align:center;border-bottom:1px solid var(--soft);white-space:normal}
+  table.spd th{background:var(--ink);color:var(--bg);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+  table.spd td:first-child,table.spd th:first-child{text-align:left;font-weight:700;min-width:120px}
+  table.spd tr:last-child td{border-bottom:0}
+  table.spd tbody tr:hover{background:var(--bg2)}
+  @media(max-width:540px){.tablewrap{margin-inline:calc(-1 * clamp(16px,4vw,32px));border-radius:0;border-left:0;border-right:0}}
+  .sp{display:inline-grid;place-items:center;min-width:2.3em;height:2.3em;padding:0 .35em;border-radius:999px;border:.22em solid var(--warn);background:#fff;color:#17171b;font-family:var(--display);font-size:.8rem;line-height:1}
+  .sp.free{border-color:#9aa3ad;color:#62626b}
+  .sp.walk,.sp.min{border-color:var(--pop2);background:var(--pop2);color:#fff}
+  .sp.min{border-radius:6px}
+</style>
