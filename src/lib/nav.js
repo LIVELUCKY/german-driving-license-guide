@@ -11,6 +11,7 @@ export const THEORIE = [
   { slug: 'zeichen',  label: 'Zeichen',   icon: '🪧', d: 'Oft verwechselte Schilder und der ganze Katalog.' },
   { slug: 'zahlen',   label: 'Zahlen',    icon: '🔢', d: 'Formeln, Zahlen nach Situation, Tempo, Straßenarten.' },
   { slug: 'regeln',   label: 'Regeln',    icon: '📋', d: 'Alkohol, Punkte, Licht, Unfall, Fahrzeug.' },
+  { slug: 'tricks',   label: 'Tricks',    icon: '🎯', d: 'Antwort-Muster aus den amtlichen Antworten, alle Kapitel.' },
   { slug: 'begriffe', label: 'Begriffe',  icon: '📖', d: 'Fachwörter kurz erklärt, Quellen.' },
 ];
 

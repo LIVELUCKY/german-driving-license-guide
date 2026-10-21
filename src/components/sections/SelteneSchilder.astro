@@ -1,0 +1,15 @@
+---
+import Section from '../Section.astro';
+import Bullets from '../ui/Bullets.astro';
+import Fold from '../ui/Fold.astro';
+import { SELTENE_SCHILDER } from '../../data/oftgefragt';
+---
+<Section id="selten" title="Seltene Schilder aus dem Katalog">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-2.5">
+    {SELTENE_SCHILDER.map(t => (
+      <Fold icon={t.icon} title={t.title} hook={t.hook} count={t.rules.length}>
+        <Bullets items={t.rules} />
+      </Fold>
+    ))}
+  </div>
+</Section>

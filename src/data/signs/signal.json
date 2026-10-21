@@ -31,7 +31,7 @@
     "kw": "durchgezogene linie solid line no crossing",
     "nameDe": "Durchgezogene Linie",
     "stvo": "295",
-    "de": "Darf nicht überfahren werden.",
+    "de": "Als Fahrstreifenbegrenzung (zwischen Spuren): nicht überfahren. Als Fahrbahnbegrenzung (Randlinie): darf überfahren werden, z. B. zum Seitenstreifen, aber links von ihr nicht halten, wenn rechts genug Platz ist.",
     "tipDe": "Gelbe Markierungen gelten nur vorübergehend, meist an Baustellen. Wo sie liegen, heben sie die weißen auf.",
     "drawn": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"14\" width=\"52\" height=\"52\" rx=\"6\" fill=\"#5b6675\"/><line x1=\"40\" y1=\"16\" x2=\"40\" y2=\"64\" stroke=\"#fff\" stroke-width=\"5\"/></svg>"
   },

@@ -14,7 +14,7 @@ A German-only cheat sheet for the Klasse B theory and practical exams. Visual fi
 
 | Path | What |
 |---|---|
-| `src/pages/*.astro` | One page per topic (`vorfahrt`, `gefahren`, `zeichen`, `zahlen`, `regeln`, `begriffe`, `ueben`, `praxis`), each a `PageShell` listing its section components; `index` = start, `theorie` = topic overview |
+| `src/pages/*.astro` | One page per topic (`vorfahrt`, `gefahren`, `zeichen`, `zahlen`, `regeln`, `tricks`, `begriffe`, `ueben`, `praxis`), each a `PageShell` listing its section components; `index` = start, `theorie` = topic overview |
 | `src/lib/nav.js` | `THEORIE` (learning order, drives "weiter"), `NAV` (desktop header), `TABS` (phone bottom bar) |
 | `src/components/sections/*.astro` | One component per section, renders from typed data |
 | `src/components/ui/*.astro` | Primitives: `Card`, `Kv`, `Tip`, `Note`, `Steps`, `Bullets`, `Flow`, `Grid`, `Fold` (+ `fold.ts` classes shared with Solid) |
@@ -22,7 +22,9 @@ A German-only cheat sheet for the Klasse B theory and practical exams. Visual fi
 | `src/data/cheatsheet.ts` | Formulas, sign pairs |
 | `src/data/zahlen-situationen.ts` | Numbers grouped by situation (never by value) + innerorts/außerorts/Autobahn comparison |
 | `src/data/zahlenfragen.json` | Numeric catalogue questions (feeds the list and the quiz) |
-| `src/data/oftgefragt.ts` | Non-numeric rules in 4 groups / 20 topics, one hook each |
+| `src/data/oftgefragt.ts` | Non-numeric rules in groups of topics, one hook each; `SELTENE_SCHILDER` for rare catalogue signs |
+| `src/data/antwortmuster.ts` | Answer patterns measured on the official answers (page `tricks`) |
+| `src/data/kapitel.ts` | Every catalogue chapter with question count and the page that teaches it |
 | `src/data/strassen.ts` | Road-type comparison |
 | `src/data/glossar.ts` | Glossary |
 | `src/data/signs/*.json`, `src/lib/signs.js` | Sign catalogue (`/signs/`) |

@@ -1,0 +1,55 @@
+---
+import PageShell from '../components/PageShell.astro';
+import Section from '../components/Section.astro';
+import Fold from '../components/ui/Fold.astro';
+import Note from '../components/ui/Note.astro';
+import MusterList from '../components/ui/MusterList.astro';
+import Tip from '../components/ui/Tip.astro';
+import { FRAGETYPEN, MUSTER, PRO_SITUATION } from '../data/antwortmuster';
+import { KAPITEL } from '../data/kapitel';
+import { THEORIE, urlFor } from '../lib/nav.js';
+
+const label = Object.fromEntries(THEORIE.map(t => [t.slug, t.label]));
+const total = KAPITEL.reduce((n, a) => n + a.rows.reduce((m, r) => m + r.q, 0), 0);
+---
+<PageShell slug="tricks" title="Tricks" kicker="Theorie · Antwort-Muster" intro="Muster, die in den amtlichen Antworten immer wieder vorkommen. Gezählt an allen Fragen der Klasse B. Erst die Regel, das Muster nur, wenn du sie nicht weißt." sections={[['muster', 'Muster'], ['fragetypen', 'Fragetypen'], ['situation', 'Nach Situation'], ['kapitel', 'Alle Kapitel']]}>
+  <Section id="muster" title="Wenn du die Antwort nicht weißt">
+    <MusterList items={MUSTER} />
+    <Tip label="Merksatz">„<b>Vorsicht ist richtig, Druck ist falsch.</b>“ Bremsbereit, rechtzeitig, mit Gefahr rechnen: ja. Hupen, beschleunigen, unverändert weiter: nein.</Tip>
+    <Note class="mt-2">Die Zahl zeigt, wie oft das Muster in den amtlichen Antworten stimmt. Ein Muster ist keine Regel: kennst du die Regel, gilt die Regel.</Note>
+  </Section>
+
+  <Section id="fragetypen" title="Fragetypen">
+    <MusterList items={FRAGETYPEN} />
+    <Tip label="Merksatz">„<b>Rechnen = mehr ankreuzen. Verhalten = genau prüfen.</b>“</Tip>
+  </Section>
+
+  <Section id="situation" title="Muster nach Situation">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-2.5">
+      {PRO_SITUATION.map(s => (
+        <Fold icon={s.icon} title={s.t} hook={s.hook} count={s.rules.length}>
+          <MusterList items={s.rules} />
+        </Fold>
+      ))}
+    </div>
+    <Note class="mt-2">Pro Situation gibt es weniger Fragen, darum sind diese Zahlen nur ein Hinweis.</Note>
+  </Section>
+
+  <Section id="kapitel" title="Alle Kapitel des Fragenkatalogs">
+    <Note class="mb-3">{total} Fragen in {KAPITEL.reduce((n, a) => n + a.rows.length, 0)} Kapiteln. Jedes Kapitel ist auf einer Seite hier abgedeckt. <b>5★</b> = Fragen mit 5 Fehlerpunkten.</Note>
+    {KAPITEL.map(a => (
+      <details class="mb-2 rounded-box border-2 border-line bg-surface">
+        <summary class="cursor-pointer px-4 py-3 font-bold">{a.n} {a.t} <span class="text-muted">· {a.rows.reduce((m, r) => m + r.q, 0)} Fragen</span></summary>
+        <ul class="divide-y divide-soft border-t border-soft text-[.86rem]">
+          {a.rows.map(r => (
+            <li class="flex items-center justify-between gap-3 px-4 py-2">
+              <span><b>{r.n}</b> {r.t} <small class="text-muted">· {r.q}{r.five ? ` · ${r.five}× 5★` : ''}</small></span>
+              <a href={urlFor(r.page)} class="shrink-0 underline underline-offset-2">{label[r.page]}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
+  </Section>
+</PageShell>
+

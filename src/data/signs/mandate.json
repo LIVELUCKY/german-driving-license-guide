@@ -36,7 +36,7 @@
     "kw": "kreisverkehr roundabout kreis circle",
     "nameDe": "Kreisverkehr",
     "stvo": "215",
-    "de": "Im Kreis rechts herum fahren, Mittelinsel nicht überfahren, auf der Kreisfahrbahn nicht halten. Vorfahrt hat der Kreis nur, wenn Zeichen 205 darüber steht.",
+    "de": "Im Kreis rechts herum fahren, Mittelinsel nur überfahren, wenn es wegen der Fahrzeuggröße nicht anders geht, auf der Kreisfahrbahn nicht halten. Vorfahrt hat der Kreis nur, wenn Zeichen 205 darüber steht.",
     "tipDe": "Steht 205 darüber, hat der Kreis Vorfahrt und Blinken beim Einfahren ist verboten. Ohne 205 gilt rechts vor links."
   },
   {

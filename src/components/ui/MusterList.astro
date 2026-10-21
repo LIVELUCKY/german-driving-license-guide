@@ -1,0 +1,14 @@
+---
+// Answer pattern with its measured hit rate as a badge.
+import type { Muster } from '../../data/antwortmuster';
+interface Props { items: Muster[] }
+const { items } = Astro.props;
+---
+<ul class="grid gap-2">
+  {items.map(m => (
+    <li class="flex items-start justify-between gap-3 rounded-box border border-soft bg-surface px-3.5 py-2.5 text-[.9rem] leading-snug">
+      <span><span set:html={m.t} />{m.why && <span class="mt-0.5 block text-[.8rem] text-muted">Warum: {m.why}</span>}</span>
+      <span class="shrink-0 rounded-full border-2 border-line px-2.5 py-0.5 text-[.75rem] font-bold max-w-[40%] text-center">{m.p}</span>
+    </li>
+  ))}
+</ul>

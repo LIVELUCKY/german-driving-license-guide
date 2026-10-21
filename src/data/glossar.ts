@@ -32,6 +32,10 @@ export const GLOSSAR: { icon: string; title: string; terms: [string, string][] }
     ['Haltlinie', 'breite weiße Querlinie, hier anhalten'],
     ['Einfädelungsstreifen', 'Spur zum Auffahren auf die Autobahn'],
     ['Zusatzzeichen', 'kleines weißes Schild unter dem Hauptschild'],
+    ['Querungshilfe', 'Mittelinsel ohne Zebrastreifen: hilft beim Überqueren, gibt Fußgängern aber keinen Vorrang'],
+    ['Schutzstreifen', 'gestrichelt markierter Radstreifen auf der Fahrbahn: nur bei Bedarf befahren, dort nicht halten'],
+    ['Fahrbahnbegrenzung', 'durchgezogene Linie am Fahrbahnrand: darf überfahren werden, z. B. zum Seitenstreifen'],
+    ['Bedarfsumleitung', 'blaues Schild mit U und Zahl: Umleitung für den Autobahnverkehr bei Störungen'],
   ] },
   { icon: '🚗', title: 'Fahren', terms: [
     ['Schulterblick', 'Kopf drehen und den toten Winkel prüfen'],
@@ -47,5 +51,9 @@ export const GLOSSAR: { icon: string; title: string; terms: [string, string][] }
     ['HU', 'Hauptuntersuchung (TÜV, DEKRA …)'],
     ['ABS / ESP / ASR', 'lenkbar bremsen / Schleuderschutz / kein Durchdrehen beim Anfahren'],
     ['TWI', 'kleine Stege im Profil, zeigen 1,6 mm an'],
+    ['AGR (Abstandstempomat)', 'Adaptive Geschwindigkeitsregelanlage: hält Tempo und bremst bei langsamem Vordermann, hält aber nicht immer den Abstand'],
+    ['Rekuperation', 'E-Auto bremst über den Motor und lädt dabei die Batterie'],
+    ['Plug-in-Hybrid', 'Auto mit Verbrenner und Batterie, die man am Stromnetz lädt'],
+    ['Berganfahrhilfe', 'hält das Auto am Berg kurz fest, damit es beim Anfahren nicht zurückrollt'],
   ] },
 ];

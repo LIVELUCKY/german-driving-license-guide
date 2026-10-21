@@ -35,7 +35,7 @@ export const SITUATIONEN: Situation[] = [
     { n: '80', unit: 'km/h', fam: 'kmh', t: 'außerorts mit Anhänger, mit Bus, Kfz über 3,5 t bis 7,5 t (außer Pkw)', why: 'Schwere Fahrzeuge haben längere Bremswege' },
     { n: '60', unit: 'km/h', fam: 'kmh', t: 'außerorts Lkw über 7,5 t' },
     { n: '50', unit: 'km/h', fam: 'kmh', t: 'mit Schneeketten' },
-    { n: '> 60', unit: 'km/h', fam: 'kmh', t: 'so schnell muss dein Fahrzeug bauartbedingt sein für Autobahn und Kraftfahrstraße (Prüfung: 61)', why: 'Langsame Fahrzeuge wären dort ein Hindernis' },
+    { n: '> 60', unit: 'km/h', fam: 'kmh', t: 'so schnell muss dein Fahrzeug bauartbedingt sein für Autobahn und Kraftfahrstraße (Zahlenfrage 1.2.02-111: 60 eintippen, Bildfrage 1.4.42-116: 61 km/h ankreuzen)', why: 'Langsame Fahrzeuge wären dort ein Hindernis' },
   ] },
   { icon: '↔️', title: 'Du überholst oder hältst Abstand', hook: 'Anderthalb drinnen, zwei draußen', rows: [
     { n: '1,5', unit: 'm', fam: 'm', t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger innerorts' },
