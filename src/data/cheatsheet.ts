@@ -14,7 +14,7 @@ export const PAIRS = [
 ] as const;
 // Section bar: chips point to the first section of each group, in reading order.
 export const JUMP = [
-  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['vorfahrt', 'Vorfahrt'], ['verhalten', 'Gefahren'], ['vergessen', 'Zeichen'], ['formeln', 'Formeln'], ['zahlen-situation', 'Zahlen'], ['tempo', 'Tempo'], ['strassen', 'Straßen'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['training', 'Trainer'], ['zahlen', 'Zahlenfragen'], ['fehler-liste', 'Meine Fehler'], ['begriffe', 'Begriffe']] },
+  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['vorfahrt', 'Vorfahrt'], ['verhalten', 'Gefahren'], ['vergessen', 'Zeichen'], ['formeln', 'Formeln'], ['zahlen-situation', 'Zahlen'], ['tempo', 'Tempo'], ['strassen', 'Straßen'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['zahlen', 'Zahlenfragen'], ['fehler-liste', 'Meine Fehler'], ['begriffe', 'Begriffe']] },
   { label: 'Praxis', links: [['praxis', 'Prüfung'], ['aufgaben', 'Manöver'], ['situationen', 'Im Verkehr'], ['sichern', 'Sichern'], ['fehler', 'Sofort durch'], ['quellen', 'Quellen']] },
 ].map(g => ({ label: g.label, links: g.links.map(([id, label]) => ({ href: `#${id}`, label: label! })) }));
 

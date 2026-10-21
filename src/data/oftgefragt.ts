@@ -114,7 +114,7 @@ export const OFT_GEFRAGT: { title: string; topics: Topic[] }[] = [
       'Nachts parken: innerorts reichen <b>Parkleuchten</b>, außerorts eigene Beleuchtung <i>Warum: Innerorts gibt es Laternen, außerorts musst du selbst gesehen werden.</i>',
       'Nur mit Standlicht fahren: <b>nie</b> <i>Warum: Andere sehen dich zu spät, und du siehst kaum etwas.</i>',
       'Abblenden bei Gegenverkehr, dicht hinter jemandem, auf gut beleuchteter Straße und beim Warten vor dem Bahnübergang <i>Warum: So blendest du niemanden vor oder neben dir.</i>',
-      'Leuchtweite falsch eingestellt: du <b>blendest</b> andere oder siehst zu wenig <i>Warum: Beladung hebt das Heck, das Licht zeigt dann höher.</i>',
+      'Leuchtweite falsch eingestellt: du <b>blendest</b> andere oder siehst zu wenig <i>Warum: Schwere Ladung drückt das Heck nach unten. Die Scheinwerfer zeigen dann höher und blenden andere.</i>',
       'Gelbes Blinklicht warnt vor Arbeitsstellen oder ungewöhnlichen Fahrzeugen <i>Warum: Es kündigt eine Gefahr an, also langsam und vorsichtig fahren.</i>',
     ] },
     { icon: '🅿️', title: 'Halten und Parken im Detail', hook: 'Wer die Lücke zuerst direkt erreicht, parkt', rules: [
