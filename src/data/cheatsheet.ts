@@ -12,11 +12,6 @@ export const PAIRS = [
   ['ueberholverbot', '<b>Überholverbot</b> (276): keine <b>mehrspurigen</b> Kfz. Motorrad, Rad, Mofa darfst du überholen', 'ueberholverbot-fuer-lkw', '<b>Überholverbot Lkw</b> (277): gilt für Kfz über 3,5 t, nicht für Pkw und Bus', 'Schau auf das rote Fahrzeug: es darf nicht überholen. Rotes Auto = gilt für dich. Roter Lkw = nur für schwere Lkw, die beim Überholen lange brauchen.'],
   ['tempo-30-zone', '<b>Tempo-30-Zone</b> (274.1): 30, meist rechts vor links', 'verkehrsberuhigter-bereich', '<b>Verkehrsberuhigter Bereich</b> (325.1): Schritttempo, Kinder spielen überall, Parken nur auf markierten Flächen', 'Zone mit „30“: die Straße bleibt Straße, nur langsamer. Blaues Schild mit Kind und Haus: die Straße ist Spielfläche, darum Schritttempo.'],
 ] as const;
-// Section bar: chips point to the first section of each group, in reading order.
-export const JUMP = [
-  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['vorfahrt', 'Vorfahrt'], ['verhalten', 'Gefahren'], ['vergessen', 'Zeichen'], ['formeln', 'Formeln'], ['zahlen-situation', 'Zahlen'], ['tempo', 'Tempo'], ['strassen', 'Straßen'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['zahlen', 'Zahlenfragen'], ['fehler-liste', 'Meine Fehler'], ['begriffe', 'Begriffe']] },
-  { label: 'Praxis', links: [['praxis', 'Prüfung'], ['aufgaben', 'Manöver'], ['situationen', 'Im Verkehr'], ['sichern', 'Sichern'], ['fehler', 'Sofort durch'], ['quellen', 'Quellen']] },
-].map(g => ({ label: g.label, links: g.links.map(([id, label]) => ({ href: `#${id}`, label: label! })) }));
 
 // Stopping distance per the textbook formulas used in the official question catalogue.
 export const STOP = [30, 40, 50, 70, 100, 130].map(v => {

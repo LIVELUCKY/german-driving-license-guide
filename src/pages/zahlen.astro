@@ -1,0 +1,13 @@
+---
+import PageShell from '../components/PageShell.astro';
+import Formeln from '../components/sections/Formeln.astro';
+import ZahlenSituationen from '../components/sections/ZahlenSituationen.astro';
+import Tempo from '../components/sections/Tempo.astro';
+import Strassenarten from '../components/sections/Strassenarten.astro';
+---
+<PageShell slug="zahlen" title="Zahlen" kicker="Theorie · Formeln und Zahlen" intro="Formeln zum Rechnen, jede Zahl in ihrer Situation, mit Grund." sections={[['formeln', 'Formeln'], ['zahlen-situation', 'Nach Situation'], ['tempo', 'Tempo'], ['strassen', 'Straßenarten']]}>
+  <Formeln />
+  <ZahlenSituationen />
+  <Tempo />
+  <Strassenarten />
+</PageShell>

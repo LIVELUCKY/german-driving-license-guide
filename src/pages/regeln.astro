@@ -1,0 +1,15 @@
+---
+import PageShell from '../components/PageShell.astro';
+import Alkohol from '../components/sections/Alkohol.astro';
+import Punkte from '../components/sections/Punkte.astro';
+import Licht from '../components/sections/Licht.astro';
+import Unfall from '../components/sections/Unfall.astro';
+import Fahrzeug from '../components/sections/Fahrzeug.astro';
+---
+<PageShell slug="regeln" title="Regeln" kicker="Theorie · Recht und Technik" intro="Alkohol, Punkte, Licht, Unfall und alles rund ums Fahrzeug." sections={[['alkohol', 'Alkohol'], ['punkte', 'Punkte'], ['licht', 'Licht und Wetter'], ['unfall', 'Unfall'], ['fahrzeug', 'Fahrzeug']]}>
+  <Alkohol />
+  <Punkte />
+  <Licht />
+  <Unfall />
+  <Fahrzeug />
+</PageShell>

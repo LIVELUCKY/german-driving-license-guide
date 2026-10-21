@@ -1,0 +1,9 @@
+---
+import PageShell from '../components/PageShell.astro';
+import Glossar from '../components/sections/Glossar.astro';
+import Quellen from '../components/sections/Quellen.astro';
+---
+<PageShell slug="begriffe" title="Begriffe" kicker="Nachschlagen" intro="Fachwörter kurz erklärt und gute Quellen zum Weiterlernen." sections={[['begriffe', 'Begriffe'], ['quellen', 'Quellen']]}>
+  <Glossar />
+  <Quellen />
+</PageShell>

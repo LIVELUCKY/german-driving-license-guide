@@ -1,0 +1,24 @@
+---
+// Frame for every topic page: heading, optional section bar, content, and "zurück / weiter" through the theory order.
+import Base from '../layouts/Base.astro';
+import JumpNav from './solid/JumpNav';
+import { prevNext } from '../lib/nav.js';
+interface Props { slug: string; title: string; kicker: string; intro: string; sections?: [string, string][] }
+const { slug, title, kicker, intro, sections } = Astro.props;
+const { prev, next } = prevNext(slug);
+---
+<Base slug={slug} title={title}>
+  <div class="wrap pagehead">
+    <span class="kicker">{kicker}</span>
+    <h1>{title}</h1>
+    <p set:html={intro} />
+  </div>
+  {sections && sections.length > 1 && <JumpNav client:idle groups={[{ label: title, links: sections.map(([id, label]) => ({ href: `#${id}`, label })) }]} />}
+  <slot />
+  {(prev || next) && (
+    <nav class="wrap mt-10 grid grid-cols-2 gap-3 pb-6" aria-label="Nächstes Thema">
+      {prev ? <a class="rounded-box border-2 border-line bg-surface p-3.5 shadow-hard" href={prev.url}><small class="block text-[.72rem] font-bold text-muted uppercase">← zurück</small><b>{prev.title}</b></a> : <span></span>}
+      {next && <a class="rounded-box border-2 border-line bg-ink p-3.5 text-right text-bg shadow-hard" href={next.url}><small class="block text-[.72rem] font-bold uppercase opacity-80">weiter →</small><b>{next.title}</b></a>}
+    </nav>
+  )}
+</Base>

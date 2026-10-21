@@ -1,0 +1,15 @@
+---
+import PageShell from '../components/PageShell.astro';
+import Section from '../components/Section.astro';
+import Verwechselt from '../components/sections/Verwechselt.astro';
+import { urlFor } from '../lib/nav.js';
+---
+<PageShell slug="zeichen" title="Zeichen" kicker="Theorie · Verkehrszeichen" intro="Die Schilder, die in der Prüfung am häufigsten verwechselt werden, mit dem Unterschied und dem Grund.">
+  <Verwechselt />
+  <Section>
+    <a href={urlFor('signs')} class="flex items-center justify-between gap-4 rounded-box border-2 border-line bg-surface p-4 shadow-hard">
+      <span><b class="block font-display text-lg uppercase">Alle Zeichen</b><span class="text-[.9rem] text-muted">Der ganze Katalog nach Kategorie, mit Suche. Karte antippen zeigt die Bedeutung.</span></span>
+      <span class="text-2xl" aria-hidden="true">→</span>
+    </a>
+  </Section>
+</PageShell>

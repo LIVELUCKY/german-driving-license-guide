@@ -3,6 +3,7 @@ import Section from '../Section.astro';
 import Flow from '../ui/Flow.astro';
 import Note from '../ui/Note.astro';
 import Tip from '../ui/Tip.astro';
+import { urlFor } from '../../lib/nav.js';
 
 const STEPS = [
   'Formeln verstehen, nicht auswendig',
@@ -15,5 +16,5 @@ const STEPS = [
 <Section id="lernen" title="So lernst du mit dieser Seite">
   <Flow items={STEPS} />
   <Note class="mt-[clamp(10px,1.6vw,16px)]">Was du im Selbsttest nicht wusstest, kommt später wieder. Wiederholen mit Pausen (nicht alles an einem Abend) bleibt am längsten hängen.</Note>
-  <Tip label="Wichtig">Die Prüfung zieht 30 Fragen aus über 1.500 amtlichen Fragen, mit Bildern und Videos. Dieser Spickzettel bringt dir die Regeln und Zahlen dahinter bei. Bestehen kommt, wenn du zusätzlich <b>jede Frage einmal geübt</b> hast, z. B. in der App deiner Fahrschule (siehe <a class="underline" href="#quellen">Quellen</a>).</Tip>
+  <Tip label="Wichtig">Die Prüfung zieht 30 Fragen aus über 1.500 amtlichen Fragen, mit Bildern und Videos. Dieser Spickzettel bringt dir die Regeln und Zahlen dahinter bei. Bestehen kommt, wenn du zusätzlich <b>jede Frage einmal geübt</b> hast, z. B. in der App deiner Fahrschule (siehe <a class="underline" href={urlFor('begriffe') + '#quellen'}>Quellen</a>). Jede falsche Frage trägst du unter <a class="underline" href={urlFor('ueben') + '#fehler-liste'}>Meine Fehler</a> ein.</Tip>
 </Section>

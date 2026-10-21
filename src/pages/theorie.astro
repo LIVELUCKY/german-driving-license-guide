@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import TopicTiles from '../components/TopicTiles.astro';
+---
+<Base slug="theorie" title="Lernen">
+  <div class="wrap pagehead">
+    <span class="kicker">Theorie</span>
+    <h1>Lernen</h1>
+    <p>Die Themen in der Reihenfolge, die am meisten Punkte bringt. Am Ende jeder Seite geht es mit „weiter“ zum nächsten Thema.</p>
+  </div>
+  <Section><TopicTiles extra={[{ slug: 'ueben', label: 'Üben', icon: '🃏', d: 'Karten wischen, Quiz, Meine Fehler.' }]} /></Section>
+</Base>

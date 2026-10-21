@@ -1,0 +1,17 @@
+---
+import PageShell from '../components/PageShell.astro';
+import Section from '../components/Section.astro';
+import Note from '../components/ui/Note.astro';
+import Swipe from '../components/solid/Swipe';
+import Fragenkatalog from '../components/sections/Fragenkatalog.astro';
+import MeineFehler from '../components/sections/MeineFehler.astro';
+import ZAHLEN from '../data/zahlenfragen.json';
+---
+<PageShell slug="ueben" title="Üben" kicker="Selbst prüfen" intro="Amtliche Zahlenfragen als Wischkarten und Quiz, dazu deine eigene Fehlerliste. Dein Fortschritt bleibt in diesem Browser." sections={[['karten', 'Karten'], ['zahlen', 'Zahlenfragen'], ['test', 'Quiz'], ['fehler-liste', 'Meine Fehler']]}>
+  <Section id="karten" title="Karten: stimmt oder stimmt nicht?">
+    <Note class="mb-3">Jede Karte ist eine amtliche Frage mit einer Antwort: manchmal die richtige, manchmal die Antwort einer anderen Frage mit derselben Einheit. Entscheide schnell, falsche Karten kommen wieder.</Note>
+    <Swipe client:visible groups={ZAHLEN} />
+  </Section>
+  <Fragenkatalog />
+  <MeineFehler />
+</PageShell>

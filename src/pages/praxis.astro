@@ -1,0 +1,17 @@
+---
+import PageShell from '../components/PageShell.astro';
+import PraxisPruefung from '../components/sections/PraxisPruefung.astro';
+import Manoever from '../components/sections/Manoever.astro';
+import Fahrtechnik from '../components/sections/Fahrtechnik.astro';
+import Situationen from '../components/sections/Situationen.astro';
+import Sichern from '../components/sections/Sichern.astro';
+import Fehler from '../components/sections/Fehler.astro';
+---
+<PageShell slug="praxis" title="Praxis" kicker="Praktische Prüfung Klasse B" intro="Was der Prüfer im Auto sehen will: Manöver, Verkehrssituationen, Fehler." sections={[['praxis', 'Prüfung'], ['blick', 'Blick'], ['aufgaben', 'Manöver'], ['fahren', 'Fahrtechnik'], ['situationen', 'Im Verkehr'], ['sichern', 'Sichern'], ['fehler', 'Sofort durch']]}>
+  <PraxisPruefung />
+  <Manoever />
+  <Fahrtechnik />
+  <Situationen />
+  <Sichern />
+  <Fehler />
+</PageShell>

@@ -1,77 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
-import JumpNav from '../components/solid/JumpNav';
-import { urlFor } from '../lib/nav.js';
-import { JUMP } from '../data/cheatsheet';
 import Lernen from '../components/sections/Lernen.astro';
 import TheoriePruefung from '../components/sections/TheoriePruefung.astro';
-import Formeln from '../components/sections/Formeln.astro';
-import ZahlenSituationen from '../components/sections/ZahlenSituationen.astro';
-import Tempo from '../components/sections/Tempo.astro';
-import Vorfahrt from '../components/sections/Vorfahrt.astro';
-import Alkohol from '../components/sections/Alkohol.astro';
-import Punkte from '../components/sections/Punkte.astro';
-import Licht from '../components/sections/Licht.astro';
-import Unfall from '../components/sections/Unfall.astro';
-import Fahrzeug from '../components/sections/Fahrzeug.astro';
-import Verwechselt from '../components/sections/Verwechselt.astro';
-import Verhalten from '../components/sections/Verhalten.astro';
-import Fragenkatalog from '../components/sections/Fragenkatalog.astro';
-import PraxisPruefung from '../components/sections/PraxisPruefung.astro';
-import Manoever from '../components/sections/Manoever.astro';
-import Fahrtechnik from '../components/sections/Fahrtechnik.astro';
-import Situationen from '../components/sections/Situationen.astro';
-import Sichern from '../components/sections/Sichern.astro';
-import Fehler from '../components/sections/Fehler.astro';
-import Quellen from '../components/sections/Quellen.astro';
-import Glossar from '../components/sections/Glossar.astro';
-import Strassenarten from '../components/sections/Strassenarten.astro';
-import MeineFehler from '../components/sections/MeineFehler.astro';
+import TopicTiles from '../components/TopicTiles.astro';
+import { urlFor } from '../lib/nav.js';
 ---
 <Base slug="" title="Führerschein-Spickzettel Klasse B">
   <div class="wrap pagehead">
     <span class="kicker">Klasse B · Theorie + Praxis</span>
     <h1>Führerschein-Spickzettel</h1>
-    <p>Die Regeln mit ihrem <b>Grund</b>, die Zahlen in ihrer Situation, Zahlenfragen aus dem amtlichen Katalog und deine eigene Fehlerliste. Gelernt? <a href="#zahlen">Zahlenfragen üben</a>.</p>
+    <p>Die Regeln mit ihrem <b>Grund</b>, die Zahlen in ihrer Situation, Karten zum Wischen und deine eigene Fehlerliste.</p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <a href={urlFor('vorfahrt')} class="rounded-box border-2 border-line bg-ink px-4 py-2.5 font-bold text-bg shadow-hard">Mit Vorfahrt anfangen →</a>
+      <a href={urlFor('ueben')} class="rounded-box border-2 border-line bg-surface px-4 py-2.5 font-bold shadow-hard">🃏 Karten wischen</a>
+    </div>
   </div>
-  <JumpNav client:idle groups={JUMP} />
-
-
-  <div class="wrap part" id="theorie"><h2>Theorie</h2><span>Was in den 30 Fragen drankommt</span></div>
-
+  <Section title="Themen"><TopicTiles extra={[{ slug: 'ueben', label: 'Üben', icon: '🃏', d: 'Karten wischen, Quiz, Meine Fehler.' }, { slug: 'praxis', label: 'Praxis', icon: '🚗', d: 'Praktische Prüfung, Manöver, Fehler.' }]} /></Section>
   <Lernen />
   <TheoriePruefung />
-  <Vorfahrt />
-  <Verhalten />
-  <Verwechselt />
-  <Formeln />
-  <ZahlenSituationen />
-  <Tempo />
-  <Strassenarten />
-  <Alkohol />
-  <Punkte />
-  <Licht />
-  <Unfall />
-  <Fahrzeug />
-  <Fragenkatalog />
-  <MeineFehler />
-  <Glossar />
-  <div class="wrap part" id="teil-praxis"><h2>Praxis</h2><span>Was der Prüfer im Auto sehen will</span></div>
-
-  <PraxisPruefung />
-  <Manoever />
-  <Fahrtechnik />
-  <Situationen />
-  <Sichern />
-  <Fehler />
-  <Quellen />
-  <Section>
-    <div class="disc">⚠️ Lernhilfe, kein Ersatz für Fahrschule und amtlichen Fragenkatalog. Alle Verkehrszeichen zum Nachschlagen: <a href={urlFor('signs')}>Zeichen-Katalog →</a></div>
-  </Section>
-
-  <script is:inline>
-    // Printing: open every fold so nothing is hidden on paper.
-    addEventListener('beforeprint', () => document.querySelectorAll('details.fold').forEach(d => { d.open = true; }));
-  </script>
 </Base>

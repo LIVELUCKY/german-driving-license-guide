@@ -1,20 +1,11 @@
 import { createMemo, createSignal, For, onCleanup, onMount, Show } from 'solid-js';
+import { buildCards, loadBoxes, nextBox, pick, SAFE, saveBoxes, shuffle, type Card, type Group } from './cards';
 
-type Row = { q: string; a: string; n: string };
-type Group = { h: string; i: string; rows: Row[] };
-type Card = Row & { topic: string; others: string[] };
 type Task = { q: string; work: string; value: number };
 type Mode = 'formel' | 'zahlen';
 
 const SPEEDS = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130];
-const STORE = 'fs_quiz_v1';
-const SAFE = 2; // a card counts as "sicher" from Leitner box 2 (answered right twice in a row)
-const pick = <T,>(a: readonly T[]): T => a[Math.floor(Math.random() * a.length)]!;
 const de = (x: number) => String(Math.round(x * 10) / 10).replace('.', ',');
-const shuffle = <T,>(a: T[]): T[] => {
-  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j]!, a[i]!]; }
-  return a;
-};
 const parseNum = (s: string) => Number(s.replace(/[^\d,.-]/g, '').replace(',', '.'));
 
 // Formula drill: answers come from exactly the formulas taught on the page (T = speed ÷ 10).
@@ -29,20 +20,8 @@ const TASKS: ((v: number) => Task)[] = [
   v => { const t = v / 10; return { q: `Reaktionsweg bei ${v} km/h mit 2 Sekunden Reaktionszeit?`, work: `(${v} ÷ 10) × 3 × 2`, value: t * 6 }; },
 ];
 
-function loadBoxes(): Record<string, number> {
-  try { return JSON.parse(localStorage.getItem(STORE) ?? '{}') as Record<string, number>; } catch { return {}; }
-}
-
 export default function Quiz(props: { groups: Group[] }) {
-  // Wrong options share the unit of the right answer (m with m, km/h with km/h …), so they are real traps.
-  const all = props.groups.flatMap(g => g.rows.map(r => ({ ...r, topic: g.h })));
-  const TIME = /^(Sek|Sekunden|Min|Minuten|Stunden|Wochen|Monate|Monaten|Jahre|Jahren)$/;
-  const unit = (a: string) => { const u = /\d[\d.,]*\s*([A-Za-zäöüÄÖÜß%‰/]+)/.exec(a.replace(/<[^>]+>/g, ''))?.[1] ?? 'text'; return TIME.test(u) ? 'zeit' : u; };
-  const cards: Card[] = all.map(r => {
-    const same = [...new Set(all.filter(x => x.a !== r.a && unit(x.a) === unit(r.a)).map(x => x.a))];
-    const group = [...new Set(all.filter(x => x.topic === r.topic && x.a !== r.a).map(x => x.a))];
-    return { ...r, others: same.length >= 2 ? same : [...same, ...group.filter(x => !same.includes(x))] };
-  });
+  const cards: Card[] = buildCards(props.groups);
   const topics = props.groups.map(g => g.h);
 
   const [mode, setMode] = createSignal<Mode>('formel');
@@ -65,7 +44,7 @@ export default function Quiz(props: { groups: Group[] }) {
   const seenCount = createMemo(() => pool().filter(c => c.n in boxes()).length);
   const card = () => queue()[0];
 
-  const persist = (b: Record<string, number>) => { setBoxes(b); try { localStorage.setItem(STORE, JSON.stringify(b)); } catch { /* private mode */ } };
+  const persist = (b: Record<string, number>) => { setBoxes(b); saveBoxes(b); };
   const prepare = (c?: Card) => { setAnswered(null); setOptions(c ? shuffle([c.a, ...shuffle(c.others.slice()).slice(0, 2)]) : []); };
   // Lowest Leitner box first, shuffled inside each box: weak cards come up more often.
   const buildQueue = () => {
@@ -95,7 +74,7 @@ export default function Quiz(props: { groups: Group[] }) {
     const c = card(); if (!c || answered()) return;
     const right = opt === c.a;
     right ? setOk(ok() + 1) : setNo(no() + 1);
-    const b = { ...boxes() }; b[c.n] = right ? Math.min((b[c.n] ?? 0) + 1, 3) : 0; persist(b);
+    const b = { ...boxes() }; b[c.n] = nextBox(b[c.n], right); persist(b);
     setAnswered({ right, picked: opt });
   };
   const next = () => {

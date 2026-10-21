@@ -1,0 +1,17 @@
+---
+// Big tiles linking to the theory pages, in learning order.
+import { THEORIE, urlFor } from '../lib/nav.js';
+interface Props { extra?: { slug: string; label: string; icon: string; d: string }[] }
+const { extra = [] } = Astro.props;
+const tiles = [...THEORIE, ...extra];
+---
+<ol class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  {tiles.map((t, i) => (
+    <li>
+      <a href={urlFor(t.slug)} class="flex h-full items-start gap-3 rounded-box border-2 border-line bg-surface p-4 shadow-hard transition-transform hover:-translate-y-0.5">
+        <span class="text-[1.8rem] leading-none" aria-hidden="true">{t.icon}</span>
+        <span><small class="text-[.7rem] font-bold text-muted uppercase">Schritt {i + 1}</small><b class="block font-display text-[1.05rem] uppercase">{t.label}</b><span class="text-[.86rem] text-muted">{t.d}</span></span>
+      </a>
+    </li>
+  ))}
+</ol>

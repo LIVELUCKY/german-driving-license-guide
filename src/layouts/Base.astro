@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { SEO } from 'astro-seo';
 import { Image, getImage } from 'astro:assets';
 import logoSrc from '../assets/logo.jpg';
-import { NAV, urlFor, withBase } from '../lib/nav.js';
+import { NAV, TABS, urlFor, withBase } from '../lib/nav.js';
 import Analytics from '../components/Analytics.astro';
 import CookieBar from '../components/solid/CookieBar';
 import ThemeToggle from '../components/solid/ThemeToggle';
@@ -64,8 +64,8 @@ const ogImageUrl = abs(ogImage.src);
     <Image src={logoSrc} width={36} height={36} alt="Führerschein Guide" class="brand-logo" widths={[36, 72]} sizes="36px" loading="eager" />
     <span>Führerschein<small>Spickzettel Klasse B</small></span>
   </a>
-  <nav class="dnav" aria-label="Hauptmenü">
-    {NAV.filter(n => n.slug !== 'legal').map(n => (
+  <nav class="dnav max-lg:hidden" aria-label="Hauptmenü">
+    {NAV.filter(n => n.slug !== 'legal' && n.slug !== '').map(n => (
       <a class={slug === n.slug ? 'on' : ''} href={urlFor(n.slug)} aria-current={slug === n.slug ? 'page' : undefined}>{n.label}</a>
     ))}
   </nav>
@@ -81,11 +81,23 @@ const ogImageUrl = abs(ogImage.src);
   </div>
 )}
 
-<main id="main">
+<main id="main" class="max-lg:pb-16">
   <slot />
 </main>
 
-<footer><div class="wrap">
+<nav class="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t-2 border-line bg-surface/95 backdrop-blur lg:hidden print:hidden" aria-label="Hauptmenü unten">
+  {TABS.map(t => {
+    const on = t.slug === slug || (t.match ?? []).includes(slug);
+    return (
+      <a href={urlFor(t.slug)} aria-current={on ? 'page' : undefined}
+        class:list={['flex flex-col items-center gap-0.5 py-1.5 text-[.68rem] font-bold', on ? 'text-accent-text' : 'text-ink']}>
+        <span class="text-[1.25rem] leading-none" aria-hidden="true">{t.icon}</span>{t.label}
+      </a>
+    );
+  })}
+</nav>
+
+<footer class="max-lg:pb-16"><div class="wrap">
   <div class="ft-row">
     <div class="ft">Führerschein Guide</div>
     <div class="ft-links">
