@@ -1,0 +1,10 @@
+---
+import Section from '../Section.astro';
+import Note from '../ui/Note.astro';
+import Trainer from '../solid/Trainer';
+import { MEHRFACH } from '../../data/mehrfach';
+---
+<Section id="training" title="Prüfungstraining: jede Antwort einzeln">
+  <Note class="mb-3">Wie in der Prüfung: kreuze <b>alle</b> richtigen Aussagen an. Nach dem Prüfen siehst du bei jeder Aussage den <b>Grund</b>. Die Fragen sind eigene Formulierungen zu den Themen des amtlichen Katalogs; übe die Originalfragen zusätzlich in deiner App.</Note>
+  <Trainer client:visible items={MEHRFACH} />
+</Section>

@@ -1,0 +1,9 @@
+---
+import Section from '../Section.astro';
+import Note from '../ui/Note.astro';
+import Fehlerliste from '../solid/Fehlerliste';
+---
+<Section id="fehler-liste" title="Meine Fehler">
+  <Note class="mb-3">Jede Frage, die du in der App falsch hattest, hier eintragen: in deinen Worten, mit der richtigen Antwort und <b>warum</b>. Sie kommt wieder, bis du sie mehrmals gewusst hast (heute, morgen, in 3 Tagen …). Gespeichert nur in diesem Browser; „Als Datei sichern“ macht eine Kopie.</Note>
+  <Fehlerliste client:visible />
+</Section>

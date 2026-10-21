@@ -6,22 +6,30 @@ import Note from '../ui/Note.astro';
 import Tip from '../ui/Tip.astro';
 
 // Order of precedence (§ 36 Abs. 1, § 37 Abs. 1 StVO): a higher rung overrides every lower one.
-const LADDER = ['👮 Polizei', '🚦 Ampel', '⛔ Schilder und Markierungen', '↔️ Rechts vor links'];
+// Each rung: [label, why it ranks there].
+const LADDER = [
+  ['👮 Polizei', 'Sie sieht die echte Lage vor Ort, z. B. Unfall oder kaputte Ampel.'],
+  ['🚦 Ampel', 'Sie regelt die Kreuzung im Wechsel. Darum gilt sie vor den festen Schildern.'],
+  ['⛔ Schilder und Markierungen', 'Sie stehen dort, wo rechts vor links zu gefährlich wäre.'],
+  ['↔️ Rechts vor links', 'Die Grundregel, wenn sonst nichts regelt.'],
+];
+const WHY = 'mt-1 text-[.82rem] font-normal leading-[1.4] text-muted';
 const DIAG = '[&_svg]:h-auto [&_svg]:w-full [&_svg]:rounded-box [&_svg]:border-2 [&_svg]:border-line [&_svg]:bg-bg2';
+// Each chip: [rule, why].
 const ALWAYS_WAIT = [
-  '🏠 Aus <b>Grundstück</b>, Parkplatz, Fußgängerzone, verkehrsberuhigtem Bereich oder über abgesenkten Bordstein (niedriger Bordstein an Einfahrten) raus: <b>alle</b> haben Vorrang (§ 10). Aus Feld- oder Waldweg: keine Vorfahrt (§ 8)',
-  '🚨 <b>Blaulicht + Martinshorn</b> (Sirene): sofort freie Bahn schaffen',
-  '🚌 Linienbus will von gekennzeichneter <b>Haltestelle</b> abfahren: abfahren lassen, notfalls warten',
-  '🚊 <b>Straßenbahn</b>: normale Vorfahrtregeln, aber beim Abbiegen und neben dir in gleicher Richtung hat sie Vorrang',
-  '🚶 Fußgänger am <b>Zebrastreifen</b> und beim Abbiegen in die Querstraße',
-  '🚦 Stau hinter der Kreuzung: <b>nicht einfahren</b>, auch bei Grün',
+  ['🏠 Aus <b>Grundstück</b>, Parkplatz, Fußgängerzone, verkehrsberuhigtem Bereich oder über abgesenkten Bordstein (niedriger Bordstein an Einfahrten) raus: <b>alle</b> haben Vorrang (§ 10). Aus Feld- oder Waldweg: keine Vorfahrt (§ 8)', 'Der fließende Verkehr rechnet nicht mit dir und sieht dich spät.'],
+  ['🚨 <b>Blaulicht + Martinshorn</b> (Sirene): sofort freie Bahn schaffen', 'Es geht um Leben. Jede Sekunde zählt.'],
+  ['🚌 Linienbus will von gekennzeichneter <b>Haltestelle</b> abfahren: abfahren lassen, notfalls warten', 'Ein großer Bus findet schwer eine Lücke und soll im Takt bleiben.'],
+  ['🚊 <b>Straßenbahn</b>: normale Vorfahrtregeln, aber beim Abbiegen und neben dir in gleicher Richtung hat sie Vorrang', 'Sie fährt auf Schienen, kann nicht ausweichen und bremst lange.'],
+  ['🚶 Fußgänger am <b>Zebrastreifen</b> und beim Abbiegen in die Querstraße', 'Fußgänger sind ungeschützt. Beim Abbiegen kreuzt du ihren Weg.'],
+  ['🚦 Stau hinter der Kreuzung: <b>nicht einfahren</b>, auch bei Grün', 'Sonst blockierst du die Kreuzung für den Querverkehr.'],
 ];
 ---
 <Section id="vorfahrt" title="Vorfahrt: oben schlägt unten">
   <ol class="flex flex-col gap-1.5">
-    {LADDER.map((t, i) => (
+    {LADDER.map(([t, why], i) => (
       <li class="flex items-center gap-3 rounded-box border-2 border-line bg-surface px-3.5 py-2.5 font-bold" style={`margin-left:${i * 4}%`}>
-        <span class="grid size-[26px] shrink-0 place-items-center rounded-full bg-ink text-[.8rem] text-bg" aria-hidden="true">{i + 1}</span>{t}
+        <span class="grid size-[26px] shrink-0 place-items-center rounded-full bg-ink text-[.8rem] text-bg" aria-hidden="true">{i + 1}</span><div>{t}<p class={WHY}><b class="text-ink">Warum:</b> {why}</p></div>
       </li>
     ))}
   </ol>
@@ -43,6 +51,7 @@ const ALWAYS_WAIT = [
         </svg>
       </div>
       <Note class="mt-2">Keine Schilder, keine Ampel: <b>wer von rechts kommt, fährt zuerst.</b> Gilt auch in fast allen Tempo-30-Zonen.</Note>
+      <p class={WHY}><b class="text-ink">Warum:</b> Ohne Schilder braucht es eine feste Regel, die alle kennen. So weiß jeder, wer wartet.</p>
       <Tip label="Merksatz">„Wer rechts frei hat, fährt zuerst.“</Tip>
     </Card>
 
@@ -59,6 +68,7 @@ const ALWAYS_WAIT = [
         </svg>
       </div>
       <Note class="mt-2">Wer links abbiegt, lässt den <b>Gegenverkehr</b> und Fußgänger der Zielstraße zuerst. Kommen sich zwei Linksabbieger entgegen: <b>voreinander</b> abbiegen, außer Verkehr oder Bauart der Kreuzung verlangen, erst aneinander vorbeizufahren.</Note>
+      <p class={WHY}><b class="text-ink">Warum:</b> Wer links abbiegt, kreuzt die Spur des Gegenverkehrs. Wer geradeaus fährt, bleibt in seiner Spur.</p>
       <Tip label="Merksatz">„Links abbiegen: Gegenverkehr zuerst.“</Tip>
     </Card>
 
@@ -77,6 +87,7 @@ const ALWAYS_WAIT = [
         </svg>
       </div>
       <Note class="mt-2">Mit Zeichen 215 (blaues Kreisverkehr-Schild) + 205 (Vorfahrt gewähren, Dreieck): <b>der Kreis hat Vorfahrt</b>. Beim Einfahren blinken ist <b>verboten</b>, beim Ausfahren <b>Pflicht</b>. Im Kreis nicht halten.</Note>
+      <p class={WHY}><b class="text-ink">Warum:</b> Wer im Kreis ist, muss rauskommen, sonst staut sich alles. Der Blinker rechts heißt nur „ich fahre raus“, so wissen Wartende, wann sie fahren können.</p>
       <Tip label="Merksatz">„Rein ohne, raus mit.“ Gemeint ist der Blinker.</Tip>
     </Card>
 
@@ -91,6 +102,7 @@ const ALWAYS_WAIT = [
         </svg>
       </div>
       <Note class="mt-2">Die <b>dicke Linie</b> ist die Vorfahrtstraße. Folgst du dem Knick, behältst du Vorfahrt, musst aber <b>blinken</b>. Untereinander gilt auf den dünnen Ästen (Straßen ohne Vorfahrt) rechts vor links.</Note>
+      <p class={WHY}><b class="text-ink">Warum:</b> Die Vorfahrt folgt der Straße, nicht der Richtung geradeaus. Du änderst die Richtung, darum blinken.</p>
       <Tip label="Merksatz">„Folgst du dem Knick, blink.“</Tip>
     </Card>
 
@@ -107,6 +119,7 @@ const ALWAYS_WAIT = [
         </svg>
       </div>
       <Note class="mt-2">Endende Spur <b>bis zum Ende</b> nutzen, dann abwechselnd je ein Fahrzeug (§ 7 Abs. 4). Nicht zu früh wechseln.</Note>
+      <p class={WHY}><b class="text-ink">Warum:</b> Beide Spuren werden bis zum Ende genutzt, so wird der Stau kürzer. Abwechselnd ist klar und fair.</p>
       <Tip label="Merksatz">„Erst bis zum Ende, dann abwechselnd.“</Tip>
     </Card>
 
@@ -119,6 +132,7 @@ const ALWAYS_WAIT = [
         </svg>
       </div>
       <Note class="mt-2"><b>1</b> Brust oder Rücken zu dir: <b>Halt</b> (wie Rot). Seitlich: frei (wie Grün). <b>2</b> Arm hoch: vor der Kreuzung warten, wer schon drin ist, räumt die Kreuzung (<b>wie Gelb</b>). <b>3</b> Winken: diese Richtung fahren.</Note>
+      <p class={WHY}><b class="text-ink">Warum:</b> Brust oder Rücken stehen dir wie eine Wand im Weg. Seitlich ist dein Weg frei.</p>
       <Tip label="Merksatz">„Brust und Rücken: Rot. Seite: Grün. Arm hoch: Gelb.“</Tip>
     </Card>
   </Grid>
@@ -127,15 +141,15 @@ const ALWAYS_WAIT = [
 <Section title="Vorfahrt: immer warten">
   <Note class="mb-3"><b>Vorfahrt</b> gibt es an Kreuzungen und Einmündungen. <b>Vorrang</b> heißt: du lässt andere zuerst, auch ohne Kreuzung, z. B. Fußgänger, an Engstellen oder wenn du aus einer Ausfahrt kommst.</Note>
   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-2.5">
-    {ALWAYS_WAIT.map(t => <div class="rounded-box border-2 border-soft bg-surface px-3.5 py-[11px] text-[.9rem] leading-[1.45]" set:html={t} />)}
+    {ALWAYS_WAIT.map(([t, why]) => <div class="rounded-box border-2 border-soft bg-surface px-3.5 py-[11px] text-[.9rem] leading-[1.45]"><Fragment set:html={t} /><p class={WHY}><b class="text-ink">Warum:</b> {why}</p></div>)}
   </div>
   <Tip label="Merksatz">„Aus dem Hof? Alle anderen zuerst.“ (§ 10)</Tip>
 </Section>
 
 <Section title="Grünpfeil">
   <div class="grid grid-cols-2 gap-3">
-    <div class="rounded-box border-2 border-line bg-surface p-3.5 text-[.88rem] leading-[1.45]"><b>Grünpfeil-Schild</b> (Blech, § 37) neben Rot<br/><span class="mt-2 mb-1 block font-display text-[1.6rem] text-warn">STOPP</span>erst ganz anhalten, dann rechts abbiegen, nur aus dem rechten Fahrstreifen, niemanden behindern</div>
-    <div class="rounded-box border-2 border-line bg-surface p-3.5 text-[.88rem] leading-[1.45]"><b>Leuchtender</b> grüner Pfeil in der Ampel<br/><span class="mt-2 mb-1 block font-display text-[1.6rem] text-go">FAHREN</span>normale freie Fahrt in Pfeilrichtung</div>
+    <div class="rounded-box border-2 border-line bg-surface p-3.5 text-[.88rem] leading-[1.45]"><b>Grünpfeil-Schild</b> (Blech, § 37) neben Rot<br/><span class="mt-2 mb-1 block font-display text-[1.6rem] text-warn">STOPP</span>erst ganz anhalten, dann rechts abbiegen, nur aus dem rechten Fahrstreifen, niemanden behindern<p class={WHY}><b class="text-ink">Warum:</b> Querverkehr und Fußgänger haben Grün. Du fährst nur durch eine Lücke, darum erst stehen und schauen.</p></div>
+    <div class="rounded-box border-2 border-line bg-surface p-3.5 text-[.88rem] leading-[1.45]"><b>Leuchtender</b> grüner Pfeil in der Ampel<br/><span class="mt-2 mb-1 block font-display text-[1.6rem] text-go">FAHREN</span>normale freie Fahrt in Pfeilrichtung<p class={WHY}><b class="text-ink">Warum:</b> Die Ampel gibt dir diese Richtung frei, wie bei normalem Grün.</p></div>
   </div>
   <Tip label="Merksatz">Grünpfeil-Schild: „Erst stehen, dann abbiegen.“</Tip>
 </Section>

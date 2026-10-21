@@ -1,7 +1,18 @@
 ---
 import Section from '../Section.astro';
 import Note from '../ui/Note.astro';
+import Steps from '../ui/Steps.astro';
+import Tip from '../ui/Tip.astro';
 
+// How to answer: the traps that cost points even when you know the rule.
+const TAKTIK = [
+  '<b>Jede Antwort einzeln</b> lesen und für sich entscheiden: stimmt oder stimmt nicht. Es können 1, 2 oder 3 richtig sein',
+  'Auf <b>kleine Wörter</b> achten: „immer“, „nur“, „sofort“, „nie“ machen eine fast richtige Aussage falsch',
+  'Bildfragen: erst die <b>Lage</b> lesen (wer kommt woher, welches Schild, welche Ampel), dann die Reihenfolge festlegen',
+  '„Womit müssen Sie rechnen?“: an <b>alles</b> denken, was passieren kann (Kind läuft los, Tür geht auf, Bus fährt an)',
+  'Zahlenfragen: Formel kurz aufschreiben und rechnen, nicht schätzen',
+  '<b>5-Punkte-Fragen</b> (oft Vorfahrt und Gefahrenlehre) langsam und doppelt prüfen: zwei Fehler dort = durchgefallen',
+];
 // Exam figures (FeV Anlage 7). `tone` colours the number: ok = green, bad = red.
 const STATS = [
   { n: '30', t: 'Fragen<br/>20 Grundstoff + 10 Zusatzstoff (Klasse B)' },
@@ -22,4 +33,7 @@ const STATS = [
   </div>
   <Note class="mt-[clamp(10px,1.6vw,16px)]"><b>Grundstoff</b> = Fragen für alle Klassen. <b>Zusatzstoff</b> = Fragen nur für Klasse B. <b>Fehlerpunkte</b>: jede Frage hat 2 bis 5 Punkte, je wichtiger die Regel, desto mehr.</Note>
   <Note class="mt-2">Bei Mehrfachauswahl zählt eine Frage nur, wenn <b>alle</b> richtigen Kreuze gesetzt sind. Mindestens eine Antwort ist immer richtig.</Note>
+  <h3 class="mt-5 mb-2 font-display text-base uppercase tracking-[.04em]">So beantwortest du die Fragen</h3>
+  <Steps items={TAKTIK} />
+  <Tip label="Merksatz">„<b>Jede Antwort ist eine eigene Frage.</b>“</Tip>
 </Section>

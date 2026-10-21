@@ -1,0 +1,69 @@
+---
+import Section from '../Section.astro';
+import Note from '../ui/Note.astro';
+import Tip from '../ui/Tip.astro';
+import { ORT_VERGLEICH, SITUATIONEN } from '../../data/zahlen-situationen';
+// Colour = unit family, the same everywhere on the page.
+const FAM = { kmh: 'border-[#c62828]', m: 'border-blue', pm: 'border-[#ef8f1a]', zeit: 'border-go', x: 'border-muted' } as const;
+---
+<Section id="zahlen-situation" title="Zahlen nach Situation">
+  <Note class="mb-3">Stell dir die Situation vor, dann kommt die Zahl von selbst. Jede Zahl hat einen <b>Grund</b>: wer den Grund kennt, verwechselt sie nicht mit einer anderen 5 oder 50.</Note>
+  <h3 class="mb-2 font-display text-base uppercase tracking-[.04em]">Gleiche Situation, anderer Ort</h3>
+  <!-- phones: one card per situation, the three places stacked so the contrast stays visible -->
+  <div class="mb-6 grid gap-2 sm:hidden">
+    {ORT_VERGLEICH.map(([sit, inn, aus, ab]) => (
+      <div class="rounded-box border-2 border-line bg-surface p-2.5">
+        <b class="mb-1.5 block text-[.88rem]">{sit}</b>
+        {[['🏘️ innerorts', inn, 'bg-[#ffd400] text-fixed-ink'], ['🌳 außerorts', aus, 'bg-[#9fd8a0] text-fixed-ink'], ['🛣️ Autobahn', ab, 'bg-[#2547f4] text-white']].map(([l, v, c]) => (
+          <div class="grid grid-cols-[96px_1fr] items-baseline gap-2 py-0.5 text-[.84rem]">
+            <span class:list={['rounded px-1.5 py-0.5 text-[.7rem] font-bold', c]}>{l}</span>
+            <span class:list={[v === '–' ? 'text-muted' : 'font-bold']}>{v}</span>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+  <div class="mb-6 hidden overflow-x-auto rounded-box border-2 border-line bg-surface shadow-hard sm:block">
+    <table class="w-full min-w-[640px] border-collapse text-left text-[.86rem] leading-snug">
+      <thead>
+        <tr class="text-[.75rem] font-bold uppercase tracking-wide">
+          <th class="sticky left-0 z-1 bg-ink p-2.5 text-bg">Situation</th>
+          <th class="bg-[#ffd400] p-2.5 text-fixed-ink">🏘️ Innerorts</th>
+          <th class="bg-[#9fd8a0] p-2.5 text-fixed-ink">🌳 Außerorts</th>
+          <th class="bg-[#2547f4] p-2.5 text-white">🛣️ Autobahn</th>
+        </tr>
+      </thead>
+      <tbody>
+        {ORT_VERGLEICH.map(([sit, inn, aus, ab]) => (
+          <tr class="border-b border-soft align-top last:border-b-0 even:bg-bg2/60">
+            <th scope="row" class="sticky left-0 z-1 w-[200px] bg-surface p-2.5 font-bold">{sit}</th>
+            {[inn, aus, ab].map(v => <td class:list={['p-2.5', v === '–' ? 'text-muted' : 'font-bold']}>{v}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Tip label="Merksatz" class="mb-6">Außerorts ist man schneller, darum ist dort <b>alles größer</b>: mehr Abstand, mehr Seitenabstand, Warndreieck weiter weg, Gefahrzeichen früher.</Tip>
+
+  <h3 class="mb-2 font-display text-base uppercase tracking-[.04em]">Alle Zahlen nach Situation</h3>
+  <div class="mb-4 flex flex-wrap gap-1.5 text-[.75rem] font-bold">
+    {[['kmh', 'km/h'], ['m', 'Meter'], ['pm', 'Promille'], ['zeit', 'Zeit'], ['x', 'Sonstiges']].map(([k, l]) => <span class:list={['rounded-full border-l-[6px] bg-surface px-2.5 py-0.5', FAM[k as keyof typeof FAM]]}>{l}</span>)}
+  </div>
+  <div class="columns-[2_340px] gap-3">
+    {SITUATIONEN.map(s => (
+      <div class="mb-3 break-inside-avoid rounded-box border-2 border-line bg-surface p-3.5 shadow-hard">
+        <h3 class="flex items-center gap-2.5 text-[.98rem] font-bold uppercase tracking-[.03em]"><span class="text-[1.4rem]" aria-hidden="true">{s.icon}</span>{s.title}</h3>
+        <p class="mt-1 mb-2.5 text-[.84rem] text-muted before:content-['💡_']">„{s.hook}“</p>
+        <ul class="flex flex-col gap-2">
+          {s.rows.map(r => (
+            <li class:list={['grid grid-cols-[minmax(64px,auto)_1fr] items-baseline gap-x-3 border-l-4 pl-2.5', FAM[r.fam]]}>
+              <span class="font-display text-[1.05rem] leading-tight whitespace-nowrap">{r.n}<small class="ml-1 font-sans text-[.72rem] font-bold text-muted">{r.unit}</small></span>
+              <span class="text-[.88rem] leading-snug">{r.t}{r.why && <span class="mt-0.5 block text-[.8rem] text-muted"><b class="text-ink">Warum:</b> {r.why}</span>}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <Tip label="So prüfst du dich">Nimm eine Situation (z. B. „Bahnübergang“) und sag alle Zahlen laut, mit Grund. Erst dann aufdecken.</Tip>
+</Section>

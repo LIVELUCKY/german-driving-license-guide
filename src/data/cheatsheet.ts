@@ -4,17 +4,17 @@ import { SIGNS } from '../lib/signs.js';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const img = (id: string) => (SIGNS.find((s: any) => s.id === id) as any)?.img;
 
-// Sign pairs people mix up in the exam: [left id, left text, right id, right text].
+// Sign pairs people mix up in the exam: [left id, left text, right id, right text, why they differ].
 export const PAIRS = [
-  ['vorfahrt-gewaehren', '<b>Vorfahrt gewähren</b> (205): nur anhalten, wenn jemand kommt', 'stop', '<b>Stopp</b> (206): <b>immer</b> anhalten, Räder stehen, an der Haltlinie'],
-  ['vorfahrt', '<b>Vorfahrt</b> (301): nur an der <b>nächsten</b> Kreuzung', 'vorfahrtstrasse', '<b>Vorfahrtstraße</b> (306): bis zum nächsten Zeichen 205, 206 oder 307'],
-  ['eingeschraenktes-halteverbot', '<b>Eingeschränktes Haltverbot</b> (286): bis 3 Min halten, Ein-/Aussteigen, Be-/Entladen ok', 'absolutes-halteverbot', '<b>Absolutes Haltverbot</b> (283): gar nicht halten'],
-  ['ueberholverbot', '<b>Überholverbot</b> (276): keine <b>mehrspurigen</b> Kfz. Motorrad, Rad, Mofa darfst du überholen', 'ueberholverbot-fuer-lkw', '<b>Überholverbot Lkw</b> (277): gilt für Kfz über 3,5 t, nicht für Pkw und Bus'],
-  ['tempo-30-zone', '<b>Tempo-30-Zone</b> (274.1): 30, meist rechts vor links', 'verkehrsberuhigter-bereich', '<b>Verkehrsberuhigter Bereich</b> (325.1): Schritttempo, Kinder spielen überall, Parken nur auf markierten Flächen'],
+  ['vorfahrt-gewaehren', '<b>Vorfahrt gewähren</b> (205): nur anhalten, wenn jemand kommt', 'stop', '<b>Stopp</b> (206): <b>immer</b> anhalten, Räder stehen, an der Haltlinie', 'Dreieck = Vorfahrt lassen. Achteck = Stopp steht dort, wo du erst im Stand genug siehst. Darum dort immer anhalten.'],
+  ['vorfahrt', '<b>Vorfahrt</b> (301): nur an der <b>nächsten</b> Kreuzung', 'vorfahrtstrasse', '<b>Vorfahrtstraße</b> (306): bis zum nächsten Zeichen 205, 206 oder 307', 'Dreieck = Warnung für eine Stelle, also nur die nächste Kreuzung. Gelbe Raute = die ganze Straße, bis ein Schild sie beendet.'],
+  ['eingeschraenktes-halteverbot', '<b>Eingeschränktes Haltverbot</b> (286): bis 3 Min halten, Ein-/Aussteigen, Be-/Entladen ok', 'absolutes-halteverbot', '<b>Absolutes Haltverbot</b> (283): gar nicht halten', 'Ein Strich streicht nur das Parken (länger als 3 Min). Das Kreuz streicht alles, auch kurzes Halten.'],
+  ['ueberholverbot', '<b>Überholverbot</b> (276): keine <b>mehrspurigen</b> Kfz. Motorrad, Rad, Mofa darfst du überholen', 'ueberholverbot-fuer-lkw', '<b>Überholverbot Lkw</b> (277): gilt für Kfz über 3,5 t, nicht für Pkw und Bus', 'Schau auf das rote Fahrzeug: es darf nicht überholen. Rotes Auto = gilt für dich. Roter Lkw = nur für schwere Lkw, die beim Überholen lange brauchen.'],
+  ['tempo-30-zone', '<b>Tempo-30-Zone</b> (274.1): 30, meist rechts vor links', 'verkehrsberuhigter-bereich', '<b>Verkehrsberuhigter Bereich</b> (325.1): Schritttempo, Kinder spielen überall, Parken nur auf markierten Flächen', 'Zone mit „30“: die Straße bleibt Straße, nur langsamer. Blaues Schild mit Kind und Haus: die Straße ist Spielfläche, darum Schritttempo.'],
 ] as const;
 // Section bar: chips point to the first section of each group, in reading order.
 export const JUMP = [
-  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['formeln', 'Formeln'], ['zahlenkarte', 'Zahlen-Landkarte'], ['tempo', 'Tempo'], ['strassen', 'Straßenarten'], ['meter', 'Meter'], ['vorfahrt', 'Vorfahrt'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['vergessen', 'Oft verwechselt'], ['verhalten', 'Oft gefragt'], ['zahlen', 'Fragenkatalog'], ['test', 'Selbsttest'], ['begriffe', 'Begriffe']] },
+  { label: 'Theorie', links: [['pruefung', 'Prüfung'], ['vorfahrt', 'Vorfahrt'], ['verhalten', 'Gefahren'], ['vergessen', 'Zeichen'], ['formeln', 'Formeln'], ['zahlen-situation', 'Zahlen'], ['tempo', 'Tempo'], ['strassen', 'Straßen'], ['alkohol', 'Alkohol & Punkte'], ['licht', 'Licht & Unfall'], ['fahrzeug', 'Fahrzeug'], ['training', 'Trainer'], ['zahlen', 'Zahlenfragen'], ['fehler-liste', 'Meine Fehler'], ['begriffe', 'Begriffe']] },
   { label: 'Praxis', links: [['praxis', 'Prüfung'], ['aufgaben', 'Manöver'], ['situationen', 'Im Verkehr'], ['sichern', 'Sichern'], ['fehler', 'Sofort durch'], ['quellen', 'Quellen']] },
 ].map(g => ({ label: g.label, links: g.links.map(([id, label]) => ({ href: `#${id}`, label: label! })) }));
 
@@ -57,22 +57,6 @@ export const FORMULAS = [
     m: 'Du überholst nur mit der Differenz (30 km/h). Der Gegenverkehr fährt dir in der gleichen Zeit genauso weit entgegen. Darum braucht man doppelt so viel freie Sicht.' },
 ] as const;
 
-// Distances in metres, drawn as bars on one shared scale (max 50 m).
-export const RULER = [
-  { m: 1.5, t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'innerorts (§ 5 Abs. 4)' },
-  { m: 2,   t: 'Seitenabstand zu Rad, E-Scooter, Fußgänger', s: 'außerorts' },
-  { m: 3,   t: 'Restfahrbahn bis zur durchgezogenen Linie, sonst Parkverbot', s: 'Zeichen 295 (durchgezogene Linie)' },
-  { m: 5,   t: 'Parkverbot vor und hinter Kreuzung/Einmündung', s: '§ 12 Abs. 3 · Einmündung = eine Straße stößt auf eine andere (T-Form)' },
-  { m: 5,   t: 'Haltverbot vor dem Zebrastreifen (und darauf)', s: 'Zeichen 293' },
-  { m: 5,   t: 'Parkverbot vor und hinter Andreaskreuz innerorts', s: 'Zeichen 201 (rot-weißes Kreuz am Bahnübergang)' },
-  { m: 5,   t: 'Abschleppseil: maximaler Abstand', s: '§ 43 StVZO' },
-  { m: 8,   t: 'Parkverbot vor Kreuzung, wenn rechts ein baulicher Radweg ist', s: 'nur davor · baulich = mit Bordstein abgetrennt, nicht nur aufgemalt' },
-  { m: 10,  t: 'Haltverbot vor Ampel, Andreaskreuz, Vorfahrt gewähren, Stopp', s: 'nur wenn du sie verdeckst' },
-  { m: 15,  t: 'Parkverbot vor und hinter Haltestellenschild', s: 'Zeichen 224 (Haltestellenschild: grünes H auf gelbem Grund)' },
-  { m: 50,  t: 'Parkverbot vor und hinter Andreaskreuz außerorts', s: 'Zeichen 201' },
-  { m: 50,  t: 'Abstand Lkw > 3,5 t / Bus auf Autobahn ab 50 km/h', s: '§ 4 Abs. 3' },
-  { m: 50,  t: 'Leitpfosten stehen alle …', s: 'weiß-schwarze Pfähle am Rand, zum Schätzen von Abstand und Sicht' },
-];
 // T trick: every formula only needs T = speed ÷ 10.
 export const TROWS = [30, 50, 70, 80, 100, 130].map(v => {
   const t = v / 10;
@@ -80,33 +64,3 @@ export const TROWS = [30, 50, 70, 80, 100, 130].map(v => {
 });
 export const de = (x: number) => String(Math.round(x * 10) / 10).replace('.', ',');
 
-// Number map: one number, every rule it stands for.
-// Each row: [unit family for the colour, exact unit, meaning]. Families: kmh, m, pm (‰), zeit, x (other).
-export const ZAHLENKARTE: { n: string; items: [string, string, string][] }[] = [
-  { n: '0,0', items: [['pm', '‰', 'Probezeit und unter 21']] },
-  { n: '0,3', items: [['pm', '‰', '+ Ausfallerscheinung = Straftat']] },
-  { n: '0,5', items: [['pm', '‰', 'Ordnungswidrigkeit, Fahrverbot']] },
-  { n: '1', items: [['m', 'm', 'Ladung hinten ohne Kennzeichnung']] },
-  { n: '1,1', items: [['pm', '‰', 'absolut fahruntüchtig']] },
-  { n: '1,5', items: [['m', 'm', 'Seitenabstand Rad innerorts'], ['m', 'm', 'Ladung hinten max. (über 100 km)'], ['m', 'm', 'Fahne/Leuchte an Ladung höchstens 1,5 m über der Straße']] },
-  { n: '1,6', items: [['x', 'mm', 'Mindestprofil'], ['pm', '‰', 'MPU, auch mit dem Rad']] },
-  { n: '2', items: [['m', 'm', 'Seitenabstand Rad außerorts'], ['zeit', 'Sek', 'Abstand („zweiundzwanzig“)'], ['zeit', 'Jahre', 'Probezeit, HU-Intervall'], ['zeit', 'Wochen', 'Anhänger allein parken']] },
-  { n: '3', items: [['m', 'm', 'Ladung hinten bis 100 km Fahrt'], ['m', 'm', 'Restfahrbahn zur durchgezogenen Linie'], ['zeit', 'Min', 'länger halten = parken'], ['zeit', 'Jahre', 'bis zur ersten HU'], ['x', '×', 'Grundfahraufgaben, Nachtfahrten']] },
-  { n: '4', items: [['x', '%', 'Stützlast mindestens'], ['x', '×', 'Bremsweg bei doppeltem Tempo'], ['x', '×', 'Autobahnfahrten vor der Prüfung']] },
-  { n: '5', items: [['m', 'm', 'Parkverbot an Kreuzung'], ['m', 'm', 'Haltverbot vor Zebrastreifen'], ['m', 'm', 'Andreaskreuz innerorts (Parken)'], ['m', 'm', 'Abschleppseil max.'], ['m', 'm', 'Abstand im Tunnel-Stau'], ['x', '×', 'Überlandfahrten vor der Prüfung'], ['zeit', 'Jahre', '2-Punkte-Verstoß gelöscht']] },
-  { n: '8', items: [['m', 'm', 'Parkverbot vor Kreuzung mit Radweg'], ['m', 'm', 'Lücke beim Längsparken (Prüfung)'], ['x', 'Punkte', 'Führerschein weg']] },
-  { n: '10', items: [['m', 'm', 'Haltverbot vor Ampel, 201, 205, 206 (wenn verdeckt)'], ['kmh', 'km/h', 'Bahnübergang mit Schild 10'], ['x', 'Punkte', 'Fehlerpunkte max. in der Theorie'], ['zeit', 'Jahre', 'Straftat mit Entzug gelöscht']] },
-  { n: '12', items: [['zeit', 'Jahre', 'Kindersitz darunter (und unter 150 cm)'], ['zeit', 'Monate', 'gilt die bestandene Theorie']] },
-  { n: '15', items: [['m', 'm', 'Parkverbot an Haltestelle'], ['m', 'm', 'Abstand Kolonne in der Stadt'], ['zeit', 'Min', 'Testfahrt bei B197']] },
-  { n: '18', items: [['m', 'm', 'Pkw + Anhänger max. lang'], ['zeit', 'Jahre', 'Mindestalter (begleitet: 17)']] },
-  { n: '30', items: [['kmh', 'km/h', 'Tempo-30-Zone, Fahrradstraße'], ['kmh', 'km/h', 'Gefahrbremsung mindestens'], ['kmh', 'km/h', 'ohne Gurt schon schwer verletzt'], ['x', 'Fragen', 'in der Theorieprüfung'], ['zeit', 'Min', 'reine Fahrzeit mindestens']] },
-  { n: '45', items: [['kmh', 'km/h', 'Moped, S-Pedelec'], ['zeit', 'Min', 'je Sonderfahrt']] },
-  { n: '50', items: [['kmh', 'km/h', 'innerorts'], ['kmh', 'km/h', 'bei Sicht unter 50 m'], ['kmh', 'km/h', 'mit Schneeketten'], ['m', 'm', 'Leitpfosten-Abstand'], ['m', 'm', 'Andreaskreuz außerorts (Parken)'], ['m', 'm', 'Abstand Lkw/Bus auf Autobahn'], ['x', 'cm', 'Ladung vorn ab 2,5 m Höhe']] },
-  { n: '60', items: [['kmh', 'km/h', 'Lkw über 7,5 t außerorts'], ['kmh', 'km/h', 'Bus mit stehenden Fahrgästen'], ['kmh', 'km/h', 'Autobahn: Fahrzeug muss mehr schaffen']] },
-  { n: '80', items: [['kmh', 'km/h', 'Anhänger, Bus, über 3,5 t'], ['kmh', 'km/h', 'mit Notrad'], ['m', 'm', 'je Bakenstreifen am Bahnübergang']] },
-  { n: '100', items: [['kmh', 'km/h', 'Pkw außerorts'], ['kmh', 'km/h', 'Anhänger mit Tempo-100-Plakette'], ['m', 'm', 'Warndreieck (Prüfungsantwort)'], ['x', 'km', 'Grenze für 3 m Überstand']] },
-  { n: '130', items: [['kmh', 'km/h', 'Richtgeschwindigkeit, kein Limit']] },
-  { n: '150', items: [['x', 'cm', 'Kindersitz darunter (und unter 12)'], ['m', 'm', 'bis 250 m: so weit stehen Gefahrzeichen außerorts vor der Gefahr']] },
-  { n: '3.500', items: [['x', 'kg', 'Klasse B (zulässige Gesamtmasse); mit Anhänger über 750 kg darf der ganze Zug höchstens so viel wiegen']] },
-];
-export const UNIT: Record<string, string> = { kmh: 'km/h', m: 'Meter', pm: 'Promille', zeit: 'Zeit', x: 'Sonstiges' };

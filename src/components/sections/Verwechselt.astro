@@ -21,10 +21,11 @@ const FORGOTTEN = [
 ---
 <Section id="vergessen" title="Oft verwechselt">
   <div class="flex flex-col gap-2.5">
-    {PAIRS.map(([a, at, b, bt]) => (
+    {PAIRS.map(([a, at, b, bt, why]) => (
       <div class="pair">
         <div><img src={img(a)} alt="" width="56" height="56" loading="lazy" /><span set:html={at} /></div>
         <div><img src={img(b)} alt="" width="56" height="56" loading="lazy" /><span set:html={bt} /></div>
+        <p class="why"><b class="text-ink">Warum:</b> {why}</p>
       </div>
     ))}
   </div>
@@ -43,5 +44,6 @@ const FORGOTTEN = [
   .pair>div{display:flex;gap:12px;align-items:center;padding:12px 14px;font-size:.88rem;line-height:1.4}
   .pair>div+div{border-left:2px dashed var(--soft)}
   .pair img{width:56px;height:56px;flex:none;object-fit:contain}
+  .pair .why{grid-column:1/-1;margin:0;padding:8px 14px;border-top:2px dashed var(--soft);font-size:.82rem;line-height:1.4;color:var(--muted)}
   @media(max-width:600px){.pair{grid-template-columns:1fr}.pair>div+div{border-left:0;border-top:2px dashed var(--soft)}}
 </style>

@@ -7,9 +7,8 @@ import { JUMP } from '../data/cheatsheet';
 import Lernen from '../components/sections/Lernen.astro';
 import TheoriePruefung from '../components/sections/TheoriePruefung.astro';
 import Formeln from '../components/sections/Formeln.astro';
-import Zahlenkarte from '../components/sections/Zahlenkarte.astro';
+import ZahlenSituationen from '../components/sections/ZahlenSituationen.astro';
 import Tempo from '../components/sections/Tempo.astro';
-import Meter from '../components/sections/Meter.astro';
 import Vorfahrt from '../components/sections/Vorfahrt.astro';
 import Alkohol from '../components/sections/Alkohol.astro';
 import Punkte from '../components/sections/Punkte.astro';
@@ -28,12 +27,14 @@ import Fehler from '../components/sections/Fehler.astro';
 import Quellen from '../components/sections/Quellen.astro';
 import Glossar from '../components/sections/Glossar.astro';
 import Strassenarten from '../components/sections/Strassenarten.astro';
+import PruefungsTraining from '../components/sections/PruefungsTraining.astro';
+import MeineFehler from '../components/sections/MeineFehler.astro';
 ---
 <Base slug="" title="Führerschein-Spickzettel Klasse B">
   <div class="wrap pagehead">
     <span class="kicker">Klasse B · Theorie + Praxis</span>
     <h1>Führerschein-Spickzettel</h1>
-    <p>Alle Formeln, Zahlenfragen, Vorfahrt, Dinge, die man gern vergisst, und alle Manöver auf einer Seite. Strg/Cmd + P druckt sie. Gelernt? <a href="#test">Mach den Selbsttest</a>.</p>
+    <p>Die Regeln mit ihrem <b>Grund</b>, die Zahlen in ihrer Situation, ein Trainer wie in der Prüfung und deine eigene Fehlerliste. Gelernt? <a href="#training">Prüfung simulieren</a>.</p>
   </div>
   <JumpNav client:idle groups={JUMP} />
 
@@ -42,20 +43,21 @@ import Strassenarten from '../components/sections/Strassenarten.astro';
 
   <Lernen />
   <TheoriePruefung />
+  <Vorfahrt />
+  <Verhalten />
+  <Verwechselt />
   <Formeln />
-  <Zahlenkarte />
+  <ZahlenSituationen />
   <Tempo />
   <Strassenarten />
-  <Meter />
-  <Vorfahrt />
   <Alkohol />
   <Punkte />
   <Licht />
   <Unfall />
   <Fahrzeug />
-  <Verwechselt />
-  <Verhalten />
+  <PruefungsTraining />
   <Fragenkatalog />
+  <MeineFehler />
   <Glossar />
   <div class="wrap part" id="teil-praxis"><h2>Praxis</h2><span>Was der Prüfer im Auto sehen will</span></div>
 
